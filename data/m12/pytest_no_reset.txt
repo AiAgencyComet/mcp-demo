@@ -1,0 +1,38 @@
+$ M12_NO_RESET=1 pytest -q test_order_then_status test_good_order test_refund_when_the_person_confirms test_refund_when_the_person_declines   # the shop reset fixture turned off
+.F.F                                                                     [100%]
+=================================== FAILURES ===================================
+_______________________________ test_good_order ________________________________
+
+    async def test_good_order():
+        async with Client(server.mcp) as c:
+            r = await c.call_tool("place_order", {"items": [{"drink": "latte", "size": "large", "milk": "oat"}],
+                                                  "handoff": {"kind": "pickup", "name": "Sam"}})
+        assert not r.is_error
+>       assert r.structured_content == {"order_id": "A-1043", "total": 5.10, "status": "making"}
+E       AssertionError: assert {'order_id': ...us': 'making'} == {'order_id': ...us': 'making'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'order_id': 'A-1044'} != {'order_id': 'A-1043'}
+E         Use -v to get more diff
+
+tests/test_fernhill.py:71: AssertionError
+_____________________ test_refund_when_the_person_declines _____________________
+
+    async def test_refund_when_the_person_declines():
+        async with Client(server.mcp, elicitation_callback=say_no) as c:
+            r = await c.call_tool("refund", {"order_id": "A-1042"})
+            s = await c.call_tool("order_status", {"order_id": "A-1042"})
+        assert r.structured_content == {"result": "The person stopped the refund."}
+>       assert s.structured_content["status"] == "done"
+E       AssertionError: assert 'refunded' == 'done'
+E         
+E         - done
+E         + refunded
+
+tests/test_fernhill.py:127: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fernhill.py::test_good_order - AssertionError: assert {'ord...
+FAILED tests/test_fernhill.py::test_refund_when_the_person_declines - Asserti...
+2 failed, 2 passed in 0.23s
+exit code: 1

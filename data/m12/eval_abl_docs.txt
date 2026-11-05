@@ -1,0 +1,20 @@
+release abl_docs (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1639 tok
+  tool choice (all)         97.2%   per rep [97.2, 97.2, 97.2]
+  tool choice (Fernhill)    96.7%
+  call has right effect     91.1%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 90/73  status 100/100  refund 100/100  other 100/100
+  no tool call 1   stopped by max_tokens 4   cost $0.0243   avg 1164 ms
+    wrong x2: fernhill__place_order -> fernhill__get_menu
+    wrong x1: fernhill__place_order -> None
+    call fail x2: order-03: is_error: Error executing tool place_order: 'Espresso' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-09: is_error: Error executing tool place_order: 1 validation error for place_orderArguments
+handoff
+  Field required [type=missing, input_value={'items': [{'drink': 'latte', 'size': 'large'}]}, input_type=dict]
+   
+    call fail x1: order-05: is_error: Error executing tool place_order: 2 validation errors for place_orderArguments
+items
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.p
+GATE PASS (baseline v1)
+exit code: 0

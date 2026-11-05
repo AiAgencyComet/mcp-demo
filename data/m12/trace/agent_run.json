@@ -1,0 +1,152 @@
+{
+ "question": "I want a large oat latte for pickup, name Sam. What is the total, and what is my order ID?",
+ "model": "claude-haiku-5-5",
+ "answer": "Your order is placed. The order ID is **A-1043**, and the total is **$5.10**. It's for pickup under the name Sam, and it's already being made.\n\nThe large latte is listed at $4.50 on the menu, so the extra $0.60 is probably the oat milk charge, though the system didn't say so.",
+ "wall_ms": 3744,
+ "log": [
+  {
+   "turn": 1,
+   "stop_reason": "tool_use",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1144,
+    "output_tokens": 97,
+    "output_tokens_details": {
+     "thinking_tokens": 64
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   },
+   "content": [
+    {
+     "signature": "CAQSngYKEAgTGAI4AUIIdGhpbmtpbmcSDMygORwysXdvIf4Q5hoMFhyUSWZhfKRuVMMsIjBdp+THpdCua8t5/r0J1nnOpBzCkSYSuUfRvKyiLAbFfuWYLS1a2E5YPsrfV186Sw8quwVlSfWQSfcei90HbMe+Yb8quN5I2Ti/Nrf11mfnhFh4E1fYsP6kFwzXkON2YB+xcn07vVkVjG+AxvDbfuMpSrlF6jrKOgPbddSO4RyYwd1d7fu+f+66hgQLGogUcYHC+SUd8e54SwSxF3j57Lj6rqnpt4phfj7DSgtBb6aH5OxgHTKd1Y/PlH4aHPGYMyHZJbbGs8Lkl59SzLzR2g8hOlNW1hXSX2MNkm9u3qZAYVi+r2QROj8uYpdvA+jwVZZfAYEWY6VoI164BcWyPMirEmDI7k7CV7IaLhpdvvdNWsqMStSObGuPfknnfvj3Jjq1MTbxlCMRAyUxwV4b5pNd0XbB7THl1xR1Br7tyxyPnzPC/CU2sYFV49C9SDEAGrhNOMXbCrn6mLUTS6UqGpBs9BIkgcHMr3mBWBwYeSunnn3kNw6NS5qd9nMF7uovKH97wAlp+OzT3UP0c/xGcjEDiDlarDZlbr9HMWignr8xI6aav4TVaKZWE1IwFT3iokLv1Xqb9Qy4gSG9AgeqQXJSgReHC+s7JmlLYfJOAIIM3jMEvAyvGsVifFX2I5cTzl7VWWwXMqn664n1NHafCK/u82p1kIMrBcnBGEQuLj5KBR2WvGDtI/6kcqXINk1yP0Ao6k7Y320M3rTkRXB/xEY2cnuGYIWUSPsYd6a8NTnbvGLvZu3kOtfeSYXHv93oVgHfq5+0CW6KfwnaTE0DJFcNMeXM+bKbWc4h4RopyY+CCtzGbg46rr4l1fwhrMIrsXS0FoW+6W2iaPE5Ku18bzT1w57aadpSnDXUEIf3zbyfwvEdXNsbk33YaXXPnpx9XsDVKzyurI0rxLAu85ecntN+gJ7ZsCI2CyjFnV3EWoeZBwYnIgqlvAyUxmbToFJvW02r8iXEJcqR0RK9c5TBVjd2krC+GHM6JmGeA7vJZzkYAQ==",
+     "thinking": "",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01NY9HnvCzMePQpydismHCoB",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {},
+     "name": "fernhill__get_menu",
+     "type": "tool_use",
+     "toolset_name": null
+    }
+   ]
+  },
+  {
+   "tool": "fernhill__get_menu",
+   "input": {},
+   "is_error": false,
+   "result": "{\"result\": [{\"drink\": \"espresso\", \"price\": 3.0, \"sizes\": [\"single\", \"double\"]}, {\"drink\": \"latte\", \"price\": 4.5, \"sizes\": [\"small\", \"large\"]}, {\"drink\": \"flat white\", \"price\": 4.2, \"sizes\": [\"small\"]}, {\"drink\": \"cold brew\", \"price\": 5.0, \"sizes\": [\"small\", \"large\"]}, {\"drink\": \"oat cookie\", \"price\": 2.5, \"sizes\": [\"one\"]}]}"
+  },
+  {
+   "turn": 2,
+   "stop_reason": "tool_use",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1413,
+    "output_tokens": 118,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   },
+   "content": [
+    {
+     "id": "toolu_017HWzLpvsDD83tSNLVkrSdD",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "items": [
+       {
+        "drink": "latte",
+        "size": "large",
+        "milk": "oat"
+       }
+      ],
+      "handoff": {
+       "kind": "pickup",
+       "name": "Sam"
+      }
+     },
+     "name": "fernhill__place_order",
+     "type": "tool_use",
+     "toolset_name": null
+    }
+   ]
+  },
+  {
+   "tool": "fernhill__place_order",
+   "input": {
+    "items": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "oat"
+     }
+    ],
+    "handoff": {
+     "kind": "pickup",
+     "name": "Sam"
+    }
+   },
+   "is_error": false,
+   "result": "{\"order_id\": \"A-1043\", \"total\": 5.1, \"status\": \"making\"}"
+  },
+  {
+   "turn": 3,
+   "stop_reason": "end_turn",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1563,
+    "output_tokens": 214,
+    "output_tokens_details": {
+     "thinking_tokens": 114
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   },
+   "content": [
+    {
+     "signature": "CAQS3QcKEAgTGAI4AUIIdGhpbmtpbmcSDNszCghrj8ivRzOEwBoM7uXVcLR6EWfKEJ5wIjA976ZUH24+hSFrlIxkHSZ6VeMDynZ8nvcKKDgFhT7TAkNZYCY7sFWgu9RH/HLlgnIq+gY4HnnekHhlMOUUo1cv2D1Cu8remmqzD2nm/yYNuoRuF5OjxIY0NJ+d4dPqGZkH7IFqgawS3IHuDf2XvIPaRPJgVhSc1vVmYJCWxb+nFHiAdngIOYhm8wrwvDhFPne4j8g/ePASkBjn8hztmjaMeRZLhiGPF8uttYcVyO5IPbQj/5pTxI8bgywlkGAx/pOnp2KvzquF60UPoJIDgORPW50MIT0kjAlcELIW37tP8lvtnZZY8XzIFctZcPw5MyuyE2IVkSd/GuTtr8wJvxEqTPtd09I8tv6pWIjKPsx4hLZMbFyTdJO+hoHThKFDOrid7x3usgGcPP8lF7o3Q9Y12l2uCM+dQLwLevvpXSNNhmp7/sM0jLS6cj+wWnmFRf8BYEYMffZ8Vmep5RnFfqipzyaCDdTIC1svlZ8ZApT0Chh2bTrj1UMIymUAEMzTf35dv1qA4MZ0cVRT1emBodlm+Hw+SYe7xeaiWZAzN3HvhV1hOLpgcSxDGX57RK420/fl5LiwayQXCymFK1P91rYxoD+JA2SbBozcgkx8p0h0+GufFb22mYSYZiwXjrVn6gBI9tM1AAgqYBG055RU5c68dcTe1YN55IhhLB+RvEWh/LS6puN1ZikJI/tAEZJxGfooDmYjvvAV41wYIUF77NJPLcUjFerS7Dl1c/OHl3WeTpoKH4yOpPA7CG/1JROa8s9WqUwRcisqf+69PKSF71TNNCY3X+cMjr1sPoqQ13lLKzuqFpgRe0K1OFYT5yO4sMsFdCdQabq/ErFRbZcSZMA57JuBLXSCJ98TxDB5ovpdWzBDP3Y7/4qIe7625Rb4fnneP5clpIzlvBojkcWw3BPiOGrZ+WFPkOxpArsdZr/+GQoeemy0mP5JUtfFzF6cxRZhpu7xIkBaDoYUz8cDVxqtZKpHnjycRtOGiIorrpZeIbe2jQBYpmjplIWFlBypAZHdnW0pFdmzKOk5/TLBLOVu+AJhwwsTxkwN8NlSj7V/rMTulAvWMWjkCdugzupnI+3SenZ4ES2OUkzDqerpPXIijTUA/AhCw3kunfEQSxL4oXlCuY3mgwEvZV6oBKbKuCsec+tfEv3KUfOaw0k0wiTBO78pSwA3NI7Oz7X12WTiu1TsT/6H9xwHMcuYYgOo7Zaj5eVNapf9eUAOIYDcepymPnhCHi5KpTqi30JOLRgB",
+     "thinking": "",
+     "type": "thinking"
+    },
+    {
+     "citations": null,
+     "text": "Your order is placed. The order ID is **A-1043**, and the total is **$5.10**. It's for pickup under the name Sam, and it's already being made.\n\nThe large latte is listed at $4.50 on the menu, so the extra $0.60 is probably the oat milk charge, though the system didn't say so.",
+     "type": "text"
+    }
+   ]
+  }
+ ],
+ "smoke_bad_order": [
+  true,
+  "Error executing tool place_order: 'mocha' is not on the menu. Call get_menu to see the menu."
+ ]
+}

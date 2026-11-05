@@ -1,0 +1,66 @@
+{
+ "case_id": "order-04",
+ "rep": 2,
+ "request": "Delivery to 12 Elm Street: one large latte, whole milk.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 1373,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSuwcKEAgTGAI4AUIIdGhpbmtpbmcSDMkCddeDEzRjWJ2MwxoM7RUdK9b5GzVp9MROIjAqrqTYqE5wG3imVwS+dsNUIKcuiDTBvXkikB903EENgKovhHkqNukt8rJyNEsE+rEq2AZyRez2Xct2y0mHDhAM/yLQSLsXA5YB2cmR/nfS2wcvrm1v4UqRr83d6iKyFm06X0ZhNyCrr6GyworI3+YI4oecB2o/gI9Ojx0SHoKTK+mhDzcvxw/R5kqd5JaYv/z13C8ooeSiemxWxjiSIEdk+jmzTzFRge9NouG4SiBtncsdKwXPd7Jqq68+ZuBtdJuFwnSokTcz7t0NaDjsXwWg1KjM28BfZDC4s3Flnt1obMbT7I4CQKbM7cXz9Cg4xgYmFwThvJjF6J/gEFz1onL/xI8zlJ8cf9LONVMHHtMyP+ZZmq3/C0JNzvCvwLL3THlRuymnYJ5wiQScrihtGGpUSB1zlhRApttkdLzdnyYNrwIJFHoThrLxE4KDiiSmuLQU8fI/jz5ckB8xektjtvciUgoBuQ+yo37FAuvVcpPiQhnxDTdbrv92vqhA73lbnU6OVPnyvFsNnsdBLwYXkI8vpT6bj10npjIf1rV/hKfcSDu5RZmMD+lwxmyeZ0lx4DlBO7PTe7PYK6ONjCPcmvWVCs4kwq4s2M4eWdsVk1ZSulGub1AniS0ABJdEX/bUHXFnmH2wFvDdHflja22yT9EuZSnIGLMJqObby7F3YJqWga9/499CD4T8OMuqjVj5aWR9CmwELKtlUlU1BqhrYnykntsA2pXSyJwoliMET9aEFCRO7vil0TK+Ltt096YLFZ9mHcoq/Ka8N0wQahd73I4JuNMyJM9pEgWs7Q+cO4vHzlVESzEYwzCV9szJ3Vi7mTmpAbcZmJTH4gTPGGeX92ETD64I2xF297Y8SdeqF4COAL08Z7qLfnZomY5KglisHlCj/VR+dl1N3cCnqkQu/jglMSx53mNFRkOUEbGvtcaYFKDZa/O17y8zEmjy+fen9YAzBvHlfRqt1+2ZLsB10yZKM86bXOJy3Z5UYprGozLzhnMaTBQn9ZWBpLNk1GEZVQANzcoRGIa4LgFS9k57jjchfFUbhaILp1gnmDh/oP8qT7t7t9kzAGNusBz7PS95fX1AMSbWVzm1/nRNXHMcbXZCIe9hhqAGJbiycqkVtSGIX+wKcjAS+wRGXArX0KsXZ8s5GM4eLp5jvJ6VpBy7NyHz9uqiJry4x6y0V/9Zh40rS+lAS9ZyFshFVuAmGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01L35dgqpBtaeXKWMVyJsQyr",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "latte",
+       "size": "large",
+       "milk": "whole"
+      }
+     ],
+     "handoff": {
+      "kind": "delivery",
+      "address": "12 Elm Street"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1726,
+   "output_tokens": 240,
+   "output_tokens_details": {
+    "thinking_tokens": 117
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

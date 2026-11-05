@@ -1,0 +1,6880 @@
+[
+ {
+  "name": "list_menu_items",
+  "description": "Lists items on the Fernhill Coffee menu, optionally filtered by category or availability. Use it to browse the menu or see what is currently on offer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "espresso",
+      "brewed_coffee",
+      "tea",
+      "cold_drinks",
+      "pastries",
+      "sandwiches",
+      "retail_beans"
+     ],
+     "description": "Only return items in this category."
+    },
+    "available_only": {
+     "type": "boolean",
+     "description": "If true, exclude items currently marked unavailable.",
+     "default": false
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 200,
+     "default": 50
+    }
+   },
+   "required": []
+  },
+  "request": "Show me every pastry we currently have on the menu.",
+  "server": "shop"
+ },
+ {
+  "name": "get_menu_item",
+  "description": "Returns full details for a single menu item: price, size options, ingredients, allergens, and calories. Use it when you need specifics about one product.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "item_id": {
+     "type": "string",
+     "description": "Menu item ID, e.g. 'itm_oat_latte'."
+    }
+   },
+   "required": [
+    "item_id"
+   ]
+  },
+  "request": "What allergens are listed for the almond croissant (itm_almond_croissant)?",
+  "server": "shop"
+ },
+ {
+  "name": "create_menu_item",
+  "description": "Adds a new item to the menu with a name, category, and base price. Use it when launching a new drink or food product.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "espresso",
+      "brewed_coffee",
+      "tea",
+      "cold_drinks",
+      "pastries",
+      "sandwiches",
+      "retail_beans"
+     ]
+    },
+    "base_price": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Price in USD for the default size."
+    },
+    "description": {
+     "type": "string"
+    },
+    "allergens": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "available": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "name",
+    "category",
+    "base_price"
+   ]
+  },
+  "request": "Add a new seasonal drink called Maple Cinnamon Latte to the espresso category at $5.75.",
+  "server": "shop"
+ },
+ {
+  "name": "update_menu_item_price",
+  "description": "Changes the price of an existing menu item, optionally for one size only. Use it for price adjustments, not for discounts on a specific order.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "item_id": {
+     "type": "string"
+    },
+    "new_price": {
+     "type": "number",
+     "minimum": 0,
+     "description": "New price in USD."
+    },
+    "size": {
+     "type": "string",
+     "enum": [
+      "small",
+      "medium",
+      "large"
+     ],
+     "description": "If omitted, applies to all sizes proportionally or to the base price."
+    }
+   },
+   "required": [
+    "item_id",
+    "new_price"
+   ]
+  },
+  "request": "Raise the price of the large cold brew (itm_cold_brew) to $5.25 starting now.",
+  "server": "shop"
+ },
+ {
+  "name": "set_menu_item_availability",
+  "description": "Marks a menu item as available or sold out. Use it when the shop runs out of an ingredient or product, or when it is back in stock.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "item_id": {
+     "type": "string"
+    },
+    "available": {
+     "type": "boolean"
+    },
+    "reason": {
+     "type": "string",
+     "description": "Optional note, e.g. 'out of oat milk'."
+    }
+   },
+   "required": [
+    "item_id",
+    "available"
+   ]
+  },
+  "request": "We just sold the last blueberry muffin, so mark itm_blueberry_muffin as sold out.",
+  "server": "shop"
+ },
+ {
+  "name": "create_order",
+  "description": "Places a new order for pickup with a list of items and an optional customer. Use it to enter a phone-in or counter order into the system.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string",
+     "description": "Optional loyalty customer ID."
+    },
+    "items": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "properties": {
+       "item_id": {
+        "type": "string"
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1
+       },
+       "size": {
+        "type": "string",
+        "enum": [
+         "small",
+         "medium",
+         "large"
+        ]
+       },
+       "notes": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "item_id",
+       "quantity"
+      ]
+     }
+    },
+    "pickup_time": {
+     "type": "string",
+     "format": "date-time",
+     "description": "Requested pickup time; defaults to ASAP."
+    },
+    "name_on_order": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "items"
+   ]
+  },
+  "request": "Put in an order for Marcus: two large oat lattes and one ham and cheese croissant, pickup at 8:15 tomorrow.",
+  "server": "shop"
+ },
+ {
+  "name": "get_order",
+  "description": "Retrieves one order by its order number, including items, totals, status, and pickup time. Use it to look up the details of a specific order.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "type": "string",
+     "description": "Order number, e.g. 'FH-20418'."
+    }
+   },
+   "required": [
+    "order_id"
+   ]
+  },
+  "request": "Pull up order FH-20418 so I can see what was in it and what was charged.",
+  "server": "shop"
+ },
+ {
+  "name": "search_orders",
+  "description": "Searches orders by status, date range, customer, or pickup window and returns a summary list. Use it to find orders when you do not have an order number.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "preparing",
+      "ready",
+      "picked_up",
+      "cancelled"
+     ]
+    },
+    "customer_id": {
+     "type": "string"
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "List all orders that are still in pending status right now.",
+  "server": "shop"
+ },
+ {
+  "name": "update_order_status",
+  "description": "Moves an order to a new fulfillment status such as preparing, ready, or picked_up. Use it as orders progress through the bar and counter.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "preparing",
+      "ready",
+      "picked_up"
+     ]
+    },
+    "notify_customer": {
+     "type": "boolean",
+     "description": "Send a text or push notification when set to ready.",
+     "default": true
+    }
+   },
+   "required": [
+    "order_id",
+    "status"
+   ]
+  },
+  "request": "Order FH-20433 is done, mark it ready for pickup and let the customer know.",
+  "server": "shop"
+ },
+ {
+  "name": "cancel_order",
+  "description": "Cancels an order that has not been picked up and stops its preparation. Use it when the customer no longer wants the order; money returns are handled separately.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id"
+   ]
+  },
+  "request": "Cancel order FH-20441, the customer called to say they can't make it in today.",
+  "server": "shop"
+ },
+ {
+  "name": "issue_refund",
+  "description": "Refunds all or part of the payment on a completed order to the original payment method. Use it for quality problems, wrong items, or overcharges.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "number",
+     "exclusiveMinimum": 0,
+     "description": "USD amount. Omit for a full refund."
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "quality_issue",
+      "wrong_item",
+      "overcharge",
+      "long_wait",
+      "other"
+     ]
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id",
+    "reason"
+   ]
+  },
+  "request": "Refund $4.75 on order FH-20391 because the oat latte was served cold.",
+  "server": "shop"
+ },
+ {
+  "name": "list_refunds",
+  "description": "Lists refunds issued in a date range, optionally filtered by reason or order. Use it to review or audit refund activity.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "quality_issue",
+      "wrong_item",
+      "overcharge",
+      "long_wait",
+      "other"
+     ]
+    },
+    "order_id": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Show me all the refunds we gave out last week for wrong items.",
+  "server": "shop"
+ },
+ {
+  "name": "find_customer",
+  "description": "Finds loyalty program customers by name, phone number, or email and returns their customer ID and basic profile. Use it when you need to identify a customer before other actions.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "phone": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string",
+     "format": "email"
+    }
+   },
+   "required": []
+  },
+  "request": "Look up the customer with phone number 555-0142 and tell me her name and customer ID.",
+  "server": "shop"
+ },
+ {
+  "name": "get_loyalty_balance",
+  "description": "Returns a customer's current loyalty points balance, tier, and recent point activity. Use it to answer questions about a customer's points.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "include_history": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "How many loyalty points does customer C-1182 have right now?",
+  "server": "shop"
+ },
+ {
+  "name": "adjust_loyalty_points",
+  "description": "Adds or removes loyalty points on a customer's account with a recorded reason. Use it for goodwill bonuses or to correct errors.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "points_delta": {
+     "type": "integer",
+     "description": "Positive to add, negative to deduct."
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_id",
+    "points_delta",
+    "reason"
+   ]
+  },
+  "request": "Add 50 bonus points to customer C-1182 as an apology for the mix-up on her order.",
+  "server": "shop"
+ },
+ {
+  "name": "redeem_loyalty_reward",
+  "description": "Redeems a loyalty reward for a customer, deducting the required points and attaching the reward to an order. Use it when a customer wants to spend points at checkout.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "reward_id": {
+     "type": "string",
+     "description": "e.g. 'rw_free_drink'."
+    },
+    "order_id": {
+     "type": "string",
+     "description": "Order to apply the reward to."
+    }
+   },
+   "required": [
+    "customer_id",
+    "reward_id",
+    "order_id"
+   ]
+  },
+  "request": "Let customer C-2087 use her free drink reward (rw_free_drink) on order FH-20450.",
+  "server": "shop"
+ },
+ {
+  "name": "list_loyalty_rewards",
+  "description": "Lists the rewards in the loyalty catalog with their point costs and tier requirements. Use it to see what customers can redeem.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "max_points_cost": {
+     "type": "integer",
+     "minimum": 0,
+     "description": "Only show rewards at or below this cost."
+    },
+    "active_only": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": []
+  },
+  "request": "What rewards can a customer get for 200 points or less?",
+  "server": "shop"
+ },
+ {
+  "name": "get_pickup_slots",
+  "description": "Returns open pickup time slots for a given date based on current kitchen and bar capacity. Use it to see when new orders can be scheduled.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "earliest_time": {
+     "type": "string",
+     "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$"
+    },
+    "item_count": {
+     "type": "integer",
+     "minimum": 1,
+     "description": "Size of the order, since large orders need more lead time."
+    }
+   },
+   "required": [
+    "date"
+   ]
+  },
+  "request": "What pickup slots are still open this Saturday morning for a big order of 12 drinks?",
+  "server": "shop"
+ },
+ {
+  "name": "reschedule_pickup",
+  "description": "Changes the pickup time of an existing order that has not yet been prepared. Use it when a customer asks for a different time.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "type": "string"
+    },
+    "new_pickup_time": {
+     "type": "string",
+     "format": "date-time"
+    }
+   },
+   "required": [
+    "order_id",
+    "new_pickup_time"
+   ]
+  },
+  "request": "Move the pickup for order FH-20462 from 9:00 to 9:45 this morning.",
+  "server": "shop"
+ },
+ {
+  "name": "get_daily_sales_report",
+  "description": "Generates a sales summary for a single day: revenue, order count, average order value, top-selling items, and refund totals. Use it for end-of-day review.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "hour",
+      "category",
+      "item"
+     ],
+     "default": "category"
+    }
+   },
+   "required": [
+    "date"
+   ]
+  },
+  "request": "Give me yesterday's sales report broken down by hour so I can plan staffing for the morning rush.",
+  "server": "shop"
+ },
+ {
+  "name": "list_suppliers",
+  "description": "Lists suppliers of beans, milk and cups, optionally filtered by product category or status. Use it to find a supplier ID or see who can supply a category.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "category": {
+     "type": "string",
+     "enum": [
+      "beans",
+      "milk",
+      "cups"
+     ],
+     "description": "Product category the supplier sells"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "active",
+      "paused",
+      "blocked"
+     ],
+     "description": "Supplier status filter"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "Which of our suppliers currently sell oat milk and are still active?",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_supplier",
+  "description": "Returns the full profile of one supplier: contact person, payment terms, minimum order value, lead time and delivery days. Use it when you need the terms or contact details of a specific supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier_id": {
+     "type": "string",
+     "description": "Supplier ID, e.g. SUP-0042"
+    }
+   },
+   "required": [
+    "supplier_id"
+   ]
+  },
+  "request": "What are the payment terms and the minimum order value for Nordic Dairy Co?",
+  "server": "suppliers"
+ },
+ {
+  "name": "search_supplier_products",
+  "description": "Searches the supplier catalog for beans, milk or cups by keyword, category, supplier or pack size, and returns SKUs with current unit prices. Use it to find the SKU before creating a purchase order.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string",
+     "description": "Free text such as 'single origin Ethiopia' or '12oz compostable'"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "beans",
+      "milk",
+      "cups"
+     ]
+    },
+    "supplier_id": {
+     "type": "string"
+    },
+    "max_unit_price": {
+     "type": "number",
+     "description": "Maximum price per pack in the account currency"
+    }
+   },
+   "required": [
+    "query"
+   ]
+  },
+  "request": "Find compostable 12oz hot cups in sleeves of 50 from any supplier under 15 euros per sleeve.",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_price_history",
+  "description": "Shows the historical purchase price of a SKU over time, including price changes by the supplier. Use it to check whether a supplier raised prices or to prepare a negotiation.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": [
+    "sku"
+   ]
+  },
+  "request": "How has the price of our 1kg house espresso blend, SKU BEAN-ESP-1KG, changed since January?",
+  "server": "suppliers"
+ },
+ {
+  "name": "create_purchase_order",
+  "description": "Creates a draft purchase order to a supplier with one or more SKU lines, quantities and a requested delivery date. The order is not sent until send_purchase_order is called.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier_id": {
+     "type": "string"
+    },
+    "lines": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1
+       },
+       "unit_price": {
+        "type": "number",
+        "description": "Agreed price; defaults to catalog price"
+       }
+      },
+      "required": [
+       "sku",
+       "quantity"
+      ]
+     }
+    },
+    "requested_delivery_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "delivery_location_id": {
+     "type": "string",
+     "description": "Shop or warehouse to deliver to"
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "supplier_id",
+    "lines"
+   ]
+  },
+  "request": "Draft a purchase order to Nordic Dairy Co for 40 cartons of whole milk and 20 cartons of oat milk for delivery next Thursday to the Main Street shop.",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_purchase_order",
+  "description": "Retrieves one purchase order with its lines, status, totals, and linked deliveries and invoices. Use it to check the state of a specific PO.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "po_number": {
+     "type": "string",
+     "description": "Purchase order number, e.g. PO-2024-0187"
+    }
+   },
+   "required": [
+    "po_number"
+   ]
+  },
+  "request": "What's the status of PO-2024-0187, and has anything been delivered against it yet?",
+  "server": "suppliers"
+ },
+ {
+  "name": "list_purchase_orders",
+  "description": "Lists purchase orders filtered by supplier, status or date range. Use it to review open, late or recently placed orders.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "draft",
+      "sent",
+      "confirmed",
+      "partially_received",
+      "received",
+      "cancelled"
+     ]
+    },
+    "created_from": {
+     "type": "string",
+     "format": "date"
+    },
+    "created_to": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "Show me all purchase orders that were sent last week but not yet confirmed by the supplier.",
+  "server": "suppliers"
+ },
+ {
+  "name": "update_purchase_order",
+  "description": "Changes a draft or unconfirmed purchase order: add, remove or change line quantities, the delivery date or notes. Use it when the order needs adjusting before the supplier ships.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "po_number": {
+     "type": "string"
+    },
+    "line_changes": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "action": {
+        "type": "string",
+        "enum": [
+         "add",
+         "set_quantity",
+         "remove"
+        ]
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 0
+       }
+      },
+      "required": [
+       "sku",
+       "action"
+      ]
+     }
+    },
+    "requested_delivery_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "po_number"
+   ]
+  },
+  "request": "On PO-2024-0192 change the quantity of Brazilian beans from 10 bags to 25 bags.",
+  "server": "suppliers"
+ },
+ {
+  "name": "send_purchase_order",
+  "description": "Sends a draft purchase order to the supplier by email or EDI and marks it as sent. Use it after the draft has been reviewed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "po_number": {
+     "type": "string"
+    },
+    "channel": {
+     "type": "string",
+     "enum": [
+      "email",
+      "edi",
+      "portal"
+     ],
+     "default": "email"
+    },
+    "message": {
+     "type": "string",
+     "description": "Optional cover note to the supplier"
+    }
+   },
+   "required": [
+    "po_number"
+   ]
+  },
+  "request": "The draft PO-2024-0195 looks right, please send it to the supplier by email.",
+  "server": "suppliers"
+ },
+ {
+  "name": "cancel_purchase_order",
+  "description": "Cancels a purchase order that has not been fully delivered and records a reason. Use it when the order is no longer needed or the supplier cannot fulfil it.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "po_number": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "no_longer_needed",
+      "supplier_cannot_fulfil",
+      "duplicate",
+      "price_change",
+      "other"
+     ]
+    },
+    "comment": {
+     "type": "string"
+    },
+    "notify_supplier": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "po_number",
+    "reason"
+   ]
+  },
+  "request": "Cancel PO-2024-0190, I accidentally ordered cups twice and it's a duplicate.",
+  "server": "suppliers"
+ },
+ {
+  "name": "list_expected_deliveries",
+  "description": "Lists upcoming and overdue supplier deliveries with expected dates, time windows and destination shops. Use it to plan receiving or chase late shipments.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "supplier_id": {
+     "type": "string"
+    },
+    "overdue_only": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": []
+  },
+  "request": "What deliveries are due at the Harbor Street shop tomorrow and the day after?",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_delivery",
+  "description": "Returns details of a single delivery: carrier, tracking number, expected and actual arrival, items and receipt status. Use it to track one shipment.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "delivery_id": {
+     "type": "string",
+     "description": "Delivery ID, e.g. DLV-88213"
+    }
+   },
+   "required": [
+    "delivery_id"
+   ]
+  },
+  "request": "Where is delivery DLV-88213 right now and what's the tracking number?",
+  "server": "suppliers"
+ },
+ {
+  "name": "record_delivery_receipt",
+  "description": "Records goods received for a delivery, with the quantity actually received per line, and updates stock and the purchase order status. Use it when a delivery arrives at the shop.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "delivery_id": {
+     "type": "string"
+    },
+    "received_lines": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "quantity_received": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "lot_number": {
+        "type": "string"
+       },
+       "best_before": {
+        "type": "string",
+        "format": "date"
+       }
+      },
+      "required": [
+       "sku",
+       "quantity_received"
+      ]
+     }
+    },
+    "received_by": {
+     "type": "string"
+    },
+    "received_at": {
+     "type": "string",
+     "format": "date-time"
+    }
+   },
+   "required": [
+    "delivery_id",
+    "received_lines"
+   ]
+  },
+  "request": "Delivery DLV-88213 just arrived: we got all 20 bags of Colombian beans but only 30 of the 40 milk cartons.",
+  "server": "suppliers"
+ },
+ {
+  "name": "report_delivery_issue",
+  "description": "Logs a problem with a delivery such as damaged goods, short shipment, wrong item or expired milk, with optional photos. Use it to document the issue and notify the supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "delivery_id": {
+     "type": "string"
+    },
+    "issue_type": {
+     "type": "string",
+     "enum": [
+      "damaged",
+      "short_shipment",
+      "wrong_item",
+      "expired_or_short_dated",
+      "late",
+      "other"
+     ]
+    },
+    "sku": {
+     "type": "string"
+    },
+    "affected_quantity": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "description": {
+     "type": "string"
+    },
+    "photo_urls": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "uri"
+     }
+    }
+   },
+   "required": [
+    "delivery_id",
+    "issue_type",
+    "description"
+   ]
+  },
+  "request": "Log a problem on DLV-88230: six cartons of oat milk arrived leaking and unusable.",
+  "server": "suppliers"
+ },
+ {
+  "name": "list_invoices",
+  "description": "Lists supplier invoices filtered by supplier, payment status or due date. Use it to see what is unpaid, overdue or due soon.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "received",
+      "matched",
+      "disputed",
+      "approved",
+      "paid",
+      "overdue"
+     ]
+    },
+    "due_before": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "Which supplier invoices are overdue or due before the end of this month?",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_invoice",
+  "description": "Returns one supplier invoice with line items, taxes, totals, due date, and the linked PO and delivery. Use it to inspect a specific invoice.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "invoice_number": {
+     "type": "string",
+     "description": "Supplier's invoice number"
+    },
+    "supplier_id": {
+     "type": "string",
+     "description": "Needed if the invoice number is not unique across suppliers"
+    }
+   },
+   "required": [
+    "invoice_number"
+   ]
+  },
+  "request": "Open invoice INV-55120 and show me the line items and the total including VAT.",
+  "server": "suppliers"
+ },
+ {
+  "name": "match_invoice_to_delivery",
+  "description": "Runs a three-way match between a supplier invoice, its purchase order and the recorded delivery receipts, and reports quantity and price discrepancies. Use it before approving an invoice for payment.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "invoice_number": {
+     "type": "string"
+    },
+    "po_number": {
+     "type": "string",
+     "description": "Optional; inferred from the invoice if omitted"
+    },
+    "price_tolerance_percent": {
+     "type": "number",
+     "minimum": 0,
+     "default": 2
+    }
+   },
+   "required": [
+    "invoice_number"
+   ]
+  },
+  "request": "Check whether invoice INV-55120 matches what we ordered and actually received.",
+  "server": "suppliers"
+ },
+ {
+  "name": "record_invoice_payment",
+  "description": "Records that a supplier invoice has been paid or schedules its payment, with amount, date and payment method. Use it after the invoice has been matched and approved.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "invoice_number": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "payment_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "method": {
+     "type": "string",
+     "enum": [
+      "bank_transfer",
+      "card",
+      "direct_debit",
+      "cheque"
+     ]
+    },
+    "reference": {
+     "type": "string",
+     "description": "Bank or transaction reference"
+    }
+   },
+   "required": [
+    "invoice_number",
+    "amount",
+    "payment_date",
+    "method"
+   ]
+  },
+  "request": "Mark invoice INV-55087 as paid in full by bank transfer today, reference TRX-20931.",
+  "server": "suppliers"
+ },
+ {
+  "name": "request_supplier_credit",
+  "description": "Requests a credit note or refund from a supplier for returned, damaged or overcharged goods, linked to an invoice or delivery. Use it when we are owed money back by the supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "invoice_number": {
+     "type": "string"
+    },
+    "delivery_id": {
+     "type": "string"
+    },
+    "lines": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1
+       },
+       "unit_credit": {
+        "type": "number"
+       }
+      },
+      "required": [
+       "sku",
+       "quantity"
+      ]
+     }
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "damaged",
+      "short_shipment",
+      "overcharge",
+      "wrong_item",
+      "quality",
+      "other"
+     ]
+    },
+    "resolution": {
+     "type": "string",
+     "enum": [
+      "credit_note",
+      "refund",
+      "replacement"
+     ],
+     "default": "credit_note"
+    },
+    "comment": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "invoice_number",
+    "reason"
+   ]
+  },
+  "request": "Ask the supplier for a credit note on invoice INV-55120 because we were charged for 10 milk cartons but only received 30 of 40.",
+  "server": "suppliers"
+ },
+ {
+  "name": "get_supplier_spend_report",
+  "description": "Produces a report of purchasing spend by supplier, category (beans, milk, cups) or month over a date range, including order counts and on-time delivery rate. Use it for cost reviews and budgeting.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "supplier",
+      "category",
+      "month",
+      "location"
+     ],
+     "default": "supplier"
+    },
+    "supplier_id": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "beans",
+      "milk",
+      "cups"
+     ]
+    }
+   },
+   "required": [
+    "from_date",
+    "to_date"
+   ]
+  },
+  "request": "Give me a report of how much we spent on each supplier in the last quarter, with their on-time delivery rates.",
+  "server": "suppliers"
+ },
+ {
+  "name": "create_card_payment",
+  "description": "Charges a card, either a saved payment method or a single-use token, for a given amount. Use it to take a new card payment, with the option to authorize now and capture later.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "amount": {
+     "type": "integer",
+     "description": "Amount in minor units (e.g. cents)",
+     "minimum": 1
+    },
+    "currency": {
+     "type": "string",
+     "description": "ISO 4217 code, e.g. EUR"
+    },
+    "payment_method_id": {
+     "type": "string",
+     "description": "Saved payment method ID or single-use card token"
+    },
+    "customer_id": {
+     "type": "string"
+    },
+    "capture": {
+     "type": "boolean",
+     "description": "False to authorize only; defaults to true"
+    },
+    "description": {
+     "type": "string"
+    },
+    "statement_descriptor": {
+     "type": "string",
+     "maxLength": 22
+    },
+    "idempotency_key": {
+     "type": "string"
+    },
+    "metadata": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "amount",
+    "currency",
+    "payment_method_id"
+   ]
+  },
+  "request": "Charge the card token tok_visa_8841 for 89.90 EUR and describe it as 'Order 10542 - winter jacket'.",
+  "server": "payments"
+ },
+ {
+  "name": "get_payment",
+  "description": "Retrieves the full details of one card payment: status, amount, card brand and last four digits, risk score, 3-D Secure result, and amounts refunded or disputed. Use it to check what happened to a specific payment.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payment_id": {
+     "type": "string",
+     "description": "Payment ID, e.g. pay_..."
+    }
+   },
+   "required": [
+    "payment_id"
+   ]
+  },
+  "request": "What's the 3-D Secure result and risk score on payment pay_3KfT92xQ?",
+  "server": "payments"
+ },
+ {
+  "name": "list_payments",
+  "description": "Searches card payments with filters for date range, status, amount, card brand, and customer. Use it to find payments when you don't have the payment ID.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "authorized",
+      "captured",
+      "failed",
+      "voided",
+      "partially_refunded",
+      "refunded"
+     ]
+    },
+    "created_from": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "created_to": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "min_amount": {
+     "type": "integer"
+    },
+    "max_amount": {
+     "type": "integer"
+    },
+    "card_brand": {
+     "type": "string",
+     "enum": [
+      "visa",
+      "mastercard",
+      "amex",
+      "discover",
+      "jcb",
+      "unionpay"
+     ]
+    },
+    "customer_id": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Show me all failed Mastercard payments over 200 euros from last week.",
+  "server": "payments"
+ },
+ {
+  "name": "capture_payment",
+  "description": "Captures a previously authorized card payment, in full or in part. Use it when the goods ship and the held funds should be collected.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payment_id": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "integer",
+     "description": "Amount to capture in minor units; defaults to the full authorized amount"
+    },
+    "final_capture": {
+     "type": "boolean",
+     "description": "If true, releases any remaining authorized amount"
+    }
+   },
+   "required": [
+    "payment_id"
+   ]
+  },
+  "request": "The parcel for authorization pay_9Lm2QaZ1 has shipped, so please capture the payment, but only 45.00 of the authorized amount.",
+  "server": "payments"
+ },
+ {
+  "name": "void_payment",
+  "description": "Cancels an authorized but uncaptured card payment and releases the hold on the customer's card. Use it when an order is cancelled before capture. It cannot be used on captured payments, which need a refund.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payment_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "customer_request",
+      "out_of_stock",
+      "fraud_suspected",
+      "duplicate",
+      "other"
+     ]
+    }
+   },
+   "required": [
+    "payment_id"
+   ]
+  },
+  "request": "Release the hold on authorization pay_5TqW08nD, because the item is out of stock and we aren't going to ship it.",
+  "server": "payments"
+ },
+ {
+  "name": "create_payment_refund",
+  "description": "Refunds a captured card payment to the customer's original card, either fully or partially. Use it to return money on the payment itself, not for managing orders or returns in the shop system.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payment_id": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "integer",
+     "description": "Minor units; omit for a full refund"
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "requested_by_customer",
+      "duplicate",
+      "fraudulent",
+      "other"
+     ]
+    },
+    "note": {
+     "type": "string",
+     "description": "Internal note, not shown to the customer"
+    },
+    "idempotency_key": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "payment_id"
+   ]
+  },
+  "request": "Refund 15.00 back to the card on payment pay_7HcR41vB because the customer got a damaged strap.",
+  "server": "payments"
+ },
+ {
+  "name": "list_payment_refunds",
+  "description": "Lists card refunds with their status (pending, succeeded, failed) and expected arrival date, filterable by payment or date. Use it to check whether a refund went through.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payment_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "succeeded",
+      "failed",
+      "canceled"
+     ]
+    },
+    "created_from": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "created_to": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Did the refund on payment pay_2WnB66kE actually succeed, or is it still pending at the bank?",
+  "server": "payments"
+ },
+ {
+  "name": "list_chargebacks",
+  "description": "Lists card chargebacks (disputes) filtered by status, reason code, or response deadline. Use it to see which disputes are open and which are close to their deadline.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "needs_response",
+      "under_review",
+      "won",
+      "lost",
+      "accepted"
+     ]
+    },
+    "reason_code": {
+     "type": "string",
+     "description": "Card network reason code, e.g. 4853 or 10.4"
+    },
+    "respond_by_before": {
+     "type": "string",
+     "format": "date-time",
+     "description": "Only disputes whose response deadline falls before this time"
+    },
+    "created_from": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "created_to": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Which chargebacks still need a response and are due within the next 5 days?",
+  "server": "payments"
+ },
+ {
+  "name": "get_chargeback",
+  "description": "Retrieves one chargeback with its reason code and description, disputed amount, network fee, deadline, and any evidence already submitted. Use it to understand a specific dispute before responding.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "chargeback_id": {
+     "type": "string",
+     "description": "Chargeback ID, e.g. dp_..."
+    }
+   },
+   "required": [
+    "chargeback_id"
+   ]
+  },
+  "request": "Pull up the details for chargeback dp_1Qx84Lr, since I want to know what reason the cardholder gave.",
+  "server": "payments"
+ },
+ {
+  "name": "submit_chargeback_evidence",
+  "description": "Submits evidence to contest a chargeback, such as proof of delivery, customer communication, or the refund policy. Use it to respond before the deadline. A submission is final.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "chargeback_id": {
+     "type": "string"
+    },
+    "product_description": {
+     "type": "string"
+    },
+    "customer_communication": {
+     "type": "string",
+     "description": "Text of relevant emails or chat messages"
+    },
+    "shipping_carrier": {
+     "type": "string"
+    },
+    "shipping_tracking_number": {
+     "type": "string"
+    },
+    "shipping_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "refund_policy_text": {
+     "type": "string"
+    },
+    "uncategorized_text": {
+     "type": "string"
+    },
+    "file_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "IDs of uploaded evidence files"
+    },
+    "submit": {
+     "type": "boolean",
+     "description": "True to finalize and send to the issuer; false to save as a draft",
+     "default": false
+    }
+   },
+   "required": [
+    "chargeback_id"
+   ]
+  },
+  "request": "For dispute dp_8Zt30Pw, send in the DHL tracking number 00340434292135100186 with shipping date 12 May and submit it to the bank now.",
+  "server": "payments"
+ },
+ {
+  "name": "accept_chargeback",
+  "description": "Accepts liability for a chargeback without contesting it, so the disputed amount and the dispute fee are kept by the cardholder's bank. Use it when the dispute is not worth fighting.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "chargeback_id": {
+     "type": "string"
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "chargeback_id"
+   ]
+  },
+  "request": "We don't have any proof for dispute dp_4Bn19Ys, so just accept it and close it out.",
+  "server": "payments"
+ },
+ {
+  "name": "list_payouts",
+  "description": "Lists payouts sent from the payment balance to the merchant's bank account, with amount, status, arrival date, and destination. Use it to see what money has been or will be deposited.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "in_transit",
+      "paid",
+      "failed",
+      "canceled"
+     ]
+    },
+    "arrival_from": {
+     "type": "string",
+     "format": "date"
+    },
+    "arrival_to": {
+     "type": "string",
+     "format": "date"
+    },
+    "destination_account_id": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "List the payouts that are still in transit to our bank account.",
+  "server": "payments"
+ },
+ {
+  "name": "get_payout",
+  "description": "Retrieves one payout with its gross amount, fees deducted, net amount, bank destination, statement descriptor, and failure reason if any. Use it to investigate a single deposit.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payout_id": {
+     "type": "string",
+     "description": "Payout ID, e.g. po_..."
+    }
+   },
+   "required": [
+    "payout_id"
+   ]
+  },
+  "request": "Why did payout po_6Jd02Kc fail? Our bank says they never received it.",
+  "server": "payments"
+ },
+ {
+  "name": "list_payout_transactions",
+  "description": "Lists the individual payments, refunds, chargebacks, and fees that make up a payout. Use it to reconcile a bank deposit against the underlying transactions.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "payout_id": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "payment",
+      "refund",
+      "chargeback",
+      "fee",
+      "adjustment"
+     ]
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500,
+     "default": 100
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "payout_id"
+   ]
+  },
+  "request": "Break down payout po_8Vh55Re into the payments, refunds and fees it contains, so I can match it to our bank deposit of 4,212.37.",
+  "server": "payments"
+ },
+ {
+  "name": "create_instant_payout",
+  "description": "Sends available balance to the merchant's debit card or bank account immediately, for an instant-payout fee, instead of waiting for the regular schedule. Use it when cash is needed today.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "amount": {
+     "type": "integer",
+     "description": "Minor units; must not exceed the instant-available balance"
+    },
+    "currency": {
+     "type": "string"
+    },
+    "destination_account_id": {
+     "type": "string"
+    },
+    "statement_descriptor": {
+     "type": "string",
+     "maxLength": 22
+    }
+   },
+   "required": [
+    "amount",
+    "currency",
+    "destination_account_id"
+   ]
+  },
+  "request": "Send 2,500 USD to our business debit card ending 4417 right now, I need the cash today.",
+  "server": "payments"
+ },
+ {
+  "name": "get_balance",
+  "description": "Returns the current payment balance by currency, split into available, pending, and reserved funds. Use it to see how much can be paid out now and how much is still settling.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "currency": {
+     "type": "string",
+     "description": "Filter to a single currency; omit for all"
+    }
+   },
+   "required": []
+  },
+  "request": "How much of our balance is available versus still pending right now?",
+  "server": "payments"
+ },
+ {
+  "name": "estimate_fee",
+  "description": "Calculates the processing fee for a hypothetical card payment based on amount, currency, card brand, card region, and whether the card is present. Use it for pricing questions before any payment exists.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "amount": {
+     "type": "integer",
+     "description": "Minor units"
+    },
+    "currency": {
+     "type": "string"
+    },
+    "card_brand": {
+     "type": "string",
+     "enum": [
+      "visa",
+      "mastercard",
+      "amex",
+      "discover",
+      "jcb",
+      "unionpay"
+     ]
+    },
+    "card_region": {
+     "type": "string",
+     "enum": [
+      "domestic",
+      "eea",
+      "international"
+     ]
+    },
+    "card_present": {
+     "type": "boolean",
+     "default": false
+    },
+    "settlement_currency": {
+     "type": "string",
+     "description": "If different from charge currency, includes the conversion fee"
+    }
+   },
+   "required": [
+    "amount",
+    "currency"
+   ]
+  },
+  "request": "What would we pay in fees on a 1,200 USD payment made with an international Amex card?",
+  "server": "payments"
+ },
+ {
+  "name": "get_fee_summary",
+  "description": "Summarizes fees charged over a period, grouped by type (processing, chargeback, instant payout, currency conversion) and optionally by card brand or day. Use it to analyze the cost of accepting payments.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "from": {
+     "type": "string",
+     "format": "date"
+    },
+    "to": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "fee_type",
+      "card_brand",
+      "day",
+      "month"
+     ],
+     "default": "fee_type"
+    },
+    "currency": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "from",
+    "to"
+   ]
+  },
+  "request": "How much did we pay in chargeback fees versus processing fees in the first quarter?",
+  "server": "payments"
+ },
+ {
+  "name": "export_settlement_report",
+  "description": "Generates a downloadable settlement report (CSV) of all balance transactions in a date range, with gross, fee, and net per line. Use it for accounting and month-end bookkeeping.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "from": {
+     "type": "string",
+     "format": "date"
+    },
+    "to": {
+     "type": "string",
+     "format": "date"
+    },
+    "currency": {
+     "type": "string"
+    },
+    "format": {
+     "type": "string",
+     "enum": [
+      "csv",
+      "xlsx"
+     ],
+     "default": "csv"
+    },
+    "columns": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "payment_id",
+       "type",
+       "gross",
+       "fee",
+       "net",
+       "currency",
+       "card_brand",
+       "payout_id",
+       "created_at"
+      ]
+     }
+    }
+   },
+   "required": [
+    "from",
+    "to"
+   ]
+  },
+  "request": "Generate the settlement report for March as a CSV for my accountant, including the payout ID on every line.",
+  "server": "payments"
+ },
+ {
+  "name": "list_customer_payment_methods",
+  "description": "Lists the cards a customer has saved on file, showing brand, last four digits, expiry date, and whether each is the default. Use it to see which cards can be charged for that customer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string",
+     "format": "email",
+     "description": "Alternative lookup if the customer ID is unknown"
+    },
+    "include_expired": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": []
+  },
+  "request": "Which cards does anna.keller@example.com have saved, and is her default one about to expire?",
+  "server": "payments"
+ },
+ {
+  "name": "list_staff",
+  "description": "Lists staff members, optionally filtered by role, location or employment status. Use it to look up who works in the shop or to find a staff ID.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "role": {
+     "type": "string",
+     "description": "Job role, e.g. cashier, stockroom, supervisor"
+    },
+    "location": {
+     "type": "string",
+     "description": "Store or site name"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "active",
+      "on_leave",
+      "terminated"
+     ]
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 200,
+     "default": 50
+    }
+   },
+   "required": []
+  },
+  "request": "Show me all active cashiers at the High Street store.",
+  "server": "staff"
+ },
+ {
+  "name": "get_staff_member",
+  "description": "Retrieves the full profile of one staff member: contact details, contract type, role, start date and emergency contact. Use it when you need the details of a specific employee.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string",
+     "description": "Unique staff ID"
+    }
+   },
+   "required": [
+    "staff_id"
+   ]
+  },
+  "request": "Pull up the contract type and emergency contact for staff member S-1042.",
+  "server": "staff"
+ },
+ {
+  "name": "create_shift",
+  "description": "Creates a new shift on the rota and assigns it to a staff member. Use it when adding a shift for a particular person, date and time range.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "start_time": {
+     "type": "string",
+     "description": "HH:MM 24h"
+    },
+    "end_time": {
+     "type": "string",
+     "description": "HH:MM 24h"
+    },
+    "location": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "break_minutes": {
+     "type": "integer",
+     "minimum": 0,
+     "default": 30
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "staff_id",
+    "date",
+    "start_time",
+    "end_time"
+   ]
+  },
+  "request": "Put Maria on a 9am to 5pm shift at the till this Saturday with a 45 minute break.",
+  "server": "staff"
+ },
+ {
+  "name": "update_shift",
+  "description": "Changes the time, location, role or assignee of an existing shift. Use it to adjust a shift that is already on the rota.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "shift_id": {
+     "type": "string"
+    },
+    "staff_id": {
+     "type": "string"
+    },
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "start_time": {
+     "type": "string"
+    },
+    "end_time": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "shift_id"
+   ]
+  },
+  "request": "Move shift SH-8841 so it starts at 10:00 instead of 08:00.",
+  "server": "staff"
+ },
+ {
+  "name": "cancel_shift",
+  "description": "Cancels a scheduled shift and optionally notifies the assigned employee. Use it when a shift is no longer needed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "shift_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    },
+    "notify_staff": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "shift_id"
+   ]
+  },
+  "request": "Cancel shift SH-9020 because we're closing early for stocktake, and let the employee know.",
+  "server": "staff"
+ },
+ {
+  "name": "get_rota",
+  "description": "Returns the rota (all shifts) for a given date range and location, grouped by day and employee. Use it to see who is working when.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "location": {
+     "type": "string"
+    },
+    "staff_id": {
+     "type": "string",
+     "description": "Restrict to one employee"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "What does the rota look like for next week at the Riverside shop?",
+  "server": "staff"
+ },
+ {
+  "name": "publish_rota",
+  "description": "Publishes a draft rota for a week so staff can see it and receive notifications. Use it once the schedule is finalised.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "week_start": {
+     "type": "string",
+     "format": "date",
+     "description": "Monday of the week"
+    },
+    "location": {
+     "type": "string"
+    },
+    "send_notifications": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "week_start",
+    "location"
+   ]
+  },
+  "request": "The rota for the week starting 3 March is done, publish it to the team at Riverside.",
+  "server": "staff"
+ },
+ {
+  "name": "find_available_staff",
+  "description": "Finds staff who are free and not on leave during a given time window, optionally filtered by role or training. Use it when you need cover.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "start_time": {
+     "type": "string"
+    },
+    "end_time": {
+     "type": "string"
+    },
+    "role": {
+     "type": "string"
+    },
+    "required_training": {
+     "type": "string",
+     "description": "Course name, e.g. 'Food Safety L2'"
+    },
+    "max_weekly_hours_remaining": {
+     "type": "number"
+    }
+   },
+   "required": [
+    "date",
+    "start_time",
+    "end_time"
+   ]
+  },
+  "request": "Who's free to cover a 2pm to 10pm shift this Friday and has the age-restricted sales training?",
+  "server": "staff"
+ },
+ {
+  "name": "swap_shifts",
+  "description": "Swaps two scheduled shifts between two employees after checking for conflicts and hour limits. Use it when staff agree to trade shifts.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "shift_id_a": {
+     "type": "string"
+    },
+    "shift_id_b": {
+     "type": "string"
+    },
+    "approved_by": {
+     "type": "string",
+     "description": "Manager staff ID"
+    }
+   },
+   "required": [
+    "shift_id_a",
+    "shift_id_b"
+   ]
+  },
+  "request": "Tom and Aisha want to trade their shifts, swap SH-7710 with SH-7755.",
+  "server": "staff"
+ },
+ {
+  "name": "request_time_off",
+  "description": "Submits a holiday, sick or other leave request for an employee for a date range. Use it to record leave on someone's behalf.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "leave_type": {
+     "type": "string",
+     "enum": [
+      "annual",
+      "sick",
+      "unpaid",
+      "parental",
+      "compassionate",
+      "other"
+     ]
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "half_day": {
+     "type": "boolean",
+     "default": false
+    },
+    "comment": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "staff_id",
+    "leave_type",
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Log annual leave for Priya from 14 to 18 April.",
+  "server": "staff"
+ },
+ {
+  "name": "list_time_off_requests",
+  "description": "Lists leave requests filtered by status, employee or date range. Use it to review what is pending or who is away.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "approved",
+      "denied",
+      "cancelled"
+     ]
+    },
+    "staff_id": {
+     "type": "string"
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": []
+  },
+  "request": "Which holiday requests are still waiting for my approval?",
+  "server": "staff"
+ },
+ {
+  "name": "decide_time_off_request",
+  "description": "Approves or denies a pending leave request and records an optional reason. Use it to action a specific request.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "request_id": {
+     "type": "string"
+    },
+    "decision": {
+     "type": "string",
+     "enum": [
+      "approve",
+      "deny"
+     ]
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "request_id",
+    "decision"
+   ]
+  },
+  "request": "Deny leave request TO-3321 because we're already short-staffed that week.",
+  "server": "staff"
+ },
+ {
+  "name": "get_leave_balance",
+  "description": "Returns an employee's remaining annual leave entitlement, leave taken and accrued days for the current leave year. Use it before approving holidays.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "as_of_date": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": [
+    "staff_id"
+   ]
+  },
+  "request": "How many holiday days does Jamal have left this year?",
+  "server": "staff"
+ },
+ {
+  "name": "get_timesheet",
+  "description": "Returns hours actually worked (clock-in/out records, overtime, breaks) for an employee or location over a period. Use it to check attendance and hours.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "include_overtime_breakdown": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "How many hours did Lena actually work last week, including overtime?",
+  "server": "staff"
+ },
+ {
+  "name": "calculate_payroll",
+  "description": "Calculates gross wages for a pay period from timesheets, rates and adjustments, producing a per-employee payroll summary without submitting it. Use it to preview wage costs before paying.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "period_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "period_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "location": {
+     "type": "string"
+    },
+    "staff_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "include_employer_costs": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "period_start",
+    "period_end"
+   ]
+  },
+  "request": "Run the payroll report for 1 to 28 February so I can see what we owe in wages.",
+  "server": "staff"
+ },
+ {
+  "name": "update_hourly_rate",
+  "description": "Sets a new hourly pay rate for an employee effective from a given date and records the reason. Use it for raises or rate corrections.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "new_rate": {
+     "type": "number",
+     "minimum": 0
+    },
+    "currency": {
+     "type": "string",
+     "default": "GBP"
+    },
+    "effective_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "staff_id",
+    "new_rate",
+    "effective_date"
+   ]
+  },
+  "request": "Give Carlos a raise to \u00a313.50 an hour starting next month.",
+  "server": "staff"
+ },
+ {
+  "name": "refund_wage_deduction",
+  "description": "Refunds or reverses a previously applied deduction on an employee's pay (e.g. a wrongly charged uniform or till shortage) in the next payroll run. Use it to correct deductions, not customer refunds.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "deduction_id": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "number",
+     "minimum": 0,
+     "description": "Partial amount; omit to refund in full"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "deduction_id",
+    "reason"
+   ]
+  },
+  "request": "The \u00a325 till shortage deduction DED-554 on Nina's pay was a mistake, refund it in full.",
+  "server": "staff"
+ },
+ {
+  "name": "assign_training_course",
+  "description": "Assigns a training course to one or more employees with a due date. Use it to enrol staff in required or optional training.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "course_id": {
+     "type": "string"
+    },
+    "staff_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "due_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "mandatory": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "course_id",
+    "staff_ids"
+   ]
+  },
+  "request": "Enrol the three new starters, S-1101, S-1102 and S-1103, in the fire safety course, due by the end of the month.",
+  "server": "staff"
+ },
+ {
+  "name": "record_training_completion",
+  "description": "Records that an employee completed a training course, with completion date, score and certificate reference. Use it after training is finished.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "staff_id": {
+     "type": "string"
+    },
+    "course_id": {
+     "type": "string"
+    },
+    "completed_on": {
+     "type": "string",
+     "format": "date"
+    },
+    "score": {
+     "type": "number"
+    },
+    "certificate_ref": {
+     "type": "string"
+    },
+    "expires_on": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": [
+    "staff_id",
+    "course_id",
+    "completed_on"
+   ]
+  },
+  "request": "Mark Omar as having passed manual handling training today with a score of 92.",
+  "server": "staff"
+ },
+ {
+  "name": "get_training_compliance_report",
+  "description": "Reports which employees have overdue, expiring or missing mandatory training, filterable by course or location. Use it to check compliance before audits.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "location": {
+     "type": "string"
+    },
+    "course_id": {
+     "type": "string"
+    },
+    "expiring_within_days": {
+     "type": "integer",
+     "minimum": 0,
+     "default": 30
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "overdue",
+      "expiring",
+      "missing",
+      "all"
+     ],
+     "default": "all"
+    }
+   },
+   "required": []
+  },
+  "request": "Give me a report of everyone whose food hygiene certificate expires in the next 60 days.",
+  "server": "staff"
+ },
+ {
+  "name": "search_customers",
+  "description": "Searches customer records by name, email, phone, city, or tag and returns a short list of matches. Use it when you don't have the customer ID yet.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string",
+     "description": "Free text matched against name, email and phone"
+    },
+    "city": {
+     "type": "string"
+    },
+    "tag": {
+     "type": "string",
+     "description": "Only customers carrying this tag"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 20
+    }
+   },
+   "required": [
+    "query"
+   ]
+  },
+  "request": "Can you find the customer whose email is maria.kowalski@example.com?",
+  "server": "crm"
+ },
+ {
+  "name": "get_customer",
+  "description": "Returns the full CRM profile for one customer by ID. The profile includes contact details, tags, segment memberships, lifetime value, and marketing consent status.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "Pull up the full profile for customer C-20418, I want to see her tags and consent status.",
+  "server": "crm"
+ },
+ {
+  "name": "create_customer",
+  "description": "Creates a new customer record in the CRM, for example for a walk-in or phone customer. Fails if the email already exists.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "first_name": {
+     "type": "string"
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string",
+     "format": "email"
+    },
+    "phone": {
+     "type": "string"
+    },
+    "address": {
+     "type": "object",
+     "properties": {
+      "street": {
+       "type": "string"
+      },
+      "city": {
+       "type": "string"
+      },
+      "postal_code": {
+       "type": "string"
+      },
+      "country": {
+       "type": "string"
+      }
+     }
+    },
+    "marketing_consent": {
+     "type": "boolean",
+     "default": false
+    },
+    "tags": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "first_name",
+    "last_name",
+    "email"
+   ]
+  },
+  "request": "Add a new customer: Tom Becker, tom@beckerbikes.example, phone 030 5550142, he agreed to get our newsletter.",
+  "server": "crm"
+ },
+ {
+  "name": "update_customer",
+  "description": "Updates contact details, tags, or marketing consent on an existing customer record. Only the supplied fields change.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "first_name": {
+     "type": "string"
+    },
+    "last_name": {
+     "type": "string"
+    },
+    "email": {
+     "type": "string",
+     "format": "email"
+    },
+    "phone": {
+     "type": "string"
+    },
+    "marketing_consent": {
+     "type": "boolean"
+    },
+    "add_tags": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "remove_tags": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "Customer C-11872 moved and has a new phone number, 0171 5558834. Please update it.",
+  "server": "crm"
+ },
+ {
+  "name": "merge_duplicate_customers",
+  "description": "Merges two duplicate customer records into one. Notes, complaints, and segment memberships of the duplicate move to the surviving record, and the duplicate is then archived.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "primary_customer_id": {
+     "type": "string",
+     "description": "Record that survives"
+    },
+    "duplicate_customer_id": {
+     "type": "string",
+     "description": "Record to fold in and archive"
+    }
+   },
+   "required": [
+    "primary_customer_id",
+    "duplicate_customer_id"
+   ]
+  },
+  "request": "C-5520 and C-7731 are the same person, Anna Weiss. Merge them and keep C-5520.",
+  "server": "crm"
+ },
+ {
+  "name": "anonymize_customer",
+  "description": "Irreversibly erases personal data from a customer record to fulfil a GDPR erasure request. It keeps anonymized aggregate history, so it is not the same as deleting an order.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "request_reference": {
+     "type": "string",
+     "description": "Ticket or reference of the erasure request"
+    },
+    "confirm": {
+     "type": "boolean",
+     "description": "Must be true to proceed"
+    }
+   },
+   "required": [
+    "customer_id",
+    "confirm"
+   ]
+  },
+  "request": "Mr. Hoffmann sent a formal data erasure request, ticket GDPR-2291. Please wipe his personal data from customer C-3045.",
+  "server": "crm"
+ },
+ {
+  "name": "add_customer_note",
+  "description": "Adds an internal note to a customer's record, such as a call summary, a preference, or a warning for colleagues. Notes are never visible to the customer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "text": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "call",
+      "preference",
+      "billing",
+      "warning",
+      "general"
+     ],
+     "default": "general"
+    },
+    "pinned": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "customer_id",
+    "text"
+   ]
+  },
+  "request": "Make a note on C-9034 that she prefers delivery in the afternoon and always wants a call before the courier arrives.",
+  "server": "crm"
+ },
+ {
+  "name": "list_customer_notes",
+  "description": "Lists the internal notes on a customer's record, newest first, with author and date. Use it to review the history before contacting the customer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "call",
+      "preference",
+      "billing",
+      "warning",
+      "general"
+     ]
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 200,
+     "default": 50
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "What notes did my team leave on customer C-6610 over the past months?",
+  "server": "crm"
+ },
+ {
+  "name": "log_complaint",
+  "description": "Records a new customer complaint in the CRM and links it to the customer. Use it when a customer reports a problem with a product, delivery, or service.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "subject": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "product_quality",
+      "delivery",
+      "billing",
+      "service",
+      "other"
+     ]
+    },
+    "severity": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ],
+     "default": "medium"
+    },
+    "related_order_number": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_id",
+    "subject",
+    "description",
+    "category"
+   ]
+  },
+  "request": "Log a high severity complaint for C-4412: the espresso machine she bought arrived with a cracked water tank, order 88213.",
+  "server": "crm"
+ },
+ {
+  "name": "list_complaints",
+  "description": "Lists complaints filtered by status, category, severity, customer, or date range. Use it to see what is open or to review one customer's complaint history.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "open",
+      "in_progress",
+      "resolved",
+      "closed"
+     ]
+    },
+    "category": {
+     "type": "string",
+     "enum": [
+      "product_quality",
+      "delivery",
+      "billing",
+      "service",
+      "other"
+     ]
+    },
+    "severity": {
+     "type": "string",
+     "enum": [
+      "low",
+      "medium",
+      "high"
+     ]
+    },
+    "created_after": {
+     "type": "string",
+     "format": "date"
+    },
+    "created_before": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "Show me all open high-severity complaints about delivery.",
+  "server": "crm"
+ },
+ {
+  "name": "update_complaint_status",
+  "description": "Changes the status of a complaint and optionally adds a resolution comment. Use it when work on a complaint starts, ends, or the case is closed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "complaint_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "open",
+      "in_progress",
+      "resolved",
+      "closed"
+     ]
+    },
+    "resolution_comment": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "complaint_id",
+    "status"
+   ]
+  },
+  "request": "Mark complaint CMP-1093 as resolved. We replaced the item and the customer is happy.",
+  "server": "crm"
+ },
+ {
+  "name": "flag_complaint_refund_request",
+  "description": "Marks a complaint as needing a refund and records the proposed amount and reason for approval. It does not move any money. Payment processing happens elsewhere.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "complaint_id": {
+     "type": "string"
+    },
+    "proposed_amount": {
+     "type": "number",
+     "minimum": 0
+    },
+    "currency": {
+     "type": "string",
+     "default": "EUR"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "complaint_id",
+    "proposed_amount",
+    "reason"
+   ]
+  },
+  "request": "On complaint CMP-1107, note that we should refund 49.90 euros because the item was damaged, so the finance team can approve it.",
+  "server": "crm"
+ },
+ {
+  "name": "get_complaint_report",
+  "description": "Generates an aggregated report of complaints for a period: counts by category and severity, average resolution time, and the top repeat complainants. Use it for reviews and trend analysis.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "category",
+      "severity",
+      "week",
+      "month"
+     ],
+     "default": "category"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Give me a complaint report for last quarter, broken down by month, with average resolution times.",
+  "server": "crm"
+ },
+ {
+  "name": "create_segment",
+  "description": "Creates a customer segment defined by rules such as total spend, last purchase date, city, or tag. The segment updates automatically as customers match or stop matching.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "match": {
+     "type": "string",
+     "enum": [
+      "all",
+      "any"
+     ],
+     "default": "all"
+    },
+    "rules": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "field": {
+        "type": "string",
+        "enum": [
+         "total_spent",
+         "order_count",
+         "last_purchase_date",
+         "city",
+         "tag",
+         "marketing_consent"
+        ]
+       },
+       "operator": {
+        "type": "string",
+        "enum": [
+         "equals",
+         "not_equals",
+         "greater_than",
+         "less_than",
+         "before",
+         "after",
+         "contains"
+        ]
+       },
+       "value": {
+        "type": [
+         "string",
+         "number",
+         "boolean"
+        ]
+       }
+      },
+      "required": [
+       "field",
+       "operator",
+       "value"
+      ]
+     }
+    }
+   },
+   "required": [
+    "name",
+    "rules"
+   ]
+  },
+  "request": "Create a segment called 'Lapsed big spenders' for customers who spent over 500 euros in total but haven't bought anything since January 1st, 2024.",
+  "server": "crm"
+ },
+ {
+  "name": "list_segments",
+  "description": "Lists all customer segments with their rules and current member counts.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name_contains": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "default": 50
+    }
+   },
+   "required": []
+  },
+  "request": "What customer segments do we have set up, and how many people are in each?",
+  "server": "crm"
+ },
+ {
+  "name": "get_segment_members",
+  "description": "Returns the customers currently in a segment, with basic contact details. Use it to inspect or export the audience.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "segment_id": {
+     "type": "string"
+    },
+    "only_consented": {
+     "type": "boolean",
+     "default": false,
+     "description": "Return only customers who agreed to marketing"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500,
+     "default": 100
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "segment_id"
+   ]
+  },
+  "request": "List the customers in the 'VIP 2024' segment who have opted in to marketing.",
+  "server": "crm"
+ },
+ {
+  "name": "add_customer_to_segment",
+  "description": "Manually adds a customer to a static segment. It does not work on rule-based segments, which fill automatically.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "segment_id": {
+     "type": "string"
+    },
+    "customer_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "segment_id",
+    "customer_id"
+   ]
+  },
+  "request": "Put customer C-2287 into our 'Trade show contacts' segment.",
+  "server": "crm"
+ },
+ {
+  "name": "send_customer_email",
+  "description": "Sends a one-to-one email to a single customer from the shop's address and records it in their history. Use it for personal replies, apologies, or follow-ups, not mass mailings.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "subject": {
+     "type": "string"
+    },
+    "body": {
+     "type": "string"
+    },
+    "reply_to": {
+     "type": "string",
+     "format": "email"
+    },
+    "related_complaint_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_id",
+    "subject",
+    "body"
+   ]
+  },
+  "request": "Send an apology email to customer C-4412 about her cracked espresso machine tank and tell her a replacement is on its way.",
+  "server": "crm"
+ },
+ {
+  "name": "send_segment_email",
+  "description": "Sends or schedules a marketing email to all consenting members of a segment. Customers without marketing consent are skipped automatically.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "segment_id": {
+     "type": "string"
+    },
+    "subject": {
+     "type": "string"
+    },
+    "body": {
+     "type": "string"
+    },
+    "send_at": {
+     "type": "string",
+     "format": "date-time",
+     "description": "Omit to send immediately"
+    },
+    "test_mode": {
+     "type": "boolean",
+     "default": false,
+     "description": "Send only to the sender address as a preview"
+    }
+   },
+   "required": [
+    "segment_id",
+    "subject",
+    "body"
+   ]
+  },
+  "request": "Schedule our spring sale announcement to the 'Newsletter subscribers' segment for next Monday at 9am.",
+  "server": "crm"
+ },
+ {
+  "name": "list_customer_emails",
+  "description": "Shows the history of emails sent to a customer by the CRM, with subject, date, and delivery status such as delivered, bounced, or opened.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "queued",
+      "delivered",
+      "opened",
+      "bounced"
+     ]
+    },
+    "since": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "default": 25
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "Did the order apology email we sent to customer C-7001 last week actually get delivered?",
+  "server": "crm"
+ },
+ {
+  "name": "create_event",
+  "description": "Creates a single calendar event with a title, start and end time, and optional location and notes. Use for blocking time such as supplier visits, inventory counts or store events when no invitations need to be sent.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "calendar_id": {
+     "type": "string",
+     "description": "Calendar to add the event to; defaults to the user's primary calendar."
+    },
+    "title": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "all_day": {
+     "type": "boolean",
+     "default": false
+    },
+    "location": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "color": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "title",
+    "start",
+    "end"
+   ]
+  },
+  "request": "Put a block on my calendar for Friday 2pm to 4pm called 'Quarterly stock count' at the back warehouse.",
+  "server": "calendar"
+ },
+ {
+  "name": "get_event",
+  "description": "Retrieves full details of one calendar event by its ID, including attendees, location, reminders and recurrence. Use when you need to inspect a specific known event.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "event_id": {
+     "type": "string"
+    },
+    "calendar_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "event_id"
+   ]
+  },
+  "request": "Show me all the details for event evt_88213, who's invited and where is it?",
+  "server": "calendar"
+ },
+ {
+  "name": "update_event",
+  "description": "Changes fields of an existing event such as title, time, location or description. Use to reschedule or edit an event without recreating it.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "event_id": {
+     "type": "string"
+    },
+    "calendar_id": {
+     "type": "string"
+    },
+    "title": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "location": {
+     "type": "string"
+    },
+    "description": {
+     "type": "string"
+    },
+    "notify_attendees": {
+     "type": "boolean",
+     "default": true
+    },
+    "apply_to": {
+     "type": "string",
+     "enum": [
+      "this_instance",
+      "all_instances",
+      "this_and_following"
+     ],
+     "default": "this_instance"
+    }
+   },
+   "required": [
+    "event_id"
+   ]
+  },
+  "request": "Move the visual merchandising walkthrough, event evt_5521, to Thursday at 10:30 instead.",
+  "server": "calendar"
+ },
+ {
+  "name": "delete_event",
+  "description": "Permanently removes an event from a calendar, optionally notifying attendees. Use when an event is cancelled and should no longer appear.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "event_id": {
+     "type": "string"
+    },
+    "calendar_id": {
+     "type": "string"
+    },
+    "notify_attendees": {
+     "type": "boolean",
+     "default": true
+    },
+    "apply_to": {
+     "type": "string",
+     "enum": [
+      "this_instance",
+      "all_instances",
+      "this_and_following"
+     ],
+     "default": "this_instance"
+    }
+   },
+   "required": [
+    "event_id"
+   ]
+  },
+  "request": "Delete the vendor tasting event evt_9034 from the calendar, the vendor pulled out.",
+  "server": "calendar"
+ },
+ {
+  "name": "list_events",
+  "description": "Lists events in a date range for one or more calendars, ordered by start time. Use to see what is scheduled on a given day or week.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "calendar_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "max_results": {
+     "type": "integer",
+     "default": 50,
+     "maximum": 250
+    },
+    "include_declined": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "What do I have on my calendar next week, Monday through Sunday?",
+  "server": "calendar"
+ },
+ {
+  "name": "search_events",
+  "description": "Searches events by keyword across title, description, location and attendees. Use when you remember something about an event but not its date or ID.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string"
+    },
+    "calendar_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "attendee_email": {
+     "type": "string",
+     "format": "email"
+    },
+    "limit": {
+     "type": "integer",
+     "default": 20
+    }
+   },
+   "required": [
+    "query"
+   ]
+  },
+  "request": "Find that meeting where we talked about the holiday window display with Priya, I can't remember the date.",
+  "server": "calendar"
+ },
+ {
+  "name": "create_recurring_event",
+  "description": "Creates an event that repeats on a schedule, such as weekly or monthly, with optional end date or occurrence count. Use for standing routines like weekly team huddles or monthly safety checks.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "title": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "frequency": {
+     "type": "string",
+     "enum": [
+      "daily",
+      "weekly",
+      "monthly",
+      "yearly"
+     ]
+    },
+    "interval": {
+     "type": "integer",
+     "default": 1
+    },
+    "days_of_week": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "MO",
+       "TU",
+       "WE",
+       "TH",
+       "FR",
+       "SA",
+       "SU"
+      ]
+     }
+    },
+    "until": {
+     "type": "string",
+     "format": "date"
+    },
+    "count": {
+     "type": "integer"
+    },
+    "calendar_id": {
+     "type": "string"
+    },
+    "location": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "title",
+    "start",
+    "end",
+    "frequency"
+   ]
+  },
+  "request": "Set up a weekly opening-staff huddle every Monday and Thursday at 8:45am for 15 minutes, running through the end of December.",
+  "server": "calendar"
+ },
+ {
+  "name": "find_free_slots",
+  "description": "Finds time windows when all listed people are free for a given duration within a date range. Use before scheduling to pick a time that works for everyone.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "attendee_emails": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     },
+     "minItems": 1
+    },
+    "duration_minutes": {
+     "type": "integer",
+     "minimum": 5
+    },
+    "range_start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "range_end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "working_hours_only": {
+     "type": "boolean",
+     "default": true
+    },
+    "max_suggestions": {
+     "type": "integer",
+     "default": 5
+    }
+   },
+   "required": [
+    "attendee_emails",
+    "duration_minutes",
+    "range_start",
+    "range_end"
+   ]
+  },
+  "request": "When are Dana, Luis and I all free for a 45-minute chat sometime in the next three days?",
+  "server": "calendar"
+ },
+ {
+  "name": "schedule_meeting",
+  "description": "Creates a meeting, sends invitations to attendees, and optionally adds a video conference link and agenda. Use when other people must be invited, not for solo calendar blocks.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "title": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "attendee_emails": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     },
+     "minItems": 1
+    },
+    "agenda": {
+     "type": "string"
+    },
+    "add_video_link": {
+     "type": "boolean",
+     "default": false
+    },
+    "room_id": {
+     "type": "string"
+    },
+    "send_invites": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "title",
+    "start",
+    "end",
+    "attendee_emails"
+   ]
+  },
+  "request": "Invite Dana and Luis to a video call tomorrow at 3pm for 30 minutes to go over the new supplier pricing.",
+  "server": "calendar"
+ },
+ {
+  "name": "respond_to_invitation",
+  "description": "Accepts, declines or tentatively accepts a meeting invitation on behalf of the user, with an optional comment to the organizer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "event_id": {
+     "type": "string"
+    },
+    "response": {
+     "type": "string",
+     "enum": [
+      "accepted",
+      "declined",
+      "tentative"
+     ]
+    },
+    "comment": {
+     "type": "string"
+    },
+    "apply_to": {
+     "type": "string",
+     "enum": [
+      "this_instance",
+      "all_instances"
+     ],
+     "default": "this_instance"
+    }
+   },
+   "required": [
+    "event_id",
+    "response"
+   ]
+  },
+  "request": "Decline the regional managers call, evt_7710, and tell them I'll be covering the register that afternoon.",
+  "server": "calendar"
+ },
+ {
+  "name": "add_event_attendees",
+  "description": "Adds additional people to an existing event and optionally sends them invitations. Use when someone was forgotten or needs to join late.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "event_id": {
+     "type": "string"
+    },
+    "attendee_emails": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     },
+     "minItems": 1
+    },
+    "optional": {
+     "type": "boolean",
+     "default": false
+    },
+    "send_invites": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "event_id",
+    "attendee_emails"
+   ]
+  },
+  "request": "Add Marcus from receiving to the Tuesday delivery planning meeting, evt_6402.",
+  "server": "calendar"
+ },
+ {
+  "name": "list_rooms",
+  "description": "Lists bookable rooms and resources such as meeting rooms, fitting rooms or training spaces, with capacity, location and equipment. Use to find which rooms exist or match requirements.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "location": {
+     "type": "string",
+     "description": "Store or building name."
+    },
+    "min_capacity": {
+     "type": "integer"
+    },
+    "equipment": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "projector",
+       "whiteboard",
+       "video_conferencing",
+       "phone",
+       "accessible"
+      ]
+     }
+    }
+   },
+   "required": []
+  },
+  "request": "Which rooms at the downtown store can seat at least 10 people and have a projector?",
+  "server": "calendar"
+ },
+ {
+  "name": "check_room_availability",
+  "description": "Checks whether a specific room is free for a time window and returns conflicting bookings if any. Use before booking or to verify a room's schedule.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "room_id": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    }
+   },
+   "required": [
+    "room_id",
+    "start",
+    "end"
+   ]
+  },
+  "request": "Is the back training room free this Wednesday from 1pm to 3pm?",
+  "server": "calendar"
+ },
+ {
+  "name": "book_room",
+  "description": "Reserves a room for a time slot, optionally linking it to an existing event. Use after confirming availability.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "room_id": {
+     "type": "string"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "end": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "purpose": {
+     "type": "string"
+    },
+    "event_id": {
+     "type": "string"
+    },
+    "expected_attendees": {
+     "type": "integer"
+    }
+   },
+   "required": [
+    "room_id",
+    "start",
+    "end"
+   ]
+  },
+  "request": "Reserve the second-floor conference room on Monday 9 to 11am for the seasonal hiring interviews.",
+  "server": "calendar"
+ },
+ {
+  "name": "cancel_room_booking",
+  "description": "Cancels an existing room reservation and frees the slot, without deleting any linked event. Use when the room is no longer needed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "booking_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "booking_id"
+   ]
+  },
+  "request": "Release room booking bk_3318, we're doing the training on the shop floor instead.",
+  "server": "calendar"
+ },
+ {
+  "name": "create_reminder",
+  "description": "Creates a reminder that fires at a specific time or a set offset before an event, optionally recurring. Use for follow-ups and deadlines like renewing a permit.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "text": {
+     "type": "string"
+    },
+    "remind_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "event_id": {
+     "type": "string",
+     "description": "If set, remind relative to this event."
+    },
+    "minutes_before": {
+     "type": "integer"
+    },
+    "repeat": {
+     "type": "string",
+     "enum": [
+      "none",
+      "daily",
+      "weekly",
+      "monthly"
+     ],
+     "default": "none"
+    },
+    "channel": {
+     "type": "string",
+     "enum": [
+      "push",
+      "email",
+      "sms"
+     ],
+     "default": "push"
+    }
+   },
+   "required": [
+    "text"
+   ]
+  },
+  "request": "Remind me next Tuesday at 9am to renew the store's fire safety permit.",
+  "server": "calendar"
+ },
+ {
+  "name": "list_reminders",
+  "description": "Lists upcoming or past reminders, filterable by status and date range. Use to review what reminders are pending.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "pending",
+      "fired",
+      "dismissed",
+      "all"
+     ],
+     "default": "pending"
+    },
+    "from": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "to": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "limit": {
+     "type": "integer",
+     "default": 50
+    }
+   },
+   "required": []
+  },
+  "request": "What reminders do I still have pending for this week?",
+  "server": "calendar"
+ },
+ {
+  "name": "dismiss_reminder",
+  "description": "Dismisses or snoozes a reminder that has fired or is pending. Use when the task is done or should be postponed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "reminder_id": {
+     "type": "string"
+    },
+    "action": {
+     "type": "string",
+     "enum": [
+      "dismiss",
+      "snooze"
+     ],
+     "default": "dismiss"
+    },
+    "snooze_minutes": {
+     "type": "integer",
+     "default": 15
+    }
+   },
+   "required": [
+    "reminder_id"
+   ]
+  },
+  "request": "Snooze reminder rem_4471 for an hour, I'm still dealing with the delivery driver.",
+  "server": "calendar"
+ },
+ {
+  "name": "book_customer_appointment",
+  "description": "Books a customer-facing appointment slot, such as a personal styling session, fitting or product consultation, on a staff member's calendar and sends the customer a confirmation. Use for scheduling time with a customer, not internal meetings.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_name": {
+     "type": "string"
+    },
+    "customer_email": {
+     "type": "string",
+     "format": "email"
+    },
+    "customer_phone": {
+     "type": "string"
+    },
+    "service": {
+     "type": "string",
+     "description": "Appointment type, e.g. 'bridal fitting'."
+    },
+    "staff_email": {
+     "type": "string",
+     "format": "email"
+    },
+    "start": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "duration_minutes": {
+     "type": "integer",
+     "default": 30
+    },
+    "notes": {
+     "type": "string"
+    },
+    "send_confirmation": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "customer_name",
+    "service",
+    "staff_email",
+    "start"
+   ]
+  },
+  "request": "Book Mrs. Alvarez for a 60-minute suit fitting with Tom this Saturday at 11am and email her a confirmation.",
+  "server": "calendar"
+ },
+ {
+  "name": "generate_calendar_report",
+  "description": "Produces a summary of calendar usage over a period, such as hours spent in meetings, busiest days, room utilization or appointment counts per staff member. Use for scheduling analysis, not sales or financial reports.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "report_type": {
+     "type": "string",
+     "enum": [
+      "meeting_hours",
+      "room_utilization",
+      "appointments_by_staff",
+      "busiest_times"
+     ]
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "day",
+      "week",
+      "month",
+      "person",
+      "room"
+     ],
+     "default": "week"
+    },
+    "calendar_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "format": {
+     "type": "string",
+     "enum": [
+      "summary",
+      "csv"
+     ],
+     "default": "summary"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date",
+    "report_type"
+   ]
+  },
+  "request": "Give me a report of how much each meeting room was used last month so I can decide if we need another one.",
+  "server": "calendar"
+ },
+ {
+  "name": "send_email",
+  "description": "Composes and sends a new email from the shop mailbox. Use for any fresh outgoing message that is not a reply to or forward of an existing one.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "to": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     },
+     "minItems": 1
+    },
+    "cc": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     }
+    },
+    "bcc": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     }
+    },
+    "subject": {
+     "type": "string"
+    },
+    "body": {
+     "type": "string",
+     "description": "Message body"
+    },
+    "body_format": {
+     "type": "string",
+     "enum": [
+      "plain",
+      "html"
+     ],
+     "default": "plain"
+    },
+    "attachment_paths": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "to",
+    "subject",
+    "body"
+   ]
+  },
+  "request": "Send an email to supplier@greenleafwholesale.example asking when the back-ordered ceramic planters will ship.",
+  "server": "email"
+ },
+ {
+  "name": "reply_to_email",
+  "description": "Sends a reply in the same thread to a specific received message. Use when answering a customer or supplier message so the conversation stays threaded.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_id": {
+     "type": "string"
+    },
+    "body": {
+     "type": "string"
+    },
+    "reply_all": {
+     "type": "boolean",
+     "default": false
+    },
+    "body_format": {
+     "type": "string",
+     "enum": [
+      "plain",
+      "html"
+     ],
+     "default": "plain"
+    }
+   },
+   "required": [
+    "message_id",
+    "body"
+   ]
+  },
+  "request": "Reply to message msg_88213 and tell them we can swap the size M for a size L at no charge.",
+  "server": "email"
+ },
+ {
+  "name": "forward_email",
+  "description": "Forwards an existing message, including its attachments, to one or more recipients with an optional note. Use to pass a message to a colleague, accountant or supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_id": {
+     "type": "string"
+    },
+    "to": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     },
+     "minItems": 1
+    },
+    "note": {
+     "type": "string"
+    },
+    "include_attachments": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "message_id",
+    "to"
+   ]
+  },
+  "request": "Forward the invoice email msg_90412 to our bookkeeper at tom@harborbooks.example with a note saying it's for the March accounts.",
+  "server": "email"
+ },
+ {
+  "name": "create_draft",
+  "description": "Saves a new draft email without sending it. Use when the manager wants to review or edit a message before it goes out.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "to": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     }
+    },
+    "cc": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "format": "email"
+     }
+    },
+    "subject": {
+     "type": "string"
+    },
+    "body": {
+     "type": "string"
+    },
+    "in_reply_to_message_id": {
+     "type": "string",
+     "description": "Optional message to draft a reply to"
+    }
+   },
+   "required": [
+    "subject",
+    "body"
+   ]
+  },
+  "request": "Draft an email to our newsletter list about the weekend sale, but don't send it yet, I want to look at it first.",
+  "server": "email"
+ },
+ {
+  "name": "send_draft",
+  "description": "Sends a previously saved draft by its ID. Use after the draft has been approved.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "draft_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "draft_id"
+   ]
+  },
+  "request": "The draft draft_4471 looks good now, go ahead and send it.",
+  "server": "email"
+ },
+ {
+  "name": "list_messages",
+  "description": "Lists messages in a mailbox folder or under a label, newest first, with sender, subject, date and read status. Use to browse the inbox or check what is unread.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "folder": {
+     "type": "string",
+     "enum": [
+      "inbox",
+      "sent",
+      "drafts",
+      "archive",
+      "trash",
+      "spam"
+     ],
+     "default": "inbox"
+    },
+    "label": {
+     "type": "string"
+    },
+    "unread_only": {
+     "type": "boolean",
+     "default": false
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    },
+    "page_token": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Show me the unread emails in the inbox from this morning.",
+  "server": "email"
+ },
+ {
+  "name": "get_email",
+  "description": "Retrieves the full content of a single message: headers, body, labels and attachment list. Use when the manager wants to read a specific email.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_id": {
+     "type": "string"
+    },
+    "mark_as_read": {
+     "type": "boolean",
+     "default": false
+    },
+    "format": {
+     "type": "string",
+     "enum": [
+      "text",
+      "html"
+     ],
+     "default": "text"
+    }
+   },
+   "required": [
+    "message_id"
+   ]
+  },
+  "request": "Open message msg_77120 and read me what the customer wrote.",
+  "server": "email"
+ },
+ {
+  "name": "get_thread",
+  "description": "Returns every message in a conversation thread in chronological order. Use to catch up on the full back-and-forth before responding.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "thread_id": {
+     "type": "string"
+    },
+    "max_messages": {
+     "type": "integer",
+     "minimum": 1,
+     "default": 50
+    }
+   },
+   "required": [
+    "thread_id"
+   ]
+  },
+  "request": "Pull up the whole conversation thread thr_5530 so I can see what we already promised the customer.",
+  "server": "email"
+ },
+ {
+  "name": "search_emails",
+  "description": "Searches the mailbox by free text with optional filters for sender, recipient, subject, date range, label and attachments. Use for general lookups when no specific customer or order is involved.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string"
+    },
+    "from": {
+     "type": "string"
+    },
+    "to": {
+     "type": "string"
+    },
+    "subject": {
+     "type": "string"
+    },
+    "label": {
+     "type": "string"
+    },
+    "has_attachment": {
+     "type": "boolean"
+    },
+    "after": {
+     "type": "string",
+     "format": "date"
+    },
+    "before": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": []
+  },
+  "request": "Search the mailbox for emails with attachments mentioning 'wholesale price list' from last quarter.",
+  "server": "email"
+ },
+ {
+  "name": "find_customer_emails",
+  "description": "Finds all email correspondence to and from a particular customer email address, sent and received. Use to review the email history with one customer, not to look up their account record.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_email": {
+     "type": "string",
+     "format": "email"
+    },
+    "direction": {
+     "type": "string",
+     "enum": [
+      "sent",
+      "received",
+      "both"
+     ],
+     "default": "both"
+    },
+    "after": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100,
+     "default": 25
+    }
+   },
+   "required": [
+    "customer_email"
+   ]
+  },
+  "request": "What emails have we exchanged with maria.lopez@example.com?",
+  "server": "email"
+ },
+ {
+  "name": "find_order_emails",
+  "description": "Finds emails that mention a given order number in the subject or body, such as customer enquiries and carrier notices. Use to see email messages related to an order, not the order's status.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_number": {
+     "type": "string"
+    },
+    "include_sent": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "order_number"
+   ]
+  },
+  "request": "Find any emails in the mailbox that mention order #10482.",
+  "server": "email"
+ },
+ {
+  "name": "send_refund_notice",
+  "description": "Sends the standard refund-confirmation email to a customer with the amount and order number filled in. Use only to notify the customer by email; it does not issue the refund.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_email": {
+     "type": "string",
+     "format": "email"
+    },
+    "order_number": {
+     "type": "string"
+    },
+    "refund_amount": {
+     "type": "number",
+     "minimum": 0
+    },
+    "currency": {
+     "type": "string",
+     "default": "USD"
+    },
+    "expected_days": {
+     "type": "integer",
+     "default": 5
+    },
+    "personal_note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_email",
+    "order_number",
+    "refund_amount"
+   ]
+  },
+  "request": "Email jane.cho@example.com the refund confirmation for order 1187, $42.50, so she knows it's on its way.",
+  "server": "email"
+ },
+ {
+  "name": "download_attachment",
+  "description": "Saves an attachment from a received message to the local file store and returns its path. Use to obtain invoices, images or documents attached to an email.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_id": {
+     "type": "string"
+    },
+    "attachment_id": {
+     "type": "string"
+    },
+    "destination_dir": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "message_id",
+    "attachment_id"
+   ]
+  },
+  "request": "Download the PDF attached to msg_90412 into the invoices folder.",
+  "server": "email"
+ },
+ {
+  "name": "list_labels",
+  "description": "Lists all labels in the mailbox with their IDs and message counts. Use to see which labels exist before applying one.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "include_system_labels": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": []
+  },
+  "request": "What labels do we have set up in the mailbox right now?",
+  "server": "email"
+ },
+ {
+  "name": "create_label",
+  "description": "Creates a new label, optionally with a color or nested under a parent label. Use when a new category of email is needed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "parent_label": {
+     "type": "string"
+    },
+    "color": {
+     "type": "string",
+     "description": "Hex color such as #ff8800"
+    }
+   },
+   "required": [
+    "name"
+   ]
+  },
+  "request": "Create a new label called 'Wholesale Enquiries' in orange.",
+  "server": "email"
+ },
+ {
+  "name": "add_label",
+  "description": "Applies one or more labels to one or more messages. Use to categorize emails such as complaints, supplier mail or returns.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "labels": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "message_ids",
+    "labels"
+   ]
+  },
+  "request": "Tag messages msg_88213 and msg_88290 with the 'Returns' label.",
+  "server": "email"
+ },
+ {
+  "name": "remove_label",
+  "description": "Removes one or more labels from one or more messages without deleting the messages. Use when a message was categorized wrongly or the issue is resolved.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "labels": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "message_ids",
+    "labels"
+   ]
+  },
+  "request": "Take the 'Urgent' label off msg_77120, that issue is sorted.",
+  "server": "email"
+ },
+ {
+  "name": "set_read_status",
+  "description": "Marks messages as read or unread. Use to clear notifications or to flag a message to come back to.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    },
+    "read": {
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "message_ids",
+    "read"
+   ]
+  },
+  "request": "Mark msg_66001 as unread so I remember to look at it again tomorrow.",
+  "server": "email"
+ },
+ {
+  "name": "archive_email",
+  "description": "Moves messages out of the inbox into the archive without deleting them. Use to tidy the inbox once an email has been handled.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "message_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 1
+    }
+   },
+   "required": [
+    "message_ids"
+   ]
+  },
+  "request": "Archive the three emails about the delivered pallet, msg_55010, msg_55011 and msg_55014.",
+  "server": "email"
+ },
+ {
+  "name": "get_mailbox_report",
+  "description": "Produces a report on mailbox activity for a period: emails received and sent, average response time, unanswered messages and counts per label. Use to measure how well the inbox is being handled.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "day",
+      "week",
+      "label",
+      "sender_domain"
+     ],
+     "default": "week"
+    },
+    "include_response_times": {
+     "type": "boolean",
+     "default": true
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Give me a report of how many emails we received and our average reply time for last month.",
+  "server": "email"
+ },
+ {
+  "name": "create_journal_entry",
+  "description": "Posts a manual double-entry journal entry to the general ledger with two or more debit and credit lines. Use for adjustments, accruals, or transactions that have no dedicated tool; debits must equal credits.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "date": {
+     "type": "string",
+     "format": "date",
+     "description": "Posting date (YYYY-MM-DD)"
+    },
+    "memo": {
+     "type": "string",
+     "description": "Description of the entry"
+    },
+    "lines": {
+     "type": "array",
+     "minItems": 2,
+     "items": {
+      "type": "object",
+      "properties": {
+       "account_code": {
+        "type": "string"
+       },
+       "debit": {
+        "type": "number",
+        "minimum": 0
+       },
+       "credit": {
+        "type": "number",
+        "minimum": 0
+       }
+      },
+      "required": [
+       "account_code"
+      ]
+     }
+    },
+    "reference": {
+     "type": "string",
+     "description": "Optional external reference such as a document number"
+    }
+   },
+   "required": [
+    "date",
+    "memo",
+    "lines"
+   ]
+  },
+  "request": "Post a journal entry dated 31 March that moves $1,200 of prepaid insurance (account 1400) into insurance expense (account 6200).",
+  "server": "accounting"
+ },
+ {
+  "name": "list_ledger_entries",
+  "description": "Returns general ledger transactions filtered by account, date range, and optional amount or text search. Use to audit or investigate postings.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "account_code": {
+     "type": "string"
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "min_amount": {
+     "type": "number"
+    },
+    "search_text": {
+     "type": "string",
+     "description": "Match against memo or reference"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500,
+     "default": 100
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Show me every ledger posting to the Shipping Supplies account (5120) between January 1 and January 31.",
+  "server": "accounting"
+ },
+ {
+  "name": "get_account_balance",
+  "description": "Returns the balance of a single ledger account as of a given date, with total debits and credits. Use for a quick point-in-time balance check.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "account_code": {
+     "type": "string"
+    },
+    "as_of_date": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": [
+    "account_code"
+   ]
+  },
+  "request": "What was the balance of our Accounts Payable account (2000) as of the end of last month, 30 June?",
+  "server": "accounting"
+ },
+ {
+  "name": "list_chart_of_accounts",
+  "description": "Lists accounts in the chart of accounts with code, name, type, and active status. Use to find the right account code before posting or categorizing.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "account_type": {
+     "type": "string",
+     "enum": [
+      "asset",
+      "liability",
+      "equity",
+      "revenue",
+      "expense"
+     ]
+    },
+    "include_inactive": {
+     "type": "boolean",
+     "default": false
+    },
+    "name_contains": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Which expense accounts do we have in the chart of accounts that have 'vehicle' in the name?",
+  "server": "accounting"
+ },
+ {
+  "name": "reverse_journal_entry",
+  "description": "Reverses a previously posted journal entry by creating an offsetting entry, keeping the audit trail intact. Use to correct a mistaken posting rather than deleting it.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "journal_entry_id": {
+     "type": "string"
+    },
+    "reversal_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "journal_entry_id",
+    "reason"
+   ]
+  },
+  "request": "Journal entry JE-20418 was posted to the wrong month, so please reverse it with the reason 'wrong period'.",
+  "server": "accounting"
+ },
+ {
+  "name": "record_expense",
+  "description": "Records a business expense paid to a vendor, with amount, category, payment method, and date. Use when a shop manager reports a purchase or bill that should hit the books.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "vendor": {
+     "type": "string"
+    },
+    "amount": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "currency": {
+     "type": "string",
+     "default": "USD"
+    },
+    "date": {
+     "type": "string",
+     "format": "date"
+    },
+    "category": {
+     "type": "string",
+     "description": "Expense category, e.g. rent, utilities, supplies"
+    },
+    "payment_method": {
+     "type": "string",
+     "enum": [
+      "cash",
+      "card",
+      "bank_transfer",
+      "check"
+     ]
+    },
+    "tax_amount": {
+     "type": "number",
+     "minimum": 0
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "vendor",
+    "amount",
+    "date",
+    "category",
+    "payment_method"
+   ]
+  },
+  "request": "Log a $186.40 card payment to Staples today for printer paper and toner under office supplies.",
+  "server": "accounting"
+ },
+ {
+  "name": "list_expenses",
+  "description": "Lists recorded expenses with filters for date range, category, vendor, and payment method, plus a total. Use to review or look up spending.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "category": {
+     "type": "string"
+    },
+    "vendor": {
+     "type": "string"
+    },
+    "payment_method": {
+     "type": "string",
+     "enum": [
+      "cash",
+      "card",
+      "bank_transfer",
+      "check"
+     ]
+    },
+    "limit": {
+     "type": "integer",
+     "default": 50
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "List everything we spent with Sysco in May so I can check it against their statement.",
+  "server": "accounting"
+ },
+ {
+  "name": "categorize_expense",
+  "description": "Changes the category (and the matching ledger account) of an existing expense. Use to fix miscategorized spending.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "expense_id": {
+     "type": "string"
+    },
+    "new_category": {
+     "type": "string"
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "expense_id",
+    "new_category"
+   ]
+  },
+  "request": "Expense EXP-3392 should be under 'repairs and maintenance' and not 'office supplies'. Please change it.",
+  "server": "accounting"
+ },
+ {
+  "name": "attach_receipt_to_expense",
+  "description": "Attaches a receipt image or PDF URL to an existing expense record for audit and tax documentation.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "expense_id": {
+     "type": "string"
+    },
+    "receipt_url": {
+     "type": "string",
+     "format": "uri"
+    },
+    "file_name": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "expense_id",
+    "receipt_url"
+   ]
+  },
+  "request": "Attach the receipt at https://files.myshop.example/receipts/hvac-0612.pdf to expense EXP-3410.",
+  "server": "accounting"
+ },
+ {
+  "name": "record_customer_refund",
+  "description": "Books the accounting side of a customer refund: reduces revenue, adjusts sales tax payable, and credits cash or card clearing. It does not move money to the customer, so use it to keep the ledger in sync after a refund is issued.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_reference": {
+     "type": "string"
+    },
+    "refund_amount": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "tax_refunded": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0
+    },
+    "refund_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "refund_method": {
+     "type": "string",
+     "enum": [
+      "card",
+      "cash",
+      "store_credit",
+      "bank_transfer"
+     ]
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_reference",
+    "refund_amount",
+    "refund_date",
+    "refund_method"
+   ]
+  },
+  "request": "We already refunded order 88213 for $54.00 ($4.32 of it was tax) to the customer's card yesterday, so please book it in the accounting records.",
+  "server": "accounting"
+ },
+ {
+  "name": "post_order_revenue",
+  "description": "Posts revenue for a completed sales order to the ledger, splitting product revenue, shipping income, discounts, and sales tax collected. Use when an order needs to be recognized in the books.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_reference": {
+     "type": "string"
+    },
+    "order_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "subtotal": {
+     "type": "number",
+     "minimum": 0
+    },
+    "shipping_charged": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0
+    },
+    "discount_total": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0
+    },
+    "sales_tax_collected": {
+     "type": "number",
+     "minimum": 0,
+     "default": 0
+    },
+    "customer_id": {
+     "type": "string"
+    },
+    "payment_status": {
+     "type": "string",
+     "enum": [
+      "paid",
+      "unpaid"
+     ]
+    }
+   },
+   "required": [
+    "order_reference",
+    "order_date",
+    "subtotal",
+    "payment_status"
+   ]
+  },
+  "request": "Recognize revenue for order 90417 placed on 5 May: $320 subtotal, $12 shipping, $20 discount, $26.40 sales tax, paid in full.",
+  "server": "accounting"
+ },
+ {
+  "name": "calculate_sales_tax",
+  "description": "Calculates the sales tax or VAT due on an amount for a given jurisdiction and product tax category, without posting anything. Use for quotes or checking rates.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "amount": {
+     "type": "number",
+     "exclusiveMinimum": 0
+    },
+    "jurisdiction": {
+     "type": "string",
+     "description": "Region code, e.g. US-CA or DE"
+    },
+    "product_tax_category": {
+     "type": "string",
+     "enum": [
+      "general",
+      "food",
+      "clothing",
+      "digital",
+      "exempt"
+     ],
+     "default": "general"
+    },
+    "prices_include_tax": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "amount",
+    "jurisdiction"
+   ]
+  },
+  "request": "How much sales tax should I charge on a $480 clothing sale shipped to Oregon versus Washington state? Start with Washington.",
+  "server": "accounting"
+ },
+ {
+  "name": "get_tax_liability_summary",
+  "description": "Summarizes the tax currently owed (collected minus paid and input credits) per tax type for a period, with due dates. Use to know how much to set aside for the next payment.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "period_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "period_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "tax_type": {
+     "type": "string",
+     "enum": [
+      "sales_tax",
+      "vat",
+      "payroll_tax",
+      "income_tax"
+     ]
+    }
+   },
+   "required": [
+    "period_start",
+    "period_end"
+   ]
+  },
+  "request": "How much sales tax do we currently owe for the third quarter, July through September?",
+  "server": "accounting"
+ },
+ {
+  "name": "export_sales_tax_report",
+  "description": "Generates a downloadable sales tax filing report broken down by jurisdiction, with taxable sales, exempt sales, and tax collected. Use when preparing a return.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "period_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "period_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "format": {
+     "type": "string",
+     "enum": [
+      "csv",
+      "pdf",
+      "xlsx"
+     ],
+     "default": "pdf"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "jurisdiction",
+      "tax_rate",
+      "month"
+     ],
+     "default": "jurisdiction"
+    }
+   },
+   "required": [
+    "period_start",
+    "period_end"
+   ]
+  },
+  "request": "Export a CSV sales tax report by jurisdiction for Q2 so my accountant can file the return.",
+  "server": "accounting"
+ },
+ {
+  "name": "generate_profit_and_loss_report",
+  "description": "Produces a profit and loss statement for a date range, showing revenue, cost of goods sold, gross profit, operating expenses, and net income. Use for a single-period income view.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "basis": {
+     "type": "string",
+     "enum": [
+      "accrual",
+      "cash"
+     ],
+     "default": "accrual"
+    },
+    "breakdown": {
+     "type": "string",
+     "enum": [
+      "none",
+      "monthly",
+      "quarterly"
+     ],
+     "default": "none"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Give me the profit and loss statement for last year on a cash basis, broken down by month.",
+  "server": "accounting"
+ },
+ {
+  "name": "compare_profit_and_loss_periods",
+  "description": "Compares net income and each P&L line between two periods and returns dollar and percentage changes. Use to see what drove profit up or down.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "current_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "current_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "previous_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "previous_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "top_n_changes": {
+     "type": "integer",
+     "default": 10
+    }
+   },
+   "required": [
+    "current_start",
+    "current_end",
+    "previous_start",
+    "previous_end"
+   ]
+  },
+  "request": "Compare our profit this November against last November and show which lines changed the most.",
+  "server": "accounting"
+ },
+ {
+  "name": "create_budget",
+  "description": "Creates a budget for a fiscal period with planned amounts per account or category. Use when starting a new monthly, quarterly, or annual budget.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "period_start": {
+     "type": "string",
+     "format": "date"
+    },
+    "period_end": {
+     "type": "string",
+     "format": "date"
+    },
+    "lines": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "properties": {
+       "category": {
+        "type": "string"
+       },
+       "planned_amount": {
+        "type": "number",
+        "minimum": 0
+       }
+      },
+      "required": [
+       "category",
+       "planned_amount"
+      ]
+     }
+    }
+   },
+   "required": [
+    "name",
+    "period_start",
+    "period_end",
+    "lines"
+   ]
+  },
+  "request": "Set up a budget called 'Holiday Season' for 1 Nov to 31 Dec with $8,000 for advertising, $15,000 for inventory, and $4,500 for temp staff.",
+  "server": "accounting"
+ },
+ {
+  "name": "get_budget_vs_actual",
+  "description": "Compares planned budget amounts with actual spending per category for a budget, showing variance and percent used. Use to check if you are overspending.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "budget_id": {
+     "type": "string"
+    },
+    "as_of_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "only_over_budget": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "budget_id"
+   ]
+  },
+  "request": "Which categories in budget BUD-2024-Q3 are already over their limit?",
+  "server": "accounting"
+ },
+ {
+  "name": "update_budget_line",
+  "description": "Changes the planned amount of one category in an existing budget. Use to reallocate or adjust a budget mid-period.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "budget_id": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string"
+    },
+    "new_planned_amount": {
+     "type": "number",
+     "minimum": 0
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "budget_id",
+    "category",
+    "new_planned_amount"
+   ]
+  },
+  "request": "Raise the advertising line in budget BUD-2024-Q4 to $10,000 because we are adding a Black Friday campaign.",
+  "server": "accounting"
+ },
+ {
+  "name": "get_customer_balance",
+  "description": "Returns a customer's accounts receivable position: open invoices, overdue amounts, unapplied credits, and net balance owed. Use to see what a specific customer owes the business.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_id": {
+     "type": "string"
+    },
+    "as_of_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "include_paid_invoices": {
+     "type": "boolean",
+     "default": false
+    }
+   },
+   "required": [
+    "customer_id"
+   ]
+  },
+  "request": "How much does customer CUST-1187 (Harbor Caf\u00e9) currently owe us, and how much of it is overdue?",
+  "server": "accounting"
+ },
+ {
+  "name": "get_stock_level",
+  "description": "Returns the current on-hand, reserved and available quantity for one SKU, optionally at a single location. Use when someone asks how many of a specific product are in stock.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string",
+     "description": "Product SKU or barcode"
+    },
+    "location_id": {
+     "type": "string",
+     "description": "Optional shop, backroom or warehouse location ID"
+    }
+   },
+   "required": [
+    "sku"
+   ]
+  },
+  "request": "How many bottles of the 500ml olive oil, SKU OIL-OLV-500, do we have on the shelves right now?",
+  "server": "inventory"
+ },
+ {
+  "name": "list_stock_levels",
+  "description": "Lists stock quantities for many products, filtered by category, location or quantity range. Use for browsing or sweeping a section of the shop rather than looking up a single item.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "category": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "max_quantity": {
+     "type": "integer",
+     "minimum": 0,
+     "description": "Only include items with on-hand at or below this value"
+    },
+    "include_zero_stock": {
+     "type": "boolean",
+     "default": true
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500,
+     "default": 100
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Show me everything in the dairy category that has 5 or fewer units left on hand.",
+  "server": "inventory"
+ },
+ {
+  "name": "search_products",
+  "description": "Finds inventory items by name, partial SKU, barcode or supplier code and returns their SKUs. Use when the manager doesn't know the exact SKU.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "query": {
+     "type": "string",
+     "description": "Free-text name, barcode or code"
+    },
+    "category": {
+     "type": "string"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 50,
+     "default": 10
+    }
+   },
+   "required": [
+    "query"
+   ]
+  },
+  "request": "What's the SKU for the organic oat milk with barcode 5012345678900?",
+  "server": "inventory"
+ },
+ {
+  "name": "adjust_stock",
+  "description": "Manually increases or decreases the on-hand quantity of a SKU with a mandatory reason, creating an audit entry. Use for corrections outside a formal count, such as found stock or a miskeyed delivery.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "quantity_delta": {
+     "type": "integer",
+     "description": "Positive to add, negative to remove"
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "correction",
+      "found",
+      "theft",
+      "supplier_error",
+      "other"
+     ]
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "sku",
+    "location_id",
+    "quantity_delta",
+    "reason"
+   ]
+  },
+  "request": "We found 12 extra tins of chopped tomatoes (TOM-CHP-400) in the backroom, add them to stock as a correction.",
+  "server": "inventory"
+ },
+ {
+  "name": "start_stock_count",
+  "description": "Opens a new stock count session for a location, aisle or category and returns a session ID plus the list of items to count. Use before a cycle count or full stocktake begins.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "location_id": {
+     "type": "string"
+    },
+    "scope": {
+     "type": "string",
+     "enum": [
+      "full",
+      "category",
+      "aisle"
+     ]
+    },
+    "scope_value": {
+     "type": "string",
+     "description": "Category name or aisle code when scope is not full"
+    },
+    "blind": {
+     "type": "boolean",
+     "default": true,
+     "description": "Hide expected quantities from counters"
+    },
+    "assigned_to": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "location_id",
+    "scope"
+   ]
+  },
+  "request": "Start a blind stock count for aisle 4 at the Main Street shop and assign it to Priya.",
+  "server": "inventory"
+ },
+ {
+  "name": "record_stock_count",
+  "description": "Submits the physically counted quantity for a SKU within an open count session. Use as counters report their numbers.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "session_id": {
+     "type": "string"
+    },
+    "sku": {
+     "type": "string"
+    },
+    "counted_quantity": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "counted_by": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "session_id",
+    "sku",
+    "counted_quantity"
+   ]
+  },
+  "request": "In count session CNT-2291, I counted 38 packs of basmati rice 1kg, SKU RICE-BAS-1K.",
+  "server": "inventory"
+ },
+ {
+  "name": "get_count_variances",
+  "description": "Compares counted against expected quantities for a count session and lists discrepancies with their value impact. Use to review a count before approving adjustments.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "session_id": {
+     "type": "string"
+    },
+    "min_abs_variance": {
+     "type": "integer",
+     "minimum": 0,
+     "default": 1
+    },
+    "sort_by": {
+     "type": "string",
+     "enum": [
+      "units",
+      "value"
+     ],
+     "default": "value"
+    }
+   },
+   "required": [
+    "session_id"
+   ]
+  },
+  "request": "Which items had the biggest value discrepancies in count session CNT-2291?",
+  "server": "inventory"
+ },
+ {
+  "name": "record_waste",
+  "description": "Logs units of a product as wasted, expired, damaged or spoiled, removes them from stock and records the cost. Use whenever items are thrown away or written off.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "reason": {
+     "type": "string",
+     "enum": [
+      "expired",
+      "damaged",
+      "spoiled",
+      "contaminated",
+      "other"
+     ]
+    },
+    "note": {
+     "type": "string"
+    },
+    "occurred_at": {
+     "type": "string",
+     "format": "date-time"
+    }
+   },
+   "required": [
+    "sku",
+    "location_id",
+    "quantity",
+    "reason"
+   ]
+  },
+  "request": "Throw out 9 cartons of strawberries, SKU FRU-STR-250, from the front chiller because they went mouldy.",
+  "server": "inventory"
+ },
+ {
+  "name": "get_waste_report",
+  "description": "Summarises waste quantity and cost over a date range, grouped by reason, category, product or location. Use for reviewing shrinkage and spoilage trends.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "reason",
+      "category",
+      "product",
+      "location"
+     ],
+     "default": "reason"
+    },
+    "location_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "start_date",
+    "end_date"
+   ]
+  },
+  "request": "Give me last month's waste broken down by category so I can see what we're losing the most money on.",
+  "server": "inventory"
+ },
+ {
+  "name": "set_reorder_point",
+  "description": "Sets the low-stock threshold and suggested reorder quantity for a SKU. Use to tune when alerts fire and how much to restock.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "reorder_point": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "reorder_quantity": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "preferred_supplier_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "sku",
+    "reorder_point"
+   ]
+  },
+  "request": "Alert me when sourdough loaves (BRD-SOU-800) drop to 10, and suggest reordering 40 each time.",
+  "server": "inventory"
+ },
+ {
+  "name": "list_low_stock_alerts",
+  "description": "Returns active low-stock alerts for items at or below their reorder point, with current quantity and days of cover. Use to see what needs restocking now.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "location_id": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string"
+    },
+    "severity": {
+     "type": "string",
+     "enum": [
+      "low",
+      "critical",
+      "out_of_stock"
+     ]
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "active",
+      "snoozed",
+      "acknowledged"
+     ],
+     "default": "active"
+    }
+   },
+   "required": []
+  },
+  "request": "What products are completely out of stock or critically low today?",
+  "server": "inventory"
+ },
+ {
+  "name": "acknowledge_low_stock_alert",
+  "description": "Acknowledges or snoozes a low-stock alert so it stops appearing, optionally for a set number of days. Use when a restock is already handled or the alert is not relevant.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "alert_id": {
+     "type": "string"
+    },
+    "action": {
+     "type": "string",
+     "enum": [
+      "acknowledge",
+      "snooze"
+     ]
+    },
+    "snooze_days": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 60
+    },
+    "comment": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "alert_id",
+    "action"
+   ]
+  },
+  "request": "Snooze alert ALR-5513 for the birthday candles for two weeks, we're discontinuing them.",
+  "server": "inventory"
+ },
+ {
+  "name": "configure_alert_notifications",
+  "description": "Sets who is notified about low-stock alerts, through which channel and how often. Use to change alert recipients or switch to a daily digest.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "channel": {
+     "type": "string",
+     "enum": [
+      "email",
+      "sms",
+      "slack"
+     ]
+    },
+    "recipients": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "frequency": {
+     "type": "string",
+     "enum": [
+      "immediate",
+      "hourly",
+      "daily_digest"
+     ]
+    },
+    "min_severity": {
+     "type": "string",
+     "enum": [
+      "low",
+      "critical",
+      "out_of_stock"
+     ],
+     "default": "low"
+    },
+    "location_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "channel",
+    "recipients",
+    "frequency"
+   ]
+  },
+  "request": "Send low-stock alerts as a daily email digest to tom@cornerfresh.example instead of pinging me all day.",
+  "server": "inventory"
+ },
+ {
+  "name": "create_purchase_order_draft",
+  "description": "Creates a draft supplier purchase order for one or more SKUs to replenish stock, not yet sent. Use when the manager wants to reorder items from a supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier_id": {
+     "type": "string"
+    },
+    "lines": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "quantity": {
+        "type": "integer",
+        "minimum": 1
+       }
+      },
+      "required": [
+       "sku",
+       "quantity"
+      ]
+     }
+    },
+    "expected_delivery_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "deliver_to_location_id": {
+     "type": "string"
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "supplier_id",
+    "lines"
+   ]
+  },
+  "request": "Draft a purchase order to Fresh Farms Ltd for 60 cartons of eggs and 30 of butter, delivery to the main shop by Friday.",
+  "server": "inventory"
+ },
+ {
+  "name": "receive_stock_delivery",
+  "description": "Books incoming goods into stock, optionally against an existing purchase order, recording received quantities and any shortages or damage. Use when a supplier delivery arrives.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "purchase_order_id": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "lines": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "properties": {
+       "sku": {
+        "type": "string"
+       },
+       "quantity_received": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "quantity_damaged": {
+        "type": "integer",
+        "minimum": 0,
+        "default": 0
+       },
+       "batch_code": {
+        "type": "string"
+       },
+       "expiry_date": {
+        "type": "string",
+        "format": "date"
+       }
+      },
+      "required": [
+       "sku",
+       "quantity_received"
+      ]
+     }
+    },
+    "delivery_note_ref": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "location_id",
+    "lines"
+   ]
+  },
+  "request": "The Fresh Farms delivery for PO-1048 just arrived: 60 egg cartons came in but 3 were cracked, and only 24 butter instead of 30.",
+  "server": "inventory"
+ },
+ {
+  "name": "transfer_stock",
+  "description": "Moves a quantity of a SKU from one location to another, such as backroom to shop floor or between branches, keeping a record of both sides. Use for internal stock movements.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "from_location_id": {
+     "type": "string"
+    },
+    "to_location_id": {
+     "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "note": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "sku",
+    "from_location_id",
+    "to_location_id",
+    "quantity"
+   ]
+  },
+  "request": "Move 24 packs of paper towels from the backroom to the shop floor.",
+  "server": "inventory"
+ },
+ {
+  "name": "restock_customer_return",
+  "description": "Puts a returned item back into sellable stock or writes it off as unsellable, updating inventory only. Use after a customer return has been physically inspected; it does not issue refunds.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "minimum": 1
+    },
+    "condition": {
+     "type": "string",
+     "enum": [
+      "resellable",
+      "damaged",
+      "opened",
+      "expired"
+     ]
+    },
+    "return_reference": {
+     "type": "string",
+     "description": "Return or receipt reference for traceability"
+    }
+   },
+   "required": [
+    "sku",
+    "location_id",
+    "quantity",
+    "condition"
+   ]
+  },
+  "request": "Customer returned two unopened jars of pesto from receipt R-77120, put them back on the shelf stock.",
+  "server": "inventory"
+ },
+ {
+  "name": "get_expiring_items",
+  "description": "Lists batches of products expiring within a given number of days, with quantity and location. Use to plan markdowns or removal before items spoil.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "within_days": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 365,
+     "default": 7
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "category": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "Which products will expire in the next 3 days so I can mark them down?",
+  "server": "inventory"
+ },
+ {
+  "name": "get_stock_movement_history",
+  "description": "Returns the chronological audit trail of stock changes for a SKU, including sales, deliveries, adjustments, transfers and waste. Use to investigate where stock went or why a number looks wrong.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "sku": {
+     "type": "string"
+    },
+    "location_id": {
+     "type": "string"
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "movement_types": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "sale",
+       "delivery",
+       "adjustment",
+       "transfer",
+       "waste",
+       "return",
+       "count"
+      ]
+     }
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500,
+     "default": 50
+    }
+   },
+   "required": [
+    "sku"
+   ]
+  },
+  "request": "Show every stock movement for the coffee beans SKU COF-BEAN-1K over the past two weeks, I think something went missing.",
+  "server": "inventory"
+ },
+ {
+  "name": "get_inventory_valuation",
+  "description": "Calculates the total value of current stock at cost or retail price, grouped by category or location. Use for financial snapshots of what the inventory is worth.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "valuation_method": {
+     "type": "string",
+     "enum": [
+      "cost",
+      "retail"
+     ],
+     "default": "cost"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "none",
+      "category",
+      "location"
+     ],
+     "default": "category"
+    },
+    "as_of_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "location_id": {
+     "type": "string"
+    }
+   },
+   "required": []
+  },
+  "request": "What is our total stock worth at cost right now, split by category?",
+  "server": "inventory"
+ },
+ {
+  "name": "create_social_post",
+  "description": "Creates a draft social media post for one platform, with caption, optional media and hashtags. Use it to prepare content; it does not publish or schedule the post.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "platform": {
+     "type": "string",
+     "enum": [
+      "instagram",
+      "facebook",
+      "tiktok",
+      "x",
+      "pinterest"
+     ]
+    },
+    "caption": {
+     "type": "string"
+    },
+    "media_urls": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "hashtags": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "campaign_id": {
+     "type": "string",
+     "description": "Optional campaign to attach the post to"
+    }
+   },
+   "required": [
+    "platform",
+    "caption"
+   ]
+  },
+  "request": "Draft an Instagram post announcing our new summer sandals collection with the caption 'Summer steps start here' and the hashtags #sandals and #summerstyle.",
+  "server": "marketing"
+ },
+ {
+  "name": "schedule_social_post",
+  "description": "Schedules an existing draft social post to publish at a specific date and time. Use it once the draft is approved and you know when it should go live.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "post_id": {
+     "type": "string"
+    },
+    "publish_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "timezone": {
+     "type": "string",
+     "description": "IANA timezone, e.g. Europe/Berlin"
+    }
+   },
+   "required": [
+    "post_id",
+    "publish_at"
+   ]
+  },
+  "request": "Schedule draft post p_8841 to go live this Friday at 9am.",
+  "server": "marketing"
+ },
+ {
+  "name": "list_scheduled_posts",
+  "description": "Lists social posts that are scheduled but not yet published, optionally filtered by platform and date range. Use it to review the upcoming content calendar.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "platform": {
+     "type": "string",
+     "enum": [
+      "instagram",
+      "facebook",
+      "tiktok",
+      "x",
+      "pinterest"
+     ]
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 100
+    }
+   },
+   "required": []
+  },
+  "request": "What do we have scheduled on Facebook for next week?",
+  "server": "marketing"
+ },
+ {
+  "name": "cancel_scheduled_post",
+  "description": "Cancels a scheduled social post so it will not be published, returning it to draft status. Use it when a post is outdated or has an error.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "post_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "post_id"
+   ]
+  },
+  "request": "Pull the scheduled TikTok post p_7720 back to draft, the flash sale it mentions was cancelled.",
+  "server": "marketing"
+ },
+ {
+  "name": "get_social_post_metrics",
+  "description": "Returns engagement metrics for a single published post: impressions, reach, likes, comments, shares, clicks and saves. Use it to judge how one specific post performed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "post_id": {
+     "type": "string"
+    },
+    "include_hourly_breakdown": {
+     "type": "boolean"
+    }
+   },
+   "required": [
+    "post_id"
+   ]
+  },
+  "request": "How many likes, shares and link clicks did our Instagram post p_8312 get?",
+  "server": "marketing"
+ },
+ {
+  "name": "reply_to_social_comment",
+  "description": "Posts a public reply to a comment on one of the shop's social posts. Use it for community management, such as answering product questions.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "post_id": {
+     "type": "string"
+    },
+    "comment_id": {
+     "type": "string"
+    },
+    "reply_text": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "post_id",
+    "comment_id",
+    "reply_text"
+   ]
+  },
+  "request": "Reply to comment c_55120 on our Instagram post saying the linen shirt is back in stock on Monday.",
+  "server": "marketing"
+ },
+ {
+  "name": "create_promotion",
+  "description": "Creates a storefront promotion such as a percentage off, fixed amount off, BOGO or free shipping, applied automatically to eligible products or collections within a date range. Use it for sales that do not require a code.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "percentage_off",
+      "amount_off",
+      "buy_x_get_y",
+      "free_shipping"
+     ]
+    },
+    "value": {
+     "type": "number",
+     "description": "Percent or currency amount; ignored for free_shipping"
+    },
+    "applies_to": {
+     "type": "object",
+     "properties": {
+      "product_ids": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "collection_ids": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "starts_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "ends_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "min_order_value": {
+     "type": "number"
+    }
+   },
+   "required": [
+    "name",
+    "type",
+    "starts_at"
+   ]
+  },
+  "request": "Set up a 20% off promotion on the Outerwear collection from November 24 to November 30 called Black Week Coats.",
+  "server": "marketing"
+ },
+ {
+  "name": "update_promotion",
+  "description": "Changes the settings of an existing promotion, such as its discount value, dates, or eligible collections. Use it to adjust a promotion without recreating it.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "promotion_id": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "value": {
+     "type": "number"
+    },
+    "ends_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "min_order_value": {
+     "type": "number"
+    },
+    "collection_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   },
+   "required": [
+    "promotion_id"
+   ]
+  },
+  "request": "Extend the Black Week Coats promotion promo_204 until December 2 at midnight.",
+  "server": "marketing"
+ },
+ {
+  "name": "end_promotion",
+  "description": "Immediately ends an active or scheduled promotion so it no longer applies at checkout. Use it to stop a sale early.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "promotion_id": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "promotion_id"
+   ]
+  },
+  "request": "Stop the free shipping promotion promo_198 right now, we're running low on stock.",
+  "server": "marketing"
+ },
+ {
+  "name": "list_active_promotions",
+  "description": "Lists promotions that are currently live or scheduled, with type, value, dates and eligible items. Use it to see what discounts customers can get right now.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "enum": [
+      "active",
+      "scheduled",
+      "expired",
+      "all"
+     ]
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "percentage_off",
+      "amount_off",
+      "buy_x_get_y",
+      "free_shipping"
+     ]
+    }
+   },
+   "required": []
+  },
+  "request": "Which promotions are running on the store at the moment?",
+  "server": "marketing"
+ },
+ {
+  "name": "create_discount_code",
+  "description": "Creates a single discount code that customers enter at checkout, with value, usage limits and expiry. Use it for one named code like a newsletter welcome offer or an influencer code.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "code": {
+     "type": "string"
+    },
+    "discount_type": {
+     "type": "string",
+     "enum": [
+      "percentage",
+      "fixed_amount",
+      "free_shipping"
+     ]
+    },
+    "value": {
+     "type": "number"
+    },
+    "max_redemptions": {
+     "type": "integer"
+    },
+    "one_use_per_customer": {
+     "type": "boolean"
+    },
+    "min_order_value": {
+     "type": "number"
+    },
+    "expires_at": {
+     "type": "string",
+     "format": "date-time"
+    }
+   },
+   "required": [
+    "code",
+    "discount_type"
+   ]
+  },
+  "request": "Create a discount code WELCOME10 for 10% off, one use per customer, expiring at the end of the year.",
+  "server": "marketing"
+ },
+ {
+  "name": "bulk_generate_discount_codes",
+  "description": "Generates many unique single-use discount codes sharing the same rules, with a common prefix. Use it for mailing lists, event giveaways or partner distribution.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "prefix": {
+     "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 10000
+    },
+    "discount_type": {
+     "type": "string",
+     "enum": [
+      "percentage",
+      "fixed_amount",
+      "free_shipping"
+     ]
+    },
+    "value": {
+     "type": "number"
+    },
+    "expires_at": {
+     "type": "string",
+     "format": "date-time"
+    },
+    "campaign_id": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "prefix",
+    "quantity",
+    "discount_type"
+   ]
+  },
+  "request": "Generate 500 unique single-use codes starting with SPRING-, each worth $15 off, for our spring mailer.",
+  "server": "marketing"
+ },
+ {
+  "name": "get_discount_code_usage",
+  "description": "Shows how often a discount code has been redeemed, with total discount given, revenue from orders using it and remaining uses. Use it to check a code's performance or whether it is exhausted.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "code": {
+     "type": "string"
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    }
+   },
+   "required": [
+    "code"
+   ]
+  },
+  "request": "How many times has the code INFLUENCER15 been used and how much revenue did it bring in?",
+  "server": "marketing"
+ },
+ {
+  "name": "deactivate_discount_code",
+  "description": "Disables a discount code so it can no longer be redeemed, while keeping its history. Use it for leaked or expired codes.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "code": {
+     "type": "string"
+    },
+    "reason": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "code"
+   ]
+  },
+  "request": "The code FREESHIP99 leaked on a coupon site, switch it off please.",
+  "server": "marketing"
+ },
+ {
+  "name": "void_discount_redemption",
+  "description": "Reverses the redemption of a discount code on a specific order, restoring the code's use for that customer. It does not refund money or change the order itself; use it when a code was applied by mistake or the order was cancelled.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "code": {
+     "type": "string"
+    },
+    "order_id": {
+     "type": "string"
+    },
+    "restore_usage": {
+     "type": "boolean",
+     "description": "Give the use back to the customer and the code's usage counter"
+    }
+   },
+   "required": [
+    "code",
+    "order_id"
+   ]
+  },
+  "request": "Order #10482 was cancelled, so release the WELCOME10 redemption on it so the customer can use that code again.",
+  "server": "marketing"
+ },
+ {
+  "name": "create_campaign",
+  "description": "Creates a marketing campaign that groups posts, promotions, discount codes and emails under one name, budget and date range for tracking. Use it before launching a coordinated push.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    },
+    "objective": {
+     "type": "string",
+     "enum": [
+      "awareness",
+      "traffic",
+      "sales",
+      "retention"
+     ]
+    },
+    "start_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "end_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "budget": {
+     "type": "number"
+    },
+    "channels": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "instagram",
+       "facebook",
+       "tiktok",
+       "email",
+       "google_ads",
+       "influencer"
+      ]
+     }
+    }
+   },
+   "required": [
+    "name",
+    "objective",
+    "start_date"
+   ]
+  },
+  "request": "Create a sales campaign called Back to School 2025 running Aug 15 to Sep 10 with a $3,000 budget across Instagram and email.",
+  "server": "marketing"
+ },
+ {
+  "name": "get_campaign_results",
+  "description": "Returns the results of one campaign: spend, impressions, clicks, conversions, attributed revenue, ROAS and cost per acquisition. Use it to report on how a campaign performed.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "campaign_id": {
+     "type": "string"
+    },
+    "group_by": {
+     "type": "string",
+     "enum": [
+      "none",
+      "channel",
+      "day",
+      "week"
+     ]
+    }
+   },
+   "required": [
+    "campaign_id"
+   ]
+  },
+  "request": "Give me the results for the Back to School 2025 campaign, with ROAS broken down by channel.",
+  "server": "marketing"
+ },
+ {
+  "name": "compare_campaigns",
+  "description": "Compares two or more campaigns side by side on chosen metrics such as revenue, ROAS, conversion rate and cost per acquisition. Use it to decide which campaign to repeat or stop.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "campaign_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "minItems": 2
+    },
+    "metrics": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "spend",
+       "revenue",
+       "roas",
+       "conversion_rate",
+       "cpa",
+       "clicks"
+      ]
+     }
+    }
+   },
+   "required": [
+    "campaign_ids"
+   ]
+  },
+  "request": "Compare our Mother's Day and Father's Day campaigns on ROAS and cost per acquisition.",
+  "server": "marketing"
+ },
+ {
+  "name": "list_campaign_attributed_orders",
+  "description": "Lists orders attributed to a campaign via tracked links or codes, with order value and discount used. Use it to audit which sales a campaign actually drove; it is read-only and does not modify orders.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "campaign_id": {
+     "type": "string"
+    },
+    "from_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "to_date": {
+     "type": "string",
+     "format": "date"
+    },
+    "limit": {
+     "type": "integer",
+     "minimum": 1,
+     "maximum": 500
+    },
+    "cursor": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "campaign_id"
+   ]
+  },
+  "request": "Show me the orders that were credited to the Back to School 2025 campaign last week.",
+  "server": "marketing"
+ },
+ {
+  "name": "send_campaign_email_to_segment",
+  "description": "Sends or schedules a promotional email to a saved audience segment as part of a campaign, using a chosen template and optional discount code. Use it for newsletters and promo blasts to groups of subscribers.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "campaign_id": {
+     "type": "string"
+    },
+    "segment_id": {
+     "type": "string"
+    },
+    "template_id": {
+     "type": "string"
+    },
+    "subject": {
+     "type": "string"
+    },
+    "discount_code": {
+     "type": "string"
+    },
+    "send_at": {
+     "type": "string",
+     "format": "date-time",
+     "description": "Omit to send immediately"
+    }
+   },
+   "required": [
+    "campaign_id",
+    "segment_id",
+    "template_id",
+    "subject"
+   ]
+  },
+  "request": "Email the VIP customers segment with template tpl_sale_01, subject 'Early access: 24 hours before everyone else', and include code VIPEARLY, sending tomorrow at 8am.",
+  "server": "marketing"
+ }
+]

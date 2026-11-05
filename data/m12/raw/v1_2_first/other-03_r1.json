@@ -1,0 +1,58 @@
+{
+ "case_id": "other-03",
+ "rep": 1,
+ "request": "We're low on cold brew concentrate. Reorder 10 from Riverside Roasters.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1268,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSugYKEAgTGAI4AUIIdGhpbmtpbmcSDC77MIQPqaOzsqiL9BoMNZ/YZ97W/AcadNhrIjCqM/Q5lu/rJROlv9tbfJocj0qShbq75uWWFlVG3JnsIvEHgJrmf2RyPFXwuAajx6Qq1wUrbcmMJhRuqpmzVDeNfOcE4AJmhiZLi7I0jtuZIjAd2pWO7LtJLUa8Wj+dPTs4cAnsEcPn0YcbvrGzk9solRFgzATyl/0HDMiyvf+CqRVJ6KC+kJBVV2vS6gCCmkBHxaL9aIHFAToWuDH884h4oQ514VOhwv5/fF5mwLHtYXO6mXYHQDGnFJjqDEjERi/du2Hbbjxk/jrSDtQJJY6Sl7SEHkdmEOs5yaM1/od+xGQolHUvDV1SQhabn6o0Qem0b6sak0qFoiCDilF66+Mqa00VRU2BpdBCc3/eXaryVszjOF1JlMIQxvrALSSo0V53+jAZa0OXrEdxqtTlHktUSZr+7A3+qG4tn19jRVUUA/mPuJfGJU80htj3MYYicTaSLyk0N34P5eBZCHp5YNwMpYEk+hN+uormQNyILkdn20tD/tXe38Y9hp724YvOJEZPTQv/+U5B4Gf0r/Ib0tyg2b9SJdRry6uW9SQlXH2RZpqpV506BXVCUMB9MbranvdgNFB+EtZ0E4fuzL3NJGSegaogG22W649fzrOW9Cjgh4jxdcu5OwV5Rold1J4yNQHut4/b8B3akqRAW1csoJrkEnEMDQTbGWfe/KfLPsI119ETmAH1kyrkuHqzyGuDRCnEEQetRAt0PhmJVuR08A1QX9CCSHGpERfS71wQu9lEPuUrYrGEMUl5M2OzYEkn2Vh3+ovJ+47ssy9czdA2LW6w9pp+xA5nZZe8KX8PNFpg31+MkMo4DqS0vEidrMxQryUaGOiwoNRUlvAv4AJo1aPASsRXyF1w+J16bzy0x0F68MvehPNgb06lGxHYXE4eK5MVpQRt8jI6FP0Swe1B0bYmkmaKgFmPGcinzUgiEIKLkTw+Jg8HJtWTjtcf0Dp6MrxVYFrS/4u8bgDtL4BnKN/Bbin+IgEOE7kyeOfrP5qStVCcSjfzQX/oRjq+hBpIlk5ZRCS38h3N65SbGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Pyzk8dWaMspDj2ZiCDpSdA",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "supplier": "Riverside Roasters",
+     "item": "cold brew concentrate",
+     "quantity": 10
+    },
+    "name": "suppliers__create_purchase_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1845,
+   "output_tokens": 198,
+   "output_tokens_details": {
+    "thinking_tokens": 81
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

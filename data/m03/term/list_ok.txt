@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 05:46:55 GMT
+server: uvicorn
+content-length: 543
+content-type: application/json
+
+{"jsonrpc":"2.0","id":1,"result":{"cacheScope":"private","resultType":"complete","tools":[{"description":"Return the price of one drink in US dollars.","inputSchema":{"type":"object","properties":{"drink":{"title":"Drink","type":"string"}},"required":["drink"],"title":"get_priceArguments"},"name":"get_price","outputSchema":{"properties":{"result":{"title":"Result","type":"string"}},"required":["result"],"title":"get_priceOutput","type":"object"}}],"ttlMs":0,"_meta":{"io.modelcontextprotocol/serverInfo":{"name":"fernhill","version":""}}}}

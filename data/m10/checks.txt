@@ -1,0 +1,48 @@
+MCP masterclass · module 10 · conformance checks (mcp 2.3.0, spec 2026-07-28); tokens never printed
+
+=== A. Resource server with SDK defaults only (required_scopes=['menu:read'] for the whole server) ===
+  PRM: {"resource": "http://127.0.0.1:8310/mcp", "authorization_servers": ["http://127.0.0.1:9310"], "scopes_supported": ["menu:read"], "bearer_methods_supported": ["header"]}
+  A1 tools/list, no Authorization header
+    < 401  WWW-Authenticate: Bearer error="invalid_token", error_description="Authentication required", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp"
+    < body {"error": "invalid_token", "error_description": "Authentication required"}
+  A2 tools/list, Authorization: Bearer not-a-real-token
+    < 401  WWW-Authenticate: Bearer error="invalid_token", error_description="Authentication required", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp"
+    < body {"error": "invalid_token", "error_description": "Authentication required"}
+  A3 tools/list with a refunds:write-only token
+    < 403  WWW-Authenticate: Bearer error="insufficient_scope", error_description="Required scope: menu:read", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp"
+    < body {"error": "insufficient_scope", "error_description": "Required scope: menu:read"}
+  A4 tools/call refund with a menu:read-only token; SDK server-wide scope only, no in-tool check
+    < 200  WWW-Authenticate: None
+    < result isError=False text='Refunded $5.10 for A-1041 (person: barista-ana, client: 806ad35b).'
+  A5 the same call; SDK server-wide scope + a scope check INSIDE the tool (no HTTP 403, so no step-up)
+    < 200  WWW-Authenticate: None
+    < result isError=True text='Error executing tool refund: This token does not have the scope refunds:write.'
+
+=== B. AS metadata: SDK helper defaults vs this module's AS ===
+  flags=--sdk-defaults: {"issuer": "http://127.0.0.1:9310", "authorization_response_iss_parameter_supported": "(absent)", "code_challenge_methods_supported": ["S256"], "scopes_supported": ["menu:read", "orders:write", "refunds:write"], "token_endpoint_auth_methods_supported": ["client_secret_post", "client_secret_basic"], "jwks_uri": "(absent)"}
+  flags=(none): {"issuer": "http://127.0.0.1:9310", "authorization_response_iss_parameter_supported": true, "code_challenge_methods_supported": ["S256"], "scopes_supported": ["menu:read", "orders:write", "refunds:write", "offline_access"], "token_endpoint_auth_methods_supported": ["none", "client_secret_post", "client_secret_basic"], "jwks_uri": "http://127.0.0.1:9310/jwks"}
+  flags=--no-pkce-metadata: {"issuer": "http://127.0.0.1:9310", "authorization_response_iss_parameter_supported": true, "code_challenge_methods_supported": "(absent)", "scopes_supported": ["menu:read", "orders:write", "refunds:write", "offline_access"], "token_endpoint_auth_methods_supported": ["none", "client_secret_post", "client_secret_basic"], "jwks_uri": "http://127.0.0.1:9310/jwks"}
+  SDK-defaults AS, client registered with scope 'menu:read', authorize scope=menu:read:
+    authorization response params: ['code', 'state']  (iss present: False)
+  SDK-defaults AS, client registered WITHOUT a scope field (registered scope=None):
+    authorize scope=menu:read -> error='invalid_scope' error_description='Client was not registered with scope menu:read'
+
+=== C. RFC 9207 table (MCP 2026-07-28) vs the SDK's validate_authorization_response_iss (pure function) ===
+  flag=true   iss=http://127.0.0.1:9310        spec: compare: equal -> proceed                                      SDK: proceed
+  flag=true   iss=None                         spec: reject                                                         SDK: reject (Authorization response missing iss parameter advertised by the authorization server)
+  flag=absent iss=http://127.0.0.1:9310        spec: compare: equal -> proceed                                      SDK: proceed
+  flag=absent iss=None                         spec: proceed                                                        SDK: proceed
+  flag=true   iss=http://127.0.0.1:9310/       spec: compare: differs by a trailing slash -> reject (no normalization) SDK: reject (Authorization response iss mismatch: http://127.0.0.1:9310/ != http://127.0.0.1:9310)
+  flag=true   iss=http://localhost:9310        spec: compare: other host string -> reject                           SDK: reject (Authorization response iss mismatch: http://localhost:9310 != http://127.0.0.1:9310)
+
+=== D. Pitfall: pydantic AnyHttpUrl adds a trailing slash to a path-less issuer ===
+  str(AnyHttpUrl('http://127.0.0.1:9310'))                       -> 'http://127.0.0.1:9310/'
+  str(TypeAdapter(AnyHttpUrl, url_preserve_empty_path=True)) -> 'http://127.0.0.1:9310'
+  equal as strings: False
+
+=== E. SDK TokenHandler and the token-request `resource` (RFC 8707 says send it in both requests) ===
+  authorize resource=http://127.0.0.1:8310/mcp  token request resource=http://127.0.0.1:8311/mcp
+  -> token endpoint HTTP 200, issued token aud='http://127.0.0.1:8310/mcp' (the token-request value is not consulted)
+
+=== F. The SDK client's WWW-Authenticate parser on this server's 403 challenge ===
+  parsed: {"error": "insufficient_scope", "scope": "refunds:write", "resource_metadata": "http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp"}

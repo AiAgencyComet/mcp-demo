@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }</style>
+</head>
+<body>
+<script>
+// Sandbox proxy (MCP Apps 2026-01-26, "Sandbox proxy"). Plain-JS port of the reference
+// ext-apps examples/basic-host/src/sandbox.ts. This page runs on a different origin from the host.
+// The CSP header on this page also applies to the inner View document.
+(function () {
+  if (window.self === window.top) throw new Error("sandbox.html runs only inside the host's iframe");
+  if (!/^http:\/\/(localhost|127\.0\.0\.1)(:|\/|$)/.test(document.referrer)) throw new Error("unexpected embedding site");
+  const HOST_ORIGIN = new URL(document.referrer).origin;
+  const OWN_ORIGIN = location.origin;
+
+  // Self-test: the host page must be out of reach. Access to window.top must throw.
+  try { void window.top.document.title; throw "FAIL"; } catch (e) { if (e === "FAIL") throw new Error("sandbox is not isolated"); }
+
+  const inner = document.createElement("iframe");
+  inner.style = "width:100%;height:100%;border:none;display:block";
+  inner.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+  document.body.appendChild(inner);
+
+  window.addEventListener("message", (event) => {
+    if (event.source === window.parent) {
+      if (event.origin !== HOST_ORIGIN) return;                 // only the host may talk to the proxy
+      const m = event.data;
+      if (m && m.method === "ui/notifications/sandbox-resource-ready") {
+        const { html, sandbox } = m.params;
+        if (typeof sandbox === "string") inner.setAttribute("sandbox", sandbox);
+        const doc = inner.contentDocument;
+        doc.open(); doc.write(html); doc.close();
+      } else if (inner.contentWindow) {
+        inner.contentWindow.postMessage(m, "*");                // host -> View
+      }
+    } else if (event.source === inner.contentWindow) {
+      if (event.origin !== OWN_ORIGIN) return;
+      window.parent.postMessage(event.data, HOST_ORIGIN);       // View -> host
+    }
+  });
+
+  window.parent.postMessage({ jsonrpc: "2.0", method: "ui/notifications/sandbox-proxy-ready", params: {} }, HOST_ORIGIN);
+})();
+</script>
+</body>
+</html>

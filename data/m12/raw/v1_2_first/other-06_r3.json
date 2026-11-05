@@ -1,0 +1,57 @@
+{
+ "case_id": "other-06",
+ "rep": 3,
+ "request": "An office wants coffee for 40 people on Friday. Get me a quote.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1422,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSnggKEAgTGAI4AUIIdGhpbmtpbmcSDApqai4qvg7wjxScFRoM2SyO4nYdjb5/RX6/IjDyiBtrWa7LaRYFHl/5ki7j1XzRRF7On1uNPzNqycrMqv61WmvD/UJT8o9LTy4xOXYquwfShLNYXCuGRBKA1QY9A7wNmr2xK339x2Qg6Xh7M5IxUZk4tP7m1qqHoNADNFYQ/kjOEoytjDZc3f/dyx60C8nYGTVzihl5jP17kxuDdBhuvp9BAOUtAY6OZMwBm4peutcGKIXx3k/EVmABUQQrvxIeK3A62nIyxprD5aYidV6MRHWAcyIA7CBjOHvwCqLG7DW/MWMjRMFQQHzHvOA5++kX5ay9A5XkZhHJlYiBKicsN4X03Shr16Dlw/0BF/CRZj0jvmDPabQ6IUzDHR2zSA+7skCKvYvsbfEyzY0Qo7vQzTJFZIxoHC42VZXOJDfPatVatyBgU7JLUohkbb+ZSofOLxxwR8XeCFzprTGRPhb8icN1TMFv4MOdYAvgFpyeWEKWiZ+txcKNdShZbdXiKweN4ENYwC7Jy0PjbdrLT1t/27lUikyjcfRAWvUNQOLfsCMlCD8rlXKG7n6Hy952TGVTeOqQQngUGDVnaZVDMg3i5m9m72U7aHeFQgox7fI7R01RM1tYgJ38qSIzH29QRfGx1tmE0vjV9t71nCAQ6xd3B01b4dyuuh880RfELC3w2ZFOvobhyv9yQ/U+SO3nDDVDFIdsuOo6OWBfWdHepAcmTv++aNypQnNbmKZD6GU0YBXrxrpMoHt6WW40Od3zsv9k2+XJQhmV5nlvBJ9HtsCXCltfI9b9dzE5NU5Iba50/R47GGCk1ofU39DKlMirxlEbL1t972rUoIaogffUGTxCBcFdqZNDBm/jkMpvGizs2dX+zOhU0UlDG6WVQZ3vWF/wIQNoOGCk2ju1Th3SuLAAvja89hULX6Y85YSe5TN4u4uh8v7kCB47IPTRJCM8yRTa4dZwHM/GD2B73j0+pCUDGi7WGDColUTdI/Sm+0MZiSJpi2T4tWXbnmknez6oh/GloFODmW6OVh7Ob7W7i7QJeC9puwHbSELiMXrKIF73EETBVFJFRT+0ixm0+l4GFVjCd04R60xVP+7aP/n7cFG2TrLNET0BVi1Bm0FCiuWKs8eC16yyEnM4WMR8niX24bvtWnGY1rkNGxiqsEY5LfhNeehozxSJRVZRuDFBuWAn7zeAG/ce+0xVS+XcvGgsBtTVTXpjHRJD6h0vDEzvbqjGvt3DzzaIXTPRGPBICWvi9IyXHce+zPGsLfGY3bqjxFZZ97NDtgSV8GqDmj6FNE5yfoj/3FEJ6dFqpMlP6KB3+ns1SXSXxSAo/o9qiB2udDOjmG8HPMUmIMhXTqfEQM+pAkkCo8IkR7GdzQPBGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01WL5kvXC4WS7zgAeLDX6a5F",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "people": 40,
+     "day": "Friday"
+    },
+    "name": "catering__quote_event",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1839,
+   "output_tokens": 221,
+   "output_tokens_details": {
+    "thinking_tokens": 146
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

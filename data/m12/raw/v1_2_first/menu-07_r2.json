@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-07",
+ "rep": 2,
+ "request": "How much is an oat cookie?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 990,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQStQUKEAgTGAI4AUIIdGhpbmtpbmcSDOPeRU49YvejMP19gxoMBl6X1K0cFU3ZJIu3IjAVMDQ3mIYdqT/F6in4twX1+BMa1bptdc4tTnR+MdlFVofVHOUvzE6NTcpTwTruER4q0gRJHQuEsHo4zzipK45JzlwgYekOcQGcvWmb4yK/Tuoh+ORUR1OhvS4BLRYwxrZQSrKd5mk8twwS9HgZDuNkkXHtS3U8RRd75YbmAXkD7+xwG7yitwBpXA/HymzrnCItpUINqp4vtv9t8qLEe+whi+CiRqTvgAgVPdRDxjLrX+1jfUz5L84iS2Cf2uZhFgbAs6RSAo56AkTB2xNVPMK4NiFT81J232lfM2rsaXiosptnXdhzMbFNY1bbkQvfTAjLDokfs+NDSLaVM4qFei2Pu93xcZ+1GHU/1waBl4wMRT0y/RTLkun8fRSse+LETjM1SMOiS9ThJwreaUijlmOa6/ljjUCGflvwGtSZppDIg/syThLlXjO2p6wgfM32l7Lc7XJnad8gEkxtn/Iuc4aJw7sBYdGcHX/LYM7VB4yLCm6Pcc853Y7tmi9B8BEEbYPPP9G7GTT7lW9UL+d9f9qADkEN63jOg6GDUxxLcSADf62X+GPLATSNdNdcsPxgZujwO2hrtNWQ7QZqzEqAM/l7xk8/i1zLCgNC8y2Po4WEvObXYUCiiAMsv204ZQHScFrFbcayly+b5Az8Das31OjWwbpgPz0uhlgNdXZSfnDJCS03eKvBdc4ggSrrNFLpKcCRFJwqnu29WHkJegLQf1kCC3CwJEYQvp2PqNh0K2DNBtWn76Ru9KAc7N4vPwpScYsg5311eN4ZhxuhMF9IDbFOHHDmEsv0esW+mhe3F4JX6aVfVoy/pRum2qQgNz/ErXgB1jGmsK8+8hGSBAsSys0oewWs2EEYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01GcRmd33Loy3p4V9wbZ25nC",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1825,
+   "output_tokens": 66,
+   "output_tokens_details": {
+    "thinking_tokens": 33
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

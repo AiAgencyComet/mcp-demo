@@ -1,0 +1,46 @@
+{
+ "resources": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "resources": [
+   {
+    "name": "menu_resource",
+    "uri": "fernhill://menu",
+    "description": "The full menu.",
+    "mimeType": "application/json"
+   },
+   {
+    "name": "refund_policy",
+    "uri": "fernhill://policy/refunds",
+    "description": "The refund policy of the shop.",
+    "mimeType": "text/plain"
+   }
+  ],
+  "resultType": "complete"
+ },
+ "templates": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "resourceTemplates": [
+   {
+    "name": "order_resource",
+    "uriTemplate": "fernhill://orders/{order_id}",
+    "description": "One order, by ID.",
+    "mimeType": "application/json"
+   }
+  ],
+  "resultType": "complete"
+ }
+}

@@ -1,0 +1,13 @@
+{"trial": 0, "rounds": 2, "ok": true, "error": null}
+{"trial": 1, "rounds": 2, "ok": true, "error": null}
+{"trial": 2, "rounds": 2, "ok": true, "error": null}
+{"trial": 3, "rounds": 2, "ok": true, "error": null}
+{"trial": 4, "rounds": 2, "ok": true, "error": null}
+{"trial": 5, "rounds": 2, "ok": true, "error": null}
+{"trial": 6, "rounds": 2, "ok": true, "error": null}
+{"trial": 7, "rounds": 2, "ok": true, "error": null}
+{"trial": 8, "rounds": 2, "ok": true, "error": null}
+{"trial": 9, "rounds": 2, "ok": true, "error": null}
+{"trial": 10, "rounds": 2, "ok": true, "error": null}
+{"trial": 11, "rounds": 2, "ok": true, "error": null}
+{"summary": {"cell": "mrtr_shared", "calls": 12, "ok": 12, "http_requests": 24, "median_call_ms": null, "median_cold_ms": 316.2, "methods": ["tools/call"]}}

@@ -1,0 +1,275 @@
+{
+  "claude_code_version": "2.1.318 (Claude Code)",
+  "claude_run": {
+    "exit": 0,
+    "stdout_tail": ", such as the Fernhill app or another client that declares that extension.\n- Try a shorter window (for example, `days: 7`). The error may only come up for longer reports, but I haven't confirmed that.\n- If you have a Fernhill dashboard or an export from another source, I can work from that instead.\n",
+    "stderr_tail": ""
+  },
+  "requests": [
+    {
+      "t": 1793858685.164,
+      "http_method": "POST",
+      "jsonrpc_method": "server/discover",
+      "mcp_headers": {
+        "mcp-method": "server/discover",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858685.219,
+      "http_method": "POST",
+      "jsonrpc_method": "subscriptions/listen",
+      "mcp_headers": {
+        "mcp-method": "subscriptions/listen",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858710.22,
+      "http_method": "POST",
+      "jsonrpc_method": "notifications/cancelled",
+      "mcp_headers": {
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858710.231,
+      "http_method": "POST",
+      "jsonrpc_method": "prompts/list",
+      "mcp_headers": {
+        "mcp-method": "prompts/list",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858710.241,
+      "http_method": "POST",
+      "jsonrpc_method": "resources/list",
+      "mcp_headers": {
+        "mcp-method": "resources/list",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858710.25,
+      "http_method": "POST",
+      "jsonrpc_method": "tools/list",
+      "mcp_headers": {
+        "mcp-method": "tools/list",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858711.222,
+      "http_method": "POST",
+      "jsonrpc_method": "subscriptions/listen",
+      "mcp_headers": {
+        "mcp-method": "subscriptions/listen",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        },
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858713.648,
+      "http_method": "POST",
+      "jsonrpc_method": "tools/call",
+      "mcp_headers": {
+        "mcp-method": "tools/call",
+        "mcp-name": "export_sales_report",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    },
+    {
+      "t": 1793858719.124,
+      "http_method": "POST",
+      "jsonrpc_method": "tools/call",
+      "mcp_headers": {
+        "mcp-method": "tools/call",
+        "mcp-name": "export_sales_report",
+        "mcp-protocol-version": "2026-07-28"
+      },
+      "user_agent": "claude-code/2.1.318 (sdk-cli)",
+      "protocolVersion": "2026-07-28",
+      "clientCapabilities": {
+        "roots": {
+          "listChanged": true
+        },
+        "elicitation": {
+          "form": {},
+          "url": {}
+        }
+      },
+      "clientInfo": {
+        "name": "claude-code",
+        "title": "Claude Code",
+        "version": "2.1.318",
+        "description": "Anthropic's agentic coding tool",
+        "websiteUrl": "https://claude.com/claude-code"
+      }
+    }
+  ]
+}

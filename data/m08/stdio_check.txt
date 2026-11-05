@@ -1,0 +1,5 @@
+stdio protocol version: 2026-07-28
+ tool show_order_board {'resourceUri': 'ui://fernhill/order-board', 'visibility': ['model', 'app']}
+ tool mark_order_done {'resourceUri': 'ui://fernhill/order-board', 'visibility': ['app']}
+ tool order_status {'visibility': ['model']}
+ resources/read -> text/html;profile=mcp-app 12152 characters

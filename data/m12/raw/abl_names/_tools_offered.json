@@ -1,0 +1,240 @@
+[
+ {
+  "name": "fernhill__mn_list",
+  "description": "Return every item on the Fernhill menu with its price and sizes.",
+  "input_schema": {
+   "type": "object",
+   "properties": {},
+   "title": "get_menuArguments"
+  }
+ },
+ {
+  "name": "fernhill__po_create",
+  "description": "Place a new order. Returns an order_id. Use that order_id in later calls.",
+  "input_schema": {
+   "type": "object",
+   "$defs": {
+    "Delivery": {
+     "properties": {
+      "kind": {
+       "const": "delivery",
+       "title": "Kind",
+       "type": "string"
+      },
+      "address": {
+       "title": "Address",
+       "type": "string"
+      }
+     },
+     "required": [
+      "kind",
+      "address"
+     ],
+     "title": "Delivery",
+     "type": "object"
+    },
+    "Item": {
+     "properties": {
+      "drink": {
+       "description": "A drink name from get_menu",
+       "title": "Drink",
+       "type": "string"
+      },
+      "size": {
+       "title": "Size",
+       "type": "string"
+      },
+      "milk": {
+       "default": "whole",
+       "enum": [
+        "whole",
+        "oat",
+        "none"
+       ],
+       "title": "Milk",
+       "type": "string"
+      }
+     },
+     "required": [
+      "drink",
+      "size"
+     ],
+     "title": "Item",
+     "type": "object"
+    },
+    "Pickup": {
+     "properties": {
+      "kind": {
+       "const": "pickup",
+       "title": "Kind",
+       "type": "string"
+      },
+      "name": {
+       "description": "Name to call at the counter",
+       "title": "Name",
+       "type": "string"
+      }
+     },
+     "required": [
+      "kind",
+      "name"
+     ],
+     "title": "Pickup",
+     "type": "object"
+    }
+   },
+   "properties": {
+    "items": {
+     "items": {
+      "$ref": "#/$defs/Item"
+     },
+     "title": "Items",
+     "type": "array"
+    },
+    "handoff": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Pickup"
+      },
+      {
+       "$ref": "#/$defs/Delivery"
+      }
+     ],
+     "title": "Handoff"
+    }
+   },
+   "required": [
+    "items",
+    "handoff"
+   ],
+   "title": "place_orderArguments"
+  }
+ },
+ {
+  "name": "fernhill__po_get",
+  "description": "Return the status of one order.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "title": "Order Id",
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id"
+   ],
+   "title": "order_statusArguments"
+  }
+ },
+ {
+  "name": "fernhill__po_refund",
+  "description": "Refund one order. The person must confirm first.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "order_id": {
+     "title": "Order Id",
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id"
+   ],
+   "title": "refundArguments"
+  }
+ },
+ {
+  "name": "stock__check_stock",
+  "description": "Return how many units of one stock item are left in the back room, for example oat milk cartons, coffee beans or cups.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "item": {
+     "type": "string",
+     "description": "Stock item name"
+    }
+   },
+   "required": [
+    "item"
+   ]
+  }
+ },
+ {
+  "name": "suppliers__create_purchase_order",
+  "description": "Create a purchase order to buy stock from a supplier.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "supplier": {
+     "type": "string"
+    },
+    "item": {
+     "type": "string"
+    },
+    "quantity": {
+     "type": "integer",
+     "minimum": 1
+    }
+   },
+   "required": [
+    "supplier",
+    "item",
+    "quantity"
+   ]
+  }
+ },
+ {
+  "name": "staff__list_shifts",
+  "description": "List the staff shifts for one day.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "day": {
+     "type": "string",
+     "description": "A day name or a date"
+    }
+   },
+   "required": [
+    "day"
+   ]
+  }
+ },
+ {
+  "name": "loyalty__get_points",
+  "description": "Return the loyalty points balance of one customer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "customer_name": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "customer_name"
+   ]
+  }
+ },
+ {
+  "name": "catering__quote_event",
+  "description": "Make a price quote for a catering event: coffee for a group, delivered to an office or an event.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "people": {
+     "type": "integer"
+    },
+    "day": {
+     "type": "string"
+    },
+    "address": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "people",
+    "day"
+   ]
+  }
+ }
+]

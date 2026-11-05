@@ -1,0 +1,17 @@
+1793858430.000 copy A pid 88755: start, store=memory
+INFO:     Started server process [88755]
+INFO:     Waiting for application startup.
+StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8181 (Press CTRL+C to quit)
+1793858430.929 copy A pid 88755: created task 6637aea8-b91f-4288-b5d4-8f468938cb1a for export_sales_report({'days': 12})
+1793858433.946 copy A pid 88755: task 6637aea8-b91f-4288-b5d4-8f468938cb1a completed
+1793858437.361 copy A pid 88755: created task e19d4713-c5d2-4828-b0d6-aa4ea7cf5d5e for export_sales_report({'days': 12})
+1793858440.381 copy A pid 88755: task e19d4713-c5d2-4828-b0d6-aa4ea7cf5d5e completed
+1793858443.815 copy A pid 88755: created task b223c3b7-2a8a-4943-bd67-2e57dbb010b5 for export_sales_report({'days': 12})
+1793858446.839 copy A pid 88755: task b223c3b7-2a8a-4943-bd67-2e57dbb010b5 completed
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88755]

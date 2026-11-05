@@ -1,0 +1,106 @@
+{
+ "stable": [
+  {
+   "input": 88,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 88,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 83,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 86,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 89,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 84,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 87,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 88,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 87,
+   "cache_read": 11192,
+   "cache_write": 0
+  },
+  {
+   "input": 89,
+   "cache_read": 11192,
+   "cache_write": 0
+  }
+ ],
+ "shuffled": [
+  {
+   "input": 88,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 88,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 83,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 86,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 89,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 84,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 87,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 88,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 87,
+   "cache_read": 0,
+   "cache_write": 11192
+  },
+  {
+   "input": 89,
+   "cache_read": 0,
+   "cache_write": 11192
+  }
+ ]
+}

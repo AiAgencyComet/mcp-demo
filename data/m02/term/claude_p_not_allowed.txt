@@ -1,0 +1,1 @@
+Fernhill doesn't list a "large latte." Their menu has a latte, a flat white, and a cold brew, and the price tool returned no size options. A regular latte is **$4.50**. If they sell a large size, the tool doesn't show it, so you'd need to check with the shop.

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Local MCP Apps test host</title>
+<style>
+  :root {
+    --bg: #f6f5f1; --panel: #ffffff; --ink: #1d1b18; --muted: #6f6a62; --line: #e4e0d8;
+    --view: #6b4fd8; --view-bg: #efebfd; --srv: #1f6fd1; --srv-bg: #e7f0fc; --sbx: #0f8a7e; --sbx-bg: #e2f4f2;
+    --gate: #b5561b; --gate-bg: #fcefe5;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 14px; -webkit-font-smoothing: antialiased;
+         display: grid; grid-template-rows: 46px 1fr; overflow: hidden; }
+  .top { display: flex; align-items: center; gap: 12px; padding: 0 18px; border-bottom: 1px solid var(--line); background: var(--panel); }
+  .logo { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--ink); display: grid; place-items: center; font: 700 11px var(--mono); }
+  .top b { font-weight: 650; }
+  .tag { font: 12px var(--mono); color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 3px 8px; border-radius: 6px; }
+  .status { margin-left: auto; display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #c9c3b8; }
+  body:not([data-state="idle"]):not([data-state="error"]) .dot { background: #2f9e62; }
+  main { display: grid; grid-template-columns: 1fr 440px; min-height: 0; }
+  .chat { padding: 14px 26px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+  .chat > * { flex-shrink: 0; }
+  .row { display: flex; }
+  .visible { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muted); }
+  .chip { font: 12px var(--mono); padding: 3px 8px; border-radius: 6px; background: var(--panel); border: 1px solid var(--line); color: var(--ink); }
+  .chip.hidden { color: #a8a196; text-decoration: line-through; background: transparent; }
+  .user { margin-left: auto; background: var(--ink); color: #fff; padding: 9px 14px; border-radius: 14px 14px 4px 14px; max-width: 70%; }
+  .assistant { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .call { display: inline-flex; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line);
+          padding: 6px 10px; border-radius: 8px; font: 12.5px var(--mono); color: var(--ink); }
+  .call .st { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+  .scripted { font-size: 11px; color: var(--muted); border: 1px dashed var(--line); padding: 1px 6px; border-radius: 5px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .card .cap { display: flex; justify-content: space-between; font: 11.5px var(--mono); color: var(--muted); padding: 7px 12px;
+               border-bottom: 1px solid var(--line); background: #fbfaf7; }
+  .card iframe { display: block; width: 100%; height: 120px; border: 0; transition: height .2s; }
+  .ctx { border: 1px dashed #c8c1b5; border-radius: 10px; padding: 10px 12px; background: #fffdf8; font-size: 13px; display: none; }
+  .ctx.on { display: block; }
+  .ctx .h { font: 11.5px var(--mono); color: var(--muted); margin-bottom: 4px; }
+  .log { border-left: 1px solid var(--line); background: var(--panel); display: grid; grid-template-rows: auto 1fr; min-height: 0; }
+  .log h2 { margin: 0; padding: 12px 16px 10px; font-size: 13px; font-weight: 650; border-bottom: 1px solid var(--line);
+            display: flex; justify-content: space-between; align-items: baseline; }
+  .log h2 span { font: 11.5px var(--mono); color: var(--muted); font-weight: 400; }
+  .legend { display: flex; gap: 10px; font: 11px var(--mono); color: var(--muted); padding: 0 16px 8px; border-bottom: 1px solid var(--line); }
+  .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 4px; vertical-align: 0; }
+  #entries { overflow-y: auto; padding: 6px 0 12px; font: 11.5px/1.35 var(--mono); }
+  .e { display: grid; grid-template-columns: 24px 96px 1fr; gap: 6px; padding: 4px 14px; align-items: start; }
+  .e.new { animation: pop .5s ease-out; }
+  @keyframes pop { from { background: #fff7d6; } to { background: transparent; } }
+  .e .n { color: #b3ada3; text-align: right; }
+  .hop { font-size: 10.5px; padding: 1px 5px; border-radius: 4px; text-align: center; white-space: nowrap; }
+  .hop.view { color: var(--view); background: var(--view-bg); }
+  .hop.srv { color: var(--srv); background: var(--srv-bg); }
+  .hop.sbx { color: var(--sbx); background: var(--sbx-bg); }
+  .hop.gate { color: var(--gate); background: var(--gate-bg); }
+  .m { color: var(--ink); word-break: break-word; }
+  .m .s { color: var(--muted); }
+  .m .k { font-size: 10px; color: #aaa39a; margin-left: 4px; }
+  .modal { position: fixed; inset: 0; background: rgba(29,27,24,.32); display: none; place-items: center; z-index: 10; }
+  .modal.on { display: grid; }
+  .dlg { width: 470px; background: #fff; border-radius: 14px; padding: 20px 22px 18px; box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+  .dlg h3 { margin: 0 0 4px; font-size: 16px; }
+  .dlg .who { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+  .dlg pre { margin: 0 0 10px; padding: 10px 12px; background: var(--bg); border-radius: 8px; font: 13px var(--mono); white-space: pre-wrap; }
+  .dlg .meta { font: 12px var(--mono); color: var(--muted); margin-bottom: 16px; }
+  .dlg .btns { display: flex; justify-content: flex-end; gap: 10px; }
+  .dlg button { font: 600 13px var(--sans); padding: 8px 18px; border-radius: 8px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+  .dlg button.allow { background: var(--ink); color: #fff; border-color: var(--ink); }
+</style>
+</head>
+<body data-state="idle">
+<div class="top">
+  <div class="logo">H</div><b>Local test host</b>
+  <span class="tag">MCP 2026-07-28</span><span class="tag">MCP Apps 2026-01-26</span>
+  <div class="status"><span class="dot"></span><span id="status">connecting…</span></div>
+</div>
+<main>
+  <section class="chat" id="chat">
+    <div class="visible" id="visible"></div>
+  </section>
+  <aside class="log">
+    <div>
+      <h2>Bridge log <span id="count">0 messages</span></h2>
+      <div class="legend"><span><i style="background:var(--view)"></i>View ↔ Host</span><span><i style="background:var(--srv)"></i>Host ↔ Server</span><span><i style="background:var(--sbx)"></i>Sandbox</span><span><i style="background:var(--gate)"></i>Consent</span></div>
+    </div>
+    <div id="entries"></div>
+  </aside>
+</main>
+<div class="modal" id="modal">
+  <div class="dlg">
+    <h3>Allow this tool call?</h3>
+    <div class="who" id="dlg-who"></div>
+    <pre id="dlg-call"></pre>
+    <div class="meta" id="dlg-meta"></div>
+    <div class="btns"><button id="deny">Deny</button><button class="allow" id="allow">Allow</button></div>
+  </div>
+</div>
+
+<script>
+// ---------- setup ----------
+const params = new URLSearchParams(location.search);
+const HOLD = Number(params.get("hold") || 0);
+const LOG_NAME = params.get("log") || "bridge_log";           // which data/m08/<name>.jsonl the page writes              // capture only: hold the tool-result so the loading state is visible
+const SANDBOX_URL = "http://localhost:8821/sandbox.html";
+const SANDBOX_ORIGIN = new URL(SANDBOX_URL).origin;
+const HOST_INFO = { name: "fernhill-test-host", version: "1.0.0" };
+const UI_MIME = "text/html;profile=mcp-app";
+const MCP_META = {
+  "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+  "io.modelcontextprotocol/clientCapabilities": { extensions: { "io.modelcontextprotocol/ui": { mimeTypes: [UI_MIME] } } },
+  "io.modelcontextprotocol/clientInfo": HOST_INFO,
+};
+const NAME_KEY = { "tools/call": "name", "prompts/get": "name", "resources/read": "uri" };
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const $ = (id) => document.getElementById(id);
+
+let tools = new Map(), serverName = "server", frame = null, current = null;
+const uiCache = new Map();
+const T0 = performance.now();
+
+// ---------- bridge log ----------
+const LOG = []; window.__bridgeLog = LOG;
+let seq = 0, logChain = Promise.resolve();
+window.__flushLog = () => logChain;
+const HOP = { "view-host": "view", "host-server": "srv", "sandbox-host": "sbx", "host-gate": "gate" };
+const LABEL = { view: "View", host: "Host", server: "Server", sandbox: "Sandbox", person: "Person" };
+
+function kindOf(m) { return m.method ? (m.id !== undefined ? "request" : "notification") : "response"; }
+
+function log(entry) {
+  entry.seq = ++seq;
+  entry.t_ms = entry.t_ms ?? Math.round((performance.now() - T0) * 10) / 10;
+  entry.wall = new Date().toISOString();
+  LOG.push(entry);
+  const body = JSON.stringify(entry);
+  logChain = logChain.then(() => fetch("/api/log?name=" + LOG_NAME, { method: "POST", headers: { "content-type": "application/json" }, body }));
+  drawEntry(entry);
+}
+
+function summary(e) {
+  const m = e.msg || {}, p = m.params || {}, r = m.result;
+  if (e.hop === "host-gate") return e.note;
+  if (m.error) return "error " + m.error.code + ": " + m.error.message;
+  switch (e.method) {
+    case "tools/call": return e.kind === "request" ? p.name + " " + JSON.stringify(p.arguments || {})
+      : (r.isError ? "isError: " : "") + (r.content && r.content[0] ? r.content[0].text.split("\n")[0] : "");
+    case "resources/read": return e.kind === "request" ? p.uri : r.contents[0].mimeType + ", " + (r.contents[0].text || "").length + " chars";
+    case "tools/list": return e.kind === "request" ? "" : r.tools.map((t) => t.name).join(", ");
+    case "resources/list": return e.kind === "request" ? "" : r.resources.map((x) => x.uri).join(", ");
+    case "server/discover": return e.kind === "request" ? "" : "extensions: " + Object.keys(r.capabilities.extensions || {}).join(", ");
+    case "ui/notifications/sandbox-resource-ready": return "html: " + p.html.length + " chars, csp: " + (p.csp ? JSON.stringify(p.csp) : "none (restrictive default)");
+    case "ui/initialize": return e.kind === "request" ? p.appInfo.name + " · protocol " + p.protocolVersion : "hostInfo " + r.hostInfo.name + " · hostContext.toolInfo " + r.hostContext.toolInfo.tool.name;
+    case "ui/notifications/tool-input": return "arguments " + JSON.stringify(p.arguments);
+    case "ui/notifications/tool-result": return "structuredContent.orders: " + ((p.structuredContent || {}).orders || []).length;
+    case "ui/notifications/size-changed": return p.width + " × " + p.height;
+    case "ui/update-model-context": return e.kind === "request" ? (p.content && p.content[0] ? p.content[0].text : "") : "{}";
+    case "ui/resource-teardown": return e.kind === "request" ? "reason: " + p.reason : "{}";
+    default: return e.kind === "response" ? JSON.stringify(r || {}).slice(0, 60) : JSON.stringify(p).slice(0, 60);
+  }
+}
+
+function drawEntry(e) {
+  const div = document.createElement("div");
+  div.className = "e new";
+  const hop = HOP[e.hop];
+  const arrow = e.from === e.to ? LABEL[e.from] + " check" : LABEL[e.from] + " → " + LABEL[e.to];
+  const kind = e.kind === "response" ? "result" : e.kind === "notification" ? "notif" : e.kind === "request" ? "req" : "";
+  div.innerHTML = '<span class="n">' + e.seq + '</span><span class="hop ' + hop + '">' + arrow + '</span>' +
+    '<span class="m">' + (e.method || "") + '<span class="k">' + kind + '</span><br><span class="s"></span></span>';
+  div.querySelector(".s").textContent = summary(e);
+  const box = $("entries");
+  box.appendChild(div);
+  box.scrollTop = box.scrollHeight;
+  $("count").textContent = LOG.length + " messages";
+}
+
+// ---------- host -> server (MCP over Streamable HTTP, via the local forwarder) ----------
+let wireId = 0;
+async function mcp(method, p, note) {
+  const wire = { jsonrpc: "2.0", id: ++wireId, method, params: { ...(p || {}), _meta: MCP_META } };
+  const headers = { "MCP-Protocol-Version": "2026-07-28", "Mcp-Method": method };
+  if (NAME_KEY[method] && p && p[NAME_KEY[method]]) headers["Mcp-Name"] = p[NAME_KEY[method]];
+  log({ hop: "host-server", from: "host", to: "server", kind: "request", method, id: wire.id, http_headers: headers, msg: wire, note });
+  const r = await fetch("/api/mcp", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ wire, headers }) }).then((x) => x.json());
+  log({ hop: "host-server", from: "server", to: "host", kind: "response", method, id: wire.id, http_status: r.status, server_ms: r.ms, msg: r.response, note });
+  if (r.response.error) throw r.response.error;
+  return r.response.result;
+}
+
+// ---------- consent: one gate for every tool call, from the model or from a View ----------
+function approve(source, tool, args) {
+  const readOnly = tool.annotations && tool.annotations.readOnlyHint === true;
+  const who = source === "model" ? "the model" : "the View (" + tool._meta.ui.resourceUri + ")";
+  if (readOnly) {
+    log({ hop: "host-gate", from: "host", to: "host", kind: "consent", method: "tools/call", decision: "auto-allow", source, tool: tool.name,
+          note: tool.name + " asked by " + source + ": auto-allow (readOnlyHint: true)" });
+    return Promise.resolve(true);
+  }
+  log({ hop: "host-gate", from: "host", to: "person", kind: "consent", method: "tools/call", decision: "ask", source, tool: tool.name,
+        note: tool.name + " asked by " + source + ": ask the person (readOnlyHint: false)" });
+  $("dlg-who").textContent = "Asked by " + who + ". This is the same check that a model tool call gets.";
+  $("dlg-call").textContent = tool.name + "(" + JSON.stringify(args) + ")";
+  $("dlg-meta").textContent = "server: " + serverName + " · readOnlyHint: " + !!(tool.annotations && tool.annotations.readOnlyHint) +
+    " · visibility: " + JSON.stringify(tool._meta && tool._meta.ui ? tool._meta.ui.visibility : ["model", "app"]);
+  $("modal").classList.add("on");
+  document.body.dataset.consent = "open";
+  return new Promise((resolve) => {
+    const done = (ok) => {
+      $("modal").classList.remove("on"); document.body.dataset.consent = ok ? "allowed" : "denied";
+      log({ hop: "host-gate", from: "person", to: "host", kind: "consent", method: "tools/call", decision: ok ? "allow" : "deny", source, tool: tool.name,
+            note: "the person chose " + (ok ? "Allow" : "Deny") });
+      resolve(ok);
+    };
+    $("allow").onclick = () => done(true);
+    $("deny").onclick = () => done(false);
+  });
+}
+
+// ---------- host <-> View (JSON-RPC over postMessage, through the sandbox proxy) ----------
+const viewRequests = new Map();   // ids of requests the View sent us -> method
+const hostRequests = new Map();   // ids of requests we sent the View -> {method, resolve}
+let hostReqId = 1000;
+
+function toView(msg, toWho) {
+  const kind = kindOf(msg);
+  const method = msg.method || viewRequests.get(msg.id);
+  log({ hop: toWho === "sandbox" ? "sandbox-host" : "view-host", from: "host", to: toWho || "view", kind, method, id: msg.id, msg });
+  if (kind === "response") viewRequests.delete(msg.id);
+  frame.contentWindow.postMessage(msg, SANDBOX_ORIGIN);
+}
+function requestView(method, p) {
+  const id = ++hostReqId;
+  return new Promise((resolve) => { hostRequests.set(id, { method, resolve }); toView({ jsonrpc: "2.0", id, method, params: p }); });
+}
+const ok = (id, result) => toView({ jsonrpc: "2.0", id, result });
+const fail = (id, code, message) => toView({ jsonrpc: "2.0", id, error: { code, message } });
+
+window.addEventListener("message", async (event) => {
+  if (!frame || event.source !== frame.contentWindow || event.origin !== SANDBOX_ORIGIN) return;
+  const m = event.data;
+  if (!m || m.jsonrpc !== "2.0") return;
+  const kind = kindOf(m);
+
+  if (m.method === "ui/notifications/sandbox-proxy-ready") {
+    log({ hop: "sandbox-host", from: "sandbox", to: "host", kind, method: m.method, msg: m });
+    toView({ jsonrpc: "2.0", method: "ui/notifications/sandbox-resource-ready",
+             params: { html: current.ui.html, csp: current.ui.meta.csp, permissions: current.ui.meta.permissions } }, "sandbox");
+    return;
+  }
+  if (kind === "request") viewRequests.set(m.id, m.method);
+  const method = kind === "response" ? (hostRequests.get(m.id) || {}).method : m.method;
+  log({ hop: "view-host", from: "view", to: "host", kind, method, id: m.id, msg: m });
+
+  if (kind === "response") { const h = hostRequests.get(m.id); if (h) { hostRequests.delete(m.id); h.resolve(m.result || m.error); } return; }
+  if (kind === "notification") {
+    if (m.method === "ui/notifications/initialized") current.initialized();
+    if (m.method === "ui/notifications/size-changed") frame.style.height = Math.min(m.params.height, 640) + "px";
+    return;
+  }
+  try {
+    switch (m.method) {
+      case "ui/initialize": return ok(m.id, initializeResult());
+      case "tools/call": return await viewToolCall(m);
+      case "resources/read": return ok(m.id, await mcp("resources/read", { uri: m.params.uri }, "View resource read"));
+      case "ui/update-model-context": showContext(m.params); return ok(m.id, {});
+      case "ui/message": addUser(m.params.content.text); return ok(m.id, {});
+      case "ui/request-display-mode": return ok(m.id, { mode: "inline" });
+      case "ping": return ok(m.id, {});
+      default: return fail(m.id, -32601, "Method not found: " + m.method);
+    }
+  } catch (err) { fail(m.id, err.code || -32603, err.message || String(err)); }
+});
+
+function initializeResult() {
+  return {
+    protocolVersion: "2026-01-26",
+    hostInfo: HOST_INFO,
+    hostCapabilities: { serverTools: {}, serverResources: {}, updateModelContext: { text: {} } },
+    hostContext: {
+      toolInfo: { id: current.toolCallId, tool: current.tool },
+      theme: "light",
+      styles: { variables: { "--font-sans": 'ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif', "--border-radius-md": "10px" } },
+      displayMode: "inline",
+      availableDisplayModes: ["inline"],
+      containerDimensions: { width: Math.round(frame.getBoundingClientRect().width), maxHeight: 640 },
+      locale: "en-GB",
+      timeZone: "Europe/London",
+      platform: "web",
+    },
+  };
+}
+
+async function viewToolCall(m) {
+  const name = m.params.name, args = m.params.arguments || {};
+  const tool = tools.get(name);
+  if (!tool) return fail(m.id, -32602, "Unknown tool: " + name);
+  const visibility = (tool._meta && tool._meta.ui && tool._meta.ui.visibility) || ["model", "app"];
+  if (!visibility.includes("app")) {           // spec: the host MUST reject app calls to tools without "app"
+    log({ hop: "host-gate", from: "host", to: "host", kind: "consent", method: "tools/call", decision: "reject", source: "view", tool: name,
+          note: name + " asked by view: rejected (visibility " + JSON.stringify(visibility) + ")" });
+    return fail(m.id, -32000, "Tool " + name + " is not available to apps (visibility " + JSON.stringify(visibility) + ")");
+  }
+  if (!(await approve("view", tool, args))) return fail(m.id, -32000, "The person denied " + name);
+  try { return ok(m.id, await mcp("tools/call", { name, arguments: args }, "tool call from the View")); }
+  catch (err) { return fail(m.id, err.code || -32603, err.message); }
+}
+
+// ---------- chat ----------
+function addUser(text) { const r = document.createElement("div"); r.className = "row"; r.innerHTML = '<div class="user"></div>'; r.firstChild.textContent = text; $("chat").appendChild(r); }
+function addCall(name) {
+  const d = document.createElement("div"); d.className = "assistant";
+  d.innerHTML = 'Model <span class="scripted">scripted turn</span> <span class="call">' + name + '() <span class="st" id="call-st">running…</span></span>';
+  $("chat").appendChild(d);
+}
+function showContext(p) {
+  let box = $("ctx");
+  if (!box) { box = document.createElement("div"); box.id = "ctx"; box.className = "ctx"; box.innerHTML = '<div class="h">model context for the next turn · from ui/update-model-context</div><div id="ctx-text"></div>'; $("chat").appendChild(box); }
+  $("ctx-text").textContent = (p.content || []).map((c) => c.text).join("\n");
+  box.classList.add("on");
+  $("chat").scrollTop = $("chat").scrollHeight;
+  document.body.dataset.context = "set";
+}
+
+function mountView(tool, toolCallId) {
+  const uri = tool._meta.ui.resourceUri;
+  const ui = uiCache.get(uri);
+  const card = document.createElement("div"); card.className = "card";
+  card.innerHTML = '<div class="cap"><span>' + uri + '</span><span>sandboxed iframe · ' + SANDBOX_ORIGIN.replace("http://", "") + '</span></div>';
+  frame = document.createElement("iframe");
+  frame.id = "app-frame";
+  frame.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+  const url = new URL(SANDBOX_URL);
+  if (ui.meta.csp) url.searchParams.set("csp", JSON.stringify(ui.meta.csp));
+  card.appendChild(frame);
+  $("chat").appendChild(card);
+  return new Promise((resolve) => {
+    current = { tool, toolCallId, ui, initialized: resolve };
+    frame.src = url.href;
+  });
+}
+
+// ---------- lifecycle ----------
+async function connect() {
+  await fetch("/api/log/reset?name=" + LOG_NAME, { method: "POST" });
+  const disc = await mcp("server/discover", {}, "connect");
+  serverName = ((disc._meta || {})["io.modelcontextprotocol/serverInfo"] || {}).name || "server";
+  const tl = await mcp("tools/list", {}, "connect");
+  tools = new Map(tl.tools.map((t) => [t.name, t]));
+  const visible = $("visible");
+  visible.innerHTML = "Tools the model sees:";
+  for (const t of tl.tools) {
+    const vis = (t._meta && t._meta.ui && t._meta.ui.visibility) || ["model", "app"];
+    const chip = document.createElement("span");
+    chip.className = "chip" + (vis.includes("model") ? "" : " hidden");
+    chip.textContent = t.name + (vis.includes("model") ? "" : " (app only)");
+    visible.appendChild(chip);
+  }
+  const rl = await mcp("resources/list", {}, "connect");
+  // Prefetch each UI template that a tool names, before any tool call (the spec lets hosts do this).
+  for (const uri of new Set(tl.tools.map((t) => t._meta && t._meta.ui && t._meta.ui.resourceUri).filter(Boolean))) {
+    const rr = await mcp("resources/read", { uri }, "prefetch UI template");
+    const c = rr.contents[0];
+    if (c.mimeType !== UI_MIME) throw new Error("not an MCP App resource: " + c.mimeType);
+    const listing = rl.resources.find((x) => x.uri === uri) || {};
+    uiCache.set(uri, { html: c.text ?? atob(c.blob), meta: (c._meta && c._meta.ui) || (listing._meta && listing._meta.ui) || {} });
+  }
+  $("status").textContent = serverName + " · 127.0.0.1:8810 · " + tl.tools.length + " tools";
+  document.body.dataset.state = "connected";
+}
+
+async function runTurn(question) {
+  document.body.dataset.state = "turn";
+  addUser(question || "Show me the open orders.");
+  await sleep(700);
+  const tool = tools.get("show_order_board");
+  addCall(tool.name);
+  if (!(await approve("model", tool, {}))) return;
+  const toolCallId = wireId + 1;                       // the id that the next MCP request gets
+  const resultPromise = mcp("tools/call", { name: tool.name, arguments: {} }, "model tool call");
+  await mountView(tool, toolCallId);                   // sandbox proxy -> HTML -> ui/initialize -> initialized
+  toView({ jsonrpc: "2.0", method: "ui/notifications/tool-input", params: { arguments: {} } });
+  const result = await resultPromise;
+  $("call-st").textContent = "done";
+  if (HOLD) await sleep(HOLD);
+  toView({ jsonrpc: "2.0", method: "ui/notifications/tool-result", params: result });
+  document.body.dataset.state = "shown";
+}
+
+async function teardown() {
+  const res = await requestView("ui/resource-teardown", { reason: "conversation closed" });
+  frame.remove(); frame = null;
+  document.body.dataset.state = "torn-down";
+  return res;
+}
+window.runTurn = runTurn; window.teardown = teardown;
+
+connect().then(() => { if (!params.has("manual")) setTimeout(() => runTurn(), Number(params.get("turnDelay") || 900)); })
+         .catch((err) => { $("status").textContent = "error: " + (err.message || JSON.stringify(err)); document.body.dataset.state = "error"; });
+</script>
+</body>
+</html>

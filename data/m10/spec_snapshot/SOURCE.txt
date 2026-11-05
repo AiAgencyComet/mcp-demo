@@ -1,0 +1,1 @@
+Fetched 2026-11-04 from https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization(.md) and subpages, and https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/ (section 'Authorization Hardening').

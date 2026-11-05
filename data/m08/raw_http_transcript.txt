@@ -1,0 +1,44 @@
+$ POST http://127.0.0.1:8810/mcp
+  MCP-Protocol-Version: 2026-07-28
+  Mcp-Method: server/discover
+  body: {"jsonrpc": "2.0", "id": 1, "method": "server/discover", "params": {}}
+< HTTP 200  content-type: application/json
+  result.capabilities.extensions = {"io.modelcontextprotocol/ui": {}}
+  result.supportedVersions = ['2026-07-28'] 
+
+$ POST http://127.0.0.1:8810/mcp
+  MCP-Protocol-Version: 2026-07-28
+  Mcp-Method: tools/list
+  body: {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}
+< HTTP 200  content-type: application/json
+  tool show_order_board: _meta = {"ui": {"resourceUri": "ui://fernhill/order-board", "visibility": ["model", "app"]}}
+  tool mark_order_done: _meta = {"ui": {"resourceUri": "ui://fernhill/order-board", "visibility": ["app"]}}
+  tool order_status: _meta = {"ui": {"visibility": ["model"]}}
+  ttlMs=0 cacheScope=private
+
+$ POST http://127.0.0.1:8810/mcp
+  MCP-Protocol-Version: 2026-07-28
+  Mcp-Method: resources/list
+  body: {"jsonrpc": "2.0", "id": 3, "method": "resources/list", "params": {}}
+< HTTP 200  content-type: application/json
+  resource ui://fernhill/order-board: mimeType=text/html;profile=mcp-app _meta={"ui": {"prefersBorder": true}}
+
+$ POST http://127.0.0.1:8810/mcp
+  MCP-Protocol-Version: 2026-07-28
+  Mcp-Method: resources/read
+  Mcp-Name: ui://fernhill/order-board
+  body: {"jsonrpc": "2.0", "id": 4, "method": "resources/read", "params": {"uri": "ui://fernhill/order-board"}}
+< HTTP 200  content-type: application/json
+  contents[0].mimeType = text/html;profile=mcp-app
+  contents[0].text = 12152 characters, starts '<!DOCTYPE html>\n<html lang="en">\n<head>\n'
+  contents[0]._meta = {"ui": {"prefersBorder": true}}
+
+$ POST http://127.0.0.1:8810/mcp
+  MCP-Protocol-Version: 2026-07-28
+  Mcp-Method: tools/call
+  Mcp-Name: show_order_board
+  body: {"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": "show_order_board", "arguments": {}}}
+< HTTP 200  content-type: application/json
+  content[0].text = "The order board is on screen. 5 open orders:\n- A-1043 Mara: flat white small (ready)\n- A-1044 Jonas: espresso double,...
+  structuredContent.orders = 7 rows
+  _meta = {"io.modelcontextprotocol/serverInfo": {"name": "fernhill-board", "version": ""}}

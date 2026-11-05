@@ -1,0 +1,66 @@
+{
+ "case_id": "order-04",
+ "rep": 1,
+ "request": "Delivery to 12 Elm Street: one large latte, whole milk.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 1144,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSiwYKEAgTGAI4AUIIdGhpbmtpbmcSDMsq+SBi3R+z6PUmNxoMa4Z7fZdG8rKZj8ClIjDC7c4NhDIuj6/9JOLzaYRbft013UIQ5M87iUYNk3p7V1slI1V0+tZK6GqLBc1Bh08qqAXQvcXe+mwXRBiaq6MrEtnGaWrekxp6BDwYlUZPzYyIukWpmTgmJ/FCSHpgJde0GlwjNHnKMow6gcg9vIgY1NKKEwMYzzayzC/M5cdI3J3NC4yB3+KqHV+l+0H6hGjtSZwDjLrjNOwk+ZmpMm4eHYI/519x1J3Nb67lcrMDlPyh/7vM3pSP9iM5WoJWOGDIoZug6/E8Oi9nUBgKnCaV/h9wo9DFbJNWwvoo7z3ykGPGdRNdQCW9Q8EKv4j+sOfg9UbMHX0pjkkZUb1mKEX1/4Em1jWOLoDm64oH+JSZVpTdJAKz2r0fJjM2GUMJCFrJsXAC20WGl9aVS4inmUCGk6mWCwAnSuNDg3xVd7f5VlX59HxeelioHHE4mqiXMELz1pg0t6IgVqi8Y+54Pt0TVxob3PZ/MInqOjlXKPKp0QagLcA6j6WDkfrwfK7M5e36/hp5YiJVMnEonFSU54nZW9MjnM54cx/vMnZh7TmovzrQOY3yVTJzWoPKV1jFHAqHrNL1kFsW/CUb3cJ6HVqt/9eiCmpap7ww2F8pYkbSB/u9Jn3Q5hrNRbhKQhawSAav7V9JUxObdmnVLbkO6ne0/egwUbDsfZPUCkppkkcR5NaorfOpU7xAwVM7UJAbnQBhttYgwekZn1OJnBQbgIRW5UyMZWYnGlJY0NXaWzZSPkdx46d0/3kVr8OhbLXviM4xS7rhIlLRjdmMiSsu+kxmS9KndiIKw4j9U/AnnYRtrg6wXDfci5vypzvC8riwBXvTtt6GU7ctV3q+7UPepZ8LABjiiyALOietiOnczIj9r9jaLHXO8jqAEO4ylc+Wc9zvF3hKDbj/Ok/L2ekaLhSL3iv5GHhgG5/THv/teMMfQ10C4XzQ/CivFd/MG+xXFxlimy63XsxHkUCvjhgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01JnddLrsxdKHLRS2NHphvi1",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "latte",
+       "size": "large",
+       "milk": "whole"
+      }
+     ],
+     "p2": {
+      "kind": "delivery",
+      "address": "12 Elm Street"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1637,
+   "output_tokens": 193,
+   "output_tokens_details": {
+    "thinking_tokens": 70
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "case_id": "order-h2",
+ "rep": 1,
+ "request": "Ring up an Oat Cookie and a Small Latte for Dana, pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 3156,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01AVk4C5yKzoLjnUJj4gSdnX",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1728,
+   "output_tokens": 553,
+   "output_tokens_details": {
+    "thinking_tokens": 520
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-h2",
+ "rep": 1,
+ "request": "Does the latte come in a small?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 983,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSpwUKEAgTGAI4AUIIdGhpbmtpbmcSDKWutWxS7RMFHFX9VBoMGTLLPpWFCqcWx1XlIjCBk6+W7gT8hU4dVglhSWFLJM54+4kamxOR1eIwaTB/1tg2qvjD6nlWnVgPR1RjaXYqxAQkmu/AH9NmGLq7I0JWumva8BdIkmpsDWiCy5CqiRsVSAcKNuAg6mooKkv7A5U8EYVIInFiBnDqKyAqrAIWiwcXGRg7Vpr+yLBAbAblJLOoHiGTElvNQ13wLAMyNNLj4M6ctzsDWcsHCqirIie611NWsBYMrepvOFDknQnttkjDaiBz+0fijXFmi9+xrYUNFqea1VgqoEW8rOJGX91CFjIjJIQFIiWZJRT58DJD2mzKDh20lhBdfkNp8whsRwbZHcbA8LjrPuBMN6gdP4XRa+4n/BqbWOGpa8jEnBb5ViNLX/8pyZROibBhYckopcBiMgpLxrE9W12ULUioAiLkcoSw0B2kyJ+75U8CNcP7V4RlfQgAmE9hP1bMlo/KyhtmJNkJByH3I4vDblaoONhE/Xzun0m1taPSAjPhxwNzGhVSfFRv0QWUZR5XgJ8LIVyvCelIn4nMMmbeBEC3NsPdUSgG7mPaGY+e7TQU93Al+avdKkBYyMt07hCXAMhqugir/HkoUNsTT2DULro8jYh4eBZXUmQd/xcsk+1k72TXyg1994KxX17JfBdSUpHbYEA8BYJ+3zPwl2snfJXwiyW3u6VI0MrgmWonU3PBSkn3fYNY9ntVkDUJ9bdUslNmraBslAQmBzXRW7j83CXBbn+3L791lLTVdOo9Jb0zV3jF9Jfpy+nBB64h6j6cF24suyufqSJgFlc7J6ylkgP5rZI3sLZpZS6GJyyHSowEqNPuQHd8jpaXIEbC3sVuQtK7HvDb3Vpq1pwlGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01C7YGbi5Fm2k64JHUtvPsBk",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1710,
+   "output_tokens": 58,
+   "output_tokens_details": {
+    "thinking_tokens": 25
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

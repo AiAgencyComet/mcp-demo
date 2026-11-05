@@ -1,0 +1,10 @@
+release v1_1 (holdout set)  model claude-haiku-5-5  12 requests x 3 reps = 36 runs  tools offered 9  avg input 1808 tok
+  tool choice (all)        100.0%   per rep [100.0, 100.0, 100.0]
+  tool choice (Fernhill)   100.0%
+  call has right effect     90.0%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 100/75  status 100/100  refund 100/100  other 100/100
+  no tool call 0   stopped by max_tokens 0   cost $0.0088   avg 1177 ms
+    call fail x3: order-h4: is_error: Error executing tool place_order: 'cookie' is not on the menu. Call get_menu to see the menu.
+GATE PASS (baseline v1)
+exit code: 0

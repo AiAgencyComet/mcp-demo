@@ -1,0 +1,15 @@
+release v1_2_first (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1833 tok
+  tool choice (all)         65.7%   per rep [63.9, 66.7, 66.7]
+  tool choice (Fernhill)    58.9%
+  call has right effect     58.9%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 0/0  status 81/81  refund 83/83  other 100/100
+  no tool call 0   stopped by max_tokens 0   cost $0.0302   avg 1390 ms
+    wrong x30: fernhill__place_order -> fernhill__get_menu
+    wrong x4: fernhill__order_status -> fernhill__get_menu
+    wrong x3: fernhill__refund -> fernhill__get_menu
+GATE FAIL (baseline v1_1)
+  - choice 65.7% < 80.0%
+  - choice_pct dropped 34.3 pts (100.0% -> 65.7%)
+  - fernhill_call_pct dropped 41.1 pts (100.0% -> 58.9%)
+exit code: 1

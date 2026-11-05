@@ -1,0 +1,57 @@
+{
+ "case_id": "other-06",
+ "rep": 1,
+ "request": "An office wants coffee for 40 people on Friday. Get me a quote.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 2351,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS8gwKEAgTGAI4AUIIdGhpbmtpbmcSDHlvE5gtdUHqLhOuPhoMYIOxGT2dV4/dmED6IjA8RhlLgdGUnmy+ymgyKMEyXlkfaDvgU4swUUvawYblpuyXwoI1gxntNRECD2PpSoEqjwwdpPYsGt+DwbrAJyon+CQoMe/LRDEsWO2JpNG8H6/PUfp3ffIj6F5URuA9P+Udz4ULUW4Cw6i315UQw3TJXV6bU29TDzm4xvwbHZwR5yqiv/4JDeCeqiSGj7iNR/1j6mzIKKDghi35vgnUl9bP23o1iYIGL7Up+Yyysjl435z/VhoJuaaPR6a7NqMXr6oWLLa+D837Q4jkTiCTn3alr0sWCc+GtlYZK+U+NAy8REh6Ryg1+P8qfMEoJ+G2aKqxiiE2R9jTnio9PUQzAchlEmh5T2YZMDEwGruRYSfLKI5OKdIk1y7BqpRj4KKCpXeiCVkgzDW1CqCNyKmHl8TOXfx7GU8ZMPAm5c19e2+13sPDe4YentysXobMEztGVkAsQKNtFIzckXJWZADsmKxiSfrfP6F21QqGIuBU3//S/KePC5I91yzeGveKByde9w7sofWkeZtzdbJ/DiPOEx+m21MtyEuLzpWJmPXOH55cLl4hey1aFPsBgC8wFU3xtol96fbO6mc8rxZs1Z4v70J7IRJEpdlITjEPTWYYNkDQY7pr/JLKxDKGoBSdKusW6EPbYwKdiySgNVrfL1cANhQBuyXBAXj/azNRZN6EPTY0WRi5vjAMzS76fY689ZQTdl9SPz2pMf79stfm++1n1DsVrQ0My/Feu1bf3HSkoWWS5NIffSoq40FaOBaXIkkORG6xnU6Y4zqxYqVBeOxiDLOj/a/rlrPl5C6B1pGxzWrod/znUZ90Ppw2Gf4MiDY8HbGY+T3EgQxUQUZi2yrPmfZikK+L5DrD+aSUY1/IaTfIsSZWn6SURVYGAayR1nrcuNkOatetE+L9E0iuTr35t6j/ftwefHn7t7WKrWBKT8pR76x4PrJKNIENt+ILh1/zYomtNM5qqBWB7kcvGuCgLI7Ayef6g7byaX6MmvA6zvwBHkT8Y8WJhdn4zrxuxnXrXmuvifSrO+9ML4d39DZ2trczcpfKMIbdvlBtgLyA9Gan6IPcvcvr1hOk2KUzBwNbxrHvIq/spSUOrteRgsskQ4Tw8v6VGTVzFLd0goyIE4jP/sTdm4KF9hM6yFZ1188zKgUbvfKPOMJigFWOLAz16DNGXbXlb7AHCB9d7j+Ku6OnX/bzC+M514H6KHx0mbaicoTVhy+1gI5JiDO35826u+IagKbqwlR1YY1kIfZXM/JJOFB3UQbwpRQUvsxRyNrsq2YLPU8sOR3WwK8pBprtxCAMp6lukV+croUfIeOSDIVBmARS8OvmZoPiE9Oq+e/sQqq+yTDhEGwBYoQ6mZk8iMP9hFceA4QY3wmnXWvkIC2tJPXoi6d7HhFFJpOYmzaXV7TMsT0ZV2wdbpmavPj8wT2tOyG+XH+XxpF+qrY0/q+ch+JLtGQvR5k4BxWzpYGn5E1A+6WcBeRfr0wbAlI2uHcC3WNst/m2rZl6M61DKKYy3wXc3T569vugITnY+29pLEUyn9uaSO3n2fZKe/XKghhiuuF088n/jaBB5vttuQAsSI8L56GmZCdqd23uUcWfK4hkQG7p9ZQNIRHtGXS1m/12JPbhx6a3xTaPeAnWLzUaj/FKOadZoMRGsaDttgF9yCNeeviAAFRmrKPl5Ye7M9IzWPa9WkzIA4Mrhj+DtdLvwWXV7Mm1LCQJd6UgCmR/glLWInx3fGKBiMTG+rXEWqr8bP+91Fc6WqTm+ljmGTSmWYC5Gg2VGFEWjJTqFA8lJvKxzjq3NbRMGHjB1uq5r7mk7iE8mfJgCFn8jXhCsguWswiTnP/ZyT7Ss3cZ5pH18LrHdTlYh0JCL2BtE6MWo9jLmoIWMkBr5+jTLjLvRfS4/iA3c4Z4LNGc0KPWIVz3yQElEm6iS8Z2chPQV/5WbgGfk4Z77+9npthcXXEZQQQs/hyMDaWE8IRrbMFjoU4YWlE3BAUYU/LEreCTU928YBBID46UYf2TeZNQPTokWZoqHNfh58qcCW3+Pl7ff6jr+C6bXvrzHUtiVdKSMi/k8kHsik6i4xCwmDAnbkRcUIYwTSBl2yury57hqEwewyG3rzmsvBp0rXKXmHlhJZDKFtSB+KMYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01V4nWsP8KTCqMaa3SAFtTo9",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "people": 40,
+     "day": "Friday"
+    },
+    "name": "catering__quote_event",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1839,
+   "output_tokens": 414,
+   "output_tokens_details": {
+    "thinking_tokens": 339
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

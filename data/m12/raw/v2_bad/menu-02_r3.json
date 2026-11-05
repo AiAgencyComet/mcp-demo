@@ -1,0 +1,56 @@
+{
+ "case_id": "menu-02",
+ "rep": 3,
+ "request": "A customer wants to know what sizes the cold brew comes in.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 2157,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSwAoKEAgTGAI4AUIIdGhpbmtpbmcSDHMtxnin3qrWZ+TH/hoMuef9e1RE0D23d7cMIjDuCRqQ5+90dJKpmbHhHCQpcR2UMv48ZxgdmVnt/E4Y0BzKqk28YwJFF5vbv8drYXEq3Qk7eS890fF2fM6gayiC7Ip+d85vttWVcWd2dxDR0TAgwu9N1ZoOSvClqA3hpK7dptPDH3j5xZrnNx2UN9tfsd9+rJ7PseQobWfzfGVXdlLwO5rx/QFFT0rNqh93v1hCPipExJwQSUJxpdXhh2E7+pZSxtlLbY0BEHHgRa2MWUabu9HYgBCpGFOlOTfhvTM1EgiPw+GgTs23WX8eMG6MBHqyocxLCU3ke+xsAos0n62J8B11Eq54x+UOKIFgTupWN1ywAgb0EavmT1LJaixnBmgK487kOcuehWElEKGvI4u7KXAvbMVFJwtPuk8zc6aY+gJINS44O5BWKSkDeuO1Deajj8JdEelpfumM2+mIOLxZLT8TBTh6cJQgEHDaVyqo8O+IX3tllJCEjL2I58F2uYF7SZilG+V1xNVFgeOG97EzJSK0Prp2Aq754TqTv4d8Z9LdUZnoArtu//0byg2Vx9OjMRcv7VCakgSOezIxntP7bUtcmm2LLtfRym3bd6VyNzkRw+R6TlSv7qakWshmC7oPwRB/6YRipuGGrrCnCjbD65ynT/3weIj9cUMvx9mPm/y4JQZK19lrw0k8VsNcqQudU/79NiaFOoEhblOpTQSTx/NIoO3kcte9NeMjsss4weG0Y4xfNIClVl2WGz4UZ8lZF/l/FniVEKNvs7sdY+QuI2oa1nggSLLfbzurAoar8uVDuD75fUKmBlQn2HHvGsIeookIN6ROfO2SIwx1GSUSEntqcMHsPQ/b4kXOWT0TGjIlk0JWiQRb8VA5m+GqT1qAY1298MM8dyh6W2vba099QsMPO/X7HTWKVbDNxRL8n7OvmZ3VxjkuNhMuXVijQDwguC7WXiuUKZ2We1sKwtIiVSbdujkgU65cA9A9JAix5NbTt/hPxekuEij+6F/9WBaEoOQvqirqdr3DdrJmfGuSr7o8XLx9WUOdjyg5NrHgr8nQdOukTgKMMhBWX1DUlvL53celjh7ZrF9fZioWPcFhuPYiakmUDNWjJhhSTx+ptM6YQLoHC9zRCpHb4yfNQps3hZFKIPAC6xpZ7IBtfbVa2I5T7V/2JUYr4MVZMlPVjhLo64k2gLuD9pQX48UHp08iVT4H6CCSpMraa0SbNNvw8+7RJWFDmMvs+Ej5cVkBJpzIM38EU8VcaT2PmYcDU1MJUEyKuDHKs7eM7cxMKlLLoLrQxwbYrMQcXr6IrwGgSr33q33+VTx7nMkPCBmZuIQgXJuF+jOJZMqGfmCfOE8rBFhTm0tdMbCdovCnmu49C6QnjRF2dQFMXoFbCBBZai0W74Xi/+nz0UXk/i+mDQcJo+0hIzJt2xqm6yvXVKTjwrjnY1aETGja9bQS6yQLGWYq5UIuPxvLKQd4l3wqPsZov9neW2YN2hXboE7hXAJb+Um+1XXb3FwgDLarvZ0tfBUTnIq/edIb2np21dyFoBMaJS/GIsvdWtV9hj7VHKpIyAG64hWFYcWD5seEijvrF1j/rFslrkmNgTqciXZdonrocUaPZWlLSpAGkIog529iXxP50q5RsQ2nb/L1XsaFfo49CrBgj8myC1dMrYOUOtmpU30UBFv5GTY3zMW2v0RSo1wDIEzePkRjdzP7+kDjbA0v8w6/joQpW56kI+jlpFdJUlB4mquttAx/o2R4wMQYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Ky2FN5UfGSzxUSfQKd4uFf",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "item": "cold brew"
+    },
+    "name": "stock__check_stock",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1633,
+   "output_tokens": 307,
+   "output_tokens_details": {
+    "thinking_tokens": 252
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

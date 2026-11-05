@@ -1,0 +1,43 @@
+# m07b · cancel · days=60 is cancelled after 3 polls; the cancel lands on any copy, the worker's copy reads the flag
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (60 days: about 60 s of work)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 60}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 200 from copy B (3.8 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"resultType": "task", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Queued.", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:25.255Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}
+[  2.03s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 2, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  2.03s] <- HTTP 200 from copy A (3.7 ms)
+          {"jsonrpc": "2.0", "id": 2, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Day 3 of 60: reading 2026-11-02 (3% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:27.263Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  4.04s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 3, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  4.04s] <- HTTP 200 from copy B (4.9 ms)
+          {"jsonrpc": "2.0", "id": 3, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Day 5 of 60: reading 2026-10-31 (7% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:29.270Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  6.05s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 4, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  6.05s] <- HTTP 200 from copy A (4.4 ms)
+          {"jsonrpc": "2.0", "id": 4, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Day 7 of 60: reading 2026-10-29 (10% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:31.278Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  8.06s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 5, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  8.06s] <- HTTP 200 from copy B (3.3 ms)
+          {"jsonrpc": "2.0", "id": 5, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Day 9 of 60: reading 2026-10-27 (13% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:33.286Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  8.06s] -> tasks/cancel   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07   (the person stops the export; the worker runs on copy B)
+          {"jsonrpc": "2.0", "id": 6, "method": "tasks/cancel", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  8.07s] <- HTTP 200 from copy A (2.3 ms)
+          {"jsonrpc": "2.0", "id": 6, "result": {"resultType": "complete", "_meta": "(same as above)"}}
+[  8.07s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 7, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[  8.07s] <- HTTP 200 from copy B (1.9 ms)
+          {"jsonrpc": "2.0", "id": 7, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "working", "statusMessage": "Day 9 of 60: reading 2026-10-27 (13% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:33.286Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 10.08s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07
+          {"jsonrpc": "2.0", "id": 8, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[ 10.08s] <- HTTP 200 from copy A (4.9 ms)
+          {"jsonrpc": "2.0", "id": 8, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "cancelled", "statusMessage": "Cancelled by the client. Last step: Day 9 of 60: reading 2026-10-27 (13% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:34.289Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 13.09s] -> tasks/get   Mcp-Name: 13aa44b2-cab5-4dbd-b65c-de635b21ae07   (3 s later: a terminal status does not change)
+          {"jsonrpc": "2.0", "id": 9, "method": "tasks/get", "params": {"taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "_meta": "(same as above)"}}
+[ 13.09s] <- HTTP 200 from copy B (6.2 ms)
+          {"jsonrpc": "2.0", "id": 9, "result": {"resultType": "complete", "taskId": "13aa44b2-cab5-4dbd-b65c-de635b21ae07", "status": "cancelled", "statusMessage": "Cancelled by the client. Last step: Day 9 of 60: reading 2026-10-27 (13% done)", "createdAt": "2026-11-05T05:53:25.255Z", "lastUpdatedAt": "2026-11-05T05:53:34.289Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+
+# summary: worker on copy B; tasks/cancel answered by copy A; status cancelled seen 2.0 s after the ack; lastUpdatedAt unchanged 3 s later: True

@@ -1,0 +1,35 @@
+$ pytest -v
+============================= test session starts ==============================
+platform darwin -- Python 3.12.11, pytest-9.2.0, pluggy-1.7.0 -- ./code/m12/../.venv-new/bin/python
+rootdir: ./code/m12
+plugins: anyio-4.16.0
+collecting ... collected 26 items
+
+tests/test_contract.py::test_tools_list_matches_the_released_snapshot PASSED [  3%]
+tests/test_contract.py::test_a_new_required_field_is_a_major_change PASSED [  7%]
+tests/test_contract.py::test_a_rename_is_remove_plus_add PASSED          [ 11%]
+tests/test_contract.py::test_description_only_change_is_not_a_schema_break PASSED [ 15%]
+tests/test_fernhill.py::test_tools_list_names PASSED                     [ 19%]
+tests/test_fernhill.py::test_every_tool_has_a_real_description PASSED    [ 23%]
+tests/test_fernhill.py::test_place_order_schema PASSED                   [ 26%]
+tests/test_fernhill.py::test_refund_hides_the_confirm_parameter PASSED   [ 30%]
+tests/test_fernhill.py::test_get_menu PASSED                             [ 34%]
+tests/test_fernhill.py::test_good_order PASSED                           [ 38%]
+tests/test_fernhill.py::test_order_then_status PASSED                    [ 42%]
+tests/test_fernhill.py::test_bad_drink_is_a_tool_error_with_a_hint PASSED [ 46%]
+tests/test_fernhill.py::test_bad_size_lists_the_good_sizes PASSED        [ 50%]
+tests/test_fernhill.py::test_schema_violation_is_an_error_result_not_an_exception PASSED [ 53%]
+tests/test_fernhill.py::test_unknown_order PASSED                        [ 57%]
+tests/test_fernhill.py::test_refund_when_the_person_confirms PASSED      [ 61%]
+tests/test_fernhill.py::test_refund_when_the_person_declines PASSED      [ 65%]
+tests/test_fernhill.py::test_refund_is_refused_for_a_client_that_cannot_ask_a_person PASSED [ 69%]
+tests/test_fernhill.py::test_resources_and_template PASSED               [ 73%]
+tests/test_fernhill.py::test_missing_order_resource_raises PASSED        [ 76%]
+tests/test_fernhill.py::test_prompts PASSED                              [ 80%]
+tests/test_fernhill.py::test_stdio_smoke PASSED                          [ 84%]
+tests/test_v2_bad.py::test_v2_tools_list PASSED                          [ 88%]
+tests/test_v2_bad.py::test_v2_good_order PASSED                          [ 92%]
+tests/test_v2_bad.py::test_v2_bad_drink PASSED                           [ 96%]
+tests/test_v2_bad.py::test_v2_status_and_refund PASSED                   [100%]
+
+============================== 26 passed in 0.47s ==============================

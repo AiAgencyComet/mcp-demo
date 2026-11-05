@@ -1,0 +1,55 @@
+# m07b · basic · days=20 runs as a task; polls go round robin to both copies; the result arrives in tasks/get
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (20 days: long job)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 20}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 200 from copy B (3.3 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"resultType": "task", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Queued.", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:05.041Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}
+[  0.02s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 2, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[  0.02s] <- HTTP 200 from copy A (1.7 ms)
+          {"jsonrpc": "2.0", "id": 2, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 1 of 20: reading 2026-11-04 (0% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:05.042Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  2.03s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 3, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[  2.04s] <- HTTP 200 from copy B (6.6 ms)
+          {"jsonrpc": "2.0", "id": 3, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 3 of 20: reading 2026-11-02 (10% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:07.049Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  4.05s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 4, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[  4.05s] <- HTTP 200 from copy A (5.7 ms)
+          {"jsonrpc": "2.0", "id": 4, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 5 of 20: reading 2026-10-31 (20% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:09.053Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  6.06s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 5, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[  6.06s] <- HTTP 200 from copy B (1.9 ms)
+          {"jsonrpc": "2.0", "id": 5, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 7 of 20: reading 2026-10-29 (30% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:11.060Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  8.07s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 6, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[  8.07s] <- HTTP 200 from copy A (3.9 ms)
+          {"jsonrpc": "2.0", "id": 6, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 9 of 20: reading 2026-10-27 (40% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:13.068Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 10.08s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 7, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 10.08s] <- HTTP 200 from copy B (2.9 ms)
+          {"jsonrpc": "2.0", "id": 7, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 11 of 20: reading 2026-10-25 (50% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:15.074Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 12.09s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 8, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 12.09s] <- HTTP 200 from copy A (4.7 ms)
+          {"jsonrpc": "2.0", "id": 8, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 13 of 20: reading 2026-10-23 (60% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:17.082Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 14.10s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 9, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 14.11s] <- HTTP 200 from copy B (2.2 ms)
+          {"jsonrpc": "2.0", "id": 9, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 15 of 20: reading 2026-10-21 (70% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:19.089Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 16.11s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 10, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 16.12s] <- HTTP 200 from copy A (5.3 ms)
+          {"jsonrpc": "2.0", "id": 10, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 17 of 20: reading 2026-10-19 (80% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:21.096Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 18.13s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 11, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 18.13s] <- HTTP 200 from copy B (5.8 ms)
+          {"jsonrpc": "2.0", "id": 11, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "working", "statusMessage": "Day 19 of 20: reading 2026-10-17 (90% done)", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:23.103Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[ 20.14s] -> tasks/get   Mcp-Name: 81547ab4-47cb-4428-a9bb-b694d6f37dad
+          {"jsonrpc": "2.0", "id": 12, "method": "tasks/get", "params": {"taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "_meta": "(same as above)"}}
+[ 20.15s] <- HTTP 200 from copy A (4.4 ms)
+          {"jsonrpc": "2.0", "id": 12, "result": {"resultType": "complete", "taskId": "81547ab4-47cb-4428-a9bb-b694d6f37dad", "status": "completed", "statusMessage": "Report ready.", "createdAt": "2026-11-05T05:53:05.041Z", "lastUpdatedAt": "2026-11-05T05:53:25.112Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-10-16\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 20,\n  \"orders\": 1160,\n  \"revenue\": 4624.8,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-10-16", "last_day": "2026-11-04", "days": 20, "orders": 1160, "revenue": 4624.8, "top_drink": "latte", "skipped_orders": []}}, "_meta": "(same as above)"}}
+
+# summary: task created on copy B; 11 polls answered by {'A': 6, 'B': 5}; all ok: True; final status completed; wall 20.1 s

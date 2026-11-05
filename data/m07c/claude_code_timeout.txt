@@ -1,0 +1,6 @@
+cfg=default.mcp.json seconds=20 wall=28s -> Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+The Fernhill sales report was ready after 20 seconds: 412 orders totaling $2,873.40.
+cfg=default.mcp.json seconds=90 wall=99s -> Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+The sales report was ready after 90 seconds: 412 orders totaling $2,873.40.
+cfg=timeout150.mcp.json seconds=90 wall=99s -> Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+The sales report was ready after 90 seconds, with 412 orders totaling $2,873.40.

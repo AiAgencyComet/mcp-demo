@@ -1,0 +1,67 @@
+{
+ "case_id": "order-06",
+ "rep": 1,
+ "request": "New order: small flat white with oat milk, collect at the counter, name Maya.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "max_tokens": 4000,
+ "ms": 1167,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS5AUKEAgTGAI4AUIIdGhpbmtpbmcSDLRvsI7Ei4RZ5zXRjRoMUh+HG7dCWM/NC39rIjB3DLKdxd6nvF2aNuGSPlkwKhtJV7Zq+fark9kh+WQx64TgGY5RtHicapuccc9o+o4qgQXhBS0aZwBdokNRC+J1I1GY6WR5j/oyKfcHhpm8EM7AZHgsiL0ixLulRIaxBekN7FQBMwjv1VhvOQlepmWJvxANEqf74X1HlByYnwGMtRUIZ8jBYDk/dmZx431X4EGhlJvaMWjIj+quJ+vWCIa8oMAMtpu+8LbOOxw6WmstOTOmszZ3DaGMDhoS8QKC8CsWOFLxqU2IZHAMMeDjpyNl/R9MAFH4Yhv1ErS11WZG9Fe4TagnzEKrDidmahyUR+llxrAcALfyUqC6qwxPHIUMNF68rNkBmRnj2Z1s7A+NEHllSAC3XtiLrNiBshecvY/KKwEhuYK19bjoF0brdn/V1yx8w6TsdUCuw9fsPShmIhaFQEsbxLL8Bt8MOp9RBUbTnZuH4S0QrwxNOWCNUyKdh6Go404cN6uB3P9ywzaRCLGqsntACsTFnZ/xLWoRbUw4Rmej/TNYCU64Alj6B7K7FoRGPE18LZamh65iOltEcOFx/L1q65IV6RmkX4rgsb2ejR3dOMfWKGvW/cqN/bbN1fDHtSiWBzGiX2BRPjpfNYEI5nrlZllhUFGxmPq6NLpGe8S/IDsP4aWKTw/B1kAuecnJG8n6CfrmECDp0B+IPV0nalg5YNwDblu3Y3I9O+P7vgq5lXffZvol+VWsI/wtHQl8NhteRiB4IDgvmLI/uwws+vJDnFMox0arANQw/l6guPnysgcPEjq8Nyf0qLdljIfBJJyMowOBIX/Ij0539oD1uvaibfXtmQ5twLzmBZSfXCDAz/pvCSSTTayHdWnPtvtAT70U4dT3NNGDphC8KxjBllH/OtQqjsGfuByWQ0yQUWahY1JtnMHm2uUnYwzzprczixgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01DhaB8fbGSsh6sLEL62Yg9j",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "flat white",
+       "size": "small",
+       "milk": "oat"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Maya"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1814,
+   "output_tokens": 171,
+   "output_tokens_details": {
+    "thinking_tokens": 51
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

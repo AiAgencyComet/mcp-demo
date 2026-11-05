@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-04",
+ "rep": 3,
+ "request": "We got A-1041 wrong. Please reverse the charge.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 1213,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSwAcKEAgTGAI4AUIIdGhpbmtpbmcSDOGT/mJ3GHlF2Q0JLhoMFEd9R97VhVqSEcngIjAWx+oZ2xxqTzeHOIygVG57utAO3r1Em8Is4HGMBCZ+l1hM5EjWMBGdyAgZNUEZWs0q3QYUYqlQ3e4we5JTZq4P4l409fI8cJK1GNOKOHlHV6iA55eOF9FR8SsKy5Mu/wUmpkHO2GnRIkImdFrj+THtPDdD238Fhjjo75cX+7lhd3YV5MCslm0eDxvNVW3Um0832Zah8AYXicwFHZzeZRZVybWPqX0WqvNxTTyJYw540VpYcbfyP2sgw+PLUfzwIRrrYcSLbpeIOfghhBA3UAcco8fdKbcFnCQsOhZPLsxe4AhhP03Wrhhbb6mvAF2hjaIIUWtl5GTe3cKVlpScF5ZC9DKjr4mpzX9gDE+PGY4ns1QbYooWZnsj3+NvAMv/kKrKL3L3CHmcRfz9VKg50Gd4aGuhkRuP0d6kvoJct7gOgrzdBdqACGnBIridnKN0A6m+WARa+4ZZ4Q06y5GVSY4NvpIClCegIesHeZBAxe3Huk68AibtFy9AIhyMmBow6Q45LrdFro5PZ2RU6NBpApX9L0PW32XdGUSfVFwCBmdFol9xfvW6Ztddsl5jyiSnaeABbzClHrv/mPcBXLSU8as8kKqy211wCU7iZi+8+Cz8wgUtZoZJ3wCKFgw0UA91Uv3vXguSlZwWEMc9uIlzaSUyNiJWQ/WEOE13xlgFoBUaZ80TcWaAJNq68esHYlCaiAa8CUbWZ8L1c+vmMbvBpDpVkH5meOfsoKaGI3YnIvwlIlrGJTlY9Gds4QnquQN3SeOOTdjFBLQDOrJT4wJE8wchzSkrWEB2ci6lS2IYQUcVMsm8Bqhhq4JDYzzzPl+y2YbA/jQK0UiXlfiVGIdsuZQsaZkQoyRpwN7Ayyr+9bWYSMCDZcgFriRdCoQtKL4Edm+OPOv8xLwJeXVPbqO7gjkSSxw9tHpqxv/zP6HU1ZjIWsl5PfYjlEgZcchuLA2oNQEhMadAcqGd6WdCBdqsAVNSNYC/KqOaIyU7B6KL3myk5xRe+M2hWQtwf9szAXcnKZYPqa+5qrsPlHZ3ho0L2bT5iEP2ZjNj9oKs1Uwva+HWvS7aHRETLqBH9aiutBpwk8Vc4sHy5bGPIoZP22Z6ASzY2o2GvQdkoB0kf8wFdKAYtiqc+j9TYhAat260pc19T4u0S16yWQn5kR7gSCH/zIK41uMwZoiQDGGw8UAqChPUbSEYEUlCgmRfPrpCB8U0CzMYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01EjBu48UirZHPGBycBJAG4d",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1041"
+    },
+    "name": "fernhill__po_refund",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1722,
+   "output_tokens": 170,
+   "output_tokens_details": {
+    "thinking_tokens": 111
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

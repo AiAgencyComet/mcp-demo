@@ -1,0 +1,51 @@
+{
+ "steps": [
+  {
+   "call": "connect",
+   "ok": false,
+   "exception": "OAuthRegistrationError: Registration failed: 400 {\"error\":\"invalid_client_metadata\",\"error_description\":\"Requested scopes are not valid: offline_access\"}"
+  }
+ ],
+ "events": [
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": null,
+   "body": "method=server/discover name=None",
+   "status": 401,
+   "www_authenticate": "Bearer resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", scope=\"menu:read\""
+  },
+  {
+   "who": "sdk",
+   "method": "GET",
+   "url": "http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp",
+   "authorization": null,
+   "body": null,
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/.well-known/oauth-authorization-server",
+   "authorization": null,
+   "body": null,
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/register",
+   "authorization": null,
+   "body": "{\"client_name\": \"Fernhill SDK demo\", \"application_type\": \"native\", \"scope\": \"menu:read offline_access\", \"grant_types\": [\"authorization_code\", \"refresh_token\"], \"token_endpoint_auth_method\": \"none\", \"redirect_uris\": [\"http://127.0.0.1:9399/callback\"]}",
+   "status": 400,
+   "www_authenticate": null
+  }
+ ],
+ "as_flags": [
+  "--narrow-dcr-scopes"
+ ],
+ "authorize_scopes": []
+}

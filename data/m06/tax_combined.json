@@ -1,0 +1,19 @@
+{
+ "tools": 175,
+ "models": {
+  "claude-haiku-5-5": {
+   "question_tokens": 17,
+   "sum_of_eight_counts": 79836,
+   "one_list_together": 77834,
+   "difference": 2002,
+   "first_tool_alone": 367
+  },
+  "claude-sonnet-5-5": {
+   "question_tokens": 17,
+   "sum_of_eight_counts": 79836,
+   "one_list_together": 77834,
+   "difference": 2002,
+   "first_tool_alone": 367
+  }
+ }
+}

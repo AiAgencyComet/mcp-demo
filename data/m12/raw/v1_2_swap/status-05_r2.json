@@ -1,0 +1,44 @@
+{
+ "case_id": "status-05",
+ "rep": 2,
+ "request": "Has A-1042 gone out?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "ms": 3796,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1800,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 600
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

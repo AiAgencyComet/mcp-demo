@@ -1,0 +1,65 @@
+{
+ "case_id": "order-10",
+ "rep": 3,
+ "request": "Add a single espresso for pickup, name Kim.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 1267,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSwQYKEAgTGAI4AUIIdGhpbmtpbmcSDJONfpuiNxdXuSoPexoMu9UgSS7flSi4P/ZkIjBUP6zJvyUvxCbABpZtzkCh1Ah4b2R9O0iYNWW11eN+ye7igUH9hxcQ4PCi85eeIQIq3gXbk+aMNbkutXrfkCQb+5W3JINYHkfstSAIUPJaoETFcyi3UA5wJloczrBOYndyGW4jSodSnPadBOCeD7b/5Ls7UZ03M9B+itB9cCnZJC9XFGGV4Gm4fdsD52YtkXCTLiO2ATwWZESsdCAjgklV3xlcyftxh5ASzSwwANjWBDSZDFasVrtmx8EKSl7/0zaKdotoW/CH+poIV+Yd+fWY4u4GHp5fGp6cFEkBw3FEpCnnM5o90Snp2RrGjYdctMoj0Rb0fUpxF9dux/ciQTyyktpRpAV9iBS4xOZ0PIK+CXD4vrKE0l/iic2OcZVmoOkIUAHr3QKuVnuidxQir+1cGZpKC+YwXKzDAJjHM9+EzReBlk6obTU0EkWIBNe8keajI/B7tPs4FoBOHecfDdl2cPrpjJZSCzXa+wphHLLA9w8cQvGqgF728CBDKYxnq/vX67LLKQm0yuFpIDnLXqZBLtKac4wUrBiyG3hugl3i8TXf3n9UsssRqEWNHYseSK3bwpAn1b5Da2IZXj3BM+7QjJsi9Ks6aKMcvCNSz91rvUcmeI7NWpgMhiLEPe1V0bkb49KzMNAVA3teYKMA+EFWUB2aq47UqTQ3g1sMoa81e0k+d8T9HppSPnOjI2o4RV2XDXcsnpHFWBw7Z6Cb+ah84hXJRg6jiNkajag+PTb5FkYD2DCVDf866zbj5wjqouxmxoX0SShnF0jaS0vbHAquCGhhx7ynZpqMgCFmEvj9PaYpAbRjVjFjf67hm5uiZUTGfCNiFyECf2S7oVakcacjuOcvfeCwNiYboMYrXBx0uuEgvMo5bBRaIOkEo9kzsfxkVPJnWmaWondP4YLAiSmk1zsujyeI24fADaVVeG524I5l0vkrU+GwFDzuVMfN+VO7gJzjRKGB+twvbf50tR25yAInK3/NzjEJPkLjIlhwfHC9qm5UqqyyWFbASamaemyvEwzjvFc/WjBWxJJED8/17hgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01JfiLKgVAyQysseUWVqieTT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "espresso",
+       "size": "single"
+      }
+     ],
+     "p2": {
+      "kind": "pickup",
+      "name": "Kim"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1630,
+   "output_tokens": 204,
+   "output_tokens_details": {
+    "thinking_tokens": 92
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

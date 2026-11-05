@@ -1,0 +1,16 @@
+{
+ "0": {
+  "turns": 20,
+  "tools_list_requests": 20,
+  "tools_call_requests": 20,
+  "all_requests": 41,
+  "list_ms_total": 46.1
+ },
+ "300000": {
+  "turns": 20,
+  "tools_list_requests": 1,
+  "tools_call_requests": 20,
+  "all_requests": 22,
+  "list_ms_total": 5.0
+ }
+}

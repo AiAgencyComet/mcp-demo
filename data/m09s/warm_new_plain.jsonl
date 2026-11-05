@@ -1,0 +1,22 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": true, "ms": 39.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 2, "ok": true, "ms": 3.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 3, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 4, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 5, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 6, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 7, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 8, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 9, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 10, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 11, "ok": true, "ms": 3.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 12, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 13, "ok": true, "ms": 3.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 14, "ok": true, "ms": 3.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 15, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 16, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 17, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 18, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 19, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 968)"}
+{"call": 20, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 968)"}
+{"summary": {"cell": "warm_new_plain", "calls": 20, "ok": 20, "http_requests": 0, "median_call_ms": 5.0, "median_cold_ms": null, "methods": []}}

@@ -1,0 +1,37 @@
+{
+ "_meta": {
+  "io.modelcontextprotocol/serverInfo": {
+   "name": "fernhill",
+   "version": ""
+  }
+ },
+ "ttlMs": 0,
+ "cacheScope": "private",
+ "prompts": [
+  {
+   "name": "daily_report",
+   "description": "Write the end-of-day report for one day.",
+   "arguments": [
+    {
+     "name": "day",
+     "required": true
+    }
+   ]
+  },
+  {
+   "name": "complaint_reply",
+   "description": "Write a polite reply to a customer complaint.",
+   "arguments": [
+    {
+     "name": "order_id",
+     "required": true
+    },
+    {
+     "name": "complaint",
+     "required": true
+    }
+   ]
+  }
+ ],
+ "resultType": "complete"
+}

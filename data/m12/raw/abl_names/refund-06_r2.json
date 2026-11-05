@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-06",
+ "rep": 2,
+ "request": "Please process a refund for order A-1041.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 2870,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01CGbxYwHa7gSdJxkBXqEAZn",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1041"
+    },
+    "name": "fernhill__po_get",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1715,
+   "output_tokens": 477,
+   "output_tokens_details": {
+    "thinking_tokens": 419
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,17 @@
+$ python validate_server_json.py server.json ../dist/fernhill-coffee-1.1.0.mcpb ../mcpb/fernhill-coffee/manifest.json
+schema https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json  |  serverInfo.version from the v1.1 server: '1.1.0'
+
+server.json: VALID
+
+copy 1: bundle rebuilt, hash not updated: 1 problem(s)
+  - fileSha256 000000000000... != sha256 of fernhill-coffee-1.1.0.mcpb dd688abd4107...
+copy 2: version range + name without namespace: 2 problem(s)
+  - schema: name: 'fernhill coffee' does not match '^[a-zA-Z0-9.-]+/[a-zA-Z0-9._-]+$'
+  - version '^1.1.0' is a range or 'latest' (rejected)
+copy 3: description 101 chars + no transport: 2 problem(s)
+  - schema: description: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' is too long
+  - schema: packages/0: 'transport' is a required property
+copy 4: server.json bumped, bundle and server not: 2 problem(s)
+  - version 1.2.0 != manifest.json version 1.1.0
+  - version 1.2.0 != serverInfo.version '1.1.0' reported by the server
+exit code: 0

@@ -1,0 +1,66 @@
+{
+ "case_id": "order-08",
+ "rep": 1,
+ "request": "Start an order for Ana, a small latte with whole milk, she's picking it up.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 1625,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSrwgKEAgTGAI4AUIIdGhpbmtpbmcSDGRRdasKt/AJRrQifhoM0li9T1cXvd9Zh62HIjBnh7ewts5MoBr66u1SA8mDotHq8MXzISroyZlm/NPYoRFmOoSxUZ/9Lw59eYvb6qcqzAcbjrUGPzJCBT1GtndQ6NZ4ynLZDSQEY/d0e8XnkuM7piLx8WXx3xccU8snfR/gBnkuixa+dkiLBrpZDmX2tE6kI8mdRyjt7hHUKV4bipaaO33R3UMQJi2h1uo2OJ/pgihXyQKsqQRXX+d1oqXy7Ey7LSOeuN540xhoyptmloQ5Eh0EXgl3RMNTzZgCNRRQRMRmNw4tqb8eCd9KErQFr6rVwJmXQX5RnyJOdc5coBM+QLfx3eMEjybBnzSmNmuJ8G0sQPfhxgtnkxlB39FWZc21yv2UqZ3p1xW+2TMZf21/F9trGtvL5gS/6qiEPt9Z4UJCA7lapV/JPM0xpj3s7nFF+NuN8n9CXa8UgQ/RYlnDwvTjOTdxN49LSpnUwTaFSvVZzeLV5m7IwiKUXcwhWfMXZ+A0obOLcRi6FLdqDNxlhjrOTeQ+AUEKX1MN6/SGa0jgT7DlDj9CnuK9OuNhvBWY3EXj45NdeYD5mmITguE/P0qcKNID3jVWTSJM55qWHVg57gauTeVodvt9UwXKTGJbnvZ3/p9JqpdNK7zT559tB/9tKVZWNrLAkkWDsCG3kMjL6UACzOQq4auBFprFxBzpofg5rvgx2rS9D59iQtbFJLebo9QLa/JwaXEjdMuYjWfJtVyEk/xCI/IbP2KumO4KU+PV4WBdvVYbgxYElhO2+TmuVPCpmPKV8zE3Qwy9ez3E6Myb6/YyAB10oqHNDdW9HmJsnC281qkI1UC0B+ao06eznmBBQ589FgE/vJamdiOcMNMQQl8CRIAmYdJ/0d7DrZ20eWwwg7Jke9mrRXNbMOpeg+/j0sA6pjc6VrAyIRhMFeMpBmXoCZf+uEP8oX3fugUM2cTgEVWC+pfwRLpa7mkNRK4SR8hIPISPkEjG9aZAB6FrrwzyCE0E8Ao9LJ/C+qgQoWIgOG36VgUlK9hoaKJAs3GVB/Cqew4uu+0XoCwqaoiSS1/o8H5vMNyOEHgt4VQ0E50oFPoFzm5Kc7+5KcqY6k7n5reS2jhYWFPFBhZf9qnIyo1Xw/WOHPjXUTlnRuXKoWEWSi2zIh6wT8mVdp0TF592/85cHcc45Un0WSe077szhAzHqM5XKg/Q9MBoAXSOGUvfKelz3GyLoFGDQVC07vPVUDx3ZyE50MleIHgc2lDu/KAEN7X6hw6p6b0MKc6sFNjWoc3GQHcmOwBPuoNOibyJZeogAj0hRA+Nxlogwa1glv5GpeX41VTp3TYQSa6Rc+ky46sS2OMO3KQgHr6c2I5gSKX8MUnH0Lla3lriHVchpgVYMVW0NqoYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_019G4fWHnE4xC77dRJ8j7HS6",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "Latte",
+       "size": "small",
+       "milk": "whole"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Ana"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1728,
+   "output_tokens": 281,
+   "output_tokens_details": {
+    "thinking_tokens": 161
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

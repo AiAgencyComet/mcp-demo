@@ -1,0 +1,23 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": true, "ms": 11.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 2, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 3, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 4, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 5, "ok": true, "ms": 7.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 6, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 7, "ok": true, "ms": 7.0, "msg": "4.50 (answered by server pid 24362)"}
+{"call": 8, "ok": true, "ms": 15.0, "msg": "4.50 (answered by server pid 24362)"}
+{"event": "KILLED copy 0 after call 8"}
+{"call": 9, "ok": false, "ms": 8.0, "msg": "McpError: Session terminated"}
+{"call": 10, "ok": false, "ms": 6.0, "msg": "McpError: Session terminated"}
+{"call": 11, "ok": false, "ms": 3.0, "msg": "McpError: Session terminated"}
+{"call": 12, "ok": false, "ms": 5.0, "msg": "McpError: Session terminated"}
+{"call": 13, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 14, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 15, "ok": false, "ms": 6.0, "msg": "McpError: Session terminated"}
+{"call": 16, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 17, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 18, "ok": false, "ms": 6.0, "msg": "McpError: Session terminated"}
+{"call": 19, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 20, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"summary": {"spec": "old", "lb": "sticky", "calls": 20, "ok": 8, "failed": 12, "killed_copy": 0, "kill_after": 8}}

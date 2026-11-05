@@ -1,0 +1,7 @@
+$ python ship/run_bundle.py <unpacked .mcpb>
+Using CPython 3.13.13
+Creating virtual environment at: .venv
+Installed 28 packages in 17ms
+cold start (no .venv) {"ready_ms": 1305, "server": "fernhill 1.1.0", "tools": ["get_menu", "place_order", "order_status", "refund"], "place_order('Latte','Large')": {"order_id": "A-1043", "total": 5.1, "status": "making"}}
+warm start {"ready_ms": 255, "server": "fernhill 1.1.0", "tools": ["get_menu", "place_order", "order_status", "refund"], "place_order('Latte','Large')": {"order_id": "A-1043", "total": 5.1, "status": "making"}}
+venv created inside the bundle folder: True

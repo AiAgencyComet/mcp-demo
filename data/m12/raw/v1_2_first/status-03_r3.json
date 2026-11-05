@@ -1,0 +1,56 @@
+{
+ "case_id": "status-03",
+ "rep": 3,
+ "request": "Check on order A-1042 for me.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1681,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSgwoKEAgTGAI4AUIIdGhpbmtpbmcSDHX6C7+5wNXCd5HSCxoMdd5P0CswYJoJ+Os8IjCmkFYzI3K326WsEWx8+jI64Kjka/2869JRgL6Z68ky3QywrSR45HShD1+2Y3LFTr8qoAn6+3UqOYoSomc2LwsSd+Spq+fGT5fXePVmpd5jAQl5E93qEe1AmuvtZaiz/Hksvr1CTGeS4PRL/ARQkHowwX1idMdaHhHJ26ljJSX6vLEAH8fH1reeRZmkTgWSbTJxIFQpMS4g/MZBwAC5nGv/jn14q1u5/Q6s20AUCDdKv696ItdTwLNY8ChDfHTHLI5Nr14lT02ftxh4qKJSjunur+S9f+GKF0dC5gmGiyPbx2Pakx/6MiRovaGlNKLPv6XKtIW9fpJfpCjBkYMAcQUJTCOhT0smEDRf7/Egoz+3qD0yQteBqU95iAPqU0nWFbpM6KVaFUzBNveL9d+yj71zI0eYpVDV0APzlKZ2cHK/bVj9ifR8C42JXVl3zFTppQtmZf26yVKG3rO01eYe0gzkq6EDIXYpdyyYtGKgqhqbRTGyr6pdkB2OmXtUzNawucIqE1Uriz/2+xr8mpHlVz8lPl0yUv19S3socADxJP1TAhLzSTxj25UFe0Tt7av/eFmrtSyWMfSBAECvGgMYqqyL8K2heBFbRqZS+2lb1tzUHr8rYOng15hF0ZB0v3XqdJEt/TRQMNI2By42pzvIphHz0jf9lvx9p8pmGFqvQgE/Pxow1itRS87y64oeEoGJm1aJSnDTkYsW/pYXKMAXuevwiKaeGJhukvb+r18RwSyzH+oAW5rQRVJymZ3Lrn4dOfkszOTzS7m6KpxwePg5ma/nBuZA/ncR39NPfQWSkISaf6BkGCVp/0i6tAeopT6B3lxUfUtaGtuURBkzpPIs+hhdorqF+1poWsxiqApr5dW5mSNdpDnwjlSzzhIgMvzzTpbtpptW3GzPrlBlwAKxMvS/cG/Z+H4nMKTRnBA9LrIy0HaC0jRBgF0BfPXvvKJTlXuc+49HFdL8pXhj0F8EsTfeF8FuC3Gxdwz5I6P4xBCeKcX4wKxXUgz84fC/TPZojybw+binPWXwDBnQDL+rIwiYBViBd1qBU6vfuxlZNmnZJFGSsflNV/PVV/qZkOnCfofgEvJnqM/moQRqqg3h89zRDWhysCYC4DiqOmT01UWBrLTQ5pXm+SpMFWUI5wbaX8PZBUXadhAdlip1HmiO3oOTTWNXe774yFQj00Xj7SZ2W0pfxQSpcOM+oMtJrdBC3f2CIfgiZKF6Ziz5rnk9Avm3ezYUd7nnx1+bJ0IXgk3rIagFbg9+3HxTkFPujqhPXDcPT8zoypnGANJ+eTbrZtV6sVOIGgWys7LHcTyvKV1S4fXfmeGOmz0vRrLK5GIsY29a7peMppgx9ua+VepnpfZOcQgAsSlFefpUw5YWx9/oMSvYeoQ7sT9rgbttnAQrvBBdivZ2pdGHGE5E684YEw1O8+e3wjRgsRwu1NQBdiubHZ73SADCJ4HnkDLjI0tmHbWYhzKNEQV6euLpr8A7G6O8FSHR979436xLJQ52NTiSoDM3CoRiFa5vNPAjffh9c4LE7tUf2tREh/JS3yFPf8uvPO0BT6Qaz1iVC2mpWVarTpDysmFVfMPxpaLdNhI62Je0u7lcb/1NRckvFel7v3kwQ0WlQqqtHzuWt2++6hxLaf+vCxgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01UXaJrseUVEvaBuMWoNPNy3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1042"
+    },
+    "name": "fernhill__order_status",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1827,
+   "output_tokens": 275,
+   "output_tokens_details": {
+    "thinking_tokens": 217
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

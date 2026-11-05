@@ -1,0 +1,1 @@
+{"mcpServers": {"fernhill": {"command": "/path/to/mcp-demo/code/.venv-new/bin/python", "args": ["/path/to/mcp-demo/code/m02/first_server.py"]}}}

@@ -1,0 +1,10 @@
+1793857981.127 copy A pid 83615: start, store=shared
+INFO:     Started server process [83615]
+INFO:     Waiting for application startup.
+StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8181 (Press CTRL+C to quit)
+1793858013.301 copy A pid 83615: tasks/cancel 13aa44b2-cab5-4dbd-b65c-de635b21ae07: flag set (status was working)
+1793858018.420 copy A pid 83615: created task 9c388149-0437-45dd-90c3-ccf1007c15cb for export_sales_report({'days': 30})
+1793858052.052 copy A pid 83615: task 9c388149-0437-45dd-90c3-ccf1007c15cb completed
+1793858065.040 copy A pid 83615: created task 1d56b746-099a-4782-bbef-ab73138a62cc for export_sales_report({'days': 20})

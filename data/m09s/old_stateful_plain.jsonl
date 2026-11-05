@@ -1,0 +1,22 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": false, "ms": 1284.0, "msg": "McpError: Session terminated"}
+{"call": 2, "ok": false, "ms": 480.0, "msg": "McpError: Session terminated"}
+{"call": 3, "ok": false, "ms": 652.0, "msg": "McpError: Session terminated"}
+{"call": 4, "ok": false, "ms": 487.0, "msg": "McpError: Session terminated"}
+{"call": 5, "ok": false, "ms": 474.0, "msg": "McpError: Session terminated"}
+{"call": 6, "ok": false, "ms": 475.0, "msg": "McpError: Session terminated"}
+{"call": 7, "ok": false, "ms": 484.0, "msg": "McpError: Session terminated"}
+{"call": 8, "ok": false, "ms": 478.0, "msg": "McpError: Session terminated"}
+{"call": 9, "ok": false, "ms": 479.0, "msg": "McpError: Session terminated"}
+{"call": 10, "ok": false, "ms": 483.0, "msg": "McpError: Session terminated"}
+{"call": 11, "ok": false, "ms": 484.0, "msg": "McpError: Session terminated"}
+{"call": 12, "ok": false, "ms": 481.0, "msg": "McpError: Session terminated"}
+{"call": 13, "ok": false, "ms": 497.0, "msg": "McpError: Session terminated"}
+{"call": 14, "ok": false, "ms": 489.0, "msg": "McpError: Session terminated"}
+{"call": 15, "ok": false, "ms": 500.0, "msg": "McpError: Session terminated"}
+{"call": 16, "ok": false, "ms": 483.0, "msg": "McpError: Session terminated"}
+{"call": 17, "ok": false, "ms": 484.0, "msg": "McpError: Session terminated"}
+{"call": 18, "ok": false, "ms": 474.0, "msg": "McpError: Session terminated"}
+{"call": 19, "ok": false, "ms": 484.0, "msg": "McpError: Session terminated"}
+{"call": 20, "ok": false, "ms": 485.0, "msg": "McpError: Session terminated"}
+{"summary": {"cell": "old_stateful_plain", "calls": 20, "ok": 0, "http_requests": 25, "median_call_ms": null, "median_cold_ms": 240.6, "methods": ["DELETE", "GET", "initialize", "notifications/initialized", "tools/call"]}}

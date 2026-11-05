@@ -1,0 +1,15 @@
+{"store": "shared", "lb": "rr", "trial": 0, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [6, 6], "B": [7, 7]}, "completed": true, "first_error_poll": null}
+{"store": "shared", "lb": "rr", "trial": 1, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [6, 6], "B": [7, 7]}, "completed": true, "first_error_poll": null}
+{"store": "shared", "lb": "rr", "trial": 2, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [6, 6], "B": [7, 7]}, "completed": true, "first_error_poll": null}
+{"store": "shared", "lb": "rr", "trial": 3, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [6, 6], "B": [7, 7]}, "completed": true, "first_error_poll": null}
+{"store": "shared", "lb": "rr", "trial": 4, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [6, 6], "B": [7, 7]}, "completed": true, "first_error_poll": null}
+{"store": "memory", "lb": "rr", "trial": 0, "owner": "A", "polls": 14, "ok": 7, "errors": ["Failed to retrieve task: Task not found"], "by_copy": {"A": [7, 7], "B": [0, 7]}, "completed": true, "first_error_poll": 1}
+{"store": "memory", "lb": "rr", "trial": 1, "owner": "B", "polls": 14, "ok": 7, "errors": ["Failed to retrieve task: Task not found"], "by_copy": {"A": [0, 7], "B": [7, 7]}, "completed": true, "first_error_poll": 1}
+{"store": "memory", "lb": "rr", "trial": 2, "owner": "A", "polls": 14, "ok": 7, "errors": ["Failed to retrieve task: Task not found"], "by_copy": {"A": [7, 7], "B": [0, 7]}, "completed": true, "first_error_poll": 1}
+{"store": "memory", "lb": "rr", "trial": 3, "owner": "B", "polls": 14, "ok": 7, "errors": ["Failed to retrieve task: Task not found"], "by_copy": {"A": [0, 7], "B": [7, 7]}, "completed": true, "first_error_poll": 1}
+{"store": "memory", "lb": "rr", "trial": 4, "owner": "A", "polls": 14, "ok": 7, "errors": ["Failed to retrieve task: Task not found"], "by_copy": {"A": [7, 7], "B": [0, 7]}, "completed": true, "first_error_poll": 1}
+{"store": "memory", "lb": "affinity", "trial": 0, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [13, 13]}, "completed": true, "first_error_poll": null}
+{"store": "memory", "lb": "affinity", "trial": 1, "owner": "B", "polls": 13, "ok": 13, "errors": [], "by_copy": {"B": [13, 13]}, "completed": true, "first_error_poll": null}
+{"store": "memory", "lb": "affinity", "trial": 2, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [13, 13]}, "completed": true, "first_error_poll": null}
+{"store": "memory", "lb": "affinity", "trial": 3, "owner": "B", "polls": 13, "ok": 13, "errors": [], "by_copy": {"B": [13, 13]}, "completed": true, "first_error_poll": null}
+{"store": "memory", "lb": "affinity", "trial": 4, "owner": "A", "polls": 13, "ok": 13, "errors": [], "by_copy": {"A": [13, 13]}, "completed": true, "first_error_poll": null}

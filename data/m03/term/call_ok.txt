@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 05:47:06 GMT
+server: uvicorn
+content-length: 297
+content-type: application/json
+
+{"jsonrpc":"2.0","id":2,"result":{"content":[{"text":"4.50 (answered by server pid 79770)","type":"text"}],"isError":false,"resultType":"complete","structuredContent":{"result":"4.50 (answered by server pid 79770)"},"_meta":{"io.modelcontextprotocol/serverInfo":{"name":"fernhill","version":""}}}}

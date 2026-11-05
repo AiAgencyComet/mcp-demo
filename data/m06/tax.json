@@ -1,0 +1,64 @@
+{
+ "question_tokens": {
+  "claude-haiku-5-5": 17,
+  "claude-sonnet-5-5": 17
+ },
+ "servers": {
+  "fernhill": {
+   "tools": 4,
+   "json_chars": 1943,
+   "connect_s": 0.4,
+   "claude-haiku-5-5": 1105,
+   "claude-sonnet-5-5": 1105
+  },
+  "memory": {
+   "tools": 9,
+   "json_chars": 7413,
+   "connect_s": 2.4,
+   "claude-haiku-5-5": 2813,
+   "claude-sonnet-5-5": 2813
+  },
+  "filesystem": {
+   "tools": 16,
+   "json_chars": 11055,
+   "connect_s": 2.2,
+   "claude-haiku-5-5": 4061,
+   "claude-sonnet-5-5": 4061
+  },
+  "everything": {
+   "tools": 22,
+   "json_chars": 12916,
+   "connect_s": 3.6,
+   "claude-haiku-5-5": 5066,
+   "claude-sonnet-5-5": 5066
+  },
+  "playwright": {
+   "tools": 25,
+   "json_chars": 19526,
+   "connect_s": 2.3,
+   "claude-haiku-5-5": 7137,
+   "claude-sonnet-5-5": 7137
+  },
+  "chrome-devtools": {
+   "tools": 32,
+   "json_chars": 29591,
+   "connect_s": 1.8,
+   "claude-haiku-5-5": 11335,
+   "claude-sonnet-5-5": 11335
+  },
+  "notion": {
+   "tools": 24,
+   "json_chars": 80487,
+   "connect_s": 4.5,
+   "claude-haiku-5-5": 33632,
+   "claude-sonnet-5-5": 33632
+  },
+  "github": {
+   "tools": 43,
+   "json_chars": 39278,
+   "connect_s": 4.0,
+   "claude-haiku-5-5": 14687,
+   "claude-sonnet-5-5": 14687
+  }
+ }
+}

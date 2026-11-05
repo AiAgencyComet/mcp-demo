@@ -1,0 +1,56 @@
+{
+ "case_id": "status-07",
+ "rep": 3,
+ "request": "How much was order A-1042?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 1261,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSsgUKEAgTGAI4AUIIdGhpbmtpbmcSDIJkgAb9ArpWJqSx0xoMOATbUbo6SBYKldWuIjB7EPwVRrDkIhYDJGSdiOGu2THrTQ7K8AcTK9mugAc4+zQqMaeNJoUDWm8VBPiqi7wqzwRCrG3z3T1G0+Mh+X+Un9p7FqRf7rKiMy0jKATR/Jd8x0P1fh5vlh/MrNNlkGfjwob5F+RBcTO/oXgniADlI5Hqun2/jmONWWG3KCwqdclb9fd26Do90hOV9cbSIQIXE0975ISPt9LiC4nlxrNglXRyCmL8t0H9KKSFqoXvtz1nzG/TnCAJV8BDqWki+mLkdiZ17Ub2E5UtrAWOS3fWf4KaQ+lLVuSCytPDX0Je1PpCDPU5CLlb5kHlDQME+3hueWFsbZUjgobHMKHp36DNxU0AD4NxqcpM0b7U0OTirLJtGlEbeIDIEjR18pEp14ZiTdTLOp0boqX/3sjbE5qZxDjuygJ03xm/jQrz6OZZzGW4H2FVQ3fc7rtJwA0hsIGkuMnxzNr/YvkSEvWaDtQjCGlRXRwnt4WjK1t0EQy30+3xp3n/Z2uoV3LxIpJdD5H0NlHuofKLauWDyABrU4/sKocsUA0tU9A/XiL+hSHrytXC2HzbQQ/5b/Nqa0gJsYraJFyPmAs8oK5NiJ1/h4gIuKaEBpcmIW+ceu1RqIfjRYNL28PrjVsH8R2kOkVDUtqd4Xyb3J+c1iT4qBxjdppM2I9koWZdxmQTbq2uWWH8Mx3wcMInc1Rha6Ab73H2bCywOd+t4bgZsBA0e4i+sRD8KIQfTBFJviGWibN1pyUjbMGiuut4+9LibPK66hAT9D5HKE6RM4hMIq+md5izp7lqZdW2T9CY8TYD9OWwwAbpNcCA0d7HI8pl656U7c7dfvNa3d99A6e7d0QYFlHd3o6V7nQYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_012JayAHxWynWrE8omkjUHh7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": "A-1042"
+    },
+    "name": "fernhill__po_get",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1622,
+   "output_tokens": 87,
+   "output_tokens_details": {
+    "thinking_tokens": 30
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

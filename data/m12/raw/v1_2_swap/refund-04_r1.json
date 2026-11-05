@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-04",
+ "rep": 1,
+ "request": "We got A-1041 wrong. Please reverse the charge.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "ms": 3124,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01V1AaZ5V7ZGjLrvM9Y6QQE5",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1041"
+    },
+    "name": "fernhill__order_status",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1809,
+   "output_tokens": 525,
+   "output_tokens_details": {
+    "thinking_tokens": 467
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

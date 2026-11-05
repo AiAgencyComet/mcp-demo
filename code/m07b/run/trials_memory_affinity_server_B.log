@@ -1,0 +1,15 @@
+1793858430.318 copy B pid 88756: start, store=memory
+INFO:     Started server process [88756]
+INFO:     Waiting for application startup.
+StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8182 (Press CTRL+C to quit)
+1793858434.142 copy B pid 88756: created task 449375c7-fe3d-4d4b-b060-ae068832cbd1 for export_sales_report({'days': 12})
+1793858437.162 copy B pid 88756: task 449375c7-fe3d-4d4b-b060-ae068832cbd1 completed
+1793858440.576 copy B pid 88756: created task c4ddd741-230b-4ab7-9b64-20cda42dac61 for export_sales_report({'days': 12})
+1793858443.599 copy B pid 88756: task c4ddd741-230b-4ab7-9b64-20cda42dac61 completed
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88756]

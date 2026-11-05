@@ -1,0 +1,66 @@
+{
+ "case_id": "order-08",
+ "rep": 3,
+ "request": "Start an order for Ana, a small latte with whole milk, she's picking it up.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 1231,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQShAYKEAgTGAI4AUIIdGhpbmtpbmcSDHeNMfNOux6J7XZTQBoMyOEY112NWmXyA7BVIjCNM9W5122yQzF7I1xyDSxjj0ipodrLNk8dYl/8SvmA+/ejQW7hrU7V/HqpG4x1htYqoQU2l0Bs7ny/MP8yiUtVipf//dU+HZrzU8LU7TseYJxoY5yIW59FjdQ4GugARgXhgk9jbiHrO0zZWi9tnG1UDcD7UD7sQLcCqj07rxQDz6p0tF8QqqiR4RJn4kYKZTfqWO4Trnn+LCCFfuHwkVSmYbZAa8bY16fuzZoJz6OtkdGbqC5W1nj2w1bJkL/tH3rsCYOY6NduxN6bQUjGv0S5y1kEY20RiLlz/kK3GaTNjNNoVBA3jUI4SOrgTiDLt75BbVRwYSpZkOd6eCPr/f8lDhMM66ARssBYwa1Rs7a1ON67V1/PWtDgz/rM9JIRuCaMds2cO6/0x/UN6dB/VtnEgF/zOx0nWo+PyaUj+21esX8aJZ0FFSpylL40ZgVOmFBbugQNZCwvmmTlOZPwK0goEqWKH1T+rT9zvRIxQ6/RwZn+leFvx4lk3//1PUcjTRRLTl4EHegVMlcKqlqYFQifuk9Rv6WgkO1A3s1hNOyKeGRPMziER6IM1uoUWR1Sdf41Ykttxxt+l3Io1RvAcgAyZRC4NFYyJBC4lY3b05SSgYD6cvtbtsdQRCFTi6xOhpoGuIAR0kN78RSVGX1V6BRn8fWG9yXBWzDPLZuVOWLp8GzxGKACMwbezEXdDCwXAXpDIBLVGRhB4R3DjNFkCtuQBOkftlqnUm07b/ERX3Hq0EwtObOavQ8yYKf0lDW6rh2Fqj1nDiCZELMyPt3W5qLia0XMSMSf1MfBawrpFGzkTZ93HXVXka3eZtZRm1DswLXvvF1PtPf27qqKOb9agB/EJaLYbf7ZSrMDuC5kbCNVmkLHEbBn4CvNszm0XNHihUD5vW9LuCnFJe9j+sIuAIZfDhzb9UsUhQ9HOM9NaHJNr8G70y9hI8SAfYiF0PpwNwXNeaZkGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_017EH8qc3i9kVhGwg4Y3ZBLk",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "latte",
+       "size": "small",
+       "milk": "whole"
+      }
+     ],
+     "p2": {
+      "kind": "pickup",
+      "name": "Ana"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1639,
+   "output_tokens": 196,
+   "output_tokens_details": {
+    "thinking_tokens": 77
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

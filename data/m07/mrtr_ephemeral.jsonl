@@ -1,0 +1,12 @@
+{"trial": 0, "copy_round1": "0", "copy_round2": "1", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 1, "copy_round1": "2", "copy_round2": "0", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 2, "copy_round1": "1", "copy_round2": "2", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 3, "copy_round1": "0", "copy_round2": "1", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 4, "copy_round1": "2", "copy_round2": "0", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 5, "copy_round1": "1", "copy_round2": "2", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 6, "copy_round1": "0", "copy_round2": "1", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 7, "copy_round1": "2", "copy_round2": "0", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 8, "copy_round1": "1", "copy_round2": "2", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 9, "copy_round1": "0", "copy_round2": "1", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 10, "copy_round1": "2", "copy_round2": "0", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}
+{"trial": 11, "copy_round1": "1", "copy_round2": "2", "ok": false, "error": {"code": -32602, "message": "Invalid or expired requestState", "data": {"reason": "invalid_request_state"}}}

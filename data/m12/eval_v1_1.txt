@@ -1,0 +1,9 @@
+release v1_1 (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1807 tok
+  tool choice (all)        100.0%   per rep [100.0, 100.0, 100.0]
+  tool choice (Fernhill)   100.0%
+  call has right effect    100.0%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 100/100  status 100/100  refund 100/100  other 100/100
+  no tool call 0   stopped by max_tokens 0   cost $0.0253   avg 1063 ms
+GATE PASS (baseline v1)
+exit code: 0

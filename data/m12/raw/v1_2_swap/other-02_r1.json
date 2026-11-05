@@ -1,0 +1,58 @@
+{
+ "case_id": "other-02",
+ "rep": 1,
+ "request": "Order 20 cartons of oat milk from Green Valley Dairy.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "ms": 1100,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS9gUKEAgTGAI4AUIIdGhpbmtpbmcSDAt9O+zL7PyoQc4IARoM8B5IKkCZ9AYQrUzRIjB8mngiiiTucuVp3YvMdIHrP7aDFAGoPEUG2cpYjyvbR8q/kyFuo8rRSXkhi9Dbc3IqkwXxw3F/6x4axHtde/1/V2H+5ZPBvIErN4Li1Lu01H6RJr2pwk8CSMTqmVSaSHMzTeoWtRoLkPQwokkfDOw7qzOtq2Kr2Io4nNRNpxh7LuKIcKs1AYCqHTIz9+X2KklCAOqyiWxrWmTLmIJN7B4H91fu7vZ4IViBzzDS6XsJ0eNAgG5I6ClNYgg0DO7YTVDhlIpMAaks2/nFex02yC/k21Tdx7U9fMLg7B9uVsKFJVJZ5pN531tGpTx2iTWQNycpDd7+qrMmv8hm0q1NXtbTBOZvnY/X2B9kKspjKlGSLNftYdWo6YY4mSbqwvTM8ihlOthj9P+IkgujSbMITQFTiifF2NyfxN+cVQQnoP4L9hDA0tOE+85n3L8UJ+RX3jkc4WABPQssy/RQgepCByuVNagU5B9r/lTfq3jg18iy15WctGG9I/+j2j1sXpo5h02xqsEaj88jiLZ7nYaJTZdLOlwshDifJN5B2s822gyHjZXipVIs5jZ5jXwAauq7Y7fYvJkR+bBEhTjUjBoHSGEHOdATkt0R0P+whAnPvEVRRASUMeO/+BpK66YrEUS+gLHpIqWKwJbJEXbrkgWQzRrqIDym/U4meQ7TRubmpdH0Tc9WL/oopEOoRp/5fy+uANwTKc3C0V5ZGzz/OAUumP7S1noxPDU8MFFtsMYZr1hzvIdDKZ7zuKckLZ6QcPiKXZXFhz9qnuJEAH6bxydxMWDjkwrCONl29ckLdCtQS81RE41BXNo2BuH9bpG4IVceb2DXJnN8AbfWOIiGPz13rulvRjgCzkTsf+vzAPOp+EEDtMWQzo03zaby1CU3PlNhm77o8ocdhbMCj+StOXv2BKMVDsC5jLtA/qBOi3fi1iKCSAhpt1j5nxgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01VMxcX1PsbJg3ae1tcwyaU1",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "supplier": "Green Valley Dairy",
+     "item": "oat milk cartons",
+     "quantity": 20
+    },
+    "name": "suppliers__create_purchase_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1813,
+   "output_tokens": 171,
+   "output_tokens_details": {
+    "thinking_tokens": 54
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

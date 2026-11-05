@@ -1,0 +1,61 @@
+{
+ "case_id": "order-09",
+ "rep": 3,
+ "request": "Chris at the window wants a large latte and an oat cookie. Pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 3273,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01HVYCqhQNPMdfvwtL6Bab84",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "Latte",
+       "size": "large"
+      }
+     ]
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1727,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 496
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

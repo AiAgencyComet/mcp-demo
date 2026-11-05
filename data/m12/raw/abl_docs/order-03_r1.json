@@ -1,0 +1,66 @@
+{
+ "case_id": "order-03",
+ "rep": 1,
+ "request": "Put in a double espresso for Jordan, they'll grab it at the counter.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "bdf96c623f4520e1",
+ "ms": 1973,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS7wkKEAgTGAI4AUIIdGhpbmtpbmcSDDOTXM2DbAyHQlwOlxoMiX8NNrmnuaa9CyxtIjC8k3H3qRDOVpmcH7FrbBrMwUaW5lDEsruHVRSBjsXmznPQkW8vzTiwWHKQAAP0d7kqjAmsOPDMl0uYFWuDYi7KC0Almlspgy6NTf5gnCJFBO5KNoczDBjvn21M3OC8hjBO1C4kNVhSwmrUGS0LxJl74Z8cOElxZsJQe6T5pLZt8xUXMh23Ke5iKfQWyp3+sxYqUpTHrUNiHcvJfSRVvKtPHgbuKxw7UcKt1DehnVFGHHCpIZG9BB6tMnZbrw8/oAWSPn/cZMGmMD8MWcG1Xs+ssUh0nICoakqpFYJkjOItuHjGBHfYMedMq3PSc8aqAL3Cepa7l985Bwr1rbwm5MREvBgd+QjXWb8fK/AkU4/65q3VFjV0gnLxH8XgTDXaxlxfb+qVh8OGueL060K+G+b57AUjCvmSe4uEWzrKOr9YeV7+Sqgv4NlbX+TljgnvXetG/YbJ06t8zSAmmiQRekogR7lWo8Dqh+jcV4IoUPWPD1WAa4BJgoz21A4wZXMXJfN42CnnnslxOe9EGpSe3ARi5cZONL+A1BAAU4tWN4tR8R5b67VumqiqkWrK8JhcoQJvwI+pa/QSucvSkN07e3sk/R1nHXI7n5bIVonul3ehNASyzeCbKv2beo7HPcpkRMM3Aq/qxzG0JSM3HuQwsUeCqe7oKtGEb+yYlbV7TU83CEyF/ZKGFFUvE0aJH0m3amTKhuQwyeh1wA2R0vZ/mX59xp6LTqsZE8fhHq5hR1noIWNT056DIXnlyMMGcWSM+ANwWBwNy1Z3MXN5T8lvwEeEgkSxUtixglzqj35BT4tEfP4TqIKihq8LQijvmChp7ahjrCqOMkT5Y6jjXACspkjdSCIwLhZM01J3waTPLg8t5fwgYSlbktCOgkJ37Zaihf8iDEBgyridhcnIxFMN8OUEjRVT/Otv7nVqZofiPg+oC4l/hLTS0mJk1LQrV4U/j53Q/JSeCrV8ueAiR1RVs9RNmFIfqeNT8/6biSmh7qHdIZWxo/LXVQObnWX3yZazaak5jAPCETL9EcHQ3EQGs1wk3jihB6tH2VLYJL+GMj4WdC07DUYNrnrPxttVMXv7Rfu/o9do5MLr5ytRTSSiEsGJUiTaJ4x8qlsJaNHa8ejrh/Kkp1uUcy0wcX0yExj2n1rJ7F7TNXkagLeVHNhyAqT/lL1D/FaI46Ks8J9XD4nLjdcgmZajnT4pEBEg8rVXQAB1JSXsbgDnujiSHfVxjXOFcb/DVtnpkarOIR/IKGCTHic1afG30EIfKEoJQZME+0Xmzl5dU2aUhKtbSHl8qoY5sXsyadxesOt8CJmUjsNFAcyi6F96qVLU6wum7X0ebCk+6kG4C/c31oKpJJI99FRBSQfWLHhzss0+EylSjTEkLGcn55hwLyB9IXrjUoH4OxsPvJ8tySGKvwh0L3zSYVRaNLzQVcB9cPCZus/c+6lHkLcVQ1JwlcaYJZ2Lge+5aC4VLTVoogkifI5PozAHu8DhbIC4TppbvXtr4eNMJjnCdn33c8NFOEDvTQK4Gwi0pOF2Lq04WYiW2IZ8XV1oawjchu9O1a1g024rBF4ISb2dx7zahPKb1xmSH7aC3xR1ZL0hJRZ9sWqhKBd6ATBq2rEYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01P3CD81kMsa6n3hGbXHKAsw",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "espresso",
+       "size": "double",
+       "milk": "none"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Jordan"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1646,
+   "output_tokens": 355,
+   "output_tokens_details": {
+    "thinking_tokens": 235
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

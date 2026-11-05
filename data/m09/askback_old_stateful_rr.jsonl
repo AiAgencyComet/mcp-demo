@@ -1,0 +1,14 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": false, "ms": 5005.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 2, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 3, "ok": false, "ms": 7.0, "msg": "McpError: Session terminated"}
+{"call": 4, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 5, "ok": false, "ms": 6.0, "msg": "McpError: Session terminated"}
+{"call": 6, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 7, "ok": false, "ms": 4.0, "msg": "McpError: Session terminated"}
+{"call": 8, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 9, "ok": false, "ms": 6.0, "msg": "McpError: Session terminated"}
+{"call": 10, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"call": 11, "ok": false, "ms": 8.0, "msg": "McpError: Session terminated"}
+{"call": 12, "ok": false, "ms": 5001.0, "msg": "McpError: Timed out while waiting for response to ClientRequest. Waited 5.0 seconds."}
+{"summary": {"spec": "old", "mode": "stateful", "lb": "rr", "copies": 3, "calls": 12, "ok": 0}}

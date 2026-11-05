@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-02",
+ "rep": 3,
+ "request": "The customer on A-1041 wants their money back.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 1203,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSxgYKEAgTGAI4AUIIdGhpbmtpbmcSDCMxZPTpkwKHwz5UZBoMBo8KbWnyf5xyfTfOIjBhKKWU8IHWG6iPAzzk+3j1xn6ihtnX2yJPMXits35G7R3RKX3851kKT35pkKCQIGgq4wW89oFqXIoKS0yaER8+X46zLPcCttKa6WbPXgmpyldC4iTp98tJNhJyKLX0KjSFNa0rpnkpcn/OdwI9zQLJts0lMdvfbp4j+1s+6VTWnbNb0u73ItmFfvzKRkBZpUk5F53WPsq7gS9TSOK+WZdnZkIHQC9X+KhYVaXuTod8JmUiw/WF6aqBEu55gksR5hM24smfYjY6jmsJykZQDeCYY/iRVbETC6iW/YuKcp1csSLsRn8akfrYFZO6FwiBHSVF1lonf5pcGddYYVSxEdvGCo7/1ARyn/AyorODV2886ZoqKwKQEWV/GLvUlSUvbaIMteCNbMaTVHd9bDeJyINFlH07xTUO6JdhSW9vkKfc5KkfkdDZuMnxJTPujYEgnYwPb1w4xfKhFHu5erzqs0yKP3aF+RBTD8kHl0cjjJaalsFZTIASG6e0km7IWM1ki5Dio8/HxBnSOL7X7XU9eofhLPzBY+LuDT+LHJmU49XbrDmw7S/4is6JsUZpHmhsJ0Ar/OCivUYJzFl3JAuIdBssClTcGBLCSAZf5q4AiCa9HdxSPv2NeO0xiyrasK1VBWZ+//pgKpkmmQIFEwzMMz9BdgD5F7bInhT1wQ9CL1dujPUPmIMLtYhn5fjxtqa4NUq2vVs830N0l96RxJHWUgCuHx+iIttABM++2xrbHO8h/PduTpAJOurMM7WxzIhx+XDrcgtuzH+GtI1SvskTYWkeQh/yxhCaCfhYRizqHmwwWbmUhNwvSoYPzOOZ9AjfcZ1DUyBRVRoTrummX15EOymJAeV0ShsbwzqrmxvVmL5QRqCSr5NcUeDYaCAXADHWMY0kGzIxouAm08lxIjr7heU2H8qUdK0XuI4AyjVtw3sPHwufLnkQXDpDoEWf17gao1h6ZM341yjh/q4cXs6wOBAiHRjxNgwIFWUkE24Qz3HcJojOUF9/PxEBGrJF6vG73HlV2cIHwJxKEJ5zym7idhM/rSQn8rwlGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01P2U9WakpNbuukJUzRvr7bT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": "A-1041"
+    },
+    "name": "fernhill__po_refund",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1628,
+   "output_tokens": 139,
+   "output_tokens_details": {
+    "thinking_tokens": 81
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

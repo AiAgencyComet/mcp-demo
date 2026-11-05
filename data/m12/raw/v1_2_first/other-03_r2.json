@@ -1,0 +1,58 @@
+{
+ "case_id": "other-03",
+ "rep": 2,
+ "request": "We're low on cold brew concentrate. Reorder 10 from Riverside Roasters.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1405,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSlwcKEAgTGAI4AUIIdGhpbmtpbmcSDANJRaYPoVprqEsllRoMaIPmb5YBShHIr7gWIjAXh0GXnR1vYm37l4fATUXSAGvbxZyqVsYwxCJ7/R3GhEc9UoBMQWyI6OnYPffWFdwqtAavFzmbEM5pl37lJT4j29zLNtGMkxO1KiIP0A/lXpHOCqwUFzMXt7ped1sPKGNSeg/y8JtA8RgkYdhgSYVmfeA6Wzm5BZ4kHp779LAe9eXGW31cybOsSW1+m1W0cyLIbOuz7pHh4Z/fv4Q3phMCQ2bn7y/0Ysg3KHPtV9/E5btT+KbE2Tx29xV7st1M9H9bf2KgBx77FSj1efR59Tf3Q0DCpGLjTkTU0P29ZRvHFrcHUh3JWjGEIHLEsRzGJz8T0wlIHsOmhmr9rTa48PCEFhjwk6Myiv4uYzMto5e+IhJajX0H0yvrGbQgGyl1ly8lUMKq8a7w/Kpz9n8mZX692tufdMV+p/hZ59QU55dr2Xdh1QgKeLAeeGXoBGuj+JmWjxf8pCUDFb/v7M2M+RFN8pIq8wF7aAK0Gn1JGRSpxcNlyHZsVVMfEDt9WGITU+wEWlPDLf1KQg4JTyDoRKMjJKITHdtqAIb7KcAgLBJHOqyBDq2ynN9dMCXg2WhVnc4aHoNj+5USLaQ2RkfsdjRAek24fLR6zHCC/ot+cvlrcXALtReyGeZ/csf25lTWaZzAroK78CajyaUxM66kZ57LBN2HkaDxHcO1bmC7WYE+Zv1Yt9Z68nZR1UeKjG3V5mY5qfyfn7CopVxcJmZesV3j7kDhQRWfapFydNuZ8G4fzcVq0MgJXBdS8uzbGPn6oBLXW5fsbVOgmYyGz/M17l2vCRSY8VPn6FH/Y7/zM9KNg/QkfCYTV8px9oN/hxH20P6vr0yHl0xlZsjkQ6IoPw505mzeYtjtjWiJznLRZTNnsyAOBcfMQSvq5EuRIDO00HT5ILc9fG0WFyVVFXXaDVzpJjEB4SlRMm+gjKKlpm/O01Hg9Q2Y+larvtNpmoz02RF4idkr0QDi057Jm7NLpaPT1YMipjn5kN07JGEwMq7RvmIPdBxiKXcdX7znrGNjB7w6PI4LE974m4+WgG5QrCEKoKDZEBl1W9Zluzo4CnTD+CH8dRtgSXtPNwN1u0GHYtV+BCLZnyW2NvSxZdIUuFtOwBauoiqNCHWUtShyeBQ5H0i1uv4tJKWiLKXtYm68whDEOhsNGHxKGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Bh1UDjHKvFZij2e5nkiher",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "supplier": "Riverside Roasters",
+     "item": "cold brew concentrate",
+     "quantity": 10
+    },
+    "name": "suppliers__create_purchase_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1845,
+   "output_tokens": 225,
+   "output_tokens_details": {
+    "thinking_tokens": 108
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

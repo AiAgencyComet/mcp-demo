@@ -1,0 +1,53 @@
+{
+ "log": [
+  {
+   "spec": "old",
+   "method": "initialize",
+   "status": 200,
+   "sent": 240,
+   "received": 544
+  },
+  {
+   "spec": "old",
+   "method": "notifications/initialized",
+   "status": 202,
+   "sent": 218,
+   "received": 155
+  },
+  {
+   "spec": "old",
+   "method": "tools/call",
+   "status": 200,
+   "sent": 278,
+   "received": 470
+  },
+  {
+   "spec": "old",
+   "method": "DELETE session",
+   "status": 200,
+   "sent": 84,
+   "received": 155
+  },
+  {
+   "spec": "new",
+   "method": "tools/call",
+   "status": 200,
+   "sent": 462,
+   "received": 404
+  }
+ ],
+ "summary": {
+  "old": {
+   "requests": 4,
+   "bytes_sent": 820,
+   "bytes_received": 1324
+  },
+  "new": {
+   "requests": 1,
+   "bytes_sent": 462,
+   "bytes_received": 404
+  }
+ },
+ "old_answer": "data: {\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"content\":[{\"type\":\"text\",\"text\":\"4.50 (answered by server pid 87067)\"}],\"structuredContent\":{\"result\":\"4.50 (answered by server pid 87067)\"},\"isError\":false}}",
+ "new_answer": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"content\":[{\"text\":\"4.50 (answered by server pid 87069)\",\"type\":\"text\"}],\"isError\":false,\"resultType\":\"complete\",\"structuredContent\":{\"result\":\"4.50 (answered by server pid 87069)\"},\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"fernhill\",\"version\":\"\"}}}}"
+}

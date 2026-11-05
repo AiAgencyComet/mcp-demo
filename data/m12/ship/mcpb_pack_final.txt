@@ -1,0 +1,27 @@
+$ mcpb pack . ../../dist/fernhill-coffee-1.1.0.mcpb   # rebuilt after setting MCPServer(version="1.1.0")
+Validating manifest...
+Manifest schema validation passes!
+
+📦  fernhill-coffee@1.1.0
+Archive Contents
+   1.4kB manifest.json
+    184B pyproject.toml
+   5.5kB server/server.py
+   1.1kB server/shop.py
+ 126.7kB uv.lock
+
+Archive Details
+name: fernhill-coffee
+version: 1.1.0
+filename: fernhill-coffee-1.1.0.mcpb
+package size: 45.4kB
+unpacked size: 134.8kB
+shasum: 1195ee5ef1f7de461171b4b4a4a6ceb06eee0071
+total files: 5
+ignored (.mcpbignore) files: 1
+
+Output: ./code/m12/ship/dist/fernhill-coffee-1.1.0.mcpb
+exit code: 0
+
+$ shasum -a 256 fernhill-coffee-1.1.0.mcpb
+dd688abd4107b5fd4b678e05575cf7ee9380d495505c6f2f0c33dad4f46ad70f  ../../dist/fernhill-coffee-1.1.0.mcpb

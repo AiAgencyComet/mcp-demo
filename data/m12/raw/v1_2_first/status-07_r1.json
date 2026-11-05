@@ -1,0 +1,54 @@
+{
+ "case_id": "status-07",
+ "rep": 1,
+ "request": "How much was order A-1042?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1079,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSywcKEAgTGAI4AUIIdGhpbmtpbmcSDLH81geaBkwuK6YYyxoMxy7PGj5+PxbLzPi/IjCSLWGhcJ3MzS2OCCeZhPNXlxTIRv4WLLFSevqPEc7q8OGct0+VweA4NFhfN+PjWmYq6AbTXBivl0HTHZ48KmrLBzpRfvFA+gbYJAJlmvUPl4agJ46u2o44NSuUK515dbPk+h03gBZQWhGD9e98fS9p3TAMW/g01QDZQeDFqrCHZ2GN77AFhFTVcCUFTWEdaFb96zMs8ZtO/CKkHNhrY5+mhOTnKSM1t264JlSawKtH6bHnjTyFIr+ZW68lNmVrBC02D8JTJWI4/8TZs4+4RhGjrWuuPVkzOO/wuw9S6fvAaGo05Pxho93flKc1a2KIcT7SHpZhByqpD5XiQ0OMYPx4V1+4DpezGkRKcRbszUMl5kXe9KDGg60x0mwPikW6xmHL0G2cnmYAHGDstAOAvexPFR8nkJW3spUxVMmJwzfM9GMRQykNaE7ulSD/F1kOyZQxb33T/rFM6aKg6x5AYGTGDeYFYLiKvW5Pnax0Hjz9+mVAv0o94Ljy3LzmtM29RPpyXRyc092xDnvlknjUY5xUiHez+1mqpKzs5zqS0xoyeqWs2BrrRcYeGYGGHIWHbZwL+kKrFy3KjBDPMDjMBt/n4/1Wz54KFQQUPBCKJjnLz+Tnf3TFwnNeUwQrJTeZJSfmHe+AslMDi4WvvzE9KSx5VEGGqbVln9nw1Atb+m/fWhZ2F/7tQpUsSaEvLxnOrS2ue/oBM45ZhsnwTOczUqaDmn2Gd4HMgdjyFI5PYnMytE737C0BbVo5eMq+DX5kJkwoCGaWz1fxGyNUtlZkVT4mof/96+2QJDl3mVROdeWmzCqPXkROojhCvBiQ7V4dY2hoWsj0gJqlzs0nxcBQYr2XmxtCcPqd7O9FEbXRD2uovTORRsqAhIZVBxW1EnHOtHFenSIdvci2BhaFzYkcw3I0OBnGgKjc9ZLujNRUI/uzaejR/l4JJ372u6Wrqu17sfs/JForAqZEBccDJTkHi95VQ2UmXaZmwtv9dCWoryJXUvB3b5U5xw2HnFbSwtFt41qxKIgGDMoyt+9LMQzpTbjkQe23Ox1XU5ncrzeIENzu4p7nHTmT6z9YK6rnTitCWmstrqV5+tfohVjZck+BMCyzRl1HkcpgnQz0By4m7cdLMPBtdI4RO9hE9VKCF3lw3aOez6ypsnEvKqPDuhTqjzxa6kBFZuNZWQAsnEwtIOK0TYoWq2imj2+l9G34ghMfNbNTxo2sXsEfAF9lTxgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01LwNdqHr9HvoWSU3CiJLXyg",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1824,
+   "output_tokens": 152,
+   "output_tokens_details": {
+    "thinking_tokens": 119
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

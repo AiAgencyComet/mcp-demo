@@ -1,0 +1,234 @@
+{
+ "A_sdk_default_rs": {
+  "prm": {
+   "resource": "http://127.0.0.1:8310/mcp",
+   "authorization_servers": [
+    "http://127.0.0.1:9310"
+   ],
+   "scopes_supported": [
+    "menu:read"
+   ],
+   "bearer_methods_supported": [
+    "header"
+   ]
+  },
+  "no_token": {
+   "status": 401,
+   "www-authenticate": "Bearer error=\"invalid_token\", error_description=\"Authentication required\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\"",
+   "body": {
+    "error": "invalid_token",
+    "error_description": "Authentication required"
+   }
+  },
+  "bad_token": {
+   "status": 401,
+   "www-authenticate": "Bearer error=\"invalid_token\", error_description=\"Authentication required\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\"",
+   "body": {
+    "error": "invalid_token",
+    "error_description": "Authentication required"
+   }
+  },
+  "wrong_scope": {
+   "status": 403,
+   "www-authenticate": "Bearer error=\"insufficient_scope\", error_description=\"Required scope: menu:read\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\"",
+   "body": {
+    "error": "insufficient_scope",
+    "error_description": "Required scope: menu:read"
+   }
+  },
+  "menu_token_refund_sdk_only": {
+   "status": 200,
+   "www-authenticate": null,
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+     "content": [
+      {
+       "text": "Refunded $5.10 for A-1041 (person: barista-ana, client: 806ad35b).",
+       "type": "text"
+      }
+     ],
+     "isError": false,
+     "resultType": "complete",
+     "structuredContent": {
+      "result": "Refunded $5.10 for A-1041 (person: barista-ana, client: 806ad35b)."
+     },
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  },
+  "menu_token_refund_tool_check": {
+   "status": 200,
+   "www-authenticate": null,
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+     "content": [
+      {
+       "text": "Error executing tool refund: This token does not have the scope refunds:write.",
+       "type": "text"
+      }
+     ],
+     "isError": true,
+     "resultType": "complete",
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  }
+ },
+ "B_as_metadata": {
+  "--sdk-defaults": {
+   "issuer": "http://127.0.0.1:9310",
+   "authorization_endpoint": "http://127.0.0.1:9310/authorize",
+   "token_endpoint": "http://127.0.0.1:9310/token",
+   "registration_endpoint": "http://127.0.0.1:9310/register",
+   "scopes_supported": [
+    "menu:read",
+    "orders:write",
+    "refunds:write"
+   ],
+   "response_types_supported": [
+    "code"
+   ],
+   "grant_types_supported": [
+    "authorization_code",
+    "refresh_token"
+   ],
+   "token_endpoint_auth_methods_supported": [
+    "client_secret_post",
+    "client_secret_basic"
+   ],
+   "code_challenge_methods_supported": [
+    "S256"
+   ]
+  },
+  "default": {
+   "issuer": "http://127.0.0.1:9310",
+   "authorization_endpoint": "http://127.0.0.1:9310/authorize",
+   "token_endpoint": "http://127.0.0.1:9310/token",
+   "registration_endpoint": "http://127.0.0.1:9310/register",
+   "scopes_supported": [
+    "menu:read",
+    "orders:write",
+    "refunds:write",
+    "offline_access"
+   ],
+   "response_types_supported": [
+    "code"
+   ],
+   "grant_types_supported": [
+    "authorization_code",
+    "refresh_token"
+   ],
+   "token_endpoint_auth_methods_supported": [
+    "none",
+    "client_secret_post",
+    "client_secret_basic"
+   ],
+   "code_challenge_methods_supported": [
+    "S256"
+   ],
+   "authorization_response_iss_parameter_supported": true,
+   "jwks_uri": "http://127.0.0.1:9310/jwks"
+  },
+  "--no-pkce-metadata": {
+   "issuer": "http://127.0.0.1:9310",
+   "authorization_endpoint": "http://127.0.0.1:9310/authorize",
+   "token_endpoint": "http://127.0.0.1:9310/token",
+   "registration_endpoint": "http://127.0.0.1:9310/register",
+   "scopes_supported": [
+    "menu:read",
+    "orders:write",
+    "refunds:write",
+    "offline_access"
+   ],
+   "response_types_supported": [
+    "code"
+   ],
+   "grant_types_supported": [
+    "authorization_code",
+    "refresh_token"
+   ],
+   "token_endpoint_auth_methods_supported": [
+    "none",
+    "client_secret_post",
+    "client_secret_basic"
+   ],
+   "authorization_response_iss_parameter_supported": true,
+   "jwks_uri": "http://127.0.0.1:9310/jwks"
+  },
+  "sdk_defaults_authorize_params": [
+   "code",
+   "state"
+  ],
+  "sdk_defaults_no_reg_scope": {
+   "registered_scope": null,
+   "error": "invalid_scope",
+   "error_description": "Client was not registered with scope menu:read"
+  }
+ },
+ "C_rfc9207_table": [
+  {
+   "flag": "true",
+   "iss": "http://127.0.0.1:9310",
+   "spec": "compare: equal -> proceed",
+   "sdk": "proceed"
+  },
+  {
+   "flag": "true",
+   "iss": null,
+   "spec": "reject",
+   "sdk": "reject (Authorization response missing iss parameter advertised by the authorization server)"
+  },
+  {
+   "flag": "absent",
+   "iss": "http://127.0.0.1:9310",
+   "spec": "compare: equal -> proceed",
+   "sdk": "proceed"
+  },
+  {
+   "flag": "absent",
+   "iss": null,
+   "spec": "proceed",
+   "sdk": "proceed"
+  },
+  {
+   "flag": "true",
+   "iss": "http://127.0.0.1:9310/",
+   "spec": "compare: differs by a trailing slash -> reject (no normalization)",
+   "sdk": "reject (Authorization response iss mismatch: http://127.0.0.1:9310/ != http://127.0.0.1:9310)"
+  },
+  {
+   "flag": "true",
+   "iss": "http://localhost:9310",
+   "spec": "compare: other host string -> reject",
+   "sdk": "reject (Authorization response iss mismatch: http://localhost:9310 != http://127.0.0.1:9310)"
+  }
+ ],
+ "D_trailing_slash": {
+  "AnyHttpUrl": "http://127.0.0.1:9310/",
+  "preserve_empty_path": "http://127.0.0.1:9310"
+ },
+ "E_token_resource": {
+  "status": 200,
+  "aud": "http://127.0.0.1:8310/mcp",
+  "token_request_resource": "http://127.0.0.1:8311/mcp"
+ },
+ "F_parse": {
+  "error": "insufficient_scope",
+  "scope": "refunds:write",
+  "resource_metadata": "http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp"
+ }
+}

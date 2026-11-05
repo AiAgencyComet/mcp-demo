@@ -1,0 +1,6 @@
+kiosk -> get_menu                       HTTP 200  {"content": [{"text": "{\n  \"drink\": \"espresso\",\n  \"price\": 3.0,\n  \"sizes\": [\n 
+kiosk -> refund                         HTTP 403  gateway: 'kiosk' may not call refund
+kiosk -> refund, header says get_menu   HTTP 400  mcp-name header does not match the request body's 'name' parameter
+kiosk -> get_menu, no version header    HTTP 400  gateway: MCP-Protocol-Version 2026-07-28 required
+kiosk -> get_menu, version 2025-11-25   HTTP 400  gateway: MCP-Protocol-Version 2026-07-28 required
+decision time for a 761 B request: headers 0.07 µs  vs  parse body 3 µs (39x)

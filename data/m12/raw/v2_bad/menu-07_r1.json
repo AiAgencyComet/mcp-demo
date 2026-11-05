@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-07",
+ "rep": 1,
+ "request": "How much is an oat cookie?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1063,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQShQYKEAgTGAI4AUIIdGhpbmtpbmcSDIo3Fwp9MC4WamqpyBoMyOo+DeNQ8vE3jaUiIjBlGO3bNVJIvtZGm2noXNBXGCGV0i3auAlWuuT8hwAj9+cmiWCtgKkzmJiF/k5cqmEqogVxEVANzpRPOqVTw+cEYTvZeS6+shYYqN/xKPshJvbSRZHFtQWCwsDsyrdGQhFGp/cocr/Kml2nJ4V4db+4eATf0cdCGVP6N2JAfMareWbFQOHoVGgqxT4NYHQ/FmM4jaRaeLMYnM4e3oMGZfGQ9h4Bjn5HFH3a69fj5qNkDkFwiUpANDA5kQ56K6ayU+epen16fPKS5L0UfhgIGdlrzMT5sOSzDyCOr6ImyK6T+9kw/x0JgM1sVJA8cqNO4wjMzb1CzqfFWLGlxDJzbGtVNpBwfNUeeJ4MIW4v4SeNu6sOZ+VmdE2PQKE5/eXH0UTESXuf8mGPvos0Wx7iPwdcM5SbG4fZNVQo6z+TWyWT6RuUqam7t7pjOcWzHXkJ8kF4o/1M4Ak7stD8LwhPFAMitdIs0gxnuA6fmw+KU5jewJPl/uCx98h/qRDC3X4oqvmILrlKrs+SEaclTbLf7fZSLavY7KBXKSrNVvooUcXzo2NUS3YFTbBUHh2MCt7DDnFsheqCtDawz6IM5L2EZ8OjFBTSmx66IJnBaCKnYyh1N9dkYViRoIyGeNcx/OgTHz6vWw3Hu9EMMiaeL9t9oClNu7Iku0ov4mokrfMpBg3RmVEs9fnRU2NtaRaiShR5XEexb32/InOROE1FLbb5riW0HxcUEFje1gS0mFebf14d09FlujoA2q7LjHrHOWfGhEIRxQYtTjAsWAg/XZu6hWI0qiCRv7RbjldxXS/MzxeC0qvm0QeamFviwVxEZZz0+gGB96aXeiydwcXK0+BttcYHOzSD1W+9A4g77e3g1tK0ZGF6ve2OXDzir8zZ981LnhgHr6UUmbEiCn6bDY8OWUL7SGga/jw0TKYevP6St3bgtiQgf6pV1F4fuIsOvAeC6uA11BeX2BgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Jdnt79iojSLzUTiN7S3gBK",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__mn_list",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1623,
+   "output_tokens": 99,
+   "output_tokens_details": {
+    "thinking_tokens": 66
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

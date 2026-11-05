@@ -1,0 +1,54 @@
+{
+ "case_id": "order-07",
+ "rep": 1,
+ "request": "Can you send a large cold brew to 4 Harbour Road?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1187,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSiwcKEAgTGAI4AUIIdGhpbmtpbmcSDHgbTJs2BdOWojH9iRoM2ykeet2znntw2Bt/IjBCN6vVXv2+d1NRTr8NsU9+XSy/8JdmrEQ06/vDbHURJpWkod4/awAe369pf1RsV0cqqAbTKaCWo0QYn0XUof+WlXAU9xTb9yScybXdnlDFArEnIiFj1/dQXum5AJsrQLDygIRft6iLEF8hWkxPeAAh9fH1FR3eMeL/ZngtOZ5ul5bdk6UgOJsteTjuMSLwCFH+LHfCovuBSS7Q41tcD2KFRumxYqfdJUS44EoBx8gx6SI4QtdDe7xSfn65sngisjI1sK4ruLaVae4iu5zm0bdVPZMT0hr5rIKRczbOgnBATb5PenPlqgjuy1o1eGAKRQTHtAufs299bDSyvJ9HUV18B1FxfXEfy3Vjg2xe6lueVurss5jHd0dSe9S7kBdLBRfY5ajeYK6rDo2EunHVIrgYyRXKeiEddXQBP31bUlS5X3i2BX5SpnbrFJCAC+mAHuz+f9Yz995BfxA/V77JOk9kzV2IGE4SVymz9UiB3JejChXk9uxD4aHd6qr/s9JJLHA2ibtvMnOOIfxwBNMjoUc9Q+TX1fgSDlyo0zr+buUBO4VhVVBlfkuUaTet+XmBwuXGDlvzpbtjrlf8p/5Dfv1prxf8FYfxly+klemEHSKCS+E9Lnn5DLxCOCEQSmxHOT58Me1HWxWWrieACDvuG48sRJdPDAC9qItet6G3PyOPcaGCGpXCusSMS19CZuvFX0K6loaY8qLqZMUnB/xmyIovHr2aNN+Xw4rBY5M5hu2CQLsr5PJU192MXc3t+mkL2PRPRVmG6Oj23pTy1wzgNTMSVijbR9YstFZ/MWoxm4MA7MFFAc40flMwsJvof+6K5uXpNk9G3XQ6II0D0trNShAg8rrSY9GHmWPRwhvTZ+/w4pu3dPYxI2HmLOLHDLIjxbYlhSOebGm5WPsBhzL4NSbZpRk+1jF2cv59R2b2Qpf4YmFHtGyXkFYXiLJ1Eap6MqbsbeJBdiW9T4SObLh5wbBkta/N55Fscm3FNpkhHm249clQLhOdzPZPS66IDCQM75+uAjsMjSt05ra9O0YP291msd5qi6u9jH6kUjGVjpUPeKGBGjJflnqrCPi/x5CEiBpPXeB14znAAMjWyxx5nxijFT7zweqS+w3HbQy4OJdnX3xl5r/rHJI4W0ZvGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01BRbT1PUYfhguzehMdpQeKP",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1836,
+   "output_tokens": 136,
+   "output_tokens_details": {
+    "thinking_tokens": 103
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

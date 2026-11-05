@@ -1,0 +1,9 @@
+# m07b · sync · days=3: the server decides NOT to make a task and returns the normal CallToolResult
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (3 days: short job)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 3}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  3.03s] <- HTTP 200 from copy A (3013.0 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-11-02\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 3,\n  \"orders\": 166,\n  \"revenue\": 643.4,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-11-02", "last_day": "2026-11-04", "days": 3, "orders": 166, "revenue": 643.4, "top_drink": "latte", "skipped_orders": []}, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}

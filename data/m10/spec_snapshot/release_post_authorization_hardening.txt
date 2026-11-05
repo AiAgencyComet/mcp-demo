@@ -1,0 +1,24 @@
+migrate to the new lifecycle.Authorization Hardening#Six SEPs harden the
+authorization specification
+to align more closely with how OAuth 2.0 and OpenID Connect are deployed in
+practice.Clients must now validate the iss parameter on authorization responses per
+RFC 9207
+(SEP-2468).
+This is a low-cost mitigation for a class of mix-up attack that is more
+prevalent in MCP’s single-client, many-server deployment pattern. In a future
+version, clients will be expected to reject responses that omit iss, so
+authorization servers should begin supplying it now if they don’t already.Clients now declare their OpenID Connect application_type during Dynamic
+Client Registration
+(SEP-837),
+avoiding the common case where an authorization server defaults a desktop or CLI
+client to "web" and rejects its localhost redirect URI. Clients bind
+registered credentials to the issuing authorization server’s issuer and
+re-register when a resource migrates between authorization servers
+(SEP-2352).
+The spec also documents how to request refresh tokens from OpenID Connect-style
+authorization servers
+(SEP-2207),
+and clarifies scope accumulation during step-up
+(SEP-2350)
+and the .well-known discovery suffix
+(SEP-2351).Roots, Sampling, and Logging Are Deprecated#Three core features are deprecated under the new

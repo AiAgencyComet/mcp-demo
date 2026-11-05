@@ -1,0 +1,54 @@
+{
+ "case_id": "order-05",
+ "rep": 1,
+ "request": "An oat cookie and a single espresso for pickup under the name Lee.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 3388,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01J8wVFu98r4ggCDexNqV5Zm",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1723,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 561
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

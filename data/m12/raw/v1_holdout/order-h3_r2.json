@@ -1,0 +1,71 @@
+{
+ "case_id": "order-h3",
+ "rep": 2,
+ "request": "Send two large lattes with oat milk to 9 Mill Lane.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 1795,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSjggKEAgTGAI4AUIIdGhpbmtpbmcSDPXhzOyS38O9+3RWsBoM5Ke9BokPBuwmSmBEIjDy3ygJ4Lr0lOHiYDhfwON94tWcSTlP+V3MWsqJYo5rrw8b5E1qFEuvxGujmXtxdBYqqwdn1px/5ru78I3S+JDULxTepvsisPVWwgIr+q0u65SqwIhBjC59iMRXWaGRXqSI4zKk+Q87RoysobRn7h86kjBbhrGOph2t4nN2MSjkR3hWMwPiL3edOkpwKiOuZo4TMsYO3R9cJUQgT+USys0LHd/RlL5whjZ+T2vW27KG2zC3puZB1zEaqIEEC0GH9nazM0Dqzcul5dhkirXm8cKDkGPn4bsqa65ZAsgAqQPeU5iReo9llDymzcPBAMqElxEEWBtMJX8S9N0jPs7ZDu4+//qYkhSv9whjsEe3Lmgd61iH6Vuv6TDDyUPl7g2qILELmZuB5zo//+SQq0MxWHmKHz+hm6aG1H9S1/tTCuhhiWWltSmEIU+fzLiClkDfoKimWjK0ux6o2AW1e/t13smlM29IuKjCAR0N7bjqEJj9fJdYfBZX4yyt6T0kLJJJWzDwIRTA3wBWR0WQ2/Pck6RuN2UxbET1XYn/VVDnJ/Q7N1VHV+yQzPxK8IfWn0EP+zNEvK01GOKtY1OPrwAgk7x2AFLJt+ax/R9Gb1XXFXGw1DrdyAEDXrnBZ0fvjGkx+iJHkszYTBG64nvPwhJv7+9+4bpGEUG2AzfWKFgCi90LQZR2odm5p3I3j9RXCSEoGp+aKWj7eyZ6R6iH0S7Zdafp9dqfxjnq57ZGWiVJYutOs5/aSh/YnbHuO042n/pPC4QqUiRRUcGIeEAhFnmdoIMHlVaqWTUk4qKA/aBZ+OF0Igbqkk8e9ayeSB+KWbyjQPaBoASO51DRkXOR6XXGhskXHL1KHIeILdQmgAZZM/szvxnUxvyaQES3Jtg74F+ckdbKYioUnXFxYX4Ku3BZAAv2Ew0yuiXBt+ydc5rwnK4a1HN7dTUgmi7ETE8FYv+dZe/OPFqNz8gBad636tl76Zno3M19EWh4WwJWxJkSGkhFxk5d18zxmkxrfbJYhje+Yt2U1M6JHdKeGfhHFke8A4+9zjK5oM3wX98+NvxQevg91KhFSlAm6tc7wcjHuqZjlgaGU84uIuUdbmtRTenbp/lJ9nuv/TobH8eZj/LUXRTT1zvKbcL1AHg41i+1Tm7Ok5uPfRwrdMXnZP3wL0fO/1XuPsz05rrleLZlMO653pivowy6F1qC+2dfT0dKR3mMOP3nfIJgNMNchqmKQYWULpBnh0JxFynpVW4eaE5NvgtXdS5RQ+4NjnsNa4ShtPvWpCluKlOr416Xm8miFzeSO0Tk2GR8kbrtK4xuxvdjeJkYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01SmRL8wGUp1FV4JFqbJ1WcW",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "Latte",
+       "size": "large",
+       "milk": "oat"
+      },
+      {
+       "drink": "Latte",
+       "size": "large",
+       "milk": "oat"
+      }
+     ],
+     "handoff": {
+      "kind": "delivery",
+      "address": "9 Mill Lane"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1723,
+   "output_tokens": 309,
+   "output_tokens_details": {
+    "thinking_tokens": 158
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

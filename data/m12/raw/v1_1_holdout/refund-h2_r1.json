@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-h2",
+ "rep": 1,
+ "request": "Money back on A-1042 please.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "f5ace75886e48c1a",
+ "ms": 1108,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSqgUKEAgTGAI4AUIIdGhpbmtpbmcSDDVi4W+2Fb3JWcZATBoMj+nRLhFmAvMy/LrIIjDjeOGuknNbjYlU/LO83ZnwdhSHCRZfKfEokEYRQ2DivBb0eObe5Mmo+pF9vYQE5ggqxwSwfTQuJXy7DPHQfRjN4D/+AhcpAQDq0DmorLJdxS0aAhU+Iki37wARtuMEg+9Pz/EZnrvfTV9D0wMMrWnLPjqYVeW3bpgYPTzXbNtmNUJVl+aEHrhEsbm5b4kVqVHIFJCvrp9nznsJSv2NBssbHbnjTKExLuzwcW28e3raSg4FgglCyr3PHZ921PFzC7Z2kdo5ksJDDO9yiWGFbz6rQ9YiumNNuPqgVLJNaoxOfb37aDMPQsD4sbTduCw9OQrjmWgSKWLyp/b3T9QZZWk0SHURelfiyHzaum3shxEuxuERktbvHSJaNVg0DpoqyAW93yExkpUkVFGg49fUCGYRbQrJLnCHDUf3VfXh9BEjGjtW3PnHLRzsELwzZeLHYeAbGS9Wk1Su80oh3ZMn9+5XrMkzbwjmxDi/as+8SM4JGsBbQ5NOW8jmIxI2rirKsPv7Ms5wiXMCZV50UTeS2j2PRy2I4f8W7cMymsnSU92cjaHHnGxtL9Amq2AASSojWTwktNuBeDQ5oQ8+293m+KqGrBetsfcL7lhzUVJOp8AUs4pqZZoVb5ExEkrUJmrJyA6g3tXMQ7UhGazNwYKMlwrnpHT9Tez/puwl3pa8A7U0KVpcF5o8Unw8XbOFGqlgNbVnrh0TDZ8pfWHNU9fT7xq9BgDgDeyhARwmeW6IzNPPKh4XZsaMt7ulQ/GVyFltEV/jv1Vj+FwESLiOUbfsfz/c3LCc0BRj9L6LY6UNr+irmyqVqtIZKTzb7D6gZESEtcI2QVxQI+ByiV98GAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01YXtfmBM9qT4mBkMHP9C8kr",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1042"
+    },
+    "name": "fernhill__refund",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1800,
+   "output_tokens": 84,
+   "output_tokens_details": {
+    "thinking_tokens": 27
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,979 @@
+{
+ "rows": [
+  {
+   "tool": "shop__list_menu_items",
+   "pick": "shop__list_menu_items"
+  },
+  {
+   "tool": "shop__get_menu_item",
+   "pick": "shop__get_menu_item"
+  },
+  {
+   "tool": "shop__create_menu_item",
+   "pick": "shop__create_menu_item"
+  },
+  {
+   "tool": "shop__update_menu_item_price",
+   "pick": "shop__update_menu_item_price"
+  },
+  {
+   "tool": "shop__set_menu_item_availability",
+   "pick": "shop__set_menu_item_availability"
+  },
+  {
+   "tool": "shop__create_order",
+   "pick": "shop__list_menu_items"
+  },
+  {
+   "tool": "shop__get_order",
+   "pick": "shop__get_order"
+  },
+  {
+   "tool": "shop__search_orders",
+   "pick": "shop__search_orders"
+  },
+  {
+   "tool": "shop__update_order_status",
+   "pick": "shop__update_order_status"
+  },
+  {
+   "tool": "shop__cancel_order",
+   "pick": "shop__cancel_order"
+  },
+  {
+   "tool": "shop__issue_refund",
+   "pick": "shop__issue_refund"
+  },
+  {
+   "tool": "shop__list_refunds",
+   "pick": "shop__list_refunds"
+  },
+  {
+   "tool": "shop__find_customer",
+   "pick": "shop__find_customer"
+  },
+  {
+   "tool": "shop__get_loyalty_balance",
+   "pick": "shop__get_loyalty_balance"
+  },
+  {
+   "tool": "shop__adjust_loyalty_points",
+   "pick": "shop__adjust_loyalty_points"
+  },
+  {
+   "tool": "shop__redeem_loyalty_reward",
+   "pick": "shop__redeem_loyalty_reward"
+  },
+  {
+   "tool": "shop__list_loyalty_rewards",
+   "pick": "shop__list_loyalty_rewards"
+  },
+  {
+   "tool": "shop__get_pickup_slots",
+   "pick": "shop__get_pickup_slots"
+  },
+  {
+   "tool": "shop__reschedule_pickup",
+   "pick": "shop__get_order"
+  },
+  {
+   "tool": "shop__get_daily_sales_report",
+   "pick": "shop__get_daily_sales_report"
+  },
+  {
+   "tool": "suppliers__list_suppliers",
+   "pick": "suppliers__search_supplier_products"
+  },
+  {
+   "tool": "suppliers__get_supplier",
+   "pick": "suppliers__list_suppliers"
+  },
+  {
+   "tool": "suppliers__search_supplier_products",
+   "pick": "suppliers__search_supplier_products"
+  },
+  {
+   "tool": "suppliers__get_price_history",
+   "pick": "suppliers__get_price_history"
+  },
+  {
+   "tool": "suppliers__create_purchase_order",
+   "pick": "suppliers__list_suppliers"
+  },
+  {
+   "tool": "suppliers__get_purchase_order",
+   "pick": "suppliers__get_purchase_order"
+  },
+  {
+   "tool": "suppliers__list_purchase_orders",
+   "pick": "suppliers__list_purchase_orders"
+  },
+  {
+   "tool": "suppliers__update_purchase_order",
+   "pick": "suppliers__get_purchase_order"
+  },
+  {
+   "tool": "suppliers__send_purchase_order",
+   "pick": "suppliers__send_purchase_order"
+  },
+  {
+   "tool": "suppliers__cancel_purchase_order",
+   "pick": "suppliers__cancel_purchase_order"
+  },
+  {
+   "tool": "suppliers__list_expected_deliveries",
+   "pick": "suppliers__list_expected_deliveries"
+  },
+  {
+   "tool": "suppliers__get_delivery",
+   "pick": "suppliers__get_delivery"
+  },
+  {
+   "tool": "suppliers__record_delivery_receipt",
+   "pick": "suppliers__get_delivery"
+  },
+  {
+   "tool": "suppliers__report_delivery_issue",
+   "pick": "suppliers__report_delivery_issue"
+  },
+  {
+   "tool": "suppliers__list_invoices",
+   "pick": "suppliers__list_invoices"
+  },
+  {
+   "tool": "suppliers__get_invoice",
+   "pick": "suppliers__get_invoice"
+  },
+  {
+   "tool": "suppliers__match_invoice_to_delivery",
+   "pick": "suppliers__match_invoice_to_delivery"
+  },
+  {
+   "tool": "suppliers__record_invoice_payment",
+   "pick": "suppliers__get_invoice"
+  },
+  {
+   "tool": "suppliers__request_supplier_credit",
+   "pick": "suppliers__request_supplier_credit"
+  },
+  {
+   "tool": "suppliers__get_supplier_spend_report",
+   "pick": "suppliers__get_supplier_spend_report"
+  },
+  {
+   "tool": "payments__create_card_payment",
+   "pick": "payments__create_card_payment"
+  },
+  {
+   "tool": "payments__get_payment",
+   "pick": "payments__get_payment"
+  },
+  {
+   "tool": "payments__list_payments",
+   "pick": "payments__list_payments"
+  },
+  {
+   "tool": "payments__capture_payment",
+   "pick": "payments__capture_payment"
+  },
+  {
+   "tool": "payments__void_payment",
+   "pick": "payments__void_payment"
+  },
+  {
+   "tool": "payments__create_payment_refund",
+   "pick": "payments__create_payment_refund"
+  },
+  {
+   "tool": "payments__list_payment_refunds",
+   "pick": "payments__list_payment_refunds"
+  },
+  {
+   "tool": "payments__list_chargebacks",
+   "pick": "payments__list_chargebacks"
+  },
+  {
+   "tool": "payments__get_chargeback",
+   "pick": "payments__get_chargeback"
+  },
+  {
+   "tool": "payments__submit_chargeback_evidence",
+   "pick": "payments__submit_chargeback_evidence"
+  },
+  {
+   "tool": "payments__accept_chargeback",
+   "pick": "payments__accept_chargeback"
+  },
+  {
+   "tool": "payments__list_payouts",
+   "pick": "payments__list_payouts"
+  },
+  {
+   "tool": "payments__get_payout",
+   "pick": "payments__get_payout"
+  },
+  {
+   "tool": "payments__list_payout_transactions",
+   "pick": "payments__list_payout_transactions"
+  },
+  {
+   "tool": "payments__create_instant_payout",
+   "pick": "payments__list_payouts"
+  },
+  {
+   "tool": "payments__get_balance",
+   "pick": "payments__get_balance"
+  },
+  {
+   "tool": "payments__estimate_fee",
+   "pick": "payments__estimate_fee"
+  },
+  {
+   "tool": "payments__get_fee_summary",
+   "pick": "payments__get_fee_summary"
+  },
+  {
+   "tool": "payments__export_settlement_report",
+   "pick": "payments__export_settlement_report"
+  },
+  {
+   "tool": "payments__list_customer_payment_methods",
+   "pick": "payments__list_customer_payment_methods"
+  },
+  {
+   "tool": "staff__list_staff",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__get_staff_member",
+   "pick": "staff__get_staff_member"
+  },
+  {
+   "tool": "staff__create_shift",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__update_shift",
+   "pick": "staff__update_shift"
+  },
+  {
+   "tool": "staff__cancel_shift",
+   "pick": "staff__cancel_shift"
+  },
+  {
+   "tool": "staff__get_rota",
+   "pick": "staff__get_rota"
+  },
+  {
+   "tool": "staff__publish_rota",
+   "pick": "staff__publish_rota"
+  },
+  {
+   "tool": "staff__find_available_staff",
+   "pick": "staff__find_available_staff"
+  },
+  {
+   "tool": "staff__swap_shifts",
+   "pick": "staff__swap_shifts"
+  },
+  {
+   "tool": "staff__request_time_off",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__list_time_off_requests",
+   "pick": "staff__list_time_off_requests"
+  },
+  {
+   "tool": "staff__decide_time_off_request",
+   "pick": "staff__decide_time_off_request"
+  },
+  {
+   "tool": "staff__get_leave_balance",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__get_timesheet",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__calculate_payroll",
+   "pick": "staff__calculate_payroll"
+  },
+  {
+   "tool": "staff__update_hourly_rate",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__refund_wage_deduction",
+   "pick": "staff__refund_wage_deduction"
+  },
+  {
+   "tool": "staff__assign_training_course",
+   "pick": "staff__assign_training_course"
+  },
+  {
+   "tool": "staff__record_training_completion",
+   "pick": "staff__list_staff"
+  },
+  {
+   "tool": "staff__get_training_compliance_report",
+   "pick": "staff__get_training_compliance_report"
+  },
+  {
+   "tool": "crm__search_customers",
+   "pick": "crm__search_customers"
+  },
+  {
+   "tool": "crm__get_customer",
+   "pick": "crm__get_customer"
+  },
+  {
+   "tool": "crm__create_customer",
+   "pick": "crm__create_customer"
+  },
+  {
+   "tool": "crm__update_customer",
+   "pick": "crm__update_customer"
+  },
+  {
+   "tool": "crm__merge_duplicate_customers",
+   "pick": "crm__merge_duplicate_customers"
+  },
+  {
+   "tool": "crm__anonymize_customer",
+   "pick": "crm__anonymize_customer"
+  },
+  {
+   "tool": "crm__add_customer_note",
+   "pick": "crm__add_customer_note"
+  },
+  {
+   "tool": "crm__list_customer_notes",
+   "pick": "crm__list_customer_notes"
+  },
+  {
+   "tool": "crm__log_complaint",
+   "pick": "crm__log_complaint"
+  },
+  {
+   "tool": "crm__list_complaints",
+   "pick": "crm__list_complaints"
+  },
+  {
+   "tool": "crm__update_complaint_status",
+   "pick": "crm__update_complaint_status"
+  },
+  {
+   "tool": "crm__flag_complaint_refund_request",
+   "pick": "crm__flag_complaint_refund_request"
+  },
+  {
+   "tool": "crm__get_complaint_report",
+   "pick": "crm__get_complaint_report"
+  },
+  {
+   "tool": "crm__create_segment",
+   "pick": "crm__create_segment"
+  },
+  {
+   "tool": "crm__list_segments",
+   "pick": "crm__list_segments"
+  },
+  {
+   "tool": "crm__get_segment_members",
+   "pick": "crm__list_segments"
+  },
+  {
+   "tool": "crm__add_customer_to_segment",
+   "pick": "crm__list_segments"
+  },
+  {
+   "tool": "crm__send_customer_email",
+   "pick": "crm__send_customer_email"
+  },
+  {
+   "tool": "crm__send_segment_email",
+   "pick": "crm__list_segments"
+  },
+  {
+   "tool": "crm__list_customer_emails",
+   "pick": "crm__list_customer_emails"
+  },
+  {
+   "tool": "calendar__create_event",
+   "pick": "calendar__create_event"
+  },
+  {
+   "tool": "calendar__get_event",
+   "pick": "calendar__get_event"
+  },
+  {
+   "tool": "calendar__update_event",
+   "pick": "calendar__get_event"
+  },
+  {
+   "tool": "calendar__delete_event",
+   "pick": "calendar__delete_event"
+  },
+  {
+   "tool": "calendar__list_events",
+   "pick": "calendar__list_events"
+  },
+  {
+   "tool": "calendar__search_events",
+   "pick": "calendar__search_events"
+  },
+  {
+   "tool": "calendar__create_recurring_event",
+   "pick": "calendar__create_recurring_event"
+  },
+  {
+   "tool": "calendar__find_free_slots",
+   "pick": "calendar__find_free_slots"
+  },
+  {
+   "tool": "calendar__schedule_meeting",
+   "pick": "calendar__schedule_meeting"
+  },
+  {
+   "tool": "calendar__respond_to_invitation",
+   "pick": "calendar__respond_to_invitation"
+  },
+  {
+   "tool": "calendar__add_event_attendees",
+   "pick": "calendar__search_events"
+  },
+  {
+   "tool": "calendar__list_rooms",
+   "pick": "calendar__list_rooms"
+  },
+  {
+   "tool": "calendar__check_room_availability",
+   "pick": "calendar__list_rooms"
+  },
+  {
+   "tool": "calendar__book_room",
+   "pick": "calendar__list_rooms"
+  },
+  {
+   "tool": "calendar__cancel_room_booking",
+   "pick": "calendar__cancel_room_booking"
+  },
+  {
+   "tool": "calendar__create_reminder",
+   "pick": "calendar__create_reminder"
+  },
+  {
+   "tool": "calendar__list_reminders",
+   "pick": "calendar__list_reminders"
+  },
+  {
+   "tool": "calendar__dismiss_reminder",
+   "pick": "calendar__dismiss_reminder"
+  },
+  {
+   "tool": "calendar__book_customer_appointment",
+   "pick": "calendar__book_customer_appointment"
+  },
+  {
+   "tool": "calendar__generate_calendar_report",
+   "pick": "calendar__generate_calendar_report"
+  },
+  {
+   "tool": "email__send_email",
+   "pick": "email__send_email"
+  },
+  {
+   "tool": "email__reply_to_email",
+   "pick": "email__reply_to_email"
+  },
+  {
+   "tool": "email__forward_email",
+   "pick": "email__forward_email"
+  },
+  {
+   "tool": "email__create_draft",
+   "pick": "email__create_draft"
+  },
+  {
+   "tool": "email__send_draft",
+   "pick": "email__send_draft"
+  },
+  {
+   "tool": "email__list_messages",
+   "pick": "email__list_messages"
+  },
+  {
+   "tool": "email__get_email",
+   "pick": "email__get_email"
+  },
+  {
+   "tool": "email__get_thread",
+   "pick": "email__get_thread"
+  },
+  {
+   "tool": "email__search_emails",
+   "pick": "email__search_emails"
+  },
+  {
+   "tool": "email__find_customer_emails",
+   "pick": "email__find_customer_emails"
+  },
+  {
+   "tool": "email__find_order_emails",
+   "pick": "email__find_order_emails"
+  },
+  {
+   "tool": "email__send_refund_notice",
+   "pick": "email__send_refund_notice"
+  },
+  {
+   "tool": "email__download_attachment",
+   "pick": "email__get_email"
+  },
+  {
+   "tool": "email__list_labels",
+   "pick": "email__list_labels"
+  },
+  {
+   "tool": "email__create_label",
+   "pick": "email__create_label"
+  },
+  {
+   "tool": "email__add_label",
+   "pick": "email__add_label"
+  },
+  {
+   "tool": "email__remove_label",
+   "pick": "email__remove_label"
+  },
+  {
+   "tool": "email__set_read_status",
+   "pick": "email__set_read_status"
+  },
+  {
+   "tool": "email__archive_email",
+   "pick": "email__archive_email"
+  },
+  {
+   "tool": "email__get_mailbox_report",
+   "pick": "email__get_mailbox_report"
+  },
+  {
+   "tool": "accounting__create_journal_entry",
+   "pick": "accounting__create_journal_entry"
+  },
+  {
+   "tool": "accounting__list_ledger_entries",
+   "pick": "accounting__list_ledger_entries"
+  },
+  {
+   "tool": "accounting__get_account_balance",
+   "pick": "accounting__get_account_balance"
+  },
+  {
+   "tool": "accounting__list_chart_of_accounts",
+   "pick": "accounting__list_chart_of_accounts"
+  },
+  {
+   "tool": "accounting__reverse_journal_entry",
+   "pick": "accounting__reverse_journal_entry"
+  },
+  {
+   "tool": "accounting__record_expense",
+   "pick": "accounting__record_expense"
+  },
+  {
+   "tool": "accounting__list_expenses",
+   "pick": "accounting__list_expenses"
+  },
+  {
+   "tool": "accounting__categorize_expense",
+   "pick": "accounting__categorize_expense"
+  },
+  {
+   "tool": "accounting__attach_receipt_to_expense",
+   "pick": "accounting__attach_receipt_to_expense"
+  },
+  {
+   "tool": "accounting__record_customer_refund",
+   "pick": "accounting__record_customer_refund"
+  },
+  {
+   "tool": "accounting__post_order_revenue",
+   "pick": "accounting__post_order_revenue"
+  },
+  {
+   "tool": "accounting__calculate_sales_tax",
+   "pick": "accounting__calculate_sales_tax"
+  },
+  {
+   "tool": "accounting__get_tax_liability_summary",
+   "pick": "accounting__get_tax_liability_summary"
+  },
+  {
+   "tool": "accounting__export_sales_tax_report",
+   "pick": "accounting__export_sales_tax_report"
+  },
+  {
+   "tool": "accounting__generate_profit_and_loss_report",
+   "pick": "accounting__generate_profit_and_loss_report"
+  },
+  {
+   "tool": "accounting__compare_profit_and_loss_periods",
+   "pick": "accounting__compare_profit_and_loss_periods"
+  },
+  {
+   "tool": "accounting__create_budget",
+   "pick": "accounting__create_budget"
+  },
+  {
+   "tool": "accounting__get_budget_vs_actual",
+   "pick": "accounting__get_budget_vs_actual"
+  },
+  {
+   "tool": "accounting__update_budget_line",
+   "pick": "accounting__update_budget_line"
+  },
+  {
+   "tool": "accounting__get_customer_balance",
+   "pick": "accounting__get_customer_balance"
+  },
+  {
+   "tool": "inventory__get_stock_level",
+   "pick": "inventory__get_stock_level"
+  },
+  {
+   "tool": "inventory__list_stock_levels",
+   "pick": "inventory__list_stock_levels"
+  },
+  {
+   "tool": "inventory__search_products",
+   "pick": "inventory__search_products"
+  },
+  {
+   "tool": "inventory__adjust_stock",
+   "pick": "inventory__adjust_stock"
+  },
+  {
+   "tool": "inventory__start_stock_count",
+   "pick": "inventory__start_stock_count"
+  },
+  {
+   "tool": "inventory__record_stock_count",
+   "pick": "inventory__record_stock_count"
+  },
+  {
+   "tool": "inventory__get_count_variances",
+   "pick": "inventory__get_count_variances"
+  },
+  {
+   "tool": "inventory__record_waste",
+   "pick": "inventory__record_waste"
+  },
+  {
+   "tool": "inventory__get_waste_report",
+   "pick": "inventory__get_waste_report"
+  },
+  {
+   "tool": "inventory__set_reorder_point",
+   "pick": "inventory__set_reorder_point"
+  },
+  {
+   "tool": "inventory__list_low_stock_alerts",
+   "pick": "inventory__list_low_stock_alerts"
+  },
+  {
+   "tool": "inventory__acknowledge_low_stock_alert",
+   "pick": "inventory__acknowledge_low_stock_alert"
+  },
+  {
+   "tool": "inventory__configure_alert_notifications",
+   "pick": "inventory__configure_alert_notifications"
+  },
+  {
+   "tool": "inventory__create_purchase_order_draft",
+   "pick": "inventory__create_purchase_order_draft"
+  },
+  {
+   "tool": "inventory__receive_stock_delivery",
+   "pick": "inventory__search_products"
+  },
+  {
+   "tool": "inventory__transfer_stock",
+   "pick": "inventory__search_products"
+  },
+  {
+   "tool": "inventory__restock_customer_return",
+   "pick": "inventory__search_products"
+  },
+  {
+   "tool": "inventory__get_expiring_items",
+   "pick": "inventory__get_expiring_items"
+  },
+  {
+   "tool": "inventory__get_stock_movement_history",
+   "pick": "inventory__get_stock_movement_history"
+  },
+  {
+   "tool": "inventory__get_inventory_valuation",
+   "pick": "inventory__get_inventory_valuation"
+  },
+  {
+   "tool": "marketing__create_social_post",
+   "pick": "marketing__create_social_post"
+  },
+  {
+   "tool": "marketing__schedule_social_post",
+   "pick": "marketing__schedule_social_post"
+  },
+  {
+   "tool": "marketing__list_scheduled_posts",
+   "pick": "marketing__list_scheduled_posts"
+  },
+  {
+   "tool": "marketing__cancel_scheduled_post",
+   "pick": "marketing__cancel_scheduled_post"
+  },
+  {
+   "tool": "marketing__get_social_post_metrics",
+   "pick": "marketing__get_social_post_metrics"
+  },
+  {
+   "tool": "marketing__reply_to_social_comment",
+   "pick": null
+  },
+  {
+   "tool": "marketing__create_promotion",
+   "pick": "marketing__create_promotion"
+  },
+  {
+   "tool": "marketing__update_promotion",
+   "pick": "marketing__update_promotion"
+  },
+  {
+   "tool": "marketing__end_promotion",
+   "pick": "marketing__end_promotion"
+  },
+  {
+   "tool": "marketing__list_active_promotions",
+   "pick": "marketing__list_active_promotions"
+  },
+  {
+   "tool": "marketing__create_discount_code",
+   "pick": "marketing__create_discount_code"
+  },
+  {
+   "tool": "marketing__bulk_generate_discount_codes",
+   "pick": "marketing__bulk_generate_discount_codes"
+  },
+  {
+   "tool": "marketing__get_discount_code_usage",
+   "pick": "marketing__get_discount_code_usage"
+  },
+  {
+   "tool": "marketing__deactivate_discount_code",
+   "pick": "marketing__deactivate_discount_code"
+  },
+  {
+   "tool": "marketing__void_discount_redemption",
+   "pick": "marketing__void_discount_redemption"
+  },
+  {
+   "tool": "marketing__create_campaign",
+   "pick": "marketing__create_campaign"
+  },
+  {
+   "tool": "marketing__get_campaign_results",
+   "pick": "marketing__get_campaign_results"
+  },
+  {
+   "tool": "marketing__compare_campaigns",
+   "pick": "marketing__compare_campaigns"
+  },
+  {
+   "tool": "marketing__list_campaign_attributed_orders",
+   "pick": "marketing__list_campaign_attributed_orders"
+  },
+  {
+   "tool": "marketing__send_campaign_email_to_segment",
+   "pick": "marketing__send_campaign_email_to_segment"
+  }
+ ],
+ "keep": [
+  "shop__list_menu_items",
+  "shop__get_menu_item",
+  "shop__create_menu_item",
+  "shop__update_menu_item_price",
+  "shop__set_menu_item_availability",
+  "shop__get_order",
+  "shop__search_orders",
+  "shop__update_order_status",
+  "shop__cancel_order",
+  "shop__issue_refund",
+  "shop__list_refunds",
+  "shop__find_customer",
+  "shop__get_loyalty_balance",
+  "shop__adjust_loyalty_points",
+  "shop__redeem_loyalty_reward",
+  "shop__list_loyalty_rewards",
+  "shop__get_pickup_slots",
+  "shop__get_daily_sales_report",
+  "suppliers__search_supplier_products",
+  "suppliers__get_price_history",
+  "suppliers__get_purchase_order",
+  "suppliers__list_purchase_orders",
+  "suppliers__send_purchase_order",
+  "suppliers__cancel_purchase_order",
+  "suppliers__list_expected_deliveries",
+  "suppliers__get_delivery",
+  "suppliers__report_delivery_issue",
+  "suppliers__list_invoices",
+  "suppliers__get_invoice",
+  "suppliers__match_invoice_to_delivery",
+  "suppliers__request_supplier_credit",
+  "suppliers__get_supplier_spend_report",
+  "payments__create_card_payment",
+  "payments__get_payment",
+  "payments__list_payments",
+  "payments__capture_payment",
+  "payments__void_payment",
+  "payments__create_payment_refund",
+  "payments__list_payment_refunds",
+  "payments__list_chargebacks",
+  "payments__get_chargeback",
+  "payments__submit_chargeback_evidence",
+  "payments__accept_chargeback",
+  "payments__list_payouts",
+  "payments__get_payout",
+  "payments__list_payout_transactions",
+  "payments__get_balance",
+  "payments__estimate_fee",
+  "payments__get_fee_summary",
+  "payments__export_settlement_report",
+  "payments__list_customer_payment_methods",
+  "staff__list_staff",
+  "staff__get_staff_member",
+  "staff__update_shift",
+  "staff__cancel_shift",
+  "staff__get_rota",
+  "staff__publish_rota",
+  "staff__find_available_staff",
+  "staff__swap_shifts",
+  "staff__list_time_off_requests",
+  "staff__decide_time_off_request",
+  "staff__calculate_payroll",
+  "staff__refund_wage_deduction",
+  "staff__assign_training_course",
+  "staff__get_training_compliance_report",
+  "crm__search_customers",
+  "crm__get_customer",
+  "crm__create_customer",
+  "crm__update_customer",
+  "crm__merge_duplicate_customers",
+  "crm__anonymize_customer",
+  "crm__add_customer_note",
+  "crm__list_customer_notes",
+  "crm__log_complaint",
+  "crm__list_complaints",
+  "crm__update_complaint_status",
+  "crm__flag_complaint_refund_request",
+  "crm__get_complaint_report",
+  "crm__create_segment",
+  "crm__list_segments",
+  "crm__send_customer_email",
+  "crm__list_customer_emails",
+  "calendar__create_event",
+  "calendar__get_event",
+  "calendar__delete_event",
+  "calendar__list_events",
+  "calendar__search_events",
+  "calendar__create_recurring_event",
+  "calendar__find_free_slots",
+  "calendar__schedule_meeting",
+  "calendar__respond_to_invitation",
+  "calendar__list_rooms",
+  "calendar__cancel_room_booking",
+  "calendar__create_reminder",
+  "calendar__list_reminders",
+  "calendar__dismiss_reminder",
+  "calendar__book_customer_appointment",
+  "calendar__generate_calendar_report",
+  "email__send_email",
+  "email__reply_to_email",
+  "email__forward_email",
+  "email__create_draft",
+  "email__send_draft",
+  "email__list_messages",
+  "email__get_email",
+  "email__get_thread",
+  "email__search_emails",
+  "email__find_customer_emails",
+  "email__find_order_emails",
+  "email__send_refund_notice",
+  "email__list_labels",
+  "email__create_label",
+  "email__add_label",
+  "email__remove_label",
+  "email__set_read_status",
+  "email__archive_email",
+  "email__get_mailbox_report",
+  "accounting__create_journal_entry",
+  "accounting__list_ledger_entries",
+  "accounting__get_account_balance",
+  "accounting__list_chart_of_accounts",
+  "accounting__reverse_journal_entry",
+  "accounting__record_expense",
+  "accounting__list_expenses",
+  "accounting__categorize_expense",
+  "accounting__attach_receipt_to_expense",
+  "accounting__record_customer_refund",
+  "accounting__post_order_revenue",
+  "accounting__calculate_sales_tax",
+  "accounting__get_tax_liability_summary",
+  "accounting__export_sales_tax_report",
+  "accounting__generate_profit_and_loss_report",
+  "accounting__compare_profit_and_loss_periods",
+  "accounting__create_budget",
+  "accounting__get_budget_vs_actual",
+  "accounting__update_budget_line",
+  "accounting__get_customer_balance",
+  "inventory__get_stock_level",
+  "inventory__list_stock_levels",
+  "inventory__search_products",
+  "inventory__adjust_stock",
+  "inventory__start_stock_count",
+  "inventory__record_stock_count",
+  "inventory__get_count_variances",
+  "inventory__record_waste",
+  "inventory__get_waste_report",
+  "inventory__set_reorder_point",
+  "inventory__list_low_stock_alerts",
+  "inventory__acknowledge_low_stock_alert",
+  "inventory__configure_alert_notifications",
+  "inventory__create_purchase_order_draft",
+  "inventory__get_expiring_items",
+  "inventory__get_stock_movement_history",
+  "inventory__get_inventory_valuation",
+  "marketing__create_social_post",
+  "marketing__schedule_social_post",
+  "marketing__list_scheduled_posts",
+  "marketing__cancel_scheduled_post",
+  "marketing__get_social_post_metrics",
+  "marketing__create_promotion",
+  "marketing__update_promotion",
+  "marketing__end_promotion",
+  "marketing__list_active_promotions",
+  "marketing__create_discount_code",
+  "marketing__bulk_generate_discount_codes",
+  "marketing__get_discount_code_usage",
+  "marketing__deactivate_discount_code",
+  "marketing__void_discount_redemption",
+  "marketing__create_campaign",
+  "marketing__get_campaign_results",
+  "marketing__compare_campaigns",
+  "marketing__list_campaign_attributed_orders",
+  "marketing__send_campaign_email_to_segment"
+ ]
+}

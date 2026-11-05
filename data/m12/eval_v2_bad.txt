@@ -1,0 +1,21 @@
+release v2_bad (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1631 tok
+  tool choice (all)         98.1%   per rep [100.0, 100.0, 94.4]
+  tool choice (Fernhill)    97.8%
+  call has right effect     88.9%
+  other servers kept       100.0%
+  by group (choice/call)  menu 90/90  order 100/73  status 100/100  refund 100/100  other 100/100
+  no tool call 1   stopped by max_tokens 1   cost $0.0248   avg 1175 ms
+    wrong x1: fernhill__mn_list -> stock__check_stock
+    wrong x1: fernhill__mn_list -> None
+    call fail x2: order-09: items [('latte', 'large')]
+    call fail x1: order-03: is_error: Error executing tool po_create: 'Espresso' is not on the menu. Call mn_list to see the menu.
+    call fail x1: order-05: is_error: Error executing tool po_create: 'Oat cookie' is not on the menu. Call mn_list to see the menu.
+    call fail x1: order-05: is_error: Error executing tool po_create: 'regular' is not a size for oat cookie. Sizes: ['one'].
+    call fail x1: order-05: is_error: Error executing tool po_create: 'standard' is not a size for oat cookie. Sizes: ['one'].
+    call fail x1: order-09: is_error: Error executing tool po_create: 1 validation error for po_createArguments
+p2
+  Field required [type=missing, input_value={'p1': [{'drink': 'latte'...', 'size': 'standard'}]}, input_type=dict]
+    For 
+    call fail x1: order-10: items []
+GATE PASS (baseline v1)
+exit code: 0

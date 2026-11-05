@@ -1,0 +1,6 @@
+[project]
+name = "fernhill-coffee"
+version = "1.1.0"
+description = "Fernhill Coffee MCP server (made-up shop, course example)"
+requires-python = ">=3.12"
+dependencies = ["mcp==2.3.0"]

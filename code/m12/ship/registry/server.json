@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.example/fernhill-coffee",
+  "title": "Fernhill Coffee",
+  "description": "Menu, orders and refunds for Fernhill Coffee, a made-up shop (course example)",
+  "version": "1.1.0",
+  "websiteUrl": "https://example.com/fernhill-coffee",
+  "packages": [
+    {
+      "registryType": "mcpb",
+      "identifier": "https://github.com/your-github-user/fernhill-coffee-mcp/releases/download/v1.1.0/fernhill-coffee-1.1.0.mcpb",
+      "fileSha256": "dd688abd4107b5fd4b678e05575cf7ee9380d495505c6f2f0c33dad4f46ad70f",
+      "transport": { "type": "stdio" }
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "course": "DeepOnAI MCP masterclass, module 12",
+      "note": "Example only. Not published."
+    }
+  }
+}

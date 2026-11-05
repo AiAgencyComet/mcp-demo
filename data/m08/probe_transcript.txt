@@ -1,0 +1,28 @@
+Tool 'mark_order_done' failed: 'Error executing tool mark_order_done: No order A-9999. Order IDs look like A-1043.'
+protocol version: 2026-07-28
+server capabilities.extensions: {"io.modelcontextprotocol/ui": {}}
+tool show_order_board   _meta.ui = {"resourceUri": "ui://fernhill/order-board", "visibility": ["model", "app"]}
+tool mark_order_done    _meta.ui = {"resourceUri": "ui://fernhill/order-board", "visibility": ["app"]}
+tool order_status       _meta.ui = {"visibility": ["model"]}
+resource ui://fernhill/order-board  mimeType=text/html;profile=mcp-app  _meta={"ui": {"prefersBorder": true}}
+resources/read ui://fernhill/order-board -> mimeType=text/html;profile=mcp-app, 12152 characters, content _meta={"ui": {"prefersBorder": true}}
+
+[client WITH io.modelcontextprotocol/ui] show_order_board text:
+The order board is on screen. 5 open orders:
+- A-1043 Mara: flat white small (ready)
+- A-1044 Jonas: espresso double, oat cookie (ready)
+- A-1045 Ines: latte small, oat (making)
+- A-1046 Sam: cold brew large (making)
+- A-1047 Leo: latte large, espresso single (making)
+structuredContent keys: ['day', 'orders'] orders: 7
+
+[client WITHOUT the extension] show_order_board text:
+Order board (text only). 5 open orders:
+- A-1043 Mara: flat white small (ready)
+- A-1044 Jonas: espresso double, oat cookie (ready)
+- A-1045 Ines: latte small, oat (making)
+- A-1046 Sam: cold brew large (making)
+- A-1047 Leo: latte large, espresso single (making)
+
+mark_order_done A-9999 -> isError: True | Error executing tool mark_order_done: No order A-9999. Order IDs look like A-1043.
+mark_order_done A-1043 (direct, no host) -> A-1043 (Mara) is done. 4 orders are open.

@@ -1,0 +1,2 @@
+$ claude -p "What does a large latte cost at Fernhill?" --mcp-config fernhill.mcp.json --strict-mcp-config --allowedTools mcp__fernhill__get_price
+Fernhill doesn't list a "large latte." Its menu has a plain **latte** at **$4.50**, and the menu also includes flat white and cold brew. The price tool gave no size breakdown, so I can't say whether a larger size costs more. Check the in-store board or ask the staff if you need to know about sizes.

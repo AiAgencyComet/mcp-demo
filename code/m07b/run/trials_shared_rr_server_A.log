@@ -1,0 +1,21 @@
+1793858394.197 copy A pid 88378: start, store=shared
+INFO:     Started server process [88378]
+INFO:     Waiting for application startup.
+StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8181 (Press CTRL+C to quit)
+1793858394.941 copy A pid 88378: created task b9f4b0a0-0658-499c-aa96-d7497db0707f for export_sales_report({'days': 12})
+1793858397.988 copy A pid 88378: task b9f4b0a0-0658-499c-aa96-d7497db0707f completed
+1793858398.185 copy A pid 88378: created task e36d949e-9d1a-45d1-8787-d8068a8a2b2b for export_sales_report({'days': 12})
+1793858401.230 copy A pid 88378: task e36d949e-9d1a-45d1-8787-d8068a8a2b2b completed
+1793858401.410 copy A pid 88378: created task 4a18c41c-b01f-4ca1-b81a-31d304a687b8 for export_sales_report({'days': 12})
+1793858404.459 copy A pid 88378: task 4a18c41c-b01f-4ca1-b81a-31d304a687b8 completed
+1793858404.641 copy A pid 88378: created task 075ce20b-7220-4965-9ac5-7fc0e225cd82 for export_sales_report({'days': 12})
+1793858407.683 copy A pid 88378: task 075ce20b-7220-4965-9ac5-7fc0e225cd82 completed
+1793858407.860 copy A pid 88378: created task 106e1657-59c0-4810-b18b-6c0483aca5f8 for export_sales_report({'days': 12})
+1793858410.905 copy A pid 88378: task 106e1657-59c0-4810-b18b-6c0483aca5f8 completed
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88378]

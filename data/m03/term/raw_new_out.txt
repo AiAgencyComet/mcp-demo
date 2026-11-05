@@ -1,0 +1,2 @@
+tools: ['get_price']
+result: {'result': '4.50 (answered by server pid 79770)'}

@@ -1,0 +1,35 @@
+22 spans from 2 processes, 2 traces, 6 server spans whose parent is a host span
+
+trace 0x4b0f5b07b4e69ae69ff5cc1fb9d528a7
+[host]   invoke_agent fernhill-helper  (INTERNAL, 3727.6 ms)
+[host]   ├─ MCP send server/discover  (CLIENT, 2.5 ms)
+[server] │  └─ server/discover  (SERVER, 0.3 ms)
+[host]   ├─ MCP send tools/list  (CLIENT, 1.4 ms)
+[server] │  └─ tools/list  (SERVER, 0.2 ms)
+[host]   ├─ anthropic.messages.create  (CLIENT, 1183.0 ms)  claude-haiku-5-5  in 1144 / out 97 tok (thinking 64)  stop tool_use
+[host]   ├─ execute_tool fernhill__get_menu  (INTERNAL, 17.8 ms)
+[host]   │  └─ MCP send tools/call get_menu  (CLIENT, 2.3 ms)
+[server] │     └─ tools/call get_menu  (SERVER, 0.9 ms)
+[server] │        └─ fernhill.get_menu  (INTERNAL, 0.0 ms)
+[host]   ├─ anthropic.messages.create  (CLIENT, 923.5 ms)  claude-haiku-5-5  in 1413 / out 118 tok (thinking 0)  stop tool_use
+[host]   ├─ execute_tool fernhill__place_order  (INTERNAL, 7.3 ms)
+[host]   │  └─ MCP send tools/call place_order  (CLIENT, 5.6 ms)
+[server] │     └─ tools/call place_order  (SERVER, 1.6 ms)
+[server] │        └─ fernhill.place_order  (INTERNAL, 0.1 ms)  id=A-1043  total=5.1
+[host]   └─ anthropic.messages.create  (CLIENT, 1583.2 ms)  claude-haiku-5-5  in 1563 / out 214 tok (thinking 114)  stop end_turn
+
+trace 0xc6e9c36d5183a37568c57b54948d734c
+[host]   smoke bad_order  (INTERNAL, 5.2 ms)
+[host]   ├─ MCP send server/discover  (CLIENT, 1.8 ms)
+[server] │  └─ server/discover  (SERVER, 0.2 ms)
+[host]   └─ MCP send tools/call place_order  (CLIENT, 2.1 ms)
+[server]    └─ tools/call place_order  (SERVER, 0.9 ms)  type=tool_error  STATUS=ERROR
+[server]       └─ fernhill.place_order  (INTERNAL, 0.5 ms)  type=ToolError  STATUS=ERROR
+
+params._meta.traceparent as the server received it -> matching host span:
+  server/discover              00-4b0f5b07b4e69ae69ff5cc1fb9d528a7-5e64165e2fd254d8-03  -> MCP send server/discover
+  tools/list                   00-4b0f5b07b4e69ae69ff5cc1fb9d528a7-9ebcdb172d847fa7-03  -> MCP send tools/list
+  tools/call      get_menu     00-4b0f5b07b4e69ae69ff5cc1fb9d528a7-762d7d60ebf4e8d0-03  -> MCP send tools/call get_menu
+  tools/call      place_order  00-4b0f5b07b4e69ae69ff5cc1fb9d528a7-135447b3e8311d32-03  -> MCP send tools/call place_order
+  server/discover              00-c6e9c36d5183a37568c57b54948d734c-15bdb4e918568c27-03  -> MCP send server/discover
+  tools/call      place_order  00-c6e9c36d5183a37568c57b54948d734c-9e9fbb50afaa7347-03  -> MCP send tools/call place_order

@@ -1,0 +1,57 @@
+# m07b · errors · protocol errors and removed methods
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (6 days: a task to test against)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 6}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 200 from copy B (3.2 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"resultType": "task", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "working", "statusMessage": "Queued.", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:15.881Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}
+[  0.02s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a   (no Tasks extension in _meta)
+          {"jsonrpc": "2.0", "id": 2, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 400 from copy A (1.4 ms)
+          {"jsonrpc": "2.0", "id": 2, "error": {"code": -32021, "message": "Client did not declare required extension 'io.modelcontextprotocol/tasks'", "data": {"requiredCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}}}}
+[  0.02s] -> tasks/get   Mcp-Name: export_sales_report   (Mcp-Name is not the taskId)
+          {"jsonrpc": "2.0", "id": 3, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  0.02s] <- HTTP 400 from copy B (1.2 ms)
+          {"jsonrpc": "2.0", "id": 3, "error": {"code": -32020, "message": "Mcp-Name header does not match params.taskId"}}
+[  0.02s] -> tasks/get   Mcp-Name: fac66341-2cb8-49ff-8bd9-9c3bd6574681   (a taskId that does not exist)
+          {"jsonrpc": "2.0", "id": 4, "method": "tasks/get", "params": {"taskId": "fac66341-2cb8-49ff-8bd9-9c3bd6574681", "_meta": "(same as above)"}}
+[  0.02s] <- HTTP 400 from copy A (1.2 ms)
+          {"jsonrpc": "2.0", "id": 4, "error": {"code": -32602, "message": "Failed to retrieve task: Task not found"}}
+[  0.02s] -> tasks/result   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a   (old 2025-11-25 method)
+          {"jsonrpc": "2.0", "id": 5, "method": "tasks/result", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  0.03s] <- HTTP 404 from copy B (1.0 ms)
+          {"jsonrpc": "2.0", "id": 5, "error": {"code": -32601, "message": "Method not found", "data": "tasks/result"}}
+[  0.03s] -> tasks/list   (old 2025-11-25 method)
+          {"jsonrpc": "2.0", "id": 6, "method": "tasks/list", "params": {"_meta": "(same as above)"}}
+[  0.03s] <- HTTP 404 from copy A (1.0 ms)
+          {"jsonrpc": "2.0", "id": 6, "error": {"code": -32601, "message": "Method not found", "data": "tasks/list"}}
+[  0.03s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a
+          {"jsonrpc": "2.0", "id": 7, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  0.03s] <- HTTP 200 from copy B (1.1 ms)
+          {"jsonrpc": "2.0", "id": 7, "result": {"resultType": "complete", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "working", "statusMessage": "Day 1 of 6: reading 2026-11-04 (0% done)", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:15.882Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  2.04s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a
+          {"jsonrpc": "2.0", "id": 8, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  2.04s] <- HTTP 200 from copy A (6.0 ms)
+          {"jsonrpc": "2.0", "id": 8, "result": {"resultType": "complete", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "working", "statusMessage": "Day 3 of 6: reading 2026-11-02 (33% done)", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:17.888Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  4.05s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a
+          {"jsonrpc": "2.0", "id": 9, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  4.06s] <- HTTP 200 from copy B (2.8 ms)
+          {"jsonrpc": "2.0", "id": 9, "result": {"resultType": "complete", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "working", "statusMessage": "Day 5 of 6: reading 2026-10-31 (67% done)", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:19.894Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": "(same as above)"}}
+[  6.06s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a
+          {"jsonrpc": "2.0", "id": 10, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  6.07s] <- HTTP 200 from copy A (3.4 ms)
+          {"jsonrpc": "2.0", "id": 10, "result": {"resultType": "complete", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "completed", "statusMessage": "Report ready.", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:21.901Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-10-30\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 6,\n  \"orders\": 340,\n  \"revenue\": 1346.3,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-10-30", "last_day": "2026-11-04", "days": 6, "orders": 340, "revenue": 1346.3, "top_drink": "latte", "skipped_orders": []}}, "_meta": "(same as above)"}}
+[  6.07s] -> tasks/cancel   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a   (cancel a task that is already completed)
+          {"jsonrpc": "2.0", "id": 11, "method": "tasks/cancel", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  6.07s] <- HTTP 200 from copy B (2.7 ms)
+          {"jsonrpc": "2.0", "id": 11, "result": {"resultType": "complete", "_meta": "(same as above)"}}
+[  6.07s] -> tasks/get   Mcp-Name: 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a   (still completed)
+          {"jsonrpc": "2.0", "id": 12, "method": "tasks/get", "params": {"taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "_meta": "(same as above)"}}
+[  6.07s] <- HTTP 200 from copy A (2.3 ms)
+          {"jsonrpc": "2.0", "id": 12, "result": {"resultType": "complete", "taskId": "0fa212fa-bbcc-4d6a-96d1-fc8164249f9a", "status": "completed", "statusMessage": "Report ready.", "createdAt": "2026-11-05T05:54:15.881Z", "lastUpdatedAt": "2026-11-05T05:54:21.901Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-10-30\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 6,\n  \"orders\": 340,\n  \"revenue\": 1346.3,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-10-30", "last_day": "2026-11-04", "days": 6, "orders": 340, "revenue": 1346.3, "top_drink": "latte", "skipped_orders": []}}, "_meta": "(same as above)"}}
+[  6.07s] -> tools/call   Mcp-Name: export_sales_report   (old per-request `task` parameter: the server must ignore it)
+          {"jsonrpc": "2.0", "id": 13, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 3}, "task": {"ttl": 60000}, "_meta": "(same as above)"}}
+[  9.08s] <- HTTP 200 from copy B (3009.4 ms)
+          {"jsonrpc": "2.0", "id": 13, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-11-02\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 3,\n  \"orders\": 166,\n  \"revenue\": 643.4,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-11-02", "last_day": "2026-11-04", "days": 3, "orders": 166, "revenue": 643.4, "top_drink": "latte", "skipped_orders": []}, "_meta": "(same as above)"}}

@@ -1,0 +1,24 @@
+RS http://127.0.0.1:8310/mcp mode=per-tool-scopes
+INFO:     Started server process [72826]
+INFO:     Waiting for application startup.
+mcp.server.streamable_http_manager StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8310 (Press CTRL+C to quit)
+fernhill.auth 401 server/discover None token_sent=False
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59490 - "GET /.well-known/oauth-protected-resource/mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+fernhill.auth tool sees token via get_access_token(): sub=barista-ana scopes=['menu:read', 'offline_access']
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+fernhill.auth 403 tools/call refund has=['menu:read', 'offline_access'] needs=['refunds:write']
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 403 Forbidden
+fernhill.auth tool sees token via get_access_token(): sub=barista-ana scopes=['menu:read', 'offline_access', 'refunds:write']
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+fernhill.auth tool sees token via get_access_token(): sub=barista-ana scopes=['menu:read', 'offline_access', 'refunds:write']
+INFO:     127.0.0.1:59490 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+mcp.server.streamable_http_manager StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72826]

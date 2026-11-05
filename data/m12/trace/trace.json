@@ -1,0 +1,450 @@
+[
+ {
+  "name": "invoke_agent fernhill-helper",
+  "service": "fernhill-host",
+  "kind": "INTERNAL",
+  "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+  "span_id": "0x8a775fc17151b75e",
+  "parent_id": null,
+  "start_ms": 1793857253614.68,
+  "ms": 3727.63,
+  "status": "UNSET",
+  "attributes": {
+   "gen_ai.operation.name": "invoke_agent",
+   "gen_ai.agent.name": "fernhill-helper",
+   "fernhill.turns": 3
+  },
+  "children": [
+   {
+    "name": "MCP send server/discover",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x5e64165e2fd254d8",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857253618.563,
+    "ms": 2.55,
+    "status": "UNSET",
+    "attributes": {
+     "mcp.method.name": "server/discover",
+     "jsonrpc.request.id": "1"
+    },
+    "children": [
+     {
+      "name": "server/discover",
+      "service": "fernhill-mcp-server",
+      "kind": "SERVER",
+      "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+      "span_id": "0x252a48f363928bfe",
+      "parent_id": "0x5e64165e2fd254d8",
+      "start_ms": 1793857253620.1401,
+      "ms": 0.31,
+      "status": "UNSET",
+      "attributes": {
+       "mcp.method.name": "server/discover",
+       "mcp.protocol.version": "2026-07-28",
+       "jsonrpc.request.id": "1"
+      },
+      "children": []
+     }
+    ]
+   },
+   {
+    "name": "MCP send tools/list",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x9ebcdb172d847fa7",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857253621.5488,
+    "ms": 1.36,
+    "status": "UNSET",
+    "attributes": {
+     "mcp.method.name": "tools/list",
+     "jsonrpc.request.id": "2"
+    },
+    "children": [
+     {
+      "name": "tools/list",
+      "service": "fernhill-mcp-server",
+      "kind": "SERVER",
+      "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+      "span_id": "0x25ff5c2e9658716b",
+      "parent_id": "0x9ebcdb172d847fa7",
+      "start_ms": 1793857253622.189,
+      "ms": 0.18,
+      "status": "UNSET",
+      "attributes": {
+       "mcp.method.name": "tools/list",
+       "mcp.protocol.version": "2026-07-28",
+       "jsonrpc.request.id": "2"
+      },
+      "children": []
+     }
+    ]
+   },
+   {
+    "name": "anthropic.messages.create",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x94bbc5275bba4c73",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857253623.83,
+    "ms": 1183.04,
+    "status": "OK",
+    "attributes": {
+     "server.address": "api.anthropic.com",
+     "server.port": 443,
+     "http.request.method": "POST",
+     "http.route": "/v1/messages",
+     "gen_ai.provider.name": "anthropic",
+     "gen_ai.operation.name": "chat",
+     "gen_ai.request.model": "claude-haiku-5-5",
+     "gen_ai.request.max_tokens": 2000,
+     "url.scheme": "https",
+     "url.path": "/v1/messages",
+     "url.full": "https://api.anthropic.com/v1/messages",
+     "anthropic.request.id": "req_<redacted>",
+     "anthropic.organization.id": "<org-id redacted>",
+     "anthropic.workspace.id": "<workspace-id redacted>",
+     "gen_ai.response.id": "msg_<redacted>",
+     "gen_ai.response.model": "claude-haiku-5-5",
+     "anthropic.message.stop_reason": "tool_use",
+     "gen_ai.usage.input_tokens": 1144,
+     "gen_ai.usage.cache_write.input_tokens": 0,
+     "gen_ai.usage.cache_read.input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_5m_input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_1h_input_tokens": 0,
+     "anthropic.response.service_tier": "standard",
+     "gen_ai.usage.output_tokens": 97,
+     "gen_ai.usage.reasoning.output_tokens": 64,
+     "http.response.status_code": 200
+    },
+    "children": []
+   },
+   {
+    "name": "execute_tool fernhill__get_menu",
+    "service": "fernhill-host",
+    "kind": "INTERNAL",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x75d1ebb2cfce9fdc",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857254807.429,
+    "ms": 17.76,
+    "status": "UNSET",
+    "attributes": {
+     "gen_ai.operation.name": "execute_tool",
+     "gen_ai.tool.name": "fernhill__get_menu",
+     "gen_ai.tool.call.id": "toolu_01NY9HnvCzMePQpydismHCoB"
+    },
+    "children": [
+     {
+      "name": "MCP send tools/call get_menu",
+      "service": "fernhill-host",
+      "kind": "CLIENT",
+      "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+      "span_id": "0x762d7d60ebf4e8d0",
+      "parent_id": "0x75d1ebb2cfce9fdc",
+      "start_ms": 1793857254807.628,
+      "ms": 2.29,
+      "status": "UNSET",
+      "attributes": {
+       "mcp.method.name": "tools/call",
+       "jsonrpc.request.id": "3"
+      },
+      "children": [
+       {
+        "name": "tools/call get_menu",
+        "service": "fernhill-mcp-server",
+        "kind": "SERVER",
+        "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+        "span_id": "0x6ba45c63e3469d8e",
+        "parent_id": "0x762d7d60ebf4e8d0",
+        "start_ms": 1793857254808.5278,
+        "ms": 0.86,
+        "status": "UNSET",
+        "attributes": {
+         "mcp.method.name": "tools/call",
+         "mcp.protocol.version": "2026-07-28",
+         "jsonrpc.request.id": "3",
+         "gen_ai.operation.name": "execute_tool",
+         "gen_ai.tool.name": "get_menu"
+        },
+        "children": [
+         {
+          "name": "fernhill.get_menu",
+          "service": "fernhill-mcp-server",
+          "kind": "INTERNAL",
+          "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+          "span_id": "0xab2851e79140a153",
+          "parent_id": "0x6ba45c63e3469d8e",
+          "start_ms": 1793857254808.919,
+          "ms": 0.02,
+          "status": "UNSET",
+          "attributes": {},
+          "children": []
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name": "anthropic.messages.create",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x2c4edcd47314a34c",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857254825.562,
+    "ms": 923.5,
+    "status": "OK",
+    "attributes": {
+     "server.address": "api.anthropic.com",
+     "server.port": 443,
+     "http.request.method": "POST",
+     "http.route": "/v1/messages",
+     "gen_ai.provider.name": "anthropic",
+     "gen_ai.operation.name": "chat",
+     "gen_ai.request.model": "claude-haiku-5-5",
+     "gen_ai.request.max_tokens": 2000,
+     "url.scheme": "https",
+     "url.path": "/v1/messages",
+     "url.full": "https://api.anthropic.com/v1/messages",
+     "anthropic.request.id": "req_<redacted>",
+     "anthropic.organization.id": "<org-id redacted>",
+     "anthropic.workspace.id": "<workspace-id redacted>",
+     "gen_ai.response.id": "msg_<redacted>",
+     "gen_ai.response.model": "claude-haiku-5-5",
+     "anthropic.message.stop_reason": "tool_use",
+     "gen_ai.usage.input_tokens": 1413,
+     "gen_ai.usage.cache_write.input_tokens": 0,
+     "gen_ai.usage.cache_read.input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_5m_input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_1h_input_tokens": 0,
+     "anthropic.response.service_tier": "standard",
+     "gen_ai.usage.output_tokens": 118,
+     "gen_ai.usage.reasoning.output_tokens": 0,
+     "http.response.status_code": 200
+    },
+    "children": []
+   },
+   {
+    "name": "execute_tool fernhill__place_order",
+    "service": "fernhill-host",
+    "kind": "INTERNAL",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0x25c4aa57d93c9d71",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857255750.148,
+    "ms": 7.28,
+    "status": "UNSET",
+    "attributes": {
+     "gen_ai.operation.name": "execute_tool",
+     "gen_ai.tool.name": "fernhill__place_order",
+     "gen_ai.tool.call.id": "toolu_017HWzLpvsDD83tSNLVkrSdD"
+    },
+    "children": [
+     {
+      "name": "MCP send tools/call place_order",
+      "service": "fernhill-host",
+      "kind": "CLIENT",
+      "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+      "span_id": "0x135447b3e8311d32",
+      "parent_id": "0x25c4aa57d93c9d71",
+      "start_ms": 1793857255750.35,
+      "ms": 5.58,
+      "status": "UNSET",
+      "attributes": {
+       "mcp.method.name": "tools/call",
+       "jsonrpc.request.id": "4"
+      },
+      "children": [
+       {
+        "name": "tools/call place_order",
+        "service": "fernhill-mcp-server",
+        "kind": "SERVER",
+        "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+        "span_id": "0xf623cc2f80749942",
+        "parent_id": "0x135447b3e8311d32",
+        "start_ms": 1793857255752.894,
+        "ms": 1.65,
+        "status": "UNSET",
+        "attributes": {
+         "mcp.method.name": "tools/call",
+         "mcp.protocol.version": "2026-07-28",
+         "jsonrpc.request.id": "4",
+         "gen_ai.operation.name": "execute_tool",
+         "gen_ai.tool.name": "place_order"
+        },
+        "children": [
+         {
+          "name": "fernhill.place_order",
+          "service": "fernhill-mcp-server",
+          "kind": "INTERNAL",
+          "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+          "span_id": "0x9debab18e5b783b2",
+          "parent_id": "0xf623cc2f80749942",
+          "start_ms": 1793857255753.6099,
+          "ms": 0.11,
+          "status": "UNSET",
+          "attributes": {
+           "fernhill.items.count": 1,
+           "fernhill.order.id": "A-1043",
+           "fernhill.order.total": 5.1
+          },
+          "children": []
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name": "anthropic.messages.create",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0x4b0f5b07b4e69ae69ff5cc1fb9d528a7",
+    "span_id": "0xbb313012a71e6206",
+    "parent_id": "0x8a775fc17151b75e",
+    "start_ms": 1793857255757.973,
+    "ms": 1583.23,
+    "status": "OK",
+    "attributes": {
+     "server.address": "api.anthropic.com",
+     "server.port": 443,
+     "http.request.method": "POST",
+     "http.route": "/v1/messages",
+     "gen_ai.provider.name": "anthropic",
+     "gen_ai.operation.name": "chat",
+     "gen_ai.request.model": "claude-haiku-5-5",
+     "gen_ai.request.max_tokens": 2000,
+     "url.scheme": "https",
+     "url.path": "/v1/messages",
+     "url.full": "https://api.anthropic.com/v1/messages",
+     "anthropic.request.id": "req_<redacted>",
+     "anthropic.organization.id": "<org-id redacted>",
+     "anthropic.workspace.id": "<workspace-id redacted>",
+     "gen_ai.response.id": "msg_<redacted>",
+     "gen_ai.response.model": "claude-haiku-5-5",
+     "anthropic.message.stop_reason": "end_turn",
+     "gen_ai.usage.input_tokens": 1563,
+     "gen_ai.usage.cache_write.input_tokens": 0,
+     "gen_ai.usage.cache_read.input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_5m_input_tokens": 0,
+     "anthropic.usage.cache_creation.ephemeral_1h_input_tokens": 0,
+     "anthropic.response.service_tier": "standard",
+     "gen_ai.usage.output_tokens": 214,
+     "gen_ai.usage.reasoning.output_tokens": 114,
+     "http.response.status_code": 200
+    },
+    "children": []
+   }
+  ]
+ },
+ {
+  "name": "smoke bad_order",
+  "service": "fernhill-host",
+  "kind": "INTERNAL",
+  "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+  "span_id": "0x02fe59e06a97e718",
+  "parent_id": null,
+  "start_ms": 1793857257342.9539,
+  "ms": 5.23,
+  "status": "UNSET",
+  "attributes": {},
+  "children": [
+   {
+    "name": "MCP send server/discover",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+    "span_id": "0x15bdb4e918568c27",
+    "parent_id": "0x02fe59e06a97e718",
+    "start_ms": 1793857257343.594,
+    "ms": 1.79,
+    "status": "UNSET",
+    "attributes": {
+     "mcp.method.name": "server/discover",
+     "jsonrpc.request.id": "1"
+    },
+    "children": [
+     {
+      "name": "server/discover",
+      "service": "fernhill-mcp-server",
+      "kind": "SERVER",
+      "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+      "span_id": "0x7f4871bb0340f3a8",
+      "parent_id": "0x15bdb4e918568c27",
+      "start_ms": 1793857257344.6318,
+      "ms": 0.19,
+      "status": "UNSET",
+      "attributes": {
+       "mcp.method.name": "server/discover",
+       "mcp.protocol.version": "2026-07-28",
+       "jsonrpc.request.id": "1"
+      },
+      "children": []
+     }
+    ]
+   },
+   {
+    "name": "MCP send tools/call place_order",
+    "service": "fernhill-host",
+    "kind": "CLIENT",
+    "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+    "span_id": "0x9e9fbb50afaa7347",
+    "parent_id": "0x02fe59e06a97e718",
+    "start_ms": 1793857257345.618,
+    "ms": 2.07,
+    "status": "UNSET",
+    "attributes": {
+     "mcp.method.name": "tools/call",
+     "jsonrpc.request.id": "2"
+    },
+    "children": [
+     {
+      "name": "tools/call place_order",
+      "service": "fernhill-mcp-server",
+      "kind": "SERVER",
+      "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+      "span_id": "0x029b08a111f88726",
+      "parent_id": "0x9e9fbb50afaa7347",
+      "start_ms": 1793857257346.251,
+      "ms": 0.93,
+      "status": "ERROR",
+      "attributes": {
+       "mcp.method.name": "tools/call",
+       "mcp.protocol.version": "2026-07-28",
+       "jsonrpc.request.id": "2",
+       "gen_ai.operation.name": "execute_tool",
+       "gen_ai.tool.name": "place_order",
+       "error.type": "tool_error"
+      },
+      "children": [
+       {
+        "name": "fernhill.place_order",
+        "service": "fernhill-mcp-server",
+        "kind": "INTERNAL",
+        "trace_id": "0xc6e9c36d5183a37568c57b54948d734c",
+        "span_id": "0x4b21668346265307",
+        "parent_id": "0x029b08a111f88726",
+        "start_ms": 1793857257346.482,
+        "ms": 0.45,
+        "status": "ERROR",
+        "attributes": {
+         "fernhill.items.count": 1,
+         "error.type": "ToolError"
+        },
+        "children": []
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+]

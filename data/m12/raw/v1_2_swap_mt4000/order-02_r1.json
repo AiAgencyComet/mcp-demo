@@ -1,0 +1,70 @@
+{
+ "case_id": "order-02",
+ "rep": 1,
+ "request": "Two small cold brews to go for Priya.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "max_tokens": 4000,
+ "ms": 1815,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS4QgKEAgTGAI4AUIIdGhpbmtpbmcSDDPur+XLJKAuMVfH2RoMlrrth2TTUbldc0EqIjDheuOqKQi9xv2NC6Xh+FK1fsNdN62m54XEW2eGL2EougaX7nxjcj4ZaBBk5PNDzpMq/gdc+3pl1a7JXcqm1+OBlfd6DoYwWvQG0GVXERTsldgOmW9mdJNQR+ZGqT3GgUVOasaL2YQKq40HXokKbuJZIEQF95skPEB2gWMyE/JqA0TBNbntV+qnj9y5LI6XOhpa/QYfJrRMiwhlW2eS02J6tobvCBcfQ6hod4wKAdV8Kg2Y+5fUgIv28pbPu91I+Mh9kLqKXEp2Fksc3bh4okKK0tLzqMQFLsHu6wyCJIKDLDUFkI2ff+aWdjNClaMaWzWbAVwS6dqip96uyIdEj9Ol9BJ7HdyCgf1b8zyUSxUmUlXGm950pIfreLSe/mU9qocrZccb8p+XreG4DIQtv0Eo32ffbk+L73LumfO92xLBe8zMn9oMfdJIG0XvgpLr1BYcr9xgNOCDuDr7cfL+e71hU9iH/CCLar6NfEacOa/8bw3JzmhzRWN2JlRiyIf4jr8yWvYHFQVugwsToWvK/6K20gcnnTp5r5S3oJ38CJ2i2bdOt9IzFIasGujEZUKbNUEAVCjf0kmr4B9PIbhuXBYwhYgofWkrVIkN9eyavlCLYPvkaxJB/S/Jt1MXJgYG0rSZjGrLZVva9roVad2OeZ6uJDgXdgSzmoc1j5DF+ZKOwC9y013cad3OZUChymwrMJlVpvI8WBZXpUnm43OAHJkJgThWXF1zVtJB48E/UpxK03pMuEWadfnt4BujL2sHc4mcvxw7KDzwdIJrvKnnbPoYNL33DgfjoRjESgyztmeVFi4bMqxMc2nyLPohbP+VjqCIHPSzbe82B1IMr7u1t/gTZv3no4pf3QBsw0XAo3F31dCc4NOqeikRe4msYbWARszmnw5QvfRCDQ2b04fGxD2HnuVYXjIrYGnDVwxMp1IJG776f4vdq939U997Dnn88zcp9jxwMK+N1MCsblgcxChc++gIjuGmpjzuoBvQMl2PbMGvKrjPPqyGuIms4kPPg8JIXqt77GrcJgKhhH2moKfr3gH4Dv+g6rjmw0hG4JYsV50DWHmiEBOGdGv8z6LTsvsYKKC/i/HK25oW2XRHsraAacwREihNF7PGwCsDGNltolAVOGTAiXyNRABBCSjwy6RSkDOf2Iy0A/3t4PWgC/a+W87qkI2dhv/fxGF5Z40GNXa6HmyEEhweJ/4ZpyUoZuTI/zRkuA8geZ3sC2Lk4kxFOE96+w06/TaZOYKOBdiXt7mbeQC4H/h3Ji2BDje1pCqMuKT8ABuOzrRFd5BX0w7J8dj8g9A+uHZ+c5dm4kt/Z02H+KcuwuFqCgIf+V8ZVgVo6FVbbVA74s5sLNbiC7KEsfZGvieceL6hmfr2Uy3mUZ/bGu59J4EciEktgOHNamikn9i+V6naEQxY/FWWTU/11BgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_014Az5h1VM2LK3uBFvijuLh3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "cold brew",
+       "size": "small"
+      },
+      {
+       "drink": "cold brew",
+       "size": "small"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Priya"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1803,
+   "output_tokens": 308,
+   "output_tokens_details": {
+    "thinking_tokens": 176
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

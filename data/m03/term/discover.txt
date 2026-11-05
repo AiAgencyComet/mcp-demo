@@ -1,0 +1,7 @@
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 05:47:06 GMT
+server: uvicorn
+content-length: 218
+content-type: application/json
+
+{"jsonrpc":"2.0","id":4,"error":{"code":-32602,"message":"params._meta must be an object carrying the required 'io.modelcontextprotocol/protocolVersion' and 'io.modelcontextprotocol/clientCapabilities' envelope keys"}}

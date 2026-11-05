@@ -1,0 +1,2 @@
+25 tools: Agent, Bash, Read, Edit, Write, NotebookEdit, WebFetch, ReportFindings, WebSearch, TaskStop, Skill, DesignSync, EnterWorktree, ExitWorktree, SendMessage, ListAgents, Workflow, CronCreate, CronDelete, CronList, ScheduleWakeup, RemoteTrigger, Monitor, PushNotification, ToolSearch
+tool definitions: 36450 tokens

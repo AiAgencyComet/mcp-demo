@@ -1,0 +1,54 @@
+{
+ "case_id": "order-h4",
+ "rep": 3,
+ "request": "A double espresso and a cookie for Omar, he's waiting at the counter.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 2670,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01VkTCYiWyKCr4Jp221FUzE8",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1725,
+   "output_tokens": 458,
+   "output_tokens_details": {
+    "thinking_tokens": 425
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "fernhill-board",
+      "version": ""
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "A-1043 (Mara) is done. 4 orders are open."
+    }
+  ],
+  "structuredContent": {
+    "order": {
+      "order_id": "A-1043",
+      "name": "Mara",
+      "items": [
+        "flat white small"
+      ],
+      "total": 4.2,
+      "status": "done",
+      "placed": "08:14"
+    },
+    "open": 4,
+    "done": 3
+  },
+  "isError": false,
+  "resultType": "complete"
+}

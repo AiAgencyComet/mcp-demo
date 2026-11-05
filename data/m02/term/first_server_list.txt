@@ -1,0 +1,49 @@
+{
+ "name": "get_price",
+ "description": "Return the price of one drink at Fernhill Coffee, in US dollars.",
+ "inputSchema": {
+  "type": "object",
+  "properties": {
+   "drink": {
+    "title": "Drink",
+    "type": "string"
+   }
+  },
+  "required": [
+   "drink"
+  ],
+  "title": "get_priceArguments"
+ },
+ "outputSchema": {
+  "properties": {
+   "result": {
+    "title": "Result",
+    "type": "string"
+   }
+  },
+  "required": [
+   "result"
+  ],
+  "title": "get_priceOutput",
+  "type": "object"
+ }
+}
+{
+ "_meta": {
+  "io.modelcontextprotocol/serverInfo": {
+   "name": "fernhill",
+   "version": ""
+  }
+ },
+ "content": [
+  {
+   "type": "text",
+   "text": "mocha is not on the menu. Drinks: latte, flat white, cold brew."
+  }
+ ],
+ "structuredContent": {
+  "result": "mocha is not on the menu. Drinks: latte, flat white, cold brew."
+ },
+ "isError": false,
+ "resultType": "complete"
+}

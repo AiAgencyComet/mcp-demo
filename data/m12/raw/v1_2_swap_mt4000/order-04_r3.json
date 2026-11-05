@@ -1,0 +1,67 @@
+{
+ "case_id": "order-04",
+ "rep": 3,
+ "request": "Delivery to 12 Elm Street: one large latte, whole milk.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "max_tokens": 4000,
+ "ms": 1128,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSjQYKEAgTGAI4AUIIdGhpbmtpbmcSDBcmHgUGj/9WZopPnRoMMF/Eqg7zTaBePYrmIjC0uT6ZyS9nhUCWvDk5W6frHd3rsGwBNWI2Q8BR5E94ENRYJuCiFMWt+M2Plg3VFe8qqgUCp93WWgNK2AA+TOgOF8d/bOVMYgaDbfBM3ZiH8tJKtviPrB04tc7o0k3WAqqSr+cnapBBuXB0id4tA3Far/nIqfxw3WcwpyaRgVC4myLkAI8jEqvL8deZ8OG+rxO7eZOM/ICPQyo+Z9J/Ivi+ji8oUZlzu2XTxbyKC+lii3yxctLEayLWX+52KBYI0xbv4gkp2Ay9jyHJuATXAKEGt+kUV+ZQ2eEiZ+M6yu7ej2dSLnt+RtgjOLzX2i6qj59hrqCnUWL40b4UuDJi6eNo48hDK7xKGVLX9UR93pOgEtymjpNPCb0V0Ah/5KFFSI9+PvGz0gohIIXNhE3vEESpP0wZOHf4AHrOu5p0sVj9U9HDN1gV+5NSq+6fL7uDEnE0mgbHUIG60a/yohAjTKkeYWj+v0UBMrPKN9rATv8Tvrf6crnuILyszLWBv0kAgpgXOoSdymF08pQjWw2N664hZ5AjFhqiWuKrJjbwmVD2beTe9njyCjGF+MzG9/aDpfP66pcyj5XRfa+JL7g2N3OGFe2kw+mIwobtge3lZMvGq4qf6bEDCDyhuuOL8JYMD+QGPzRYVCu6YFy7DrO/hmpusxYvLAawDkbFSVgtpX9/J9D2Ayd4/eQ+7BgpD4efOvbtvwi7/Nw40DQqnsCc7hdwXA0nHKldnJRw4VLir62vvXNUCtdhVWDK3VYHUcv2px2FEItrfJ9G2yUbq6KuOwuL1nvto+RIL84dm+/F/YsIjzyWcyBM9AUlCFJ7GXVbx294F/D5KrCimn63u+u9pnmB8g8558KKDxHISKbs6/PWvYCoXmVoqDuLhaGztPqFHIh5QnRvTjiUX7olK8So67TjR/7KJjJXbEesU4xdmKeN7UthTOE++ohpyrhQZsWquUPNFU/qQ/DtOOUVm2ZjGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01MBpYdhAVEUQQDEazRetmZ7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "latte",
+       "size": "large",
+       "milk": "whole"
+      }
+     ],
+     "handoff": {
+      "kind": "delivery",
+      "address": "12 Elm Street"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1813,
+   "output_tokens": 185,
+   "output_tokens_details": {
+    "thinking_tokens": 62
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,38 @@
+$ npx -y @anthropic-ai/mcpb@2.1.2 --version
+2.1.2
+
+$ mcpb validate manifest.json
+Manifest schema validation passes!
+exit code: 0
+
+$ mcpb pack . ../../dist/fernhill-coffee-1.1.0.mcpb
+Validating manifest...
+Manifest schema validation passes!
+
+📦  fernhill-coffee@1.1.0
+Archive Contents
+   1.4kB manifest.json
+    184B pyproject.toml
+   5.5kB server/server.py
+   1.1kB server/shop.py
+ 126.7kB uv.lock
+
+Archive Details
+name: fernhill-coffee
+version: 1.1.0
+filename: fernhill-coffee-1.1.0.mcpb
+package size: 45.4kB
+unpacked size: 134.8kB
+shasum: bc30700621e8e57ad3d07f5573fd5403772b6ba5
+total files: 5
+ignored (.mcpbignore) files: 1
+
+Output: ./code/m12/ship/dist/fernhill-coffee-1.1.0.mcpb
+exit code: 0
+
+$ mcpb info fernhill-coffee-1.1.0.mcpb
+File: fernhill-coffee-1.1.0.mcpb
+Size: 45.42 KB
+
+WARNING: Not signed
+exit code: 0

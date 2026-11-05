@@ -1,0 +1,56 @@
+{
+ "case_id": "refund-02",
+ "rep": 3,
+ "request": "The customer on A-1041 wants their money back.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "f5ace75886e48c1a",
+ "ms": 1149,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS3AUKEAgTGAI4AUIIdGhpbmtpbmcSDDiWzscf46bUjOBq6xoMI8+7WxQU+pq5gtgMIjBak6Gb/porHWtoT7EFAFxdxeXVNGAgNP5RWXQMsOQPK5+hwZqYDNC3QdgWH3s0B50q+QT5a8oM23jqxXF9vcU4Pr+Jmz+0yYiYHcRPJLV+++bPgZbVGPIBpVPjl5PcAW6qogbF1wGtqc2xbv6eanRH+ERwa/BU/J7Pu9rnMxDDYTCN3Tt6cqXgivGeKSyDPzrHxO3Sk9L6Cawl4Jr5SI7GvpMdO0tJ5oF2yBocPikbSxagJAQWBB94Zmw3YHj7xFmhwMdfZBBi1aWDx7R3ODZ3T8CR7pLbEvvp8YLok9tvNWfEM3vB9hpQ/NJ9OkWH3Jzqm6QkH8AHybxOrbZKPR4K81O301+jLbStklrdVDp7hbp1hBBMQZhuSfokhEZtybQ1/IVvjgiL7yMMHTOIEXE0XDopWm8CgtGzALvjY+oYmHTYqRA3hbKykKDYtfS7kxeCMALqPXxl5MMq2VVdE66QPbTg3oGpaDsj6v4+LGC7MaDjk+xBfR0LkWT+LZvNMgrp2w3F0w8S7+SiTgvCHFIUc3fyxSKOAEUQ/CG5phLY335r2egxZyfAFTk1dOPyBvSzjDVNrilWeUeyWipbJrs40o0LlaFbCFMV3EN+YZGFFKsbNmCQ17Ixiqr0c5xpuR5xdtbHQt2GCQ+4fKWWv/8XO3qauoQmrNKQZhG0C/cnOxJWqY7jIeBCTJwTVZPUzRvKUboUGqgcXFJZWGSHIQvn1RrvPYYPMvYicm31RQroNDnNtp7hGubmNWWNHPbZv+hYdqyVq/SNEckbU3sT6xA5kghrk195kD6FYhLeZEY3g2nUwwA/4iiLwbsumGZAO8c+3HsvZbFTX+xOIjisZdRPdtSeDd2V4n5WaJ1eHqDxdSaq7usPi+MAfxCQ+vsFWf9EnZ43Y8GVBGXKlUUYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Nhq5vYNWHhz1y9HH5YNBia",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "order_id": "A-1041"
+    },
+    "name": "fernhill__refund",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1804,
+   "output_tokens": 104,
+   "output_tokens_details": {
+    "thinking_tokens": 47
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

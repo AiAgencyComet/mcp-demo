@@ -1,0 +1,7 @@
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 05:47:17 GMT
+server: uvicorn
+content-length: 127
+content-type: application/json
+
+{"jsonrpc":"2.0","id":1,"error":{"code":-32020,"message":"mcp-name header does not match the request body's 'name' parameter"}}

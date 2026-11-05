@@ -1,0 +1,54 @@
+{
+ "case_id": "order-09",
+ "rep": 1,
+ "request": "Chris at the window wants a large latte and an oat cookie. Pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 3291,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Fy2FhAE6TwLoeoe36LKhiw",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1638,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 527
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

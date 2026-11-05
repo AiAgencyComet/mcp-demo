@@ -1,0 +1,66 @@
+{
+ "case_id": "order-03",
+ "rep": 1,
+ "request": "Put in a double espresso for Jordan, they'll grab it at the counter.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "max_tokens": 4000,
+ "ms": 1327,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSnQcKEAgTGAI4AUIIdGhpbmtpbmcSDIrpJ0rBW1IFqFeEqxoMku6KZHKSeEdI59+UIjDyiKgxwHyqYSnj/onWy+2Alau/aHZFHwYImTpepaQB/rexh0H2f372hT9qDa2N0ekqugbptmDwcMXoJC5oFeg+W/1kKH5BS8jHj2u/iphtRuQzqBgEpZRGpiIoNy1IFGZK13rtEEFUsWJTDJqoLCUH6iHcZ+ezafyzpKauyOWztmCl8ndjaJlbuIDc4etrwBR4czgTIBJnZlVWbiYvEPZpqkQQFskragQIqEc0YPtqLcZ8ZPdVrIblJd8g+u9j9ORpfj7auVYI20wqfrMcODSRKux8ElWAGBCQwHKcH4ac81nDatnoTm6Y9Ci2w9mn+FmXI1EsrnoRyHSkhyK8DXRyViNailL9kXcnTHrXHiDsDeGoOgW2T5hRP+rQkq/szqsBanWAfmVPR4TvI6VgIALa43kzN7cHqKohFlv5YTSvWo+GJVyup2HxDsOb0fbu+V4+Y0bZMlfThAsTBjsku03NXoUpt3XlBZaC/x9GTHybUyCLBf52nNjeskPizjSbelK7g5B8ppWZXM2nfrf+tgLrE5V218ZA3Q+W6XxL05Q8pxJ4UxQXanOJhPoESLS+hwhUf8RaGjEm2hVu0BRanNq8nVGMz935A/4JyIQ8mk6NiIylAW+rrX0IktbT6lj12rIgvqQLFw5B3Te+7LJWFYcWmCJkYJOsgps5ZrMouQ2vLo6xIv+O1qbnBVwJ57n8ZBKARSJKVfY+zxz7knLVQ9wk4Wslmh7zBy+Pof2PSevJLR4FaeCc67Ks2JTkuDvyiRXOuYbbSEt+8ACslLDV2d5fAxwkmifA6lmxle8ATpbI1QJe83e74KETefLF0QGScyOxC4gblons/ATqxH9UoWWKDTfy8SoYFB62I/jB45xtkrTvMRcwWXD/niGrq7ln3GRk3xSeCNJk/nEkTxIL8bXLZWhnKuTVerlmopc4eRJWyP2Karf6gTR9tk/DMzT9KBHxSOaGP+fA347odpSs1XA6O9A1Wh8PGzJz/To+OUpHX6FujwOfUQcfccmwhRxQSm53pvTzKuL/pydHnFOyHzIPBmk/TvV8VEVZZjzUU9gGCzAvdbnzEUdvKiww25jKHfXS7t7sK7WmdgDQdj8MySCFy5bqRCezqSBE0LWfEXHitOQtR6a2OySDA2hFXxLsT9PzYqZLnwVXuC7zK0LIGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01URuQ4k1cmSwmTYnUxPyBaR",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "espresso",
+       "size": "double"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Jordan"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1814,
+   "output_tokens": 222,
+   "output_tokens_details": {
+    "thinking_tokens": 109
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

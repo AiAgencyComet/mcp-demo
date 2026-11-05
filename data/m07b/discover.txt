@@ -1,0 +1,13 @@
+# m07b · discover · server/discover advertises the extension; tools/list has no per-tool task flag
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> server/discover
+          {"jsonrpc": "2.0", "id": 1, "method": "server/discover", "params": {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.03s] <- HTTP 200 from copy A (10.5 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"cacheScope": "private", "capabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}, "prompts": {"listChanged": true}, "resources": {"listChanged": true, "subscribe": true}, "tools": {"listChanged": true}}, "instructions": "Fernhill Coffee sales tools.", "resultType": "complete", "supportedVersions": ["2026-07-28"], "ttlMs": 0, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}
+[  0.03s] -> tools/list
+          {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {"_meta": "(same as above)"}}
+[  0.03s] <- HTTP 200 from copy B (2.3 ms)
+          {"jsonrpc": "2.0", "id": 2, "result": {"cacheScope": "private", "resultType": "complete", "tools": [{"description": "Build the Fernhill sales report for the last `days` days (1 to 90). A long report runs as a task.", "inputSchema": {"type": "object", "properties": {"days": {"title": "Days", "type": "integer"}}, "required": ["days"], "title": "export_sales_reportArguments"}, "name": "export_sales_report", "outputSchema": {"properties": {"first_day": {"title": "First Day", "type": "string"}, "last_day": {"title": "Last Day", "type": "string"}, "days": {"title": "Days", "type": "integer"}, "orders": {"title": "Orders", "type": "integer"}, "revenue": {"description": "US dollars", "title": "Revenue", "type": "number"}, "top_drink": {"title": "Top Drink", "type": "string"}, "skipped_orders": {"items": {"type": "string"}, "title": "Skipped Orders", "type": "array"}}, "required": ["first_day", "last_day", "days", "orders", "revenue", "top_drink", "skipped_orders"], "title": "SalesReport", "type": "object"}}], "ttlMs": 0, "_meta": "(same as above)"}}

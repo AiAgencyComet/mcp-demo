@@ -1,0 +1,14 @@
+RS http://127.0.0.1:8310/mcp mode=sdk-defaults
+INFO:     Started server process [72874]
+INFO:     Waiting for application startup.
+mcp.server.streamable_http_manager StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8310 (Press CTRL+C to quit)
+fernhill.auth tool sees token via get_access_token(): sub=barista-ana scopes=['menu:read']
+mcp.server.mcpserver.server Tool 'refund' failed: 'Error executing tool refund: This token does not have the scope refunds:write.'
+INFO:     127.0.0.1:59530 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+mcp.server.streamable_http_manager StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72874]

@@ -1,0 +1,260 @@
+{
+ "question": "What does a large latte cost at Fernhill?",
+ "model": "claude-haiku-5-5",
+ "runs": 10,
+ "summary": {
+  "api": {
+   "median_ms": 0.01,
+   "median_tool_ms": 0,
+   "median_input_tokens": 0
+  },
+  "tool": {
+   "median_ms": 3476.14,
+   "median_tool_ms": 0.01,
+   "median_input_tokens": 1658
+  },
+  "mcp": {
+   "median_ms": 3162.34,
+   "median_tool_ms": 7.32,
+   "median_input_tokens": 1656
+  }
+ },
+ "rows": {
+  "api": [
+   {
+    "ms": 0.012208940461277962,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.0037919962778687477,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.004082918167114258,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.009582960046827793,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.006417045369744301,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.008958042599260807,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.006749993190169334,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.014499993994832039,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.009708106517791748,
+    "answer": "4.50",
+    "tokens": 0
+   },
+   {
+    "ms": 0.005207955837249756,
+    "answer": "4.50",
+    "tokens": 0
+   }
+  ],
+  "tool": [
+   {
+    "ms": 3331.1784169636667,
+    "tool_ms": 0.014998950064182281,
+    "input_tokens": 1654,
+    "output_tokens": 349,
+    "answer": "I couldn't get a price for a large latte at Fernhill specifically. The price lookup only accepts basic drink names, and it doesn't take a location or size. For a standard latte, it returns $4.50. That may not match Fernhill's menu or the large size, so check with the shop for the exact price."
+   },
+   {
+    "ms": 4018.1401669979095,
+    "tool_ms": 0.009582960046827793,
+    "input_tokens": 1626,
+    "output_tokens": 350,
+    "answer": "I can't get a size- or location-specific price. The price lookup only recognizes plain drink names (espresso, latte, flat white, cold brew, oat cookie), and it returned **$4.50 for a latte**. That may not be the price of a large latte at Fernhill, so check the menu or ask the staff to confirm."
+   },
+   {
+    "ms": 3476.1366669554263,
+    "tool_ms": 0.010417075827717781,
+    "input_tokens": 1669,
+    "output_tokens": 348,
+    "answer": "I couldn't get a price for a large latte at Fernhill specifically. The price lookup only accepts a few drink names without size or location, and \"latte\" is the closest match. A latte there costs $4.50, but that may not be the large size or the Fernhill price, so check with the shop to confirm."
+   },
+   {
+    "ms": 3516.568333026953,
+    "tool_ms": 0.009665964171290398,
+    "input_tokens": 1671,
+    "output_tokens": 365,
+    "answer": "I can't get a price for a large latte at Fernhill specifically. The price lookup only accepts a drink name, not a size or location. For a standard latte, it returns **$4.50**. That may not match the large size or Fernhill's menu, so check with the store for the exact price of a large."
+   },
+   {
+    "ms": 3059.6326250815764,
+    "tool_ms": 0.013959011994302273,
+    "input_tokens": 1582,
+    "output_tokens": 295,
+    "answer": "A latte costs $4.50 at Fernhill. The price lookup doesn't have a size option, so I can't confirm whether a large costs more. The listed drink names were espresso, latte, flat white, cold brew, and oat cookie, so the $4.50 is for a standard latte."
+   },
+   {
+    "ms": 3919.798667076975,
+    "tool_ms": 0.0117509625852108,
+    "input_tokens": 1658,
+    "output_tokens": 320,
+    "answer": "I couldn't get a size-specific price. The price lookup only accepts a base drink name, and it returned $4.50 for a latte. That may not be the large size or Fernhill's pricing, so check with Fernhill directly for the large latte cost."
+   },
+   {
+    "ms": 3383.5697500035167,
+    "tool_ms": 0.014501041732728481,
+    "input_tokens": 1688,
+    "output_tokens": 353,
+    "answer": "I can't get a size- or location-specific price. The price lookup only accepts a drink name, and a regular latte costs $4.50. That's the only latte price I have, so I can't confirm what a large costs at Fernhill. You could ask the staff there or check their menu."
+   },
+   {
+    "ms": 3043.553833034821,
+    "tool_ms": 0.016083940863609314,
+    "input_tokens": 1606,
+    "output_tokens": 325,
+    "answer": "A latte costs $4.50. I couldn't get a size-specific or Fernhill-specific price, though. The price lookup only accepts general drink names, and it returned the standard latte price with no size or location details. For a large latte at Fernhill, you'll need to check their menu or ask the staff."
+   },
+   {
+    "ms": 3352.0455829566345,
+    "tool_ms": 0.009833020158112049,
+    "input_tokens": 1661,
+    "output_tokens": 380,
+    "answer": "I can't get a price for a large latte at Fernhill. The price lookup doesn't accept a location or size. It only knows these items: espresso, latte, flat white, cold brew, and oat cookie.\n\nThe standard latte is $4.50. That price may not reflect a large size or Fernhill's pricing, so check with Fernhill directly for those."
+   },
+   {
+    "ms": 3696.6252910206094,
+    "tool_ms": 0.01195794902741909,
+    "input_tokens": 1635,
+    "output_tokens": 331,
+    "answer": "I couldn't get a price specifically for a large latte at Fernhill. The price lookup only recognizes drink names, not sizes or locations, and the closest match is a plain latte at **$4.50**. That may not be the same as a large, so check with Fernhill directly for the large size price."
+   }
+  ],
+  "mcp": [
+   {
+    "ms": 3162.3372500762343,
+    "tool_ms": 32.717001042328775,
+    "input_tokens": 1682,
+    "output_tokens": 346,
+    "answer": "The latte at Fernhill costs $4.50. The price lookup doesn't have a separate \"large\" option, so I can't confirm whether size changes the price. The $4.50 figure is for the standard latte.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 2884.4917500391603,
+    "tool_ms": 6.509458995424211,
+    "input_tokens": 1670,
+    "output_tokens": 317,
+    "answer": "A latte costs $4.50 at Fernhill. The price lookup doesn't have a separate size option, so I can't confirm whether a large costs more.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 2982.450959039852,
+    "tool_ms": 4.721458884887397,
+    "input_tokens": 1689,
+    "output_tokens": 348,
+    "answer": "A latte at Fernhill costs $4.50. The price tool doesn't list sizes, so I couldn't confirm a separate price for a large. The $4.50 is the standard latte price.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3083.080832962878,
+    "tool_ms": 7.247707922942936,
+    "input_tokens": 1635,
+    "output_tokens": 291,
+    "answer": "Fernhill's latte is $4.50. The price lookup doesn't have a separate size option, so that's the only latte price I can find, and I can't confirm whether a large costs more.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3300.870541948825,
+    "tool_ms": 6.3388749258592725,
+    "input_tokens": 1674,
+    "output_tokens": 326,
+    "answer": "A latte at Fernhill costs $4.50. The price system doesn't list sizes, so I can't confirm whether a large costs more. You may need to check with the staff.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 2775.165042025037,
+    "tool_ms": 7.468374096788466,
+    "input_tokens": 1615,
+    "output_tokens": 273,
+    "answer": "A latte at Fernhill costs $4.50. The price lookup doesn't have a separate \"large\" size, so this is the standard latte price, and I can't confirm whether a large costs more.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3271.7355000786483,
+    "tool_ms": 7.321667042560875,
+    "input_tokens": 1636,
+    "output_tokens": 290,
+    "answer": "A latte at Fernhill costs $4.50. The price tool doesn't take sizes, so this is the base latte price, and I couldn't confirm whether a large costs more.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3352.1788329817355,
+    "tool_ms": 8.3026661304757,
+    "input_tokens": 1656,
+    "output_tokens": 333,
+    "answer": "A latte costs $4.50 at Fernhill. The price lookup doesn't offer a size option, so I can't confirm whether a large costs more. The menu lookup only lists \"latte,\" so the $4.50 may be the base price for a standard size.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3046.3114579906687,
+    "tool_ms": 7.7118739718571305,
+    "input_tokens": 1640,
+    "output_tokens": 306,
+    "answer": "A latte at Fernhill costs $4.50. The price lookup doesn't include sizes, so I couldn't get a separate price for a large. The $4.50 is the listed latte price, and a large may cost more.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   },
+   {
+    "ms": 3189.8081250255927,
+    "tool_ms": 5.670333048328757,
+    "input_tokens": 1647,
+    "output_tokens": 320,
+    "answer": "A latte at Fernhill costs $4.50. The price lookup doesn't offer a size option, so I can't confirm whether a large latte costs more. The menu lists only a plain \"latte,\" so that $4.50 is the price I have.",
+    "tools": [
+     "fernhill__get_price",
+     "fernhill__get_price"
+    ]
+   }
+  ]
+ }
+}

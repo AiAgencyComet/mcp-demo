@@ -1,0 +1,23 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": true, "ms": 13.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 2, "ok": true, "ms": 7.0, "msg": "4.50 (answered by server pid 97622)"}
+{"call": 3, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 4, "ok": true, "ms": 9.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 5, "ok": true, "ms": 10.0, "msg": "4.50 (answered by server pid 97622)"}
+{"call": 6, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 7, "ok": true, "ms": 7.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 8, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97622)"}
+{"event": "KILLED copy 1 after call 8"}
+{"call": 9, "ok": true, "ms": 10.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 10, "ok": true, "ms": 10.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 11, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 12, "ok": true, "ms": 9.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 13, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 14, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 15, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 16, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 17, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 18, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97623)"}
+{"call": 19, "ok": true, "ms": 8.0, "msg": "4.50 (answered by server pid 97621)"}
+{"call": 20, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 97623)"}
+{"summary": {"spec": "old", "lb": "sticky", "server": "server_old_stateless.py", "client": "client_old.py", "calls": 20, "ok": 20, "failed": 0, "killed_copy": 1, "kill_after": 8}}

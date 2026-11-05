@@ -1,0 +1,56 @@
+{
+ "case_id": "status-07",
+ "rep": 2,
+ "request": "How much was order A-1042?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "85d538843f629a52",
+ "ms": 959,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS0AUKEAgTGAI4AUIIdGhpbmtpbmcSDKhNwd+9QQ39+D0QfhoMsNSWufsUb0/cXVfoIjCl+2hWJ+mYk/46OVWEoVNJFTmoEhsXahgw3CycWzWxGcwqwVY2reGI9SPHUAerifYq7QTVEzra70m203BupbGf8HV9e7adLNbRMVaxx+gL2TaN8i4v8Zlf4oGVYuKSDRHGn52iX8aNXQiwzptY3p+IMh/iETWcY/9jevBhRlFUn7O0wSqauEp6wFIBTcv/Ha7lXTgcun/4tPj1KQ9PkQfUHi0IC/QDgQ7h6wVvLIAlhCD50xjyqyneByeI39NgqyLWVr3Y6MtAaOZFW75DqyXZctp8bPNS3fyce2Q76ULdFkj6TZkaQSWHVY3SjVAKXVvUs2pjGcMYFg59ry617jM3v1zLmLlmb0uvFp35F1KdFW1xA04/rRbOetEnZ8U+APwYQPTPTtznaKYX0bE1FTsLCE54dqIxIAq7KnseVcNqRv9Q5HAVl8wSp08WQPMROESdc4ftfLtrT4PZf381dtJZamvMW7slnXChDVwd2fO25KYaXXkDN2SNy3P9/VYWINSr009dF8v9XzDTamXh1g6bAq4qb/78xgDUs0cVRqcCgvrkp6iggpK5BlStj6pQOahCXqtR0lMYi8FgZulCmlm7AG30y/eGl24ieko5gsYDeuXJY9hbX5RQGM1z1mTv0LqhaoGNC7pYBfBVRSAjzNu/9F4dk4gcGp82zo6GFr8kIBQK/7IKgNgHQB2Z5KfjN73sqIHznVGmiOgWUUBksxwDtX4vuhgbfEaHRLLWLWc5VzVGumE1qytO0WS8LQNG9e35j/y+BX9zI+PK7eTjpW3U7IOeCbMSByKp1iLVgEOVC6WrVE1a9vOrDjm38w2HlOZ2bYGrcE7MiMgRnBplDaNBdTRcbfVwVSnwoPzwpuVLcIaZYCBV8I/KREUhCLswyfgYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_013gyyTVzbvQ92rM5DozvdSs",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": "A-1042"
+    },
+    "name": "fernhill__order_status",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1699,
+   "output_tokens": 101,
+   "output_tokens_details": {
+    "thinking_tokens": 44
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

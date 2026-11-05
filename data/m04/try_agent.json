@@ -1,0 +1,178 @@
+{
+ "question": "I want a large oat latte for pickup, name Sam. What is the total, and what is my order ID?",
+ "metrics": {
+  "model": "claude-haiku-5-5",
+  "turns": 3,
+  "input_tokens": 4138,
+  "output_tokens": 432,
+  "model_ms": 3557.6723319245502,
+  "mcp_ms": 27.230915962718427,
+  "tool_calls": [
+   {
+    "tool": "fernhill__get_menu",
+    "input": {},
+    "is_error": false,
+    "result": "{\"result\": [{\"drink\": \"espresso\", \"price\": 3.0, \"sizes\": [\"single\", \"double\"]}, {\"drink\": \"latte\", \"price\": 4.5, \"sizes\": [\"small\", \"large\"]}, {\"drink\": \"flat white\", \"price\": 4.2, \"sizes\": [\"small\"]}, {\"drink\": \"cold brew\", \"price\": 5.0, \"sizes\": [\"small\", \"large\"]}, {\"drink\": \"oat cookie\", \"price\""
+   },
+   {
+    "tool": "fernhill__place_order",
+    "input": {
+     "items": [
+      {
+       "drink": "latte",
+       "size": "large",
+       "milk": "oat"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Sam"
+     }
+    },
+    "is_error": false,
+    "result": "{\"order_id\": \"A-1043\", \"total\": 5.1, \"status\": \"making\"}"
+   }
+  ],
+  "answer": "Your order is placed for pickup under the name Sam.\n\n- **Order ID:** A-1043\n- **Total:** $5.10\n- **Status:** Making\n\nThe menu lists the large latte at $4.50, so the extra $0.60 is probably the oat milk charge. The menu doesn't say that explicitly, though.",
+  "tools_offered": 4
+ },
+ "raw": [
+  {
+   "id": "msg_<redacted>",
+   "container": null,
+   "content": [
+    {
+     "signature": "CAQSswYKEAgTGAI4AUIIdGhpbmtpbmcSDPTXseSmUrkdPLa0phoMJdbzhOvlIbyucBy6IjAu/R5yM9/fuR/26jdG2dI3QdRQ1rAsew7zNuKvDRD6JN7dq3Wk0UW2vaiYRUG7DvYq0AXIKzuGia8koQ24eifbi9ZiG8yyzN9SDUIzvNRlzFYEsdM+2y1LVXu8bDbjC2LW7u5HWCv7Sk1FgWKqjhL7fO5xnCscA1ddfFSCQuLX3mClz63XhpTS7AFuVu6/dx6ENnz0WKa40ZpV5+5MaqYobKucYqKXhgSOjbFsTfMIH7G+AYBg0lNIVzIROzU+X5iXDp1MH2dqcpUjDFncRvvN7vst3RnhUoOxvGXpfAqgyUv8uJnITkGdcNVjUS7Q2crcVOK4Qdi59DwUYXXHlaqrYtnZFkqUsvWrC382SwJTNYjiQbPpfN85Yq7gcfans9GeLflAvkX/x9XUYdGXXzQA8CRXiJSmX3Qg6VqWAzqLVT+MHj8HyW9HGOzRMO7cMc8PrfrNsFfydjTmsWE+P2+Xcv4AFCnf4Pzc4vFvPGDxOKR9b8AOJA6LPcmr+/ybOcwz7HwfDG2TuWU/JetHsXRfdDYQOPElM0AvxD0Tmr0eYmLenxywnNmsHe/RKyoKinCY1Cn9KkcnT91T2V9YYIe4VAdG5X8KSvBAvqlH5MGAabEud7uvVK5eudcvlw3or+3siMGBPckJia3qq2Qz2OqGwmVz76cRbSVQ134B0j618aDHlRUpqKT8P0iNB5amyWPM2m+FQtzwjzdFUdT1oWPd6ZrcqhwMoAbNbvO4o4zF21SSp4syDvep54RkPC6xPTE2XQwRmdrR/bUCN4pwJrDq7nH20iUg1WR/I2rzgq2+cYlmIwKXVLS0qrnR4zvBDntKx7BaKsg0EPeVGnMEIs1R33mjgdyCT0HVqX5EIK+5fKmAxAQog1HfK0UN+ruxJl5zrK46Hd1epbkPV4LMC47er8e+6cqFbplc1QMlW34IzuZSBs7wvayBRYh58Zz4HOxf9oE514/lMFf2xvkDB4URz/TVfyDKbIZVPV6Tgu85cE+pyEelPudHoYC2uXAOGSSeWIwYAQ==",
+     "thinking": "",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01MbK4QeeyyDYhU7GVXdrAkA",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {},
+     "name": "fernhill__get_menu",
+     "type": "tool_use",
+     "toolset_name": null
+    }
+   ],
+   "diagnostics": null,
+   "model": "claude-haiku-5-5",
+   "role": "assistant",
+   "stop_details": null,
+   "stop_reason": "tool_use",
+   "stop_sequence": null,
+   "type": "message",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1144,
+    "output_tokens": 106,
+    "output_tokens_details": {
+     "thinking_tokens": 73
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "id": "msg_<redacted>",
+   "container": null,
+   "content": [
+    {
+     "id": "toolu_01AwzZn7Bj8ub1LLsfAYMEWd",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "items": [
+       {
+        "drink": "latte",
+        "size": "large",
+        "milk": "oat"
+       }
+      ],
+      "handoff": {
+       "kind": "pickup",
+       "name": "Sam"
+      }
+     },
+     "name": "fernhill__place_order",
+     "type": "tool_use",
+     "toolset_name": null
+    }
+   ],
+   "diagnostics": null,
+   "model": "claude-haiku-5-5",
+   "role": "assistant",
+   "stop_details": null,
+   "stop_reason": "tool_use",
+   "stop_sequence": null,
+   "type": "message",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1422,
+    "output_tokens": 118,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  },
+  {
+   "id": "msg_<redacted>",
+   "container": null,
+   "content": [
+    {
+     "signature": "CAQSugcKEAgTGAI4AUIIdGhpbmtpbmcSDEAP8a4RniMyCQyCoBoMOJpcHy1x0wPgZIkHIjDl+xKSQG9+4JS994DpL5MwoYeYWSSPgtQq3TkBXFuu3fx/7qGO35uQGpazBeJlcZQq1wYs/3BtO99LEpyLebtlReAGgMc/izJNZ+pb9yQQZ+SJ5pWcFYxJetl79pGp45NYaJdm/piAx1F/1g1624wLYcamRFiLyGbbYIxvmUcMTofCRJQqDSlhtkVrWaXoghSQYOzvoxTtPxaiMrifYQm/0ZZhDttzvAZV3A4yHNtX3y9PKjFFagYH6pJozQHn0iHM+gS3hD4LoSuEfNtGA/Oc//zYR7dIqXW9tHAlhgIPvzB3pAq6V7UETx/AdEu1qjbEsbamKwX40Z+kOA1eM5slh+rdVCUZBx5Ytsx6ATG+G29Qk0J2Nfi0a2GTVjACY+4cnESNbt9V74y5jtVgc0lIAahpOjVNrIoeA4wDgvfxkHyMHzh6egfLSA/l436D0O6p+hpoEulQp/FT9o5nTJYALDpr3i6SaOtqukJqF43g2HowZXLFPeeDYaASj3xcj2gIQgzITFchiVihyMhemwUDnoQ4WCL66LNbMVSLseFO2t0GcNjK1GMChNO9RQEpCP6qsdOXAeRgjrDluF+llkMyhCUoDfOqCjkPplZlatrV2Zmh7NNl9ZuE4+uof3onVeQOj4i+F33k7LQnZ7IV7n24IqAFn7JA8S8BPkoAGYLGxJlieDXCqiIJESYBsyrRBBAIycc6P66ydEt0fDBXCGvHuiK9bH9fhsQhP2DrHKm9Ts5nc+RK1TMvRPXaEJjh9JfH9aneb/LM2u/CH65Fr26JRCHboZGot7hWSK3DCOyW8nCqUIOsljYT51+OUh4VHeH8n5DDMaFagnyzzyTCa7IVwC4ZjcjirFjrvaWLRo8FzCVpYNjC5CtlqKjDyyg8l0p8XkVbAEZtpjNr8GQi3jSUuZrY7ZPhYnfL1Dfb9i9L5weH3kVPxXUSUCX0BpHxL93jUN5TtUHIdKPbk1CtU4l55ItqJ+neDbfyHWby1ripVa96GYrOSWIls3jA1kMn+IVcBBEGAqoWsMYyTpiwYsx6EmmEE5Z32nHxLFMWfu3qYJhKVtXPKHnhHmsk3EBs0A5R8dLsZ6b+331VCywyUFg01cu1grSD1bcrA46oIKGGPNpji1Z0jxShmwrdVJRw20WleCnAK2pBXe+6oOq4bWQShXxNf0MVWhSOKBxjMyPzyNLwzw7Y5PiUG9MYAQ==",
+     "thinking": "",
+     "type": "thinking"
+    },
+    {
+     "citations": null,
+     "text": "Your order is placed for pickup under the name Sam.\n\n- **Order ID:** A-1043\n- **Total:** $5.10\n- **Status:** Making\n\nThe menu lists the large latte at $4.50, so the extra $0.60 is probably the oat milk charge. The menu doesn't say that explicitly, though.",
+     "type": "text"
+    }
+   ],
+   "diagnostics": null,
+   "model": "claude-haiku-5-5",
+   "role": "assistant",
+   "stop_details": null,
+   "stop_reason": "end_turn",
+   "stop_sequence": null,
+   "type": "message",
+   "usage": {
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 0,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1572,
+    "output_tokens": 208,
+    "output_tokens_details": {
+     "thinking_tokens": 104
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+   }
+  }
+ ]
+}

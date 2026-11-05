@@ -1,0 +1,17 @@
+release v2_on_v1_1 (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1631 tok
+  tool choice (all)         97.2%   per rep [97.2, 97.2, 97.2]
+  tool choice (Fernhill)    96.7%
+  call has right effect     93.3%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 90/80  status 100/100  refund 100/100  other 100/100
+  no tool call 2   stopped by max_tokens 4   cost $0.0246   avg 1163 ms
+    wrong x2: fernhill__po_create -> None
+    wrong x1: fernhill__po_create -> fernhill__mn_list
+    call fail x2: order-09: is_error: Error executing tool place_order: 2 validation errors for place_orderArguments
+items
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.p
+    call fail x1: order-09: items [('latte', 'large')]
+GATE FAIL (baseline v1_1)
+  - fernhill_call_pct dropped 6.7 pts (100.0% -> 93.3%)
+exit code: 1

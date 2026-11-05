@@ -1,0 +1,150 @@
+{
+ "get_menu": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "content": [
+   {
+    "type": "text",
+    "text": "{\n  \"drink\": \"espresso\",\n  \"price\": 3.0,\n  \"sizes\": [\n    \"single\",\n    \"double\"\n  ]\n}"
+   },
+   {
+    "type": "text",
+    "text": "{\n  \"drink\": \"latte\",\n  \"price\": 4.5,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}"
+   },
+   {
+    "type": "text",
+    "text": "{\n  \"drink\": \"flat white\",\n  \"price\": 4.2,\n  \"sizes\": [\n    \"small\"\n  ]\n}"
+   },
+   {
+    "type": "text",
+    "text": "{\n  \"drink\": \"cold brew\",\n  \"price\": 5.0,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}"
+   },
+   {
+    "type": "text",
+    "text": "{\n  \"drink\": \"oat cookie\",\n  \"price\": 2.5,\n  \"sizes\": [\n    \"one\"\n  ]\n}"
+   }
+  ],
+  "structuredContent": {
+   "result": [
+    {
+     "drink": "espresso",
+     "price": 3.0,
+     "sizes": [
+      "single",
+      "double"
+     ]
+    },
+    {
+     "drink": "latte",
+     "price": 4.5,
+     "sizes": [
+      "small",
+      "large"
+     ]
+    },
+    {
+     "drink": "flat white",
+     "price": 4.2,
+     "sizes": [
+      "small"
+     ]
+    },
+    {
+     "drink": "cold brew",
+     "price": 5.0,
+     "sizes": [
+      "small",
+      "large"
+     ]
+    },
+    {
+     "drink": "oat cookie",
+     "price": 2.5,
+     "sizes": [
+      "one"
+     ]
+    }
+   ]
+  },
+  "isError": false,
+  "resultType": "complete"
+ },
+ "place_order": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "content": [
+   {
+    "type": "text",
+    "text": "{\n  \"order_id\": \"A-1043\",\n  \"total\": 5.1,\n  \"status\": \"making\"\n}"
+   }
+  ],
+  "structuredContent": {
+   "order_id": "A-1043",
+   "total": 5.1,
+   "status": "making"
+  },
+  "isError": false,
+  "resultType": "complete"
+ },
+ "place_order_bad": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "content": [
+   {
+    "type": "text",
+    "text": "Error executing tool place_order: 'mocha' is not on the menu. Call get_menu to see the menu."
+   }
+  ],
+  "isError": true,
+  "resultType": "complete"
+ },
+ "read_policy": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "contents": [
+   {
+    "uri": "fernhill://policy/refunds",
+    "mimeType": "text/plain",
+    "text": "Fernhill refund policy\n1. A refund is possible for 7 days after the order.\n2. A refund of more than 20 dollars needs a manager.\n3. A refund goes back to the card that paid."
+   }
+  ],
+  "resultType": "complete"
+ },
+ "get_prompt": {
+  "_meta": {
+   "io.modelcontextprotocol/serverInfo": {
+    "name": "fernhill",
+    "version": ""
+   }
+  },
+  "description": "Write a polite reply to a customer complaint.",
+  "messages": [
+   {
+    "role": "user",
+    "content": {
+     "type": "text",
+     "text": "A customer complains about order A-1042: 'The cold brew was warm.'. Read fernhill://policy/refunds first. Then write a short, polite reply. Offer a refund only if the policy lets you."
+    }
+   }
+  ],
+  "resultType": "complete"
+ }
+}

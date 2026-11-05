@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-02",
+ "rep": 1,
+ "request": "A customer wants to know what sizes the cold brew comes in.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1406,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS9wYKEAgTGAI4AUIIdGhpbmtpbmcSDM4I5Yx+wJCz4uEbmRoMrJQfbpEXtQ2P2RiHIjBw6juO7CufWheI3UvSECAM55/TR6oLeQbngsuzERb4jbzVKNdC8XLUXxVWJ2SsVAoqlAZIYMY+imL+eZc8C/bBlCnj3VWvSOjiFFM4j/K3kIHB3UeYDHXCaNIu0gVBj0GJbisIYTmzrhikuYk28c8mmw/XZT/wzXRmy9+6HT4Y8GM0huNUIt0sbyI0rlV2wDSbEIqsq6N0Cq9mwJd4Ka9JI9OUYSmiVRb3MJX6z16fbC35tlczQlGReEiNby/9io7quInAZTQVaiyq69GKhdQC2XiTGb1MEn2IUJ5PRG5GZuHiltoS2c+otflOUlZrxoB6mWqXfHMqx6vEprTXxfRWX38fvdS6obn7PiLMxRl5upXo1A2C3fLbv/CAtdcgBwPtLapHpGarVE/9dNnu+HQtslQPH269p4Ovb9+YgCLbQcDJPpUfxSHcvRYtXbkubmqw6LZievmiepAXZnzMk97cvxB3Q/AM7uK+GBQVC+X/xgCu1uuTLZZw4iWKdKEAuI19oV33eH9aLiDcgU4G3r7WGN3DScDLEzSGfFvfH+NDeAMLy+aGtTSWy7fh0gh4jcCcGGQx2XGsMYDZWYhbTwo0fKocFvkRpaGah/A7Q3WUaXR9EDtzTF+lFkxPkpO86ckoCvhp6kWq2Py9nyRbBMsqKb318F/d4+OiTYtqist/y42E04zRufr1VopYZ8DHk1OFJtxZkhBwjVaY8LhyHtuIZ+bubBXU3wfkVAdo/Xmry8Vlm7/eaP6ehyYQ6DLjHHY+PJFf/aSxMs7s6+mCVNcw6rZPPv/ijsPwiQavg56U+jAXWb3MmK0z/Fgol6wvd5D2QzOom4cRtOVKbQCbw4WazzfVls/g32ALCboV0l3Mac9ROg1BuT8AyAh1vjccLYh6YY9Ksvh4KamHNupNuQoOpmv2IIrJI2190hHW8GPp8n/+i3rS1eotd+1f5e3N5jC3AFBZcxaeVn3LvBxXJpBX5gtjgazup1YSaxNlE0y0iwBpsczmwAgPIZ7s0JfOw7t2PQD9B+KzacKe2y/I16+w7/YYiBGVc62Xr9CFsam/2LqEG7J409O1JuSNcCzRqWgHW9rqTH1pHK9XWg2greq6ijpn8TGZ7xgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01LeEzHVyG8MCrE6tDsuhGx6",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__mn_list",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1633,
+   "output_tokens": 129,
+   "output_tokens_details": {
+    "thinking_tokens": 96
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "case_id": "order-h2",
+ "rep": 3,
+ "request": "Ring up an Oat Cookie and a Small Latte for Dana, pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "f5ace75886e48c1a",
+ "ms": 1639,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQStwcKEAgTGAI4AUIIdGhpbmtpbmcSDKZNBZ5dE/eQEZIJ5BoMb0aU2NS9kNo6lAYTIjAQDI8Qp2OigviIPOlPuv2AOfrc2hYzlUtUhyYmssgk4PqvfGXACa1h6uiMk/6COQMq1AZT8VXKV4jALd3FXzHEueYktd8kqPxVDlAwRqHUWbUv+vAz5r/0VI/oqm4sMwtd1cW43DNCpJgMUlFBnu8AS6Mw7QQ8eQ2WN0oM1JekS+PTKekoIXmNtO2mF4V9Y5BMfhK2fRmTs0/yguZfq1Fd0rzw32IpIJfcFEO+o5wXvf3BAwk8VuqrXWx5/bl0KkvXM64DPzbN53sGIi4uf/xzH3i44wNxBHNOUHhmUK40xweb9IFMEMkVeHiUb5p/1cblusJXhnJqTLcU7DZFpy+wb5FvdHd0sHDzh2KiLQO2HVpk4QzKB82+5AUJ/9CVXIA130nDA8X69qZISlC3yX3m2Kdi2oywx48FA7Nw7u7dHZaCEHI2635NKlo+PCgk5LIDnkAb9zKkNjH+8XlEGTy4MR5tNH91a+IgMoXZk6Al9tDlbwFTpebBFDHv59+BgTlynfUm1/zIGNd1vb3BOvewIlOqQEA1hEvy1pcaxrzccV3sE7f4SyTk75yTekTM5yJrfo4q44WFBcCieBXyANiOAZgvMBGbDt2jEcjMylKMj6sC8MPZCSUSZw8pP1lJlYTGMvNIM/k8Z6KWGf2SsC6w58f96cIdR7tpCzHESioZzBaV4ZYEzvtZ5j5vRxthzBZVOrB981NtBHdBfM9S6gthE2ilPWo6m6U1ZWwEJ4CIT+mokRaYTdyVNP1qtojo+/+A6GQSd6gh6WVCowsbyr5sTXlmQI2d+8wUvm+VAWswH0WjbWZKKRlGahfgdue9LSCjQOlM2uQzshS96YPK9dkJSQlDAs3zixedYmNU9SmuD8xIaIzfcII6L7q1cGcZ5MCLtJigBOC9AE4SC+9jaN2u/r4eKahkmq6mMuVKS7DJknre5hxYMGSvYISsoxaaZwXr9UiMr7fvCmozV/2GPRf9tT25kCeM0UPzgT1oqeEBUEfz++Kh6cd7G6aDQi6YIMPwzs94kvIjMojnXT2SJ+U4uP1rPcsqgPi1P02TnOOERe+mysJEqIh/8eD2X18qGcvbBaXDkR1EIpuoKZ47lOXiDN/CGa0PibrPHNgPvMmlv2E8W6apqaospYN6N4amhvK5N3ZXnN3fnyV8Ys23sa0hT2MfDLeVNE2JcJcRTbiHcMvA8iArhg4YAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01A1PRsXnR1irPYopq7bTooM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "oat cookie",
+       "size": "one"
+      },
+      {
+       "drink": "latte",
+       "size": "small",
+       "milk": "whole"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Dana"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1817,
+   "output_tokens": 266,
+   "output_tokens_details": {
+    "thinking_tokens": 127
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

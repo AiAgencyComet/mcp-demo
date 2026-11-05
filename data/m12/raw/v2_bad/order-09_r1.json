@@ -1,0 +1,66 @@
+{
+ "case_id": "order-09",
+ "rep": 1,
+ "request": "Chris at the window wants a large latte and an oat cookie. Pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 2267,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSiwsKEAgTGAI4AUIIdGhpbmtpbmcSDActFnBRHRzxlW6kMhoMZJL0uzbK5oqKwRH6IjDflSJL0bgtF+3262Wz9kUiqbEe90YwDOFNBA1ylnd7ZfFvjjI7F7s50uOef94y2qMqqArZhiBZQedM/durc2eyi2I7Ehch0bZNR6o2Hl14GEeaBllh+c2QS8HxX3fFtC76R+nLs3CkA5wmyCzMk63dB4WPrJZrDBk1dR0dWE2MM8LCu7JqDsQUwOXyt19RqndDu1wj4HDT9QHZRhyoDV0R5hT6eCj5kD67vbFvHPMkUoin3MBM8XbJ1vhKUVAjeUVAKbYOR6eFbmUohcMSRJ5HP3uazKfGEoQlMvd+nKaU9ABw5Vgi/y2myTCx357EdMWpKcxh27QKa7+NRa8RwjbVOPZMjyA+RbKgDvgCqeqPMaM/egFC3SO/NyRsVIdG9kuWFBo9bC87nSX8Ci5ix+Ee6RNZYEqqvizL27COKHoLlX3mP+kD1kBZ2lei54rdYCZvRrSjoAF+JlhTBBUSanlf3W+W1gWFC7yLLzZzrLyqOKGIJliVVdgIPTFeC9XvngM8sZHKSBteK9m7UsK/FSNUr0Czd+aKiwmvwqRH4PnPm7qZDS1yoePQCFlNeUu8Yt+ge38G5RHhNTcf/SbQT6FsPPPdE14jONe/Y3hRv2dB/etgoceyaXbAMIhSv7347wQEKH0oiHuoihDCsm5sMf5f5gaq4ravNQHsahjHE3jyvaDRxYy1nq83ACJVev6Q+9xNcmzlMquIcJhG39Wu0v6b2FU0QI9HMtlKLgOYliXKUDHaevxt30E3G5CeMN1S6dID7kVcSXZJRTbf+7SZm02H36QV3cd8PZ+Nr3gzLUslqCqMnqbRB/nGHhbxyBd8YSHt1GUBJhFRa5sPpXcTSYub5fFH/fiXw4HApdBppYU4n2yojT/9zajRg1GVleNKfOdPQBucDGfJ2UMy3L3VlFraP7R8FUxwlTtULniwZvgluEITj2ZNz/by+WnImXZEaiSapqfp9qzQgMdtE91Dn5l+Ou0f4hDO3jeXE8wri/q3BYlbBrIkQL6LXxniFV4E/7h0o6jcPUGVZ18sdhgqfE0eHt6zhVsdyzXJhA8CVJj2rOtc7i9l1J+TSAdkxV4/6rI8jqHgB2Mvp/L76jAAqBuUnJ+gCSkplTmahHke5vl899gmnl7kaQCMAivjSPh3MItlAVj+qs3P3TtQyafZUASGV5QfVrbMxzz9pYANtJhAPRmGn9nD9t0eyfz2tZs6yf0G1FqGEJALgLPEdwzfhdnLNrKySwu27iH9tWIjwhjw5s9POW31yaVtn0vu74ia5iHY+zvNNlakpiSg0xfPk6zEwzlvnSlupkmzBa69dYNv9Y4wOS+cLkzt/n5SW+X7DCTX+ODYMkPTmArYMVM28laovK8NkwSCHAML/oJJBoHllSKz/1hnWKaq/X73ZuRrTe4KEdn/hzvhmowd1AL93Lw27SpcJdHtR8Akv5n6z08aB0+z96ONhIGoC7+HgVCYHVO79ip3jZCmDXex4kQRZQvVzX8RNgwccGM24wwqGoXvO0jA9L5oO/9w8ZZL4Ur0O/wmh1bZ4G/Xy5kcdRfaC4wvCpeR08zuT1UnGWDD9mIlrzQqoZpk8M1ijiLwhT4vOX171z/+/dTT+q0ma7W8wbsWjiun6KWhQFGUY2UeqcumdsY+93kPAxabiDfqlCw4B3+nECpHuANykFp41240nc8FyathM8GvPzZ5P7m7lmGNUwh0Ax/v6oLTTXmhphTS1HKj/eYMsqMWrb4LRl++HscLrI3ZeVPFaHJdD3JOCyD3vrbxCzvAbjfQiTltA7LNGn/Ywzfmc5aU6lUIJzHg6B6e/p3CF2OY5XpP6wQYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01CtceDSNzu4fPd5PgRw7pWp",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "latte",
+       "size": "large",
+       "milk": "whole"
+      }
+     ],
+     "p2": {
+      "kind": "pickup",
+      "name": "Chris"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1638,
+   "output_tokens": 394,
+   "output_tokens_details": {
+    "thinking_tokens": 275
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

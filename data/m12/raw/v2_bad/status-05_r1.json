@@ -1,0 +1,56 @@
+{
+ "case_id": "status-05",
+ "rep": 1,
+ "request": "Has A-1042 gone out?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1145,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSkQYKEAgTGAI4AUIIdGhpbmtpbmcSDBxvUOZsYg9HoSdMkRoMyrYFYNRCbT3Pe2CAIjDDYwp5zWmI8OFqkUB55hcBiVUe/SjmTitzczN979QvowsLyNuWULWFbxbqYxLtBCcqrgUFDb18A4Au6xfKAj+gB6H3owOG3sVVCM7nNYkHeCbM6HebuVLzY6SXW3s/gPzeOvTj9SBg7ntgf1jQ0+jwSIXnn9NkAJCGuBo76Upx4abs21nXmeXvcy28RzLD5dJHxuhXsdFgRMvGaCIWm+VLmfFMj4bMEmYimWmhxjzn1gBrkbbhZx4JD8+n748uJzP6I4uvitPO+VanYeHUhiTuf2vxhU62qiSPRUJIfEjsIdsoSHIih6Gby6E7UvgR55MbJmn3oeGFvnGnbRHeMRvSZYtcCZtTkFfa0lI2nwBcDgEk8MCAX/2gMcskaWz6PEWAwEqQfGKAEhZI+qZ25fQrm/UjPWuNV8w2oJrWRZU6JNfwDHFTsFG0dIHXWJ3fV9qqJYOKQfKWVMJYvYPvwM+ZPRYOsFBr90rYdsYMG5blM55aVSwvQly8nVgoOkBOt1IotRc4zFKJbKTQBZqWP7LoQ1EUernVOtI/X5MwTNPszcI5TkQ6OKRiJvFAdLwlcwkTBzePbBnbujQUaIDKLBO7e69QsWGzOgCYFoMtG9/Tu2dxs/z9StKCzxYKtNWHM9QUpbBAy9vbIJtx9A2CpJWA/6vTgWAUAH2XN71eShOZ3rWL71nQxgilksp8hbgg5jJMzJiublyNLc5RgQvBETclq++EWjojaEZIQkCmM0lT7pShspj3R39hTPit5NiduEngvyGFGhIZWXHARnJOhVqVUlCVJnItlevQYtUE2Zv3ig136motdUzY4xFaE1j30tamYPY8yFdu7h15DeC9Rpj0mjT6N1d2IbXo8t3UP5eH418rqEj8xGEJAqrvCYl8k1+XSb/nLNfeF9ANioX6GyrRzgkEFa1ytM7pBIDbydYE+Q49ZqNBBJrkxZtbgPP+rdx5oHdJ41bd7PcrkDUih+PdghgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01GDsyXgd2eiaCBGuYyDjXY2",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": "A-1042"
+    },
+    "name": "fernhill__po_get",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1624,
+   "output_tokens": 135,
+   "output_tokens_details": {
+    "thinking_tokens": 78
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

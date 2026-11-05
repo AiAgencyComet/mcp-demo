@@ -1,0 +1,66 @@
+{
+ "case_id": "order-06",
+ "rep": 1,
+ "request": "New order: small flat white with oat milk, collect at the counter, name Maya.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "8726444cc5c1b2f9",
+ "ms": 1529,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSrgcKEAgTGAI4AUIIdGhpbmtpbmcSDMfaVgOT+xAROuAydBoMoCnRk2yBQMeqXcWNIjCJ/j7qOPnGC5u2eSUc4b8bLjDliwCIpJg5rNa9d/icX8xUN+nv5/v1IHLjN9CBvHgqywYsFqwSZ0ddY5KZ1Rm4+T8H0pm49K+LcYb+e2q+LzgkvLvD8UB8ynEtDMGKoLXRekPaN2Mq64PBeMPbz2AVSOjSXE9nZPVfSwbd59GAx+uIgKsSBUya43H2uj5uiTFG2f2ezOysk3DQmzBdFL6NU8g62jNn29rUZttY10f7xNW4HZATDsTCUYf2Xfbe4uN2ypuQTArmUVxyxf3GAtooOEhCBai8QvRZNA47ux7x8Ma+ICdYGYDBKx8xZ077yjJwHYYXuS092od7D/+AySF0tqjDVgxl4A6UR4pr2sxF7jeRWib+vgZwqHwqbRIG6U5wEKHe4IZ5g3F+K9IhCK1pneM81pICcKu1LIIz0D52bRNq3yxcRZSQioKwV5yG6v7cu6SXG7MWxPE6YtPH8RkaajKoihom8YdVVO0bR4OUHoB7GH6BGiJQROvI09RDCAyUewAv0y/L4RI7F08muJj/FX5ZBD2YT8XFxdPZoxNblpWocMjrE/kg4vg5HwjiM+P8HL0bg9PBNqSSokJyEGXEfvm3nPF29AJM7gTGjzNThaghNTPXxIzWGxFO/8o8hwzN4Ywgns795sYr/whuRfqzHGy/OsF/lIdBrttfDyNrUNbx7lYGdlRO0HaFiaFxx2soy5WzYt6BijkOEGnjWwZO5d5Q+mMflhKcxDxy5Su5u2CSVikyP7pe33e17YZlTuvvM6hQq22ISehgp6h4c6afEAOqmFizWWjQUP37f4XHXhQAiTARqmf2Yd8yr2kx/wdMr19wEeSfyjocso2y+8wLEg9hkxWXkgge/gqoqMNi7wM2ZgHYr0bQxIeG5lCHgriRv4oNbIk99uMsawXgRc4FPMjMeTtpLNtwp0Wj9wVYqjHwIorVCBBiS30cgJ6qYVh2kECyJWF1MZ4gwmzrz0wHc3mIh6DrOVhkorlZ0VaoM0qAwWP/42NyEroEdUISj81FDmUYsfHTBLJ4BRsEo3HNGeuH8uBzx7eksrS/G/WyjQBoc2Ud543Pl5ZqSSWNdZYOTYeiHb9Px5GFKtEIsIl0m0rD6C3jnqAw4FjkJd3yPDD+KJFmDKG6Tm7dI+zDXb2jH61yJEQRZjTnZM+DqzIbR8X2hoRbZg1SycpoAWAYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01GYCDBYYP4ELr9jyd1UeJ8f",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "Flat White",
+       "size": "small",
+       "milk": "oat"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Maya"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1727,
+   "output_tokens": 235,
+   "output_tokens_details": {
+    "thinking_tokens": 114
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

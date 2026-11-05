@@ -1,0 +1,69 @@
+{
+ "case_id": "order-02",
+ "rep": 1,
+ "request": "Two small cold brews to go for Priya.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1563,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS6QYKEAgTGAI4AUIIdGhpbmtpbmcSDE7Gz+pM+zuwrnqpjhoMJbnaRHJJkd1PpHOCIjBp4uAmaa8hXxh1blzGwQDhOaDy30gKO0QoUXjnAam1faekytbSGVNbJ8gL7JvCb38qhgY7PkLLIGqg3KJnHcqqq77/vuYIMKCXYntHyesbZeLwkatPMNBhx7Vvzbpu1axGp3KTchj7j4Ixh38IrZhlnCPUMwm392KN1YMz1KFLfEauMAiUdXQrqDbLeABIA2E70DPeW+KiUoCZzhkE1ocAn4G0PR/OViRWLlw6ViLsW2TD7q52efFEQxRweERlMCHErW0USxZu1ddYYkVx8jvrtUN3FNHwbJy8LDPmCMwd8YoK3J7fb0Pw7wF3sA+OQGIWPz9EDr0Zoq2CSx8QAyRleJclCnGTGmXKC+cagRBjZzSTm9ynrzHl5V+NJO+sGkITkteodWYajd+9Sb2vICCbo8NNk3RCWW15kmHN09f+7p0S/pFBqIPWYuRo9wGrceL4d4/I0uJeHGLLZ7SPn1z4KBtSpSGLCv4BNs6QiS+j8HHOlwUBxLZ9TDYvNA34AxSySC6LGDVCNLxJ6sEaqikB1QOl6Zn9iht6JvrvrfWGSPcD+4u7bbN+8/nibILNLSx0yNsK1P/K+Jd6PV0s7Sm6Hh9/dC2HJUfd2xAIYvZ6IC4YpEtEkqWzouOYBjHcCMfJ2CL6bsql7rbWQquZMLYlgcN6oMbeUuxNkU9GF+9YVEa8scxIvDAFMZHbcLxg9CenWuqstiEcqk0RmihxIsMcm0yybjPMVAqEO7kipwRYFgEr1/kMGdzD86fqAbelQMxqCKLNLAeoWo+4/8o0Oe2rW/nyTlcTh4WeEzvnLVzcvOcGkOs/RFLT9yvIqE34z1FXRZZ8RonFlVI+Cf3IMRkBqjHkiOwMP1OFGJ1vX4mX/vYeQIqZG4zThOkQNIcRWj5B4DpFB8Z4JpKMtvTwVkfuUzy10dvmd9fLqr7ibJu9KW9Rv23feo+2xqJUJwpFDoDTV9u7ytCzrvOybMM9NsaJL7MgHNSjsGwGY7soh0ifQvI6mZ66q0hfMBALKKapL+MFBWY2xp/J8n5NuDXOwIYoPgQeYFyUjqBxVIX+KRmdOonVP4Zn0HlLtxb4mT4M2ixi0UnCyKIQxZMYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01HdedBW2q8eqTAq16PozAtw",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "cold brew",
+       "size": "small"
+      },
+      {
+       "drink": "cold brew",
+       "size": "small"
+      }
+     ],
+     "p2": {
+      "kind": "pickup",
+      "name": "Priya"
+     }
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1627,
+   "output_tokens": 226,
+   "output_tokens_details": {
+    "thinking_tokens": 94
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,13 @@
+# m07b · nocap · a client without the extension: a long job gets -32021, a short job still works
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (this client does NOT declare the Tasks extension)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 20}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 400 from copy B (2.4 ms)
+          {"jsonrpc": "2.0", "id": 1, "error": {"code": -32021, "message": "Client did not declare required extension 'io.modelcontextprotocol/tasks'", "data": {"requiredCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}}}}
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (same client, short job)
+          {"jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 3}, "_meta": "(same as above)"}}
+[  3.03s] <- HTTP 200 from copy A (3008.1 ms)
+          {"jsonrpc": "2.0", "id": 2, "result": {"content": [{"text": "{\n  \"first_day\": \"2026-11-02\",\n  \"last_day\": \"2026-11-04\",\n  \"days\": 3,\n  \"orders\": 166,\n  \"revenue\": 643.4,\n  \"top_drink\": \"latte\",\n  \"skipped_orders\": []\n}", "type": "text"}], "isError": false, "resultType": "complete", "structuredContent": {"first_day": "2026-11-02", "last_day": "2026-11-04", "days": 3, "orders": 166, "revenue": 643.4, "top_drink": "latte", "skipped_orders": []}, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}

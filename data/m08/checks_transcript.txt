@@ -1,0 +1,23 @@
+frames: host=http://127.0.0.1:8820/?log=checks_bridge_log&turnDelay=300
+        sandbox proxy=http://localhost:8821/sandbox.html
+        view='about:blank' (document.write into the proxy's inner iframe), origin=http://localhost:8821
+
+== 1. visibility: the View calls order_status (visibility ["model"]) ==
+View got: {"error": {"code": -32000, "message": "Tool order_status is not available to apps (visibility [\"model\"])"}}
+
+== 2. deny: click Mark done on A-1044, then Deny ==
+View toast: 'Not done: The person denied mark_order_done'
+server after Deny, order_status A-1044 -> 'A-1044: ready'
+
+== 3. CSP: no ui.csp declared -> restrictive default ==
+sandbox.html Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'
+View fetch to the MCP server directly: {"error": "TypeError: Failed to fetch", "seen": ["connect-src http://127.0.0.1:8810/mcp"]}
+
+== 4. origins: can the sandbox proxy or the View read the host page? ==
+sandbox proxy: window.top.document.title -> SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:8821" from accessing a cross-origin frame
+view: window.top.document.title -> SecurityError: Failed to read a named property 'document' from 'Window': Blocked a frame with origin "http://localhost:8821" from accessing a cross-origin frame
+
+console:
+  [warning] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+  [error] Connecting to 'http://127.0.0.1:8810/mcp' violates the following Content Security Policy directive: "connect-src 'none'". The action has been blocked.
+  [error] Fetch API cannot load http://127.0.0.1:8810/mcp. Refused to connect because it violates the document's Content Security Policy.

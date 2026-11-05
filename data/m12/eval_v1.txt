@@ -1,0 +1,22 @@
+release v1 (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1718 tok
+  tool choice (all)         92.6%   per rep [94.4, 88.9, 94.4]
+  tool choice (Fernhill)    91.1%
+  call has right effect     67.8%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 90/20  status 100/100  refund 72/72  other 100/100
+  no tool call 0   stopped by max_tokens 1   cost $0.0279   avg 1372 ms
+    wrong x5: fernhill__refund -> fernhill__order_status
+    wrong x3: fernhill__place_order -> fernhill__get_menu
+    call fail x3: order-01: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-02: is_error: Error executing tool place_order: 'Cold Brew' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-03: is_error: Error executing tool place_order: 'Espresso' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-07: is_error: Error executing tool place_order: 'Cold Brew' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-04: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-08: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x1: order-05: is_error: Error executing tool place_order: 2 validation errors for place_orderArguments
+items
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.p
+    call fail x1: order-05: items [('espresso', 'single')]
+GATE PASS (baseline v1)
+exit code: 0

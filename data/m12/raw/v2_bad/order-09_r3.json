@@ -1,0 +1,65 @@
+{
+ "case_id": "order-09",
+ "rep": 3,
+ "request": "Chris at the window wants a large latte and an oat cookie. Pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 3329,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSog8KEAgTGAI4AUIIdGhpbmtpbmcSDJaUBBjIP6nZMIirIxoMM2H38l1r7lrMFUVwIjBh8D0MYYmRkTAjrBIpM/dO77bVK0ZyqlC4XObfCldwbXHwXxTbFsKzsKvicFJp4Zkqvw73te0zMMxZ4TLM86LH0+fPxGLVJmFsTICj4nGAVzNlHBPqrs+Cb4qgZzzBUuFhaMb10GTIpxN6wuJRFp5XEUO32NlPRl5qe9adOXEeopQHDATUkAG/rIhrOnxr2yoi71oyGLOwOPGEFAMhQQeFsovVXAGLErVzIep/qTn0g/XJLvTsV4FiLb8XPtG/2Ih/a0tvaNEzbiYrK8Vh8mvoTzczn9RwJO6yMyXLWyq6P+VUJ6kzyH+nHWYfaYhJxOGDJC2eoIBEXzkyVnqQMjx0/XUnLBnX3i9PKaFg+VPxClcM+5zP2SA6Is6Fr3LVA49IUaVZ3q+oc/zvqD7W2+Fa3qlG92wsBJoLXPHNO5Fo13qeGT5jOF4P42xZNIGheWIUlnfVPsqUI8qPyU1yvRiUXROeSgVeP+AT56FmsXB3TiDbRhDq2eDs5Wcwnb/4a8fqKBKGIit9Vuna2Nhw+s3KJETOFk0cV36wGGoM5ekzMpVmInKyAGkGKmRZ81t3J8Y28iInrxt05ypgABDY6wfcEACjCTXaiLw+4iGuGdxuNRfs+jkVdR1ZAZhOeN0mzOeGsgDSyNTYRzTrn5OJ2r5mPVTrsm/DWLQwf3GTIZLzG42QDWq8mIUzDlmmfU+FqcW4tVHm4ZbhzAjhKkGjhz4Vgu6qD++Dc7vYEIDbWiJskkGcivoj0qHq+BO2DeXLNOG1VYfce62RttB7n28OIMq3CuQzP21ifXdE69xp7jRZFmo6+mJKXJaZdP73YOOy6T7kow/NPHWD2juywyUI1VLXcIorX81u03FhBMQC4d+ltfK7k5iu1ysZcCm0kvtS41aqfLOegAIqT8/drsTDjl/Qw4NoQoNiePnD3Xkzc4tQYS4IgfIWnUdfYBCcdKmm+kKL8188/Pfcvm8GG1qqIrTLZUMvevoTB16e12gd317Sm1qTD2Ef2Krc1oZ+xTCQF87HJiBy6RNR4P6ERp7iA9VM7KFPCKjqFXB46CoYBMybaMpKQ+1F3r5dZsQMltPIkvApUSN6tDnwYsWdGY1vPYYX1ia8b0zINUMkxKggHhrtWOMYPinRhyUmT9R0ZX9NncaKiPWUyv7Qeb/eC+2o7thJfMRgNs+jcJTFNKNUjxXbZKSlWNk1D7e/5OYSVZgIN9u417dar5NNkWffqQY2HeYImWzTFe5o5DimyaosD5KxQhdUhW+emFlpUcz1N/G6ylZT6elnr1hEX0eik/bA6QBAh2BS7Ua8MoBJvKpgQ6+QyexEcgMJ4+RixBeFjRrgxTeJmqHTKFpo0KsKBXmPYtl2eQ6fH24q98qwq4+aEgN/Up50vCZgKtau3lu4fV3Xcrz+esNyBtslCN9xwbBRlOPoA1c4R8l7Sx9ZJc0e9KkCnRfQKwtY9jXkCvcaxQjH2T9pkHNdEC7baiMzgPnoBpCxA1vKKzLvd4HigjacO9EVfPpXIlQX7056rxNo+tV/vdkAPr8GoOD4om5Kisz0KSVvVX3kwXn1fU4Ejki43kWr5egkNYSiKbPu1YseZY9lnWek4zveZiPZrgt0b9uGy3LmJtxtpraosGzp7Q7ZOHVMhJAW15978OWLklOYcdTS118vmr8yqqCeI5zhzl7knfC62b0+plYARj6XPOag5ya6f2vjT6jy32/7tXtVKX6/YxDfPJpRHhUFTkIywe9dXA3VxvKB5ZpvDfyK4g5dFjOoo0po4ixIvlylvAcLWuxHwMz7WkRvj95NGsAuFo72GN8+LUX3ku2L/CfTlmR3JIQrI7cAG9PeoOcqgWpN+UmhB/F9vmV9uo9TK+24B12pAbZWB92DjYsGThMT3n8IeGc82Tl+CdFWXIcPURGq/iYSj9Z2raW8QSqdwBg7/D/LPLzumTSv43rb2aaGJzUjdG2kQYCuCb7gRAyST9rdd8l3zwGAt+DEt3lbLIS3WrQi5H1cswxIAaONalECkV0HmTFFDMn4IbrIe+bTlnqpj6T2GsQw/3vpI7aQK9ojDZ3wlWECRzcYwG4W5F23lyVE8Py69p/fXD8YQG9aFLdY9wZCA1OQb6xiM4BN2znCE9PVctjeUy0rc4m8mw7oz2IPtsr13NSjZZyAR24LPFA6yaxdJgIGGP23+BKhtonrb4IaW3HO6+7x4JCgbP7qzlcIUUkS6nXVWif3hC09Tc6xNASu3BuAGruKpRyexUvSyx2qZMqRQzVXcbfgRY+OP9almlfK2yLB2y87UZmAZlW+4VepEUiLI0IQKDIr6CxJxHS1UCvkwPrLLFlbsUmdO75LLjITDmdoYPVg3FGe/0Tpt19SkuktLoZM6LOgKUay7IzOik17qdzNrmvseYvYPMahsobTVGB80Oh9K26tew7ppeB+9GE5DmXnxpian09Y4W6egmVp5hrg0N6jBz38+xBhHK+VcNBalq2B8z1ueYjAXlzsdj3BBwUW4ftgNh7/arEBpPyt89Q62G0/NiEMyNU09aDSbWMJGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01XeLmu3qb8Z6SX82hH2Sev6",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "p1": [
+      {
+       "drink": "latte",
+       "size": "large"
+      },
+      {
+       "drink": "oat cookie",
+       "size": "standard"
+      }
+     ]
+    },
+    "name": "fernhill__po_create",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1638,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 488
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

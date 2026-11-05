@@ -1,0 +1,21 @@
+$ mcpb validate manifest.json   # copy with "author" removed and server.type "python3"
+ERROR: Manifest validation failed:
+
+  - author: Required
+  - server.type: Invalid enum value. Expected 'python' | 'node' | 'binary' | 'uv', received 'python3'
+exit code: 1
+
+$ mcpb unpack fernhill-coffee-1.1.0.mcpb <fresh dir>
+Extension unpacked successfully to <scratch>/mcpb_unpacked
+exit code: 0
+.
+..
+manifest.json
+pyproject.toml
+server
+uv.lock
+
+$ shasum -a 256 fernhill-coffee-1.1.0.mcpb
+ec4c507bb2012abc643cf7f58682621eedd2837cadd91eae9eb9a8d676e27a52  ./code/m12/ship/dist/fernhill-coffee-1.1.0.mcpb
+$ shasum -a 1 fernhill-coffee-1.1.0.mcpb
+bc30700621e8e57ad3d07f5573fd5403772b6ba5  ./code/m12/ship/dist/fernhill-coffee-1.1.0.mcpb

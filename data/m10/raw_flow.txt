@@ -1,0 +1,240 @@
+MCP masterclass · module 10 · OAuth 2.1 for the Fernhill MCP server, raw HTTP (spec 2026-07-28)
+Fernhill MCP server (resource server): http://127.0.0.1:8310/mcp
+Local authorization server:            http://127.0.0.1:9310
+Tokens, codes, state and secrets are cut to their first 8 characters.
+
+=== 1. Call the server with no token ===
+    (first MCP request body, full: {"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {}, "io.modelcontextprotocol/clientInfo": {"name": "m10-raw", "version": "1"}}}})
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/list
+< 401 Unauthorized
+<   www-authenticate: Bearer resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", scope="menu:read"
+<   cache-control: no-store
+<   {"message": "This MCP server needs an access token. See WWW-Authenticate."}
+    [ok] HTTP 401
+    [ok] no error code in the challenge when no token was sent (RFC 6750 §3.1)
+
+=== 2. Read the protected resource metadata (RFC 9728) from resource_metadata ===
+> GET /.well-known/oauth-protected-resource/mcp   (http://127.0.0.1:8310)
+< 200 OK
+<   cache-control: public, max-age=3600
+<   {"resource": "http://127.0.0.1:8310/mcp", "authorization_servers": ["http://127.0.0.1:9310"], "scopes_supported": ["menu:read"], "bearer_methods_supported": ["header"], "resource_name": "Fernhill Coffee MCP server"}
+    [ok] resource == the URL we called (RFC 9728 §3.3)
+
+=== 3. Discover the authorization server metadata (RFC 8414) and record the issuer ===
+> GET /.well-known/oauth-authorization-server   (http://127.0.0.1:9310)
+< 200 OK
+<   cache-control: no-store
+<   {"issuer": "http://127.0.0.1:9310", "authorization_endpoint": "http://127.0.0.1:9310/authorize", "token_endpoint": "http://127.0.0.1:9310/token", "registration_endpoint": "http://127.0.0.1:9310/register", "scopes_supported": ["menu:read", "orders:write", "refunds:write", "offline_access"], "response_types_supported": ["code"], "grant_types_supported": ["authorization_code", "refresh_token"], "token_endpoint_auth_methods_supported": ["none", "client_secret_post", "client_secret_basic"], "code_challenge_methods_supported": ["S256"], "authorization_response_iss_parameter_supported": true, "jwks_uri": "http://127.0.0.1:9310/jwks"}
+    [ok] metadata issuer == the issuer we built the URL from (exact string)
+    [ok] code_challenge_methods_supported lists S256 (PKCE; else MUST refuse)
+    recorded issuer: 'http://127.0.0.1:9310'; authorization_response_iss_parameter_supported=True
+
+=== 4. Register the client (Dynamic Client Registration, application_type native) ===
+> POST /register   (http://127.0.0.1:9310)
+>   {"client_name": "Fernhill demo CLI", "redirect_uris": ["http://127.0.0.1:9399/callback"], "application_type": "native", "grant_types": ["authorization_code", "refresh_token"], "response_types": ["code"], "token_endpoint_auth_method": "none"}
+< 201 Created
+<   {"client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "application_type": "native", "token_endpoint_auth_method": "none", "redirect_uris": ["http://127.0.0.1:9399/callback"], "scope": "menu:read orders:write refunds:write offline_access"}
+    [ok] HTTP 201
+
+=== 5. Authorization request: scope from the 401 challenge ('menu:read'), PKCE S256, resource ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=qQpVQF7h…   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?code=wyUicZkf…&state=qQpVQF7h…&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss is present and == recorded issuer by plain string compare ('http://127.0.0.1:9310')
+    [ok] state == the state we sent
+
+=== 6. Token request: code + code_verifier + resource ===
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "authorization_code", "code": "wyUicZkf…", "redirect_uri": "http://127.0.0.1:9399/callback", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "code_verifier": "a26ZIxun…", "resource": "http://127.0.0.1:8310/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "menu:read"}
+    [ok] HTTP 200
+    access token claims (decoded for display): {"iss": "http://127.0.0.1:9310", "sub": "barista-ana", "aud": "http://127.0.0.1:8310/mcp", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "scope": "menu:read", "exp": 1793857677}
+    [ok] aud == the Fernhill server URI (RFC 8707)
+
+=== 7. tools/list with the menu:read token ===
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/list
+>   Authorization: Bearer eyJhbGci…
+< 200 OK
+<   {"tools": ["get_menu", "place_order", "order_status", "refund"]}
+    [ok] HTTP 200
+
+=== 8. tools/call get_menu with the menu:read token ===
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: get_menu
+>   Authorization: Bearer eyJhbGci…
+< 200 OK
+<   {"isError": false, "structuredContent": ["espresso $3.00", "latte $4.50", "flat white $4.20", "cold brew $5.00", "oat cookie $2.50"]}
+    [ok] HTTP 200
+
+=== 9. tools/call refund with the menu:read token ===
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: refund
+>   Authorization: Bearer eyJhbGci…
+< 403 Forbidden
+<   www-authenticate: Bearer error="insufficient_scope", scope="refunds:write", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", error_description="The tool refund needs the scope refunds:write"
+<   cache-control: no-store
+<   {"error": "insufficient_scope", "scope": "refunds:write"}
+    [ok] HTTP 403
+    [ok] error="insufficient_scope"
+
+=== 10. Step-up: ask for the UNION of old and challenged scopes ('menu:read refunds:write') ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+refunds:write&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=D8QgcwP9…   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?code=7NrW2lpl…&state=D8QgcwP9…&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss is present and == recorded issuer by plain string compare ('http://127.0.0.1:9310')
+    [ok] state == the state we sent
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "authorization_code", "code": "7NrW2lpl…", "redirect_uri": "http://127.0.0.1:9399/callback", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "code_verifier": "b1xSW_Pj…", "resource": "http://127.0.0.1:8310/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "menu:read refunds:write"}
+    access token claims (decoded for display): {"iss": "http://127.0.0.1:9310", "sub": "barista-ana", "aud": "http://127.0.0.1:8310/mcp", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "scope": "menu:read refunds:write", "exp": 1793857677}
+
+=== 11. tools/call refund with the stepped-up token ===
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: refund
+>   Authorization: Bearer eyJhbGci…
+< 200 OK
+<   {"isError": false, "text": "Refunded $5.10 for A-1041 (person: barista-ana, client: a8cb9239)."}
+    [ok] HTTP 200
+
+=== 12. tools/call get_menu with the same stepped-up token (menu:read kept by the union) ===
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: get_menu
+>   Authorization: Bearer eyJhbGci…
+< 200 OK
+<   {"isError": false, "structuredContent": ["espresso $3.00", "latte $4.50", "flat white $4.20", "cold brew $5.00", "oat cookie $2.50"]}
+    [ok] HTTP 200
+
+=== 13. Contrast: a client that asks ONLY for the challenged scope (no union) ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=refunds:write&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=J50fVKYq…   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?code=iNMrGsQ5…&state=J50fVKYq…&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss is present and == recorded issuer by plain string compare ('http://127.0.0.1:9310')
+    [ok] state == the state we sent
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "authorization_code", "code": "iNMrGsQ5…", "redirect_uri": "http://127.0.0.1:9399/callback", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "code_verifier": "7bESRUR8…", "resource": "http://127.0.0.1:8310/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "refunds:write"}
+    access token claims (decoded for display): {"iss": "http://127.0.0.1:9310", "sub": "barista-ana", "aud": "http://127.0.0.1:8310/mcp", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "scope": "refunds:write", "exp": 1793857677}
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: get_menu
+>   Authorization: Bearer eyJhbGci…
+< 403 Forbidden
+<   www-authenticate: Bearer error="insufficient_scope", scope="menu:read", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", error_description="The tool get_menu needs the scope menu:read"
+<   cache-control: no-store
+<   {"error": "insufficient_scope", "scope": "menu:read"}
+    [ok] HTTP 403: menu:read is gone
+
+=== 14. Audience: a valid token from the same AS, but issued for another server (http://127.0.0.1:8311/mcp) ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:8311/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=CX5osxk4…   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?code=qy9psKUY…&state=CX5osxk4…&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss is present and == recorded issuer by plain string compare ('http://127.0.0.1:9310')
+    [ok] state == the state we sent
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "authorization_code", "code": "qy9psKUY…", "redirect_uri": "http://127.0.0.1:9399/callback", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "code_verifier": "PndwloHO…", "resource": "http://127.0.0.1:8311/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "menu:read"}
+    access token claims (decoded for display): {"iss": "http://127.0.0.1:9310", "sub": "barista-ana", "aud": "http://127.0.0.1:8311/mcp", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "scope": "menu:read", "exp": 1793857677}
+> POST /mcp   (http://127.0.0.1:8310)
+>   MCP-Protocol-Version: 2026-07-28
+>   Mcp-Method: tools/call
+>   Mcp-Name: get_menu
+>   Authorization: Bearer eyJhbGci…
+< 401 Unauthorized
+<   www-authenticate: Bearer error="invalid_token", error_description="The access token is not valid for this server", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", scope="menu:read"
+<   cache-control: no-store
+<   {"error": "invalid_token"}
+    [ok] HTTP 401 invalid_token
+
+=== 15. Error responses carry iss too: ask for a scope the AS does not know ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+admin:all&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=s15-demo   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?error=invalid_scope&error_description=Client+was+not+registered+with+scope+admin:all&state=s15-demo&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss checked first, == recorded issuer; only then read error
+    error='invalid_scope' error_description='Client was not registered with scope admin:all'
+
+=== 16. Unknown resource: the AS refuses to mint a token for it (RFC 8707 invalid_target) ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:9999/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=s16-demo   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?error=invalid_target&error_description=Unknown+resource+http://127.0.0.1:9999/mcp.&state=s16-demo&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss == recorded issuer
+    error='invalid_target' error_description='Unknown resource http://127.0.0.1:9999/mcp.'
+
+=== 17. Refresh tokens: only when the client asks for offline_access (OIDC style, SEP-2207); rotation ===
+> GET /authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+offline_access&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=337gcyzL…   (http://127.0.0.1:9310)
+< 302 Found
+<   location: http://127.0.0.1:9399/callback?code=TYeXtRTz…&state=337gcyzL…&iss=http://127.0.0.1:9310
+<   cache-control: no-store
+    [ok] iss is present and == recorded issuer by plain string compare ('http://127.0.0.1:9310')
+    [ok] state == the state we sent
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "authorization_code", "code": "TYeXtRTz…", "redirect_uri": "http://127.0.0.1:9399/callback", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "code_verifier": "jQEOkePt…", "resource": "http://127.0.0.1:8310/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "menu:read offline_access", "refresh_token": "OIgddqjH…"}
+    [ok] refresh_token issued
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "refresh_token", "refresh_token": "OIgddqjH…", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "resource": "http://127.0.0.1:8310/mcp"}
+< 200 OK
+<   cache-control: no-store
+<   {"access_token": "eyJhbGci…", "token_type": "Bearer", "expires_in": 600, "scope": "menu:read offline_access", "refresh_token": "qd2xRFSC…"}
+    [ok] HTTP 200 and a NEW refresh token (rotated)
+> POST /token   (http://127.0.0.1:9310)
+>   form: {"grant_type": "refresh_token", "refresh_token": "OIgddqjH…", "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7", "resource": "http://127.0.0.1:8310/mcp"}
+< 400 Bad Request
+<   cache-control: no-store
+<   {"error": "invalid_grant", "error_description": "refresh token does not exist"}
+    [ok] old refresh token refused (invalid_grant)
+
+=== Summary ===
+  1 no token                   POST /mcp                                           -> 401
+  2 PRM                        GET  /.well-known/oauth-protected-resource/mcp      -> 200
+  3 AS metadata                GET  /.well-known/oauth-authorization-server        -> 200
+  4 DCR                        POST /register                                      -> 201
+  5 authorize menu:read        GET  /authorize                                     -> 302
+  6 token menu:read            POST /token                                         -> 200
+  7 tools/list                 POST /mcp                                           -> 200
+  8 get_menu                   POST /mcp                                           -> 200
+  9 refund refused             POST /mcp                                           -> 403
+  10 authorize union           GET  /authorize                                     -> 302
+  10 token union               POST /token                                         -> 200
+  11 refund ok                 POST /mcp                                           -> 200
+  12 get_menu after step-up    POST /mcp                                           -> 200
+  13 authorize no union        GET  /authorize                                     -> 302
+  13 token no union            POST /token                                         -> 200
+  13 get_menu lost             POST /mcp                                           -> 403
+  14 authorize other resource  GET  /authorize                                     -> 302
+  14 token other resource      POST /token                                         -> 200
+  14 wrong audience            POST /mcp                                           -> 401
+  15 invalid_scope             GET  /authorize                                     -> 302
+  16 invalid_target            GET  /authorize                                     -> 302
+  17 authorize offline         GET  /authorize                                     -> 302
+  17 token offline             POST /token                                         -> 200
+  17 refresh                   POST /token                                         -> 200
+  17 old refresh refused       POST /token                                         -> 400

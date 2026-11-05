@@ -1,0 +1,1304 @@
+[
+ {
+  "step": "1 no token",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/list"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/list",
+    "params": {
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 401,
+   "reason": "Unauthorized",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "content-length": "75",
+    "www-authenticate": "Bearer resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", scope=\"menu:read\"",
+    "cache-control": "no-store"
+   },
+   "body": {
+    "message": "This MCP server needs an access token. See WWW-Authenticate."
+   }
+  }
+ },
+ {
+  "step": "2 PRM",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "public, max-age=3600",
+    "content-length": "206",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "resource": "http://127.0.0.1:8310/mcp",
+    "authorization_servers": [
+     "http://127.0.0.1:9310"
+    ],
+    "scopes_supported": [
+     "menu:read"
+    ],
+    "bearer_methods_supported": [
+     "header"
+    ],
+    "resource_name": "Fernhill Coffee MCP server"
+   }
+  }
+ },
+ {
+  "step": "3 AS metadata",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/.well-known/oauth-authorization-server",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "607",
+    "content-type": "application/json"
+   },
+   "body": {
+    "issuer": "http://127.0.0.1:9310",
+    "authorization_endpoint": "http://127.0.0.1:9310/authorize",
+    "token_endpoint": "http://127.0.0.1:9310/token",
+    "registration_endpoint": "http://127.0.0.1:9310/register",
+    "scopes_supported": [
+     "menu:read",
+     "orders:write",
+     "refunds:write",
+     "offline_access"
+    ],
+    "response_types_supported": [
+     "code"
+    ],
+    "grant_types_supported": [
+     "authorization_code",
+     "refresh_token"
+    ],
+    "token_endpoint_auth_methods_supported": [
+     "none",
+     "client_secret_post",
+     "client_secret_basic"
+    ],
+    "code_challenge_methods_supported": [
+     "S256"
+    ],
+    "authorization_response_iss_parameter_supported": true,
+    "jwks_uri": "http://127.0.0.1:9310/jwks"
+   }
+  }
+ },
+ {
+  "step": "4 DCR",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/register",
+   "headers": {},
+   "json": {
+    "client_name": "Fernhill demo CLI",
+    "redirect_uris": [
+     "http://127.0.0.1:9399/callback"
+    ],
+    "application_type": "native",
+    "grant_types": [
+     "authorization_code",
+     "refresh_token"
+    ],
+    "response_types": [
+     "code"
+    ],
+    "token_endpoint_auth_method": "none"
+   },
+   "form": null
+  },
+  "response": {
+   "status": 201,
+   "reason": "Created",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "375",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "response_types": [
+     "code"
+    ],
+    "scope": "menu:read orders:write refunds:write offline_access",
+    "client_name": "Fernhill demo CLI",
+    "redirect_uris": [
+     "http://127.0.0.1:9399/callback"
+    ],
+    "token_endpoint_auth_method": "none",
+    "grant_types": [
+     "authorization_code",
+     "refresh_token"
+    ],
+    "application_type": "native",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "client_id_issued_at": 1793857077
+   }
+  }
+ },
+ {
+  "step": "5 authorize menu:read",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=qQpVQF7h…",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?code=wyUicZkf…&state=qQpVQF7h…&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "6 token menu:read",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "authorization_code",
+    "code": "wyUicZkf…",
+    "redirect_uri": "http://127.0.0.1:9399/callback",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "code_verifier": "a26ZIxun…",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "542",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "menu:read"
+   }
+  }
+ },
+ {
+  "step": "7 tools/list",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/list",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/list",
+    "params": {
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "2551",
+    "content-type": "application/json"
+   },
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+     "cacheScope": "private",
+     "resultType": "complete",
+     "tools": [
+      {
+       "description": "Return every item on the Fernhill menu with its price and sizes. Scope: menu:read.",
+       "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "title": "get_menuArguments"
+       },
+       "name": "get_menu",
+       "outputSchema": {
+        "$defs": {
+         "MenuItem": {
+          "properties": {
+           "drink": {
+            "title": "Drink",
+            "type": "string"
+           },
+           "price": {
+            "description": "Price in US dollars",
+            "title": "Price",
+            "type": "number"
+           },
+           "sizes": {
+            "items": {
+             "type": "string"
+            },
+            "title": "Sizes",
+            "type": "array"
+           }
+          },
+          "required": [
+           "drink",
+           "price",
+           "sizes"
+          ],
+          "title": "MenuItem",
+          "type": "object"
+         }
+        },
+        "properties": {
+         "result": {
+          "items": {
+           "$ref": "#/$defs/MenuItem"
+          },
+          "title": "Result",
+          "type": "array"
+         }
+        },
+        "required": [
+         "result"
+        ],
+        "title": "get_menuOutput",
+        "type": "object"
+       }
+      },
+      {
+       "description": "Place a pickup order. Returns an order_id. Scope: orders:write.",
+       "inputSchema": {
+        "type": "object",
+        "$defs": {
+         "Item": {
+          "properties": {
+           "drink": {
+            "description": "A drink name from get_menu",
+            "title": "Drink",
+            "type": "string"
+           },
+           "size": {
+            "title": "Size",
+            "type": "string"
+           },
+           "milk": {
+            "default": "whole",
+            "enum": [
+             "whole",
+             "oat",
+             "none"
+            ],
+            "title": "Milk",
+            "type": "string"
+           }
+          },
+          "required": [
+           "drink",
+           "size"
+          ],
+          "title": "Item",
+          "type": "object"
+         }
+        },
+        "properties": {
+         "items": {
+          "items": {
+           "$ref": "#/$defs/Item"
+          },
+          "title": "Items",
+          "type": "array"
+         },
+         "name": {
+          "title": "Name",
+          "type": "string"
+         }
+        },
+        "required": [
+         "items",
+         "name"
+        ],
+        "title": "place_orderArguments"
+       },
+       "name": "place_order",
+       "outputSchema": {
+        "properties": {
+         "order_id": {
+          "title": "Order Id",
+          "type": "string"
+         },
+         "total": {
+          "title": "Total",
+          "type": "number"
+         },
+         "status": {
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "required": [
+         "order_id",
+         "total",
+         "status"
+        ],
+        "title": "Order",
+        "type": "object"
+       }
+      },
+      {
+       "description": "Return the status of one order. Scope: menu:read.",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "order_id": {
+          "title": "Order Id",
+          "type": "string"
+         }
+        },
+        "required": [
+         "order_id"
+        ],
+        "title": "order_statusArguments"
+       },
+       "name": "order_status",
+       "outputSchema": {
+        "properties": {
+         "order_id": {
+          "title": "Order Id",
+          "type": "string"
+         },
+         "total": {
+          "title": "Total",
+          "type": "number"
+         },
+         "status": {
+          "title": "Status",
+          "type": "string"
+         }
+        },
+        "required": [
+         "order_id",
+         "total",
+         "status"
+        ],
+        "title": "Order",
+        "type": "object"
+       }
+      },
+      {
+       "description": "Refund one order. Scope: refunds:write.",
+       "inputSchema": {
+        "type": "object",
+        "properties": {
+         "order_id": {
+          "title": "Order Id",
+          "type": "string"
+         }
+        },
+        "required": [
+         "order_id"
+        ],
+        "title": "refundArguments"
+       },
+       "name": "refund",
+       "outputSchema": {
+        "properties": {
+         "result": {
+          "title": "Result",
+          "type": "string"
+         }
+        },
+        "required": [
+         "result"
+        ],
+        "title": "refundOutput",
+        "type": "object"
+       }
+      }
+     ],
+     "ttlMs": 0,
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "step": "8 get_menu",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "get_menu",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "tools/call",
+    "params": {
+     "name": "get_menu",
+     "arguments": {},
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "1096",
+    "content-type": "application/json"
+   },
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+     "content": [
+      {
+       "text": "{\n  \"drink\": \"espresso\",\n  \"price\": 3.0,\n  \"sizes\": [\n    \"single\",\n    \"double\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"latte\",\n  \"price\": 4.5,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"flat white\",\n  \"price\": 4.2,\n  \"sizes\": [\n    \"small\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"cold brew\",\n  \"price\": 5.0,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"oat cookie\",\n  \"price\": 2.5,\n  \"sizes\": [\n    \"one\"\n  ]\n}",
+       "type": "text"
+      }
+     ],
+     "isError": false,
+     "resultType": "complete",
+     "structuredContent": {
+      "result": [
+       {
+        "drink": "espresso",
+        "price": 3.0,
+        "sizes": [
+         "single",
+         "double"
+        ]
+       },
+       {
+        "drink": "latte",
+        "price": 4.5,
+        "sizes": [
+         "small",
+         "large"
+        ]
+       },
+       {
+        "drink": "flat white",
+        "price": 4.2,
+        "sizes": [
+         "small"
+        ]
+       },
+       {
+        "drink": "cold brew",
+        "price": 5.0,
+        "sizes": [
+         "small",
+         "large"
+        ]
+       },
+       {
+        "drink": "oat cookie",
+        "price": 2.5,
+        "sizes": [
+         "one"
+        ]
+       }
+      ]
+     },
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "step": "9 refund refused",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "refund",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "tools/call",
+    "params": {
+     "name": "refund",
+     "arguments": {
+      "order_id": "A-1041"
+     },
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 403,
+   "reason": "Forbidden",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "content-length": "57",
+    "www-authenticate": "Bearer error=\"insufficient_scope\", scope=\"refunds:write\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", error_description=\"The tool refund needs the scope refunds:write\"",
+    "cache-control": "no-store"
+   },
+   "body": {
+    "error": "insufficient_scope",
+    "scope": "refunds:write"
+   }
+  }
+ },
+ {
+  "step": "10 authorize union",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+refunds:write&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=D8QgcwP9…",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?code=7NrW2lpl…&state=D8QgcwP9…&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "10 token union",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "authorization_code",
+    "code": "7NrW2lpl…",
+    "redirect_uri": "http://127.0.0.1:9399/callback",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "code_verifier": "b1xSW_Pj…",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "575",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "menu:read refunds:write"
+   }
+  }
+ },
+ {
+  "step": "11 refund ok",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "refund",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "method": "tools/call",
+    "params": {
+     "name": "refund",
+     "arguments": {
+      "order_id": "A-1041"
+     },
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "359",
+    "content-type": "application/json"
+   },
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 4,
+    "result": {
+     "content": [
+      {
+       "text": "Refunded $5.10 for A-1041 (person: barista-ana, client: a8cb9239).",
+       "type": "text"
+      }
+     ],
+     "isError": false,
+     "resultType": "complete",
+     "structuredContent": {
+      "result": "Refunded $5.10 for A-1041 (person: barista-ana, client: a8cb9239)."
+     },
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "step": "12 get_menu after step-up",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "get_menu",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "method": "tools/call",
+    "params": {
+     "name": "get_menu",
+     "arguments": {},
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-length": "1096",
+    "content-type": "application/json"
+   },
+   "body": {
+    "jsonrpc": "2.0",
+    "id": 5,
+    "result": {
+     "content": [
+      {
+       "text": "{\n  \"drink\": \"espresso\",\n  \"price\": 3.0,\n  \"sizes\": [\n    \"single\",\n    \"double\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"latte\",\n  \"price\": 4.5,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"flat white\",\n  \"price\": 4.2,\n  \"sizes\": [\n    \"small\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"cold brew\",\n  \"price\": 5.0,\n  \"sizes\": [\n    \"small\",\n    \"large\"\n  ]\n}",
+       "type": "text"
+      },
+      {
+       "text": "{\n  \"drink\": \"oat cookie\",\n  \"price\": 2.5,\n  \"sizes\": [\n    \"one\"\n  ]\n}",
+       "type": "text"
+      }
+     ],
+     "isError": false,
+     "resultType": "complete",
+     "structuredContent": {
+      "result": [
+       {
+        "drink": "espresso",
+        "price": 3.0,
+        "sizes": [
+         "single",
+         "double"
+        ]
+       },
+       {
+        "drink": "latte",
+        "price": 4.5,
+        "sizes": [
+         "small",
+         "large"
+        ]
+       },
+       {
+        "drink": "flat white",
+        "price": 4.2,
+        "sizes": [
+         "small"
+        ]
+       },
+       {
+        "drink": "cold brew",
+        "price": 5.0,
+        "sizes": [
+         "small",
+         "large"
+        ]
+       },
+       {
+        "drink": "oat cookie",
+        "price": 2.5,
+        "sizes": [
+         "one"
+        ]
+       }
+      ]
+     },
+     "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+       "name": "fernhill",
+       "version": ""
+      }
+     }
+    }
+   }
+  }
+ },
+ {
+  "step": "13 authorize no union",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=refunds:write&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=J50fVKYq…",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?code=iNMrGsQ5…&state=J50fVKYq…&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "13 token no union",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "authorization_code",
+    "code": "iNMrGsQ5…",
+    "redirect_uri": "http://127.0.0.1:9399/callback",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "code_verifier": "7bESRUR8…",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "552",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "refunds:write"
+   }
+  }
+ },
+ {
+  "step": "13 get_menu lost",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "get_menu",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 6,
+    "method": "tools/call",
+    "params": {
+     "name": "get_menu",
+     "arguments": {},
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 403,
+   "reason": "Forbidden",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "content-length": "53",
+    "www-authenticate": "Bearer error=\"insufficient_scope\", scope=\"menu:read\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", error_description=\"The tool get_menu needs the scope menu:read\"",
+    "cache-control": "no-store"
+   },
+   "body": {
+    "error": "insufficient_scope",
+    "scope": "menu:read"
+   }
+  }
+ },
+ {
+  "step": "14 authorize other resource",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:8311/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=CX5osxk4…",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?code=qy9psKUY…&state=CX5osxk4…&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "14 token other resource",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "authorization_code",
+    "code": "qy9psKUY…",
+    "redirect_uri": "http://127.0.0.1:9399/callback",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "code_verifier": "PndwloHO…",
+    "resource": "http://127.0.0.1:8311/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "542",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "menu:read"
+   }
+  }
+ },
+ {
+  "step": "14 wrong audience",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/event-stream",
+    "MCP-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "get_menu",
+    "Authorization": "Bearer eyJhbGci…"
+   },
+   "json": {
+    "jsonrpc": "2.0",
+    "id": 7,
+    "method": "tools/call",
+    "params": {
+     "name": "get_menu",
+     "arguments": {},
+     "_meta": {
+      "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+      "io.modelcontextprotocol/clientCapabilities": {},
+      "io.modelcontextprotocol/clientInfo": {
+       "name": "m10-raw",
+       "version": "1"
+      }
+     }
+    }
+   },
+   "form": null
+  },
+  "response": {
+   "status": 401,
+   "reason": "Unauthorized",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "content-type": "application/json",
+    "content-length": "26",
+    "www-authenticate": "Bearer error=\"invalid_token\", error_description=\"The access token is not valid for this server\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", scope=\"menu:read\"",
+    "cache-control": "no-store"
+   },
+   "body": {
+    "error": "invalid_token"
+   }
+  }
+ },
+ {
+  "step": "15 invalid_scope",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+admin:all&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=s15-demo",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?error=invalid_scope&error_description=Client+was+not+registered+with+scope+admin:all&state=s15-demo&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "16 invalid_target",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read&resource=http://127.0.0.1:9999/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=s16-demo",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?error=invalid_target&error_description=Unknown+resource+http://127.0.0.1:9999/mcp.&state=s16-demo&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "17 authorize offline",
+  "request": {
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=a8cb9239-6ac0-42fa-af77-f82df902eee7&redirect_uri=http://127.0.0.1:9399/callback&scope=menu:read+offline_access&resource=http://127.0.0.1:8310/mcp&code_challenge=<redacted>&code_challenge_method=S256&state=337gcyzL…",
+   "headers": {},
+   "json": null,
+   "form": null
+  },
+  "response": {
+   "status": 302,
+   "reason": "Found",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "content-length": "0",
+    "location": "http://127.0.0.1:9399/callback?code=TYeXtRTz…&state=337gcyzL…&iss=http://127.0.0.1:9310"
+   },
+   "body": ""
+  }
+ },
+ {
+  "step": "17 token offline",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "authorization_code",
+    "code": "TYeXtRTz…",
+    "redirect_uri": "http://127.0.0.1:9399/callback",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "code_verifier": "jQEOkePt…",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "639",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "menu:read offline_access",
+    "refresh_token": "OIgddqjH…"
+   }
+  }
+ },
+ {
+  "step": "17 refresh",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "refresh_token",
+    "refresh_token": "OIgddqjH…",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 200,
+   "reason": "OK",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "639",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "access_token": "eyJhbGci…",
+    "token_type": "Bearer",
+    "expires_in": 600,
+    "scope": "menu:read offline_access",
+    "refresh_token": "qd2xRFSC…"
+   }
+  }
+ },
+ {
+  "step": "17 old refresh refused",
+  "request": {
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "headers": {},
+   "json": null,
+   "form": {
+    "grant_type": "refresh_token",
+    "refresh_token": "OIgddqjH…",
+    "client_id": "a8cb9239-6ac0-42fa-af77-f82df902eee7",
+    "resource": "http://127.0.0.1:8310/mcp"
+   }
+  },
+  "response": {
+   "status": 400,
+   "reason": "Bad Request",
+   "headers": {
+    "date": "Thu, 05 Nov 2026 05:37:57 GMT",
+    "server": "uvicorn",
+    "cache-control": "no-store",
+    "pragma": "no-cache",
+    "content-length": "76",
+    "content-type": "application/json",
+    "vary": "Origin"
+   },
+   "body": {
+    "error": "invalid_grant",
+    "error_description": "refresh token does not exist"
+   }
+  }
+ }
+]

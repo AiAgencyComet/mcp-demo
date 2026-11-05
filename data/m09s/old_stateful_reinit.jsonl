@@ -1,0 +1,43 @@
+{"event": "INIT ok"}
+{"event": "REINIT 1"}
+{"call": 1, "ok": false, "ms": 3493.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 2"}
+{"call": 2, "ok": false, "ms": 3136.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 3"}
+{"call": 3, "ok": false, "ms": 3130.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 4"}
+{"call": 4, "ok": false, "ms": 3155.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 5"}
+{"call": 5, "ok": false, "ms": 3236.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 6"}
+{"call": 6, "ok": false, "ms": 3116.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 7"}
+{"call": 7, "ok": false, "ms": 3108.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 8"}
+{"call": 8, "ok": false, "ms": 3118.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 9"}
+{"call": 9, "ok": false, "ms": 3126.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 10"}
+{"call": 10, "ok": false, "ms": 3110.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 11"}
+{"call": 11, "ok": false, "ms": 3058.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 12"}
+{"call": 12, "ok": false, "ms": 3025.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 13"}
+{"call": 13, "ok": false, "ms": 3000.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 14"}
+{"call": 14, "ok": false, "ms": 3055.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 15"}
+{"call": 15, "ok": false, "ms": 3220.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 16"}
+{"call": 16, "ok": false, "ms": 2994.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 17"}
+{"call": 17, "ok": false, "ms": 3004.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 18"}
+{"call": 18, "ok": false, "ms": 3111.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 19"}
+{"call": 19, "ok": false, "ms": 3125.0, "msg": "McpError: Session terminated"}
+{"event": "REINIT 20"}
+{"call": 20, "ok": false, "ms": 3019.0, "msg": "McpError: Session terminated"}
+{"event": "REINITS 20"}
+{"summary": {"cell": "old_stateful_reinit", "calls": 20, "ok": 0, "http_requests": 144, "median_call_ms": null, "median_cold_ms": 235.9, "methods": ["DELETE", "GET", "initialize", "notifications/initialized", "tools/call"]}}

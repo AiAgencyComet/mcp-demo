@@ -1,0 +1,2322 @@
+{
+ "summary": {
+  "release": "v2_bad",
+  "case_set": "main",
+  "max_tokens": 600,
+  "model": "claude-haiku-5-5",
+  "reps": 3,
+  "runs": 108,
+  "tools_offered": 9,
+  "tools_sha": "c5447a47d49c4d30",
+  "choice_pct": 98.1,
+  "fernhill_choice_pct": 97.8,
+  "fernhill_call_pct": 88.9,
+  "other_servers_choice_pct": 100.0,
+  "by_group_choice_pct": {
+   "menu": 90.5,
+   "order": 100.0,
+   "status": 100.0,
+   "refund": 100.0,
+   "other": 100.0
+  },
+  "by_group_call_pct": {
+   "menu": 90.5,
+   "order": 73.3,
+   "status": 100.0,
+   "refund": 100.0
+  },
+  "per_rep_choice_pct": {
+   "1": 100.0,
+   "2": 100.0,
+   "3": 94.4
+  },
+  "no_tool_call": 1,
+  "stop_max_tokens": 1,
+  "wrong_picks": [
+   [
+    "fernhill__mn_list -> stock__check_stock",
+    1
+   ],
+   [
+    "fernhill__mn_list -> None",
+    1
+   ]
+  ],
+  "call_failures": [
+   [
+    "order-09: items [('latte', 'large')]",
+    2
+   ],
+   [
+    "order-03: is_error: Error executing tool po_create: 'Espresso' is not on the menu. Call mn_list to see the menu.",
+    1
+   ],
+   [
+    "order-05: is_error: Error executing tool po_create: 'Oat cookie' is not on the menu. Call mn_list to see the menu.",
+    1
+   ],
+   [
+    "order-05: is_error: Error executing tool po_create: 'regular' is not a size for oat cookie. Sizes: ['one'].",
+    1
+   ],
+   [
+    "order-05: is_error: Error executing tool po_create: 'standard' is not a size for oat cookie. Sizes: ['one'].",
+    1
+   ],
+   [
+    "order-09: is_error: Error executing tool po_create: 1 validation error for po_createArguments\np2\n  Field required [type=missing, input_value={'p1': [{'drink': 'latte'...', 'size': 'standard'}]}, input_type=dict]\n    For ",
+    1
+   ],
+   [
+    "order-10: items []",
+    1
+   ]
+  ],
+  "input_tokens": 176115,
+  "output_tokens": 14396,
+  "avg_input_tokens": 1631,
+  "cost_usd": 0.0248,
+  "avg_ms": 1175,
+  "gate": {
+   "rule": {
+    "max_drop_pts": 5.0,
+    "min_choice_pct": 80.0
+   },
+   "baseline": "v1",
+   "verdict": "PASS",
+   "reasons": []
+  }
+ },
+ "rows": [
+  {
+   "case_id": "menu-01",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 99,
+   "ms": 1398,
+   "text": ""
+  },
+  {
+   "case_id": "menu-01",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 89,
+   "ms": 1219,
+   "text": ""
+  },
+  {
+   "case_id": "menu-01",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 84,
+   "ms": 1208,
+   "text": ""
+  },
+  {
+   "case_id": "menu-02",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 129,
+   "ms": 1406,
+   "text": ""
+  },
+  {
+   "case_id": "menu-02",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 96,
+   "ms": 1168,
+   "text": ""
+  },
+  {
+   "case_id": "menu-02",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "stock__check_stock",
+   "args": {
+    "item": "cold brew"
+   },
+   "choice_ok": false,
+   "call_ok": false,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 307,
+   "ms": 2157,
+   "text": ""
+  },
+  {
+   "case_id": "menu-03",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1640,
+   "out_tok": 102,
+   "ms": 1091,
+   "text": ""
+  },
+  {
+   "case_id": "menu-03",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1640,
+   "out_tok": 84,
+   "ms": 1004,
+   "text": ""
+  },
+  {
+   "case_id": "menu-03",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1640,
+   "out_tok": 76,
+   "ms": 903,
+   "text": ""
+  },
+  {
+   "case_id": "menu-04",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 66,
+   "ms": 1059,
+   "text": ""
+  },
+  {
+   "case_id": "menu-04",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 72,
+   "ms": 883,
+   "text": ""
+  },
+  {
+   "case_id": "menu-04",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 66,
+   "ms": 1034,
+   "text": ""
+  },
+  {
+   "case_id": "menu-05",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1631,
+   "out_tok": 107,
+   "ms": 950,
+   "text": ""
+  },
+  {
+   "case_id": "menu-05",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1631,
+   "out_tok": 88,
+   "ms": 1466,
+   "text": ""
+  },
+  {
+   "case_id": "menu-05",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1631,
+   "out_tok": 92,
+   "ms": 880,
+   "text": ""
+  },
+  {
+   "case_id": "menu-06",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1620,
+   "out_tok": 32,
+   "ms": 735,
+   "text": ""
+  },
+  {
+   "case_id": "menu-06",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1620,
+   "out_tok": 32,
+   "ms": 932,
+   "text": ""
+  },
+  {
+   "case_id": "menu-06",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1620,
+   "out_tok": 65,
+   "ms": 913,
+   "text": ""
+  },
+  {
+   "case_id": "menu-07",
+   "rep": 1,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 99,
+   "ms": 1063,
+   "text": ""
+  },
+  {
+   "case_id": "menu-07",
+   "rep": 2,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": "fernhill__mn_list",
+   "args": {},
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 88,
+   "ms": 1066,
+   "text": ""
+  },
+  {
+   "case_id": "menu-07",
+   "rep": 3,
+   "label": "get_menu",
+   "want": "fernhill__mn_list",
+   "pick": null,
+   "args": null,
+   "choice_ok": false,
+   "call_ok": false,
+   "why": null,
+   "stop": "end_turn",
+   "in_tok": 1623,
+   "out_tok": 242,
+   "ms": 1752,
+   "text": "I can't look up menu prices. My tools cover purchase orders, stock levels, staff shifts, loyalty points, catering quotes, and customer orders, and none of them return item prices. You'll need to check"
+  },
+  {
+   "case_id": "order-01",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "oat"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Sam"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 118,
+   "ms": 1030,
+   "text": ""
+  },
+  {
+   "case_id": "order-01",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "oat"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Sam"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 192,
+   "ms": 1258,
+   "text": ""
+  },
+  {
+   "case_id": "order-01",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "oat"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Sam"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 201,
+   "ms": 1226,
+   "text": ""
+  },
+  {
+   "case_id": "order-02",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "small"
+     },
+     {
+      "drink": "cold brew",
+      "size": "small"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Priya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 226,
+   "ms": 1563,
+   "text": ""
+  },
+  {
+   "case_id": "order-02",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "small"
+     },
+     {
+      "drink": "cold brew",
+      "size": "small"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Priya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 259,
+   "ms": 1485,
+   "text": ""
+  },
+  {
+   "case_id": "order-02",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "small"
+     },
+     {
+      "drink": "cold brew",
+      "size": "small"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Priya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 263,
+   "ms": 1421,
+   "text": ""
+  },
+  {
+   "case_id": "order-03",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "Espresso",
+      "size": "Double",
+      "milk": "none"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Jordan"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "is_error: Error executing tool po_create: 'Espresso' is not on the menu. Call mn_list to see the menu.",
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 303,
+   "ms": 2101,
+   "text": ""
+  },
+  {
+   "case_id": "order-03",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "espresso",
+      "size": "double"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Jordan"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 257,
+   "ms": 1554,
+   "text": ""
+  },
+  {
+   "case_id": "order-03",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "espresso",
+      "size": "double",
+      "milk": "none"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Jordan"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 319,
+   "ms": 1923,
+   "text": ""
+  },
+  {
+   "case_id": "order-04",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "12 Elm Street"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 122,
+   "ms": 925,
+   "text": ""
+  },
+  {
+   "case_id": "order-04",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "12 Elm Street"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 122,
+   "ms": 976,
+   "text": ""
+  },
+  {
+   "case_id": "order-04",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "12 Elm Street"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 122,
+   "ms": 908,
+   "text": ""
+  },
+  {
+   "case_id": "order-05",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "Oat cookie",
+      "size": "standard",
+      "milk": "none"
+     },
+     {
+      "drink": "Espresso",
+      "size": "single",
+      "milk": "none"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Lee"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "is_error: Error executing tool po_create: 'Oat cookie' is not on the menu. Call mn_list to see the menu.",
+   "stop": "tool_use",
+   "in_tok": 1636,
+   "out_tok": 524,
+   "ms": 2702,
+   "text": ""
+  },
+  {
+   "case_id": "order-05",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "oat cookie",
+      "size": "regular",
+      "milk": "none"
+     },
+     {
+      "drink": "espresso",
+      "size": "single",
+      "milk": "none"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Lee"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "is_error: Error executing tool po_create: 'regular' is not a size for oat cookie. Sizes: ['one'].",
+   "stop": "tool_use",
+   "in_tok": 1636,
+   "out_tok": 581,
+   "ms": 3032,
+   "text": ""
+  },
+  {
+   "case_id": "order-05",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "oat cookie",
+      "size": "standard",
+      "milk": "none"
+     },
+     {
+      "drink": "espresso",
+      "size": "single",
+      "milk": "none"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Lee"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "is_error: Error executing tool po_create: 'standard' is not a size for oat cookie. Sizes: ['one'].",
+   "stop": "tool_use",
+   "in_tok": 1636,
+   "out_tok": 538,
+   "ms": 2827,
+   "text": ""
+  },
+  {
+   "case_id": "order-06",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "flat white",
+      "milk": "oat",
+      "size": "small"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Maya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 119,
+   "ms": 904,
+   "text": ""
+  },
+  {
+   "case_id": "order-06",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "flat white",
+      "milk": "oat",
+      "size": "small"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Maya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 119,
+   "ms": 1024,
+   "text": ""
+  },
+  {
+   "case_id": "order-06",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "flat white",
+      "size": "small",
+      "milk": "oat"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Maya"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 119,
+   "ms": 931,
+   "text": ""
+  },
+  {
+   "case_id": "order-07",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "large"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "4 Harbour Road"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 223,
+   "ms": 1327,
+   "text": ""
+  },
+  {
+   "case_id": "order-07",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "large"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "4 Harbour Road"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 236,
+   "ms": 1461,
+   "text": ""
+  },
+  {
+   "case_id": "order-07",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "cold brew",
+      "size": "large"
+     }
+    ],
+    "p2": {
+     "kind": "delivery",
+     "address": "4 Harbour Road"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1634,
+   "out_tok": 231,
+   "ms": 1514,
+   "text": ""
+  },
+  {
+   "case_id": "order-08",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "small",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Ana"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1639,
+   "out_tok": 118,
+   "ms": 1308,
+   "text": ""
+  },
+  {
+   "case_id": "order-08",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "small",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Ana"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1639,
+   "out_tok": 118,
+   "ms": 957,
+   "text": ""
+  },
+  {
+   "case_id": "order-08",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "small",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Ana"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1639,
+   "out_tok": 118,
+   "ms": 1003,
+   "text": ""
+  },
+  {
+   "case_id": "order-09",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Chris"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "items [('latte', 'large')]",
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 394,
+   "ms": 2267,
+   "text": ""
+  },
+  {
+   "case_id": "order-09",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large",
+      "milk": "whole"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Chris"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "items [('latte', 'large')]",
+   "stop": "tool_use",
+   "in_tok": 1638,
+   "out_tok": 458,
+   "ms": 2534,
+   "text": ""
+  },
+  {
+   "case_id": "order-09",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "latte",
+      "size": "large"
+     },
+     {
+      "drink": "oat cookie",
+      "size": "standard"
+     }
+    ]
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "is_error: Error executing tool po_create: 1 validation error for po_createArguments\np2\n  Field required [type=missing, input_value={'p1': [{'drink': 'latte'...', 'size': 'standard'}]}, input_type=dict]\n    For ",
+   "stop": "max_tokens",
+   "in_tok": 1638,
+   "out_tok": 600,
+   "ms": 3329,
+   "text": ""
+  },
+  {
+   "case_id": "order-10",
+   "rep": 1,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [],
+    "p2": {
+     "kind": "pickup",
+     "name": "Kim"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": false,
+   "why": "items []",
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 94,
+   "ms": 936,
+   "text": ""
+  },
+  {
+   "case_id": "order-10",
+   "rep": 2,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "espresso",
+      "size": "single"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Kim"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 111,
+   "ms": 891,
+   "text": ""
+  },
+  {
+   "case_id": "order-10",
+   "rep": 3,
+   "label": "place_order",
+   "want": "fernhill__po_create",
+   "pick": "fernhill__po_create",
+   "args": {
+    "p1": [
+     {
+      "drink": "espresso",
+      "size": "single"
+     }
+    ],
+    "p2": {
+     "kind": "pickup",
+     "name": "Kim"
+    }
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 189,
+   "ms": 1335,
+   "text": ""
+  },
+  {
+   "case_id": "status-01",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 133,
+   "ms": 1200,
+   "text": ""
+  },
+  {
+   "case_id": "status-01",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 130,
+   "ms": 1855,
+   "text": ""
+  },
+  {
+   "case_id": "status-01",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 132,
+   "ms": 1026,
+   "text": ""
+  },
+  {
+   "case_id": "status-02",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1641,
+   "out_tok": 56,
+   "ms": 800,
+   "text": ""
+  },
+  {
+   "case_id": "status-02",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1641,
+   "out_tok": 56,
+   "ms": 1013,
+   "text": ""
+  },
+  {
+   "case_id": "status-02",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1641,
+   "out_tok": 56,
+   "ms": 898,
+   "text": ""
+  },
+  {
+   "case_id": "status-03",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 56,
+   "ms": 849,
+   "text": ""
+  },
+  {
+   "case_id": "status-03",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 56,
+   "ms": 793,
+   "text": ""
+  },
+  {
+   "case_id": "status-03",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 119,
+   "ms": 1005,
+   "text": ""
+  },
+  {
+   "case_id": "status-04",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 129,
+   "ms": 1061,
+   "text": ""
+  },
+  {
+   "case_id": "status-04",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 56,
+   "ms": 817,
+   "text": ""
+  },
+  {
+   "case_id": "status-04",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 151,
+   "ms": 1193,
+   "text": ""
+  },
+  {
+   "case_id": "status-05",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1624,
+   "out_tok": 135,
+   "ms": 1145,
+   "text": ""
+  },
+  {
+   "case_id": "status-05",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1624,
+   "out_tok": 137,
+   "ms": 1280,
+   "text": ""
+  },
+  {
+   "case_id": "status-05",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1624,
+   "out_tok": 135,
+   "ms": 1024,
+   "text": ""
+  },
+  {
+   "case_id": "status-06",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 122,
+   "ms": 1017,
+   "text": ""
+  },
+  {
+   "case_id": "status-06",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 127,
+   "ms": 1119,
+   "text": ""
+  },
+  {
+   "case_id": "status-06",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 119,
+   "ms": 1097,
+   "text": ""
+  },
+  {
+   "case_id": "status-07",
+   "rep": 1,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1622,
+   "out_tok": 56,
+   "ms": 829,
+   "text": ""
+  },
+  {
+   "case_id": "status-07",
+   "rep": 2,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1622,
+   "out_tok": 56,
+   "ms": 845,
+   "text": ""
+  },
+  {
+   "case_id": "status-07",
+   "rep": 3,
+   "label": "order_status",
+   "want": "fernhill__po_get",
+   "pick": "fernhill__po_get",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1622,
+   "out_tok": 56,
+   "ms": 1024,
+   "text": ""
+  },
+  {
+   "case_id": "refund-01",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 57,
+   "ms": 892,
+   "text": ""
+  },
+  {
+   "case_id": "refund-01",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 57,
+   "ms": 927,
+   "text": ""
+  },
+  {
+   "case_id": "refund-01",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1630,
+   "out_tok": 57,
+   "ms": 1388,
+   "text": ""
+  },
+  {
+   "case_id": "refund-02",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 141,
+   "ms": 1176,
+   "text": ""
+  },
+  {
+   "case_id": "refund-02",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 140,
+   "ms": 1194,
+   "text": ""
+  },
+  {
+   "case_id": "refund-02",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 117,
+   "ms": 1106,
+   "text": ""
+  },
+  {
+   "case_id": "refund-03",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 57,
+   "ms": 1080,
+   "text": ""
+  },
+  {
+   "case_id": "refund-03",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 57,
+   "ms": 816,
+   "text": ""
+  },
+  {
+   "case_id": "refund-03",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1625,
+   "out_tok": 57,
+   "ms": 845,
+   "text": ""
+  },
+  {
+   "case_id": "refund-04",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 57,
+   "ms": 967,
+   "text": ""
+  },
+  {
+   "case_id": "refund-04",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 57,
+   "ms": 864,
+   "text": ""
+  },
+  {
+   "case_id": "refund-04",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1633,
+   "out_tok": 57,
+   "ms": 877,
+   "text": ""
+  },
+  {
+   "case_id": "refund-05",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 57,
+   "ms": 833,
+   "text": ""
+  },
+  {
+   "case_id": "refund-05",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 57,
+   "ms": 802,
+   "text": ""
+  },
+  {
+   "case_id": "refund-05",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1042"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1627,
+   "out_tok": 57,
+   "ms": 793,
+   "text": ""
+  },
+  {
+   "case_id": "refund-06",
+   "rep": 1,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 57,
+   "ms": 821,
+   "text": ""
+  },
+  {
+   "case_id": "refund-06",
+   "rep": 2,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 115,
+   "ms": 1145,
+   "text": ""
+  },
+  {
+   "case_id": "refund-06",
+   "rep": 3,
+   "label": "refund",
+   "want": "fernhill__po_refund",
+   "pick": "fernhill__po_refund",
+   "args": {
+    "p1": "A-1041"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 108,
+   "ms": 1042,
+   "text": ""
+  },
+  {
+   "case_id": "other-01",
+   "rep": 1,
+   "label": "stock__check_stock",
+   "want": "stock__check_stock",
+   "pick": "stock__check_stock",
+   "args": {
+    "item": "oat milk cartons"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 57,
+   "ms": 1203,
+   "text": ""
+  },
+  {
+   "case_id": "other-01",
+   "rep": 2,
+   "label": "stock__check_stock",
+   "want": "stock__check_stock",
+   "pick": "stock__check_stock",
+   "args": {
+    "item": "oat milk cartons"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 57,
+   "ms": 954,
+   "text": ""
+  },
+  {
+   "case_id": "other-01",
+   "rep": 3,
+   "label": "stock__check_stock",
+   "want": "stock__check_stock",
+   "pick": "stock__check_stock",
+   "args": {
+    "item": "oat milk cartons"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1628,
+   "out_tok": 57,
+   "ms": 1324,
+   "text": ""
+  },
+  {
+   "case_id": "other-02",
+   "rep": 1,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Green Valley Dairy",
+    "item": "oat milk",
+    "quantity": 20
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 113,
+   "ms": 898,
+   "text": ""
+  },
+  {
+   "case_id": "other-02",
+   "rep": 2,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Green Valley Dairy",
+    "item": "oat milk",
+    "quantity": 20
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 113,
+   "ms": 890,
+   "text": ""
+  },
+  {
+   "case_id": "other-02",
+   "rep": 3,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Green Valley Dairy",
+    "item": "oat milk",
+    "quantity": 20
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 113,
+   "ms": 856,
+   "text": ""
+  },
+  {
+   "case_id": "other-03",
+   "rep": 1,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Riverside Roasters",
+    "item": "cold brew concentrate",
+    "quantity": 10
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1643,
+   "out_tok": 116,
+   "ms": 945,
+   "text": ""
+  },
+  {
+   "case_id": "other-03",
+   "rep": 2,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Riverside Roasters",
+    "item": "cold brew concentrate",
+    "quantity": 10
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1643,
+   "out_tok": 116,
+   "ms": 960,
+   "text": ""
+  },
+  {
+   "case_id": "other-03",
+   "rep": 3,
+   "label": "suppliers__create_purchase_order",
+   "want": "suppliers__create_purchase_order",
+   "pick": "suppliers__create_purchase_order",
+   "args": {
+    "supplier": "Riverside Roasters",
+    "item": "cold brew concentrate",
+    "quantity": 10
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1643,
+   "out_tok": 116,
+   "ms": 953,
+   "text": ""
+  },
+  {
+   "case_id": "other-04",
+   "rep": 1,
+   "label": "staff__list_shifts",
+   "want": "staff__list_shifts",
+   "pick": "staff__list_shifts",
+   "args": {
+    "day": "Saturday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 55,
+   "ms": 778,
+   "text": ""
+  },
+  {
+   "case_id": "other-04",
+   "rep": 2,
+   "label": "staff__list_shifts",
+   "want": "staff__list_shifts",
+   "pick": "staff__list_shifts",
+   "args": {
+    "day": "Saturday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 55,
+   "ms": 747,
+   "text": ""
+  },
+  {
+   "case_id": "other-04",
+   "rep": 3,
+   "label": "staff__list_shifts",
+   "want": "staff__list_shifts",
+   "pick": "staff__list_shifts",
+   "args": {
+    "day": "Saturday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1623,
+   "out_tok": 55,
+   "ms": 762,
+   "text": ""
+  },
+  {
+   "case_id": "other-05",
+   "rep": 1,
+   "label": "loyalty__get_points",
+   "want": "loyalty__get_points",
+   "pick": "loyalty__get_points",
+   "args": {
+    "customer_name": "Priya"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 57,
+   "ms": 818,
+   "text": ""
+  },
+  {
+   "case_id": "other-05",
+   "rep": 2,
+   "label": "loyalty__get_points",
+   "want": "loyalty__get_points",
+   "pick": "loyalty__get_points",
+   "args": {
+    "customer_name": "Priya"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 57,
+   "ms": 828,
+   "text": ""
+  },
+  {
+   "case_id": "other-05",
+   "rep": 3,
+   "label": "loyalty__get_points",
+   "want": "loyalty__get_points",
+   "pick": "loyalty__get_points",
+   "args": {
+    "customer_name": "Priya"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1626,
+   "out_tok": 57,
+   "ms": 974,
+   "text": ""
+  },
+  {
+   "case_id": "other-06",
+   "rep": 1,
+   "label": "catering__quote_event",
+   "want": "catering__quote_event",
+   "pick": "catering__quote_event",
+   "args": {
+    "people": 40,
+    "day": "Friday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 110,
+   "ms": 986,
+   "text": ""
+  },
+  {
+   "case_id": "other-06",
+   "rep": 2,
+   "label": "catering__quote_event",
+   "want": "catering__quote_event",
+   "pick": "catering__quote_event",
+   "args": {
+    "people": 40,
+    "day": "Friday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 74,
+   "ms": 780,
+   "text": ""
+  },
+  {
+   "case_id": "other-06",
+   "rep": 3,
+   "label": "catering__quote_event",
+   "want": "catering__quote_event",
+   "pick": "catering__quote_event",
+   "args": {
+    "people": 40,
+    "day": "Friday"
+   },
+   "choice_ok": true,
+   "call_ok": true,
+   "why": null,
+   "stop": "tool_use",
+   "in_tok": 1637,
+   "out_tok": 74,
+   "ms": 810,
+   "text": ""
+  }
+ ]
+}

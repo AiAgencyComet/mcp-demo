@@ -1,0 +1,2 @@
+cfg=json_default.mcp.json seconds=90 wall=65s -> The Fernhill `export_sales_report` call with `seconds=90` timed out, so I don't have a result to report. I can retry it if you want.
+cfg=json_timeout150.mcp.json seconds=90 wall=96s -> Sales report ready after 90 s: 412 orders, $2,873.40.

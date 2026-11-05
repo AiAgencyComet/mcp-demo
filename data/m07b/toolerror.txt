@@ -1,0 +1,13 @@
+# m07b · toolerror · a tool error inside a task: status is completed (not failed) and result.isError is true
+# URL http://127.0.0.1:8180/mcp · spec 2026-07-28 · Tasks extension io.modelcontextprotocol/tasks · raw httpx client, no SDK
+# Each message is shown once in full; a repeated _meta object prints as "(same as above)".
+# Full, unshortened bodies: data/m07b/messages.jsonl
+
+[  0.02s] -> tools/call   Mcp-Name: export_sales_report   (400 days: the tool will refuse)
+          {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "export_sales_report", "arguments": {"days": 400}, "_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {"extensions": {"io.modelcontextprotocol/tasks": {}}}, "io.modelcontextprotocol/clientInfo": {"name": "fernhill-raw", "version": "1"}}}}
+[  0.02s] <- HTTP 200 from copy B (3.1 ms)
+          {"jsonrpc": "2.0", "id": 1, "result": {"resultType": "task", "taskId": "59b7b098-f472-4381-acc0-f51a3e4830dc", "status": "working", "statusMessage": "Queued.", "createdAt": "2026-11-05T05:54:15.816Z", "lastUpdatedAt": "2026-11-05T05:54:15.816Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "fernhill", "version": ""}}}}
+[  0.02s] -> tasks/get   Mcp-Name: 59b7b098-f472-4381-acc0-f51a3e4830dc
+          {"jsonrpc": "2.0", "id": 2, "method": "tasks/get", "params": {"taskId": "59b7b098-f472-4381-acc0-f51a3e4830dc", "_meta": "(same as above)"}}
+[  0.02s] <- HTTP 200 from copy A (1.5 ms)
+          {"jsonrpc": "2.0", "id": 2, "result": {"resultType": "complete", "taskId": "59b7b098-f472-4381-acc0-f51a3e4830dc", "status": "completed", "statusMessage": "Tool returned an error.", "createdAt": "2026-11-05T05:54:15.816Z", "lastUpdatedAt": "2026-11-05T05:54:15.817Z", "ttlMs": 3600000, "pollIntervalMs": 2000, "result": {"content": [{"text": "Error executing tool export_sales_report: days must be 1 to 90, not 400.", "type": "text"}], "isError": true, "resultType": "complete"}, "_meta": "(same as above)"}}

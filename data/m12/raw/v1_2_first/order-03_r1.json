@@ -1,0 +1,54 @@
+{
+ "case_id": "order-03",
+ "rep": 1,
+ "request": "Put in a double espresso for Jordan, they'll grab it at the counter.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1047,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS2gYKEAgTGAI4AUIIdGhpbmtpbmcSDK0XISj+6BBTwfO+rRoM/Sun00srPJTIY3gBIjAk5LFDzTC7HUESTYX0hkARrMdfOAMMdhvfQnVwy2OTil7ZnP6uM1XJZEg2b63Kjn0q9wXRNFlICMY3aTLzZYL7SzI1yinKupu0wMv5r4LxoEfj50SGLSBgE051k5IRaEHMp6AP1VrTM/2Mr/FOYG281qfailrUjfdUUj7x+c0CGQiik3lxINcvDxq977d/O+hj1Z6syx2k9Ye6+Eh/uhhuSJD9P1cXgSyYrF0t7lHt3aXFyTAL/a7CLpflalTVVsAfuxIBP9LHt78U2QbaYQHwg88NGJckmMaMsLv23EUjSLPT+azCd3GZ1wamDN0rn+D/R//3VQb7xsOWzCtyzU4sGBs1+uQfbFX87oBGdH/ZcKKfQtzsBbGn2riMeSKIHtlpx+P9khRo6ApaXIrobweP8pyaul4olfFEL6bDirV7NJZMsFFKYUroOqSDps+Ai39TQH0FGnbuMWNSeDH5nwQiC3Qeyy+eJuW4Fn3jGn6Mygm9alO9RuHFX/bv8gDTNin5cxVfZMJDf730wcobquqz2Xizqf8T40uy+w3hkNvcHZIe9ps8ALk8EJzKnBxdXtX5T5AGjWJG5nuf8SwxmvuNMDMdzNYX94D9XThDbS5S4h77KwXl1OBpurpXn1Id5S+Nnam/GrgXv0ysIHjL1SeS2XTL/cuLq7eobnwcuasyul+EisT15vgT20kXFvuuo0ryGs5j410qQSs5BUF96pMABhBOkkCxIStv6AoCaZHgVJHfUnZVcYW5Dex+e/TAWHXQfnbW0nchs8O2Wfxk3dhLI6HDsFg30Z+hPA2xysu8vGQWdJwhQtDKTNDQFeySmj7eKppnEew//kz8KFNBrQjPeifR8+MlPVrzYtV9l47MS9/yk4+hTB4GICxAm3/CXD28TKd55RhaIkhFTzd3Kk/LXIIlt4jO3aiUC/mTaZ1ArsZUnmVVMZ8J3pGY5BstbXFyXsu5jkqaEz6ET8SCj17p1U7gmvRMqa3YYY+1YCU0yWNGThnS+ldyUe3FIZxhmQZKo1opZwsZvpUS/XIuor4SihMBTPxT4Fbzump38QEI6knaIy40Ruz+USQYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Nw7VhTDtkvrR9P8yP8MsGf",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1840,
+   "output_tokens": 115,
+   "output_tokens_details": {
+    "thinking_tokens": 82
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

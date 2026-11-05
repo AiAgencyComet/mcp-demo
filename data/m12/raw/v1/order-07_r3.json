@@ -1,0 +1,65 @@
+{
+ "case_id": "order-07",
+ "rep": 3,
+ "request": "Can you send a large cold brew to 4 Harbour Road?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 2448,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSlwsKEAgTGAI4AUIIdGhpbmtpbmcSDPhRT8t+ZfmpjPJMSRoMz2+RRaNzYw35cWv3IjAb9JWA2lucI9YVVZeMMTRAiZUGRJoHb3sirFwE73QUIPQyhUJXdlIEBaqLo1lCmLsqtArLcNSfTGftP7/RjDqzh6gCQwvG1AwGlV4ZpdgeerehpGoZ9QZ7qqcE6xKJbzs4OcsavSzKYGdLdN8fklbpcjemX4yEP913NalYXu8p2MnJVbLdZxllJWv7LmLfVlYCEQMrvHxpPYrjw7ZVZns107kTPlhzCIzlGk2bDK9GaNTKMKHw79D3tFII5rPKYMsGS/qtqRcA/Zc93A/n4stGBes4X5rFmQ66OfY/xSz45B3R5TAzT07mYi4VmokGimP5dYRN6z8v86t4fPrrV9IQjIJcGP8d5jAvz7O7E6K6aO8mwlj0ieXVNjwFXoY7Ua/0beGM0b/Sqr17jBNGVyU1w9E4Ob7Q5e4ppBxNI0z9JG1xsBzgtwQ8D+9RtxUS4NHESbnwILJOn33Dgate/J6fcVQpET5rGiWv/j72eV121G0CXYA5QPHPm+FhD29Mme7PNNSS0hts6dyOGg3zcnfgRWwIhpNzQjRmPYW9qOm51WcLIune1KfG2/lTH72OaXeaJz2uTSppvkgZrY54HR8lonipZSYcy+kSy/aiyAKeD3b/ifkw0Z1FjTGem4coKJycQIjJmnkn9/jBnz1G0dRyzfruuG8VfuN1WNLkxW66+Dbb8GCBhfCVCkYJTTFhxoSHSRDaauUm2gRL9Z8OARQnSwT3YubnCRue57BoA07Sk+U08pcaRVfcc3Av5neCzRJZs7vxrHyXz/5lgkdQ5tAci4lfVyhJTw4IUcE44o7I5j/QrzElA1p/TFvqz0E5XxKEUn69u3xWcyUm0FZYkYeqSzCCa6dPnt7lUNl1m+AE//5SR7URDJv+4+HqQpT66dtCGTPTSEXCkrBWTX6D0tCdTAI5ctB0OALLgeR0enxA/cxV5haTeNHoLDvqbdb4deTD0dpr2D0ICaO/vFTnODWT9JlK0gsANU0wR654K4muAASHKfbevT0uRPhpdNMyLDGqdXcOSwNu/PZFBOzKXJ6jjZ6mjNXvmM5z6pWgCgjMP8Vy9T1fZRUBCreV88JfpV30zudj2TAI/PutEt9qpW+9XFAZ0X/6SE7eSe0a3J5AxHnY3NC4j38T8JgsozsVAMcriZyJduWyR/zzAMlbRHxJDdnb1OtdBG4FwKA1WH54C6pU6wKoQ4L6ZBE9sAID1MsPhilAj4a/W7ANNwqpSuECvGftmzh4aGwhjx9GHgdbRLhyILlOLCjFP1UvT0hTAkh6DTangEJZZSS2qJJ8OUy+m15AXpLXv0euvWGQ1tNCCX37yRxgNKL3NbJx6+mTPa8c5PFmxtliyj9w6HilFQj6uIFUuV2Z6Davg7cp/ITKeXrbwzLmo6DtPlRwNO6zvVU0YLvdRyidsFc1MLTfYlZfL1s+R8iodTLFHKsxfMqhnI0ohPe40JgilRIJPFYDRW3+Y8pyDO5oDm0Kikg0H0sbKcbp7S0DXwRN9hpTSuDPn9BICWsycoQf6apqKUt00SsxwsJK6mW+hOPyUyspC2C8I4sH4BanM3vZOJ7NPmL6aaZEAurW0tMQ8Uhd5x4bX1wKF9IFhDtwVbR0LS2ZUmNbhveO3A1FPI/DZvasy7RkB7QfltXqKqEvQ2Xe+PQHujB+Uq3wEL9lAONx0469eAva6pQ30u8sh+qHa+zLrIA07e+/zKUNyh95CxKdRrAqdAJFw6XOUAXvlHOvaXcNwqeOtThqFtpqO0op4FiJJtt+6RiDs/Y+0ZyyvZpsj9IYJF3wLn0Vm1sUqN7nYwmaW4JnA3L0MlDupMsKiBAgkz9WbksFTViiMbsYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_0164Y7EGKPzF3sVFwa7FSGVT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "Cold Brew",
+       "size": "Large"
+      }
+     ],
+     "handoff": {
+      "kind": "delivery",
+      "address": "4 Harbour Road"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1721,
+   "output_tokens": 416,
+   "output_tokens_details": {
+    "thinking_tokens": 295
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

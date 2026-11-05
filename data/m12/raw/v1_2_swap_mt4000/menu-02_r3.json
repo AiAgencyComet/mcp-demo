@@ -1,0 +1,55 @@
+{
+ "case_id": "menu-02",
+ "rep": 3,
+ "request": "A customer wants to know what sizes the cold brew comes in.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "max_tokens": 4000,
+ "ms": 1227,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSpAUKEAgTGAI4AUIIdGhpbmtpbmcSDIJpZiXox5KjcltNnBoMoDJL3gg4SxICZFw+IjDDAxxtb1BMSJd+72d9BLAnZleo/inDqvacPAbQ5zTcCCcDX3sKUO9K6WeLnINEGJ4qwQRI6bNf5gGePjE/1r8q/ZqAvDqp7JTKVPt48ZE+YSaT6Khr8c1RXCYX8mpjLYU3hRdcW0cttuN3o2DLbCR4LQ3u0QmZcmgBjfvEKgeHUVVG1Xbl/mTYEUb/xcrvYUMlPCCT4006cC56j324f0G3HG5GrwWW6UJmHt6KkGemg1a2OJOcjUJ+crHKVUzbYjL26tq5hNwCIptNWgG1MTQEGtRHG5oK43OjR0gpPcm6gKZdlJVpg2DsWkUQ42AT3KPLjC25FTgbbHrTCt2LUnchKXkU2abRlSIuWpET8YzJB2ujdEvZrct+quWJXzUjI/KYOGTzFGfW2xJkEJsUTQsPbByAKVz2IQnn84uxtXStInH4ULX3m9YWTQiDhZArOCnO+cnC8Qu3xbTpo4pELzD9H5tlMMacTNr4Aw9mQgupQ801sijTNINRxgBif2NOI0bx01OQqorH8sQ8pude1cecu9VZr0n7DzmZPWN8VQ3FNQSVxZBnuVgbsq+VtoxospqvOnq8ym3kFoiKkUPgw5ZXM0g4GaO0T+MsO/Oxwz1N+SBr4vPBlBYiAnBtqYAZ8IbD1Nam/h/HrdW4ojnhujOkhbkawNW8CHm5lbM8Ao4r0X3AlJzuf2URKI9IJg+JvYV2KO7+3U8YxfZdHwhtmq+SJis8cqEfwiGOZnkzeNCtGSHayAoSLx4//JHGlkB8ilj4IPT42KmtlwrlJ84m5UA3SKEtvpsiySoHI4QtCd6qynwgIlXxVsPBVUsq25TrDP1sfTw2GAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01GKRoJn8yuQCiwBQ4WgfURF",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1809,
+   "output_tokens": 63,
+   "output_tokens_details": {
+    "thinking_tokens": 30
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

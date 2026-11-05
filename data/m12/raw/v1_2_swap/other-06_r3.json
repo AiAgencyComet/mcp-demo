@@ -1,0 +1,57 @@
+{
+ "case_id": "other-06",
+ "rep": 3,
+ "request": "An office wants coffee for 40 people on Friday. Get me a quote.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "ms": 1020,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS8gUKEAgTGAI4AUIIdGhpbmtpbmcSDLff3theKOdW9ukOvxoMxDhPsAZ5zPvxJmQFIjDrCn+nWlDW/3teWTKFdu/VkJx2+B2ysNcAOWEBY60MeEqnT/bMxSpHjTMmemoBrhIqjwVAKw8xKAMwLj+mhQoNNX9zP7zfBINeGiZRfi/o23dqs+s8M0rI6lXTvCjF4FH7Ic1H3Ith0ds382D5mfQ0ev9UnsHuLMUEIXl1GUoMIGirN/nB1T6P4ZoPUONKJshDorOMd8+cwvTVxJnNHx+PpwpDQ/77qTCdz3i6kA63ot61pexSzTLbTLNtCmusDUxstLAJuG+APOJohLlGj1H6jeRzKFS4KtzZ1jdhYt4B0k3vTOAHGffquzrR5yK5FOfWzYZI06aYi9T0l7ONB7u/y099n9j3Gt8UCoroK+/RVBQk5nzaaMAeemD0Iu4kftPG3OJvA0ynOGpUrj3Yz92gFli91DIkoC70tSlVMatwP9WVEU+YFNVLhOEgi89vzC/a1yakXSS+EGp0thBcDuqx3TpLR22yRIGB5dj1yMBYgwlI2XdAQkEzQPeD6lmcIcGOHgu7OdfE2rBzUPIWZRw4z8qbpxFxo/gdvJZfHm6gitiJjTsGQEtkbit0k/gwzIPQuf//GlvhN2BrGcCrgZc1vvQSqDrZUap9mpPX6VZQTe1JPabRowuMohRpVuCETO6hdHL+LyTW6uxCVmJxuf+esfCZfz1fVqKrViNAWL+JyPaOlwX70NIf+GRuODkge6g+p3MqXFhUx0UArR+EFqR37nGRCkaDo/Wx4TDbYRQ6EDWyLCQPanamG8bx0d2EG/btQm9BFc45x03e86EhpXVwZ9j0Zr7LGG04E0/x7J6jl5TyubbUGQR92DbcqBCW9aJW+9sYSDuphGKy4VX97oBIY6grLmILbLolhZ+bKOCsS2LQ8aziRdRlGXiNIkyZQ3sYMRwEIO2i06hlQ9f15SE7Y3wr2JD7sWtWccoKCNxdzcykGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_011hoWXgiTX2EKLkZ521hEdd",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "people": 40,
+     "day": "Friday"
+    },
+    "name": "catering__quote_event",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1813,
+   "output_tokens": 122,
+   "output_tokens_details": {
+    "thinking_tokens": 47
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

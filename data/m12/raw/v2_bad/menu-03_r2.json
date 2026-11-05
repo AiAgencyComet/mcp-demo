@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-03",
+ "rep": 2,
+ "request": "Pull up the full drinks list with prices, I'm redoing the chalkboard.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1004,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS5AUKEAgTGAI4AUIIdGhpbmtpbmcSDC+TJlabehprx/MV4BoMAczKm2hhdlq7JGr5IjArtufFSQDlOMq5hUxb3IDNuCPoRi3igqimNLkGlOfSg1g9kZq904vD3u/MnVkk7lAqgQWtq70RFL7JNEHLiz5tUEtkZzrRpy07wdnz4Xy13TNB+EWvcg9uULsSJQ13+rJgZPm1lpZZTBml1U9nxUsjVzkMnOH6WDCo8H1li1XsPTURwPF0h/n+mz4sE3QnRb9fHclbGKzVzSdxCFz8KgqrI/1nGzzkyDjLhS3oP2CYZahn75MTE8TDoGjYnLs7fMdCVmmMGM26om31QsXrZ8FUYkYrIYluwl+CX2O/D0ld6bsrWizuFa98LZX/yytjEXAgk+mCbALKj0XF0EDeguYWCsVRNwNH5kWvC1cNWb7z9Q8oeVKiPmSuxixviRlS6eliC0sTHxOo1Hq6+QOPQh+fJX+5F4xacUCz452SC7L65v4wTdLWbOsOm3sU14BN1Qhu+6a9VwV2mIGJk0ce2PmrFSI2nrmNZ5Je27UA+JMZ5xJ8GGiLA+R0AQfVTpqaEpO4VkOMZ0QEzLykDp8tO+vR814F9MBWrM6Hg4HG8SpysgZ3E70M0jGhbV2V+OMZGqtv5nGcMkaMfIOKjyTS/J8dwBRTW7XhBXSHaV+XpFnSiSrxYc0FnfGMzrmghNxB0sSq57UECSgHJaRosKjkzkd6nYdSOX758ItTGM/CDal/QI3yRMKvFiqbr0zy3nXjB9OsABz0a5ys8ZNPTQ7od+mN8QT/4egRJK/SqWC9euOmNvyD9mqNrPjxWozFZxmXKj1kMen8CwFsIA4dW5IkzgJ68WrR8onrR5KuJ1omFBD7jycWnoFKdOiQnO30NRkwqLzm+5eMigh0OE955jD2PQTm/ACI4sbIEyG21KOOdkAzfvUiCESs5mgOGJYzD78ZarnRp4C6+MRtrNsaEiC7UN+8qHhxsRgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Awfc5cMxtyxTYsVk77inAM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__mn_list",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1640,
+   "output_tokens": 84,
+   "output_tokens_details": {
+    "thinking_tokens": 51
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

@@ -1,0 +1,54 @@
+{
+ "case_id": "menu-04",
+ "rep": 2,
+ "request": "Is there anything on the menu under three dollars?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 974,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSuQUKEAgTGAI4AUIIdGhpbmtpbmcSDFesneFz8NghfmIsQRoMUfzaxRyqCykTcbysIjDJ23HrFhX0B4x7R7Y4uaCG1/dm2P45t28QqYTmu9ul5nhOz9ypjwucQs0nVlakNd8q1gTnkDhD9U7Qr6q/zVaqHY77jlqp1X80Q5+APeNbJP0Ru8AuOMDV1Z7ZSOG43T0ENKdUf68AKTBhKW0UoosoimGkn5nlSus0gPYPTAM8umgnTSUb0jDJS+KNptpPzI7WHNZLxIH4kH05cU0nDhATgRrkY8mgvvheVnuVZH69rSqWPmgGKUTwbKjDR3XrwVHJs+2gZX13RpYIV8BKt3wI1O8vRXoBC+jxD5LEEmA4xV5uiJZ/H5psThtglH3OQBMpcihuetJfDfXO13YE5K6U5INGHoIBOsdfQxpr+PtPHTBKy+18TvrfkU6xgUs1u59kBVZIRt2ZirNTXVRs7Xrm2xso1deLxFsnkVcJfGSu7yrDxEU7/SVuWuw+N+XkfImBllK6ggxe53F2zcPDS3OnHvNCph2ATc/dqdMy6Cn0mABrtVmcaeLSy5DJUGBnEA/MEaAXZQbjVvg4hep83BjxpLYLOhcHXI8W37cm1i9TOgYRBsUIcNmH/mG8Ne4UU5HJzT90Smj2BoiTqrikABvKIaRxe7nhGX+5zYEyrxOfsatHXPmTBjUOTK6vwy2NwVumpLUGTgukJCU/VkmgZk6qcwKJz2JOIN0ln3Qd/lLWJ7YpxCP8nvXwcMsKeEjtPKlsrDmp/fzrgfXmpmEn5JPiPq5va2F2ZUyenX82K+ynNhsRNloalyXXMt0lIvLwoT8WSoI1/fQ2hjVJaUewF82/ooE6UOpOGfkNR0yvAPqCSbRPZ3Z7vJVa17sjdUqdbHeEHkLNXsXEBI3+QL6SZzvqGKiOoJwfYJT8GAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01VsyG6Zuvs6R8JCn9pKdcW5",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {},
+    "name": "fernhill__get_menu",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1830,
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 34
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

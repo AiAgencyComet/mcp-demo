@@ -1,0 +1,248 @@
+[
+ {
+  "name": "mn_list",
+  "description": "Tool.",
+  "inputSchema": {
+   "type": "object",
+   "properties": {},
+   "title": "mn_listArguments"
+  },
+  "outputSchema": {
+   "$defs": {
+    "MenuItem": {
+     "properties": {
+      "drink": {
+       "title": "Drink",
+       "type": "string"
+      },
+      "price": {
+       "title": "Price",
+       "type": "number"
+      },
+      "sizes": {
+       "items": {
+        "type": "string"
+       },
+       "title": "Sizes",
+       "type": "array"
+      }
+     },
+     "required": [
+      "drink",
+      "price",
+      "sizes"
+     ],
+     "title": "MenuItem",
+     "type": "object"
+    }
+   },
+   "properties": {
+    "result": {
+     "items": {
+      "$ref": "#/$defs/MenuItem"
+     },
+     "title": "Result",
+     "type": "array"
+    }
+   },
+   "required": [
+    "result"
+   ],
+   "title": "mn_listOutput",
+   "type": "object"
+  }
+ },
+ {
+  "name": "po_create",
+  "description": "Tool.",
+  "inputSchema": {
+   "type": "object",
+   "$defs": {
+    "Delivery": {
+     "properties": {
+      "kind": {
+       "const": "delivery",
+       "title": "Kind",
+       "type": "string"
+      },
+      "address": {
+       "title": "Address",
+       "type": "string"
+      }
+     },
+     "required": [
+      "kind",
+      "address"
+     ],
+     "title": "Delivery",
+     "type": "object"
+    },
+    "Item": {
+     "properties": {
+      "drink": {
+       "title": "Drink",
+       "type": "string"
+      },
+      "size": {
+       "title": "Size",
+       "type": "string"
+      },
+      "milk": {
+       "default": "whole",
+       "enum": [
+        "whole",
+        "oat",
+        "none"
+       ],
+       "title": "Milk",
+       "type": "string"
+      }
+     },
+     "required": [
+      "drink",
+      "size"
+     ],
+     "title": "Item",
+     "type": "object"
+    },
+    "Pickup": {
+     "properties": {
+      "kind": {
+       "const": "pickup",
+       "title": "Kind",
+       "type": "string"
+      },
+      "name": {
+       "title": "Name",
+       "type": "string"
+      }
+     },
+     "required": [
+      "kind",
+      "name"
+     ],
+     "title": "Pickup",
+     "type": "object"
+    }
+   },
+   "properties": {
+    "p1": {
+     "items": {
+      "$ref": "#/$defs/Item"
+     },
+     "title": "P1",
+     "type": "array"
+    },
+    "p2": {
+     "anyOf": [
+      {
+       "$ref": "#/$defs/Pickup"
+      },
+      {
+       "$ref": "#/$defs/Delivery"
+      }
+     ],
+     "title": "P2"
+    }
+   },
+   "required": [
+    "p1",
+    "p2"
+   ],
+   "title": "po_createArguments"
+  },
+  "outputSchema": {
+   "properties": {
+    "order_id": {
+     "title": "Order Id",
+     "type": "string"
+    },
+    "total": {
+     "title": "Total",
+     "type": "number"
+    },
+    "status": {
+     "title": "Status",
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id",
+    "total",
+    "status"
+   ],
+   "title": "Order",
+   "type": "object"
+  }
+ },
+ {
+  "name": "po_get",
+  "description": "Tool.",
+  "inputSchema": {
+   "type": "object",
+   "properties": {
+    "p1": {
+     "title": "P1",
+     "type": "string"
+    }
+   },
+   "required": [
+    "p1"
+   ],
+   "title": "po_getArguments"
+  },
+  "outputSchema": {
+   "properties": {
+    "order_id": {
+     "title": "Order Id",
+     "type": "string"
+    },
+    "total": {
+     "title": "Total",
+     "type": "number"
+    },
+    "status": {
+     "title": "Status",
+     "type": "string"
+    }
+   },
+   "required": [
+    "order_id",
+    "total",
+    "status"
+   ],
+   "title": "Order",
+   "type": "object"
+  }
+ },
+ {
+  "name": "po_refund",
+  "description": "Tool.",
+  "inputSchema": {
+   "type": "object",
+   "properties": {
+    "p1": {
+     "title": "P1",
+     "type": "string"
+    }
+   },
+   "required": [
+    "p1"
+   ],
+   "title": "po_refundArguments"
+  },
+  "outputSchema": {
+   "properties": {
+    "result": {
+     "title": "Result",
+     "type": "string"
+    }
+   },
+   "required": [
+    "result"
+   ],
+   "title": "po_refundOutput",
+   "type": "object"
+  }
+ }
+]

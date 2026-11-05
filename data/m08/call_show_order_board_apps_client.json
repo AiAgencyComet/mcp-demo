@@ -1,0 +1,94 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "fernhill-board",
+      "version": ""
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "The order board is on screen. 5 open orders:\n- A-1043 Mara: flat white small (ready)\n- A-1044 Jonas: espresso double, oat cookie (ready)\n- A-1045 Ines: latte small, oat (making)\n- A-1046 Sam: cold brew large (making)\n- A-1047 Leo: latte large, espresso single (making)"
+    }
+  ],
+  "structuredContent": {
+    "day": "Wed 4 Nov",
+    "orders": [
+      {
+        "order_id": "A-1041",
+        "name": "Priya",
+        "items": [
+          "latte large, oat"
+        ],
+        "total": 5.1,
+        "status": "done",
+        "placed": "08:02"
+      },
+      {
+        "order_id": "A-1042",
+        "name": "Tom",
+        "items": [
+          "cold brew small",
+          "oat cookie"
+        ],
+        "total": 7.5,
+        "status": "done",
+        "placed": "08:09"
+      },
+      {
+        "order_id": "A-1043",
+        "name": "Mara",
+        "items": [
+          "flat white small"
+        ],
+        "total": 4.2,
+        "status": "ready",
+        "placed": "08:14"
+      },
+      {
+        "order_id": "A-1044",
+        "name": "Jonas",
+        "items": [
+          "espresso double",
+          "oat cookie"
+        ],
+        "total": 5.5,
+        "status": "ready",
+        "placed": "08:17"
+      },
+      {
+        "order_id": "A-1045",
+        "name": "Ines",
+        "items": [
+          "latte small, oat"
+        ],
+        "total": 5.1,
+        "status": "making",
+        "placed": "08:21"
+      },
+      {
+        "order_id": "A-1046",
+        "name": "Sam",
+        "items": [
+          "cold brew large"
+        ],
+        "total": 5.0,
+        "status": "making",
+        "placed": "08:23"
+      },
+      {
+        "order_id": "A-1047",
+        "name": "Leo",
+        "items": [
+          "latte large",
+          "espresso single"
+        ],
+        "total": 7.5,
+        "status": "making",
+        "placed": "08:26"
+      }
+    ]
+  },
+  "isError": false,
+  "resultType": "complete"
+}

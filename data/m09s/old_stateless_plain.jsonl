@@ -1,0 +1,22 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": true, "ms": 1441.0, "msg": "4.50 (answered by server pid 1216)"}
+{"call": 2, "ok": true, "ms": 480.0, "msg": "4.50 (answered by server pid 1235)"}
+{"call": 3, "ok": true, "ms": 498.0, "msg": "4.50 (answered by server pid 1247)"}
+{"call": 4, "ok": true, "ms": 493.0, "msg": "4.50 (answered by server pid 1248)"}
+{"call": 5, "ok": true, "ms": 493.0, "msg": "4.50 (answered by server pid 1251)"}
+{"call": 6, "ok": true, "ms": 474.0, "msg": "4.50 (answered by server pid 1267)"}
+{"call": 7, "ok": true, "ms": 490.0, "msg": "4.50 (answered by server pid 1268)"}
+{"call": 8, "ok": true, "ms": 475.0, "msg": "4.50 (answered by server pid 1269)"}
+{"call": 9, "ok": true, "ms": 484.0, "msg": "4.50 (answered by server pid 1286)"}
+{"call": 10, "ok": true, "ms": 472.0, "msg": "4.50 (answered by server pid 1287)"}
+{"call": 11, "ok": true, "ms": 485.0, "msg": "4.50 (answered by server pid 1289)"}
+{"call": 12, "ok": true, "ms": 483.0, "msg": "4.50 (answered by server pid 1306)"}
+{"call": 13, "ok": true, "ms": 492.0, "msg": "4.50 (answered by server pid 1307)"}
+{"call": 14, "ok": true, "ms": 480.0, "msg": "4.50 (answered by server pid 1308)"}
+{"call": 15, "ok": true, "ms": 485.0, "msg": "4.50 (answered by server pid 1323)"}
+{"call": 16, "ok": true, "ms": 473.0, "msg": "4.50 (answered by server pid 1325)"}
+{"call": 17, "ok": true, "ms": 487.0, "msg": "4.50 (answered by server pid 1326)"}
+{"call": 18, "ok": true, "ms": 486.0, "msg": "4.50 (answered by server pid 1340)"}
+{"call": 19, "ok": true, "ms": 474.0, "msg": "4.50 (answered by server pid 1342)"}
+{"call": 20, "ok": true, "ms": 491.0, "msg": "4.50 (answered by server pid 1343)"}
+{"summary": {"cell": "old_stateless_plain", "calls": 20, "ok": 20, "http_requests": 23, "median_call_ms": 485.0, "median_cold_ms": 238.5, "methods": ["initialize", "notifications/initialized", "tools/call", "tools/list"]}}

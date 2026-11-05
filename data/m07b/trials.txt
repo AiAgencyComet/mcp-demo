@@ -1,0 +1,5 @@
+# m07b trials: export_sales_report(days=12), 0.25 s per day, pollIntervalMs 250, 2 copies, 5 trials per config
+config            polls answered   result reached (client polls on)   result reached (client stops at 1st error)   1st error at poll   errors seen
+shared+rr           65/65   (100.0%)   5/5 trials                         5/5 trials                                  -                 []
+memory+rr           35/70   ( 50.0%)   5/5 trials                         0/5 trials                                  [1]                 ['Failed to retrieve task: Task not found']
+memory+affinity     65/65   (100.0%)   5/5 trials                         5/5 trials                                  -                 []

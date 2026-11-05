@@ -1,0 +1,32 @@
+$ python schema_diff.py tools_1.0.0.json tools_1.1.0.json --old-version 1.0.0 --new-version 1.1.0
+  EVAL   place_order: input 'items[].drink' description changed  'A drink name from get_menu' -> "Name of one menu item from get_menu, a drink or a food item, for example 'latte' or 'oat cookie'"
+  EVAL   place_order: input 'items[].size' description changed  None -> "A size of that item from get_menu, for example 'small', 'large', 'single', 'double', or 'one' for food"
+  EVAL   refund: description changed  'Refund one order. The person must confirm first.' -> 'Refund one order: give the money back to the customer. The server asks the person to confirm, so call this tool at once.'
+needs: patch bump   declared: 1.0.0 -> 1.1.0 (minor)   -> OK
+3 description change(s): run the tool-choice eval before release
+exit code: 0
+
+$ python schema_diff.py tools_1.1.0.json tools_1.2.0-additive.json --old-version 1.1.0 --new-version 1.2.0
+  MINOR  place_order: optional input 'note' added
+  MINOR  tool added: get_stock
+needs: minor bump   declared: 1.1.0 -> 1.2.0 (minor)   -> OK
+exit code: 0
+
+$ python schema_diff.py tools_1.1.0.json tools_1.2.0-required.json --old-version 1.1.0 --new-version 1.2.0
+  MAJOR  place_order: input 'items[].milk' enum lost ['none']
+  MAJOR  place_order: new required input 'pickup_time'
+needs: major bump   declared: 1.1.0 -> 1.2.0 (minor)   -> FAIL: version too small for this change
+exit code: 1
+
+$ python schema_diff.py tools_1.1.0.json tools_2.0.0-rc1.json --old-version 1.1.0 --new-version 2.0.0-rc1
+  MAJOR  tool removed: get_menu
+  MAJOR  tool removed: order_status
+  MAJOR  tool removed: place_order
+  MAJOR  tool removed: refund
+  MINOR  tool added: mn_list
+  MINOR  tool added: po_create
+  MINOR  tool added: po_get
+  MINOR  tool added: po_refund
+needs: major bump   declared: 1.1.0 -> 2.0.0-rc1 (major)   -> OK
+exit code: 0
+

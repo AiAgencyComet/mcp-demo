@@ -1,0 +1,36 @@
+$ claude mcp add --scope project fernhill -- python ../first_server.py
+Added stdio MCP server fernhill with command: python ../first_server.py to project config
+File modified: .../m02/scopes-demo/.mcp.json
+
+$ cat .mcp.json
+{
+  "mcpServers": {
+    "fernhill": {
+      "type": "stdio",
+      "command": "python",
+      "args": [
+        "../first_server.py"
+      ],
+      "env": {}
+    }
+  }
+}
+$ claude mcp add --scope local fernhill -- python ../first_server.py   (same name, local scope)
+Added stdio MCP server fernhill with command: python ../first_server.py to local config
+File modified: ~/.claude.json [project: .../m02/scopes-demo]
+
+$ claude mcp list
+Checking MCP server health…
+
+fernhill: python ../first_server.py - ✔ Connected
+
+$ claude mcp get fernhill
+fernhill:
+  Scope: Local config (private to you in this project)
+  Status: ✔ Connected
+  Type: stdio
+  Command: python
+  Args: ../first_server.py
+  Environment:
+
+To remove this server, run: claude mcp remove fernhill -s local

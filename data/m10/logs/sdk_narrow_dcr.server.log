@@ -1,0 +1,14 @@
+RS http://127.0.0.1:8310/mcp mode=per-tool-scopes
+INFO:     Started server process [72836]
+INFO:     Waiting for application startup.
+mcp.server.streamable_http_manager StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8310 (Press CTRL+C to quit)
+fernhill.auth 401 server/discover None token_sent=False
+INFO:     127.0.0.1:59504 - "POST /mcp HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59504 - "GET /.well-known/oauth-protected-resource/mcp HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+mcp.server.streamable_http_manager StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [72836]

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fernhill-board": {
+      "command": "/path/to/mcp-demo/code/.venv-new/bin/python",
+      "args": ["/path/to/mcp-demo/code/m08/server.py"]
+    }
+  }
+}

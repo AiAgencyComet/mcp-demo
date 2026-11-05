@@ -1,0 +1,234 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "fernhill-board",
+      "version": ""
+    }
+  },
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "tools": [
+    {
+      "name": "show_order_board",
+      "title": "Order board",
+      "description": "Show today's Fernhill orders on an interactive order board. The barista can mark orders done on the board.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "title": "show_order_boardArguments"
+      },
+      "outputSchema": {
+        "$defs": {
+          "OrderRow": {
+            "properties": {
+              "order_id": {
+                "title": "Order Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "total": {
+                "title": "Total",
+                "type": "number"
+              },
+              "status": {
+                "title": "Status",
+                "type": "string"
+              },
+              "placed": {
+                "title": "Placed",
+                "type": "string"
+              }
+            },
+            "required": [
+              "order_id",
+              "name",
+              "items",
+              "total",
+              "status",
+              "placed"
+            ],
+            "title": "OrderRow",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "day": {
+            "title": "Day",
+            "type": "string"
+          },
+          "orders": {
+            "items": {
+              "$ref": "#/$defs/OrderRow"
+            },
+            "title": "Orders",
+            "type": "array"
+          }
+        },
+        "required": [
+          "day",
+          "orders"
+        ],
+        "title": "Board",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://fernhill/order-board",
+          "visibility": [
+            "model",
+            "app"
+          ]
+        }
+      }
+    },
+    {
+      "name": "mark_order_done",
+      "description": "Mark one order as done (the customer has the drink).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "mark_order_doneArguments"
+      },
+      "outputSchema": {
+        "$defs": {
+          "OrderRow": {
+            "properties": {
+              "order_id": {
+                "title": "Order Id",
+                "type": "string"
+              },
+              "name": {
+                "title": "Name",
+                "type": "string"
+              },
+              "items": {
+                "items": {
+                  "type": "string"
+                },
+                "title": "Items",
+                "type": "array"
+              },
+              "total": {
+                "title": "Total",
+                "type": "number"
+              },
+              "status": {
+                "title": "Status",
+                "type": "string"
+              },
+              "placed": {
+                "title": "Placed",
+                "type": "string"
+              }
+            },
+            "required": [
+              "order_id",
+              "name",
+              "items",
+              "total",
+              "status",
+              "placed"
+            ],
+            "title": "OrderRow",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "order": {
+            "$ref": "#/$defs/OrderRow"
+          },
+          "open": {
+            "title": "Open",
+            "type": "integer"
+          },
+          "done": {
+            "title": "Done",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "order",
+          "open",
+          "done"
+        ],
+        "title": "DoneResult",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://fernhill/order-board",
+          "visibility": [
+            "app"
+          ]
+        }
+      }
+    },
+    {
+      "name": "order_status",
+      "description": "Return the status of one order.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "order_statusArguments"
+      },
+      "outputSchema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "order_statusOutput",
+        "type": "object"
+      },
+      "annotations": {
+        "readOnlyHint": true
+      },
+      "_meta": {
+        "ui": {
+          "visibility": [
+            "model"
+          ]
+        }
+      }
+    }
+  ],
+  "resultType": "complete"
+}

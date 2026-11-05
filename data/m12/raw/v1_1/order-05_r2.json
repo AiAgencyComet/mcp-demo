@@ -1,0 +1,69 @@
+{
+ "case_id": "order-05",
+ "rep": 2,
+ "request": "An oat cookie and a single espresso for pickup under the name Lee.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "f5ace75886e48c1a",
+ "ms": 1256,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQStwYKEAgTGAI4AUIIdGhpbmtpbmcSDPtfaG7EVBHrE1qnRxoMlgTq7GjyulUM/vR+IjC2gU7NkNZH0yjx52X+J9BlE1Nm6CB/HmA2q+VwO2HqRrXDBZnCTlhlyUi+sZ00BRIq1AXlrGLZ9ycUkz7sUhnPsPFv2EQelQt5GgMI8E0/K+fRQNGQNDMOS9W+eGY3pZ8zsTgXTGf+51BGuQcGr8RTtS8MYzsmVglx1AvqYg9xkt08Lk3dphsI6yEunUEhsYqIYBfAWdid7NKkMxbJpS7TsrqUUtBsrbMsJ8ihi5Jd4c6eqrLr9bI112XN3lH+iUoudHbDuufSpRNq8CS8F2+SN03+4npa7oRAL2DbwO8sGNDeeENPUH76K+fQdgckUIPE7wGcwhuTGa9ZH1IY8ZJlP5v9w0havTYU4ch9DSY0/SwyKBuJkdf+aY9j4x65QtUIHyDDZgotBiqtYgi/r6JQ+U5r/n5CeMf+ByVQOMEJa8kzxR8/JorQPA+6P0nPEN2z3afvQvkPUEgSXh5mlelCgGegjCg4TsUU0M9ytbnyA5XIn3QGOWaYzEuWg3m+c3RP205jI6ufoiqLavMoGQUPcdSDZFmEi972utVoYE9H4bprcVZ79TTPlysTSR0jDJODhlbkTq/nXQXqF2o/fYP97vHzN+61mEEYePtYwwP7mAvV+d554yjVv3llo6raw+SXfCDH4LE0oKAqhMxwd3FH3UsiJXYmzAcpueW4U+1ccVOYdf5mKFs6Fx4NsDpgy+HNu+P9sohfi/cvzjD0hs+UDyA0EUIohXcfzbMiEuUfQpUV5SRjtlqtiQZ/ZoB2oQWT8mkwwut8QliGkBdRE4OeVOIkXOWTq5Qca4OU/Y4BamSspd4BBj4yLMosPW70BRs0FOsIQDHjXbb7WeYVzYv49W1fZ3zVBh6ncJtH/eTG5Fwd28/EbFcwYLI/nd/adeSTObdEtcwW0HO72v5INchkP64HGsfZR5BoVkxT2OBIS8YsbX7W2KLkYKSVEmAyJjWRFkIXcWhUsP0HaGSLcRgrxb1lr3tMp5rY3ZelF0AxznNmkE++9iS9q2B/TrU3yURj+vx4SAX9GAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01D2JP49Mzh3fw9k93PwHTTp",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "oat cookie",
+       "size": "one"
+      },
+      {
+       "drink": "espresso",
+       "size": "single"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Lee"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1812,
+   "output_tokens": 208,
+   "output_tokens_details": {
+    "thinking_tokens": 76
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

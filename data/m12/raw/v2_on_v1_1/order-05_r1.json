@@ -1,0 +1,44 @@
+{
+ "case_id": "order-05",
+ "rep": 1,
+ "request": "An oat cookie and a single espresso for pickup under the name Lee.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "89a6f4ad69aa7d7a",
+ "ms": 3307,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1636,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 599
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

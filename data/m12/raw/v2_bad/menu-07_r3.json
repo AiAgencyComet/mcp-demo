@@ -1,0 +1,49 @@
+{
+ "case_id": "menu-07",
+ "rep": 3,
+ "request": "How much is an oat cookie?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "c5447a47d49c4d30",
+ "ms": 1752,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSpggKEAgTGAI4AUIIdGhpbmtpbmcSDJbxB5NMgBNLdZEAjBoMKHYl/68RO0LUFKSaIjC04WrUh40FLB+v73EhYxucWRUQjJwIKa/fpQYIL6Y5Tf1VP4K6ATHzdzqv14YDsnAqwwc61FV9qCcFpClGn2wZvDm75GyTjrY39oo/lOrrNVdYvf3jOKBD1vyaCBetzi7YouBu/Eew8djeUMRJ5DU90PqvmsUt9Jf9WdMLmjHwBkd+h91ZuOsGS9ciJ/8CouVF9PeOgCn5dvMVm7u5DcxxcFrnKPlHY+FCKxSt6DDOB9ukg8yiLUWwodUgVzC8/PT3hMyY2EK6VBECAUxNyXLnN8BY6ST9h1O54yLJy6JDPpy+LqSc97Upe6h0RSsWIzoIhYV2SWWWd7jEe7WhIeedvsRiajXHCR44NWJj7gEQ8FH6Y4c8iLPgXQpFpE7pM/6jqgO0gkipGes6bnQtdx7r4sYEGt+momE9NoBRBjCMTezEQvgVBzLNIyTu6B9nBtLh6Xj4Xl9Ep80tVz6lhLom6h15PuAuqGmHz39Qq/brE5y7+8JDNTUwK2WWK0SfbdvGGJN0grl+nwfn6uFAmYWrLJCUY+Z/MCg3FAGgx2mGFxV9lTlsiD0MrdKr6n8w3QvN2I/WTKIghRZNJeYLiURnD/pQJJddH9wf+iYCWScBSgVWpqX4i+OEuYAKzIc9GYTHYVpZs9fMlFrwx19e0n7kfs679mwsDy4ytkqzyvZdXTTUoaTI8mKqz+PTw8NOGgZGnq7MZ9F1NsB8aiRfA9nBmJ1TOce/7AuUSLn3rWUYfSPPUBtwOSd7xJLkoKotHVdfMsmXDUyXb0cQMPbGcYVYRfE1P0Qb9oiCFTpyNYf3Pkli0KcPKs2rNI4KKDHAHON+iZi+IAi2J0MJ02pK3oMLUM8Di6InVUEz8oXYAmo3LLseRP6reTnUEy+fiiS22IiYyFtWkL4QiF21UCQe6+lDn4fvHzvaPNa+NUxz5VZh7bxl634ivTp+VfBc1+awj5NlygBp9zbwFLvnflDnFvPLT3ZfwzBC6bMNYZzg7C1Ncqa1VNI7mHpexDo4K26xYZITkwYEVhzVUjUL5hNsaGIB+jDTD9utxRRs11YSShw6h5wkVWDZkZWbKRvWB5BX45diXZy5iHtcP4JoASiVEgj50tcbeXoD5DGxqvscPFxuMrEzJQTcvWBsfLMoooTdjdKgKsiFGt7xK9ZscltNDDlssbDQQQDBqgcjqwmpWxX1bw+rKAvFQ+n6BepmV9u0V9WBOoM/DPMuY9GyF4ieaF1HlYaMHwiZQiUiJIXQGbDiKNudGCabbWUz9B9e58Jium4C9QB95Ks9RugitFpWqYxv0FiDn6r6yi6iD3oa6v+5shRULk7JIcRZQDgtK1VHW3s3HFJ4DuEYAQ==",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "citations": null,
+    "text": "I can't look up menu prices. My tools cover purchase orders, stock levels, staff shifts, loyalty points, catering quotes, and customer orders, and none of them return item prices. You'll need to check the menu or the point-of-sale system for the oat cookie price.",
+    "type": "text"
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1623,
+   "output_tokens": 242,
+   "output_tokens_details": {
+    "thinking_tokens": 154
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

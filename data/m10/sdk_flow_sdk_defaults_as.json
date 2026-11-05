@@ -1,0 +1,154 @@
+{
+ "steps": [
+  {
+   "call": "list_tools",
+   "ok": true,
+   "result": [
+    "get_menu",
+    "place_order",
+    "order_status",
+    "refund"
+   ]
+  },
+  {
+   "call": "call_tool get_menu",
+   "ok": true,
+   "result": {
+    "isError": false,
+    "structured_content": [
+     "espresso $3.00",
+     "latte $4.50",
+     "flat white $4.20",
+     "cold brew $5.00",
+     "oat cookie $2.50"
+    ]
+   }
+  },
+  {
+   "call": "connect",
+   "ok": false,
+   "exception": "OAuthFlowError: No authorization code received"
+  }
+ ],
+ "final_token": {
+  "scope_field": "menu:read",
+  "has_refresh_token": false,
+  "claims": {
+   "iss": "http://127.0.0.1:9310",
+   "sub": "barista-ana",
+   "aud": "http://127.0.0.1:8310/mcp",
+   "scope": "menu:read"
+  }
+ },
+ "client_info": {
+  "application_type": "native",
+  "issuer_binding": "http://127.0.0.1:9310",
+  "registered_scope": "menu:read"
+ },
+ "events": [
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": null,
+   "body": "method=server/discover name=None",
+   "status": 401,
+   "www_authenticate": "Bearer resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", scope=\"menu:read\""
+  },
+  {
+   "who": "sdk",
+   "method": "GET",
+   "url": "http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp",
+   "authorization": null,
+   "body": null,
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/.well-known/oauth-authorization-server",
+   "authorization": null,
+   "body": null,
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/register",
+   "authorization": null,
+   "body": "{\"client_name\": \"Fernhill SDK demo\", \"application_type\": \"native\", \"scope\": \"menu:read\", \"grant_types\": [\"authorization_code\", \"refresh_token\"], \"token_endpoint_auth_method\": \"none\", \"redirect_uris\": [\"http://127.0.0.1:9399/callback\"]}",
+   "status": 201,
+   "www_authenticate": null
+  },
+  {
+   "who": "browser",
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=89866b66-396d-45eb-95a5-009fd1b868e4&redirect_uri=http://127.0.0.1:9399/callback&state=78gZXA7k…&code_challenge=<redacted>&code_challenge_method=S256&resource=http://127.0.0.1:8310/mcp&scope=menu:read",
+   "status": 302,
+   "location": "http://127.0.0.1:9399/callback?code=ALPqcBXB…&state=78gZXA7k…",
+   "scope": "menu:read"
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:9310/token",
+   "authorization": null,
+   "body": "{\"grant_type\": \"authorization_code\", \"code\": \"ALPqcBXB…\", \"code_verifier\": \"9u3RiBoS…\", \"resource\": \"http://127.0.0.1:8310/mcp\"}",
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": "Bearer eyJhbGci…",
+   "body": "method=server/discover name=None",
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": "Bearer eyJhbGci…",
+   "body": "method=tools/list name=None",
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": "Bearer eyJhbGci…",
+   "body": "method=tools/call name=get_menu",
+   "status": 200,
+   "www_authenticate": null
+  },
+  {
+   "who": "sdk",
+   "method": "POST",
+   "url": "http://127.0.0.1:8310/mcp",
+   "authorization": "Bearer eyJhbGci…",
+   "body": "method=tools/call name=refund",
+   "status": 403,
+   "www_authenticate": "Bearer error=\"insufficient_scope\", scope=\"refunds:write\", resource_metadata=\"http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp\", error_description=\"The tool refund needs the scope refunds:write\""
+  },
+  {
+   "who": "browser",
+   "method": "GET",
+   "url": "http://127.0.0.1:9310/authorize?response_type=code&client_id=89866b66-396d-45eb-95a5-009fd1b868e4&redirect_uri=http://127.0.0.1:9399/callback&state=-uvPVG3S…&code_challenge=<redacted>&code_challenge_method=S256&resource=http://127.0.0.1:8310/mcp&scope=menu:read+refunds:write",
+   "status": 302,
+   "location": "http://127.0.0.1:9399/callback?error=invalid_scope&error_description=Client+was+not+registered+with+scope+refunds:write&state=-uvPVG3S…",
+   "scope": "menu:read refunds:write"
+  }
+ ],
+ "as_flags": [
+  "--sdk-defaults"
+ ],
+ "authorize_scopes": [
+  "menu:read",
+  "menu:read refunds:write"
+ ]
+}

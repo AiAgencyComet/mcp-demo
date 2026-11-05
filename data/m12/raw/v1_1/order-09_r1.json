@@ -1,0 +1,69 @@
+{
+ "case_id": "order-09",
+ "rep": 1,
+ "request": "Chris at the window wants a large latte and an oat cookie. Pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "f5ace75886e48c1a",
+ "ms": 1557,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQS8wYKEAgTGAI4AUIIdGhpbmtpbmcSDIZ9pPU5R5eXaDaJcBoMivjcVBWSGd2x/q1QIjCB9fN3QHM7AHBunK4NDJumYa2LhxHflnhalwP8E8M9cKVX9c45gzWmZ/NHqmw9r/gqkAYjGeS7xZjjmebqxqvMZgt/lkJbEEgO77ZXwBrlp2/ol5MT+mRl5t8rU4zBUvPon7lfN3HeMk8f2e3pNS3RLUNx3quc1GiN3OYGYhYgmTSsASnUfbj8MZayvigbBmCAKncqDhwwaI34DYo5MrinUFEKgpjT+vouhvOArhiVZEX8u0uJ3FrxAaEQGHj9rwRYB1cOKcopq6ib35imgCB07lW9MfWEWIy7xfZJRCKjryUMbHr8+c+ZWWzwHyr7WStCbfC/zqsPwLA+VQgKb6uVX1YNoPmyaVzUUvtTUNL0O89+f/ex2FThZEIi8e6uy25Li3NdXKkeg/hcwlhVHvHsHA7KywBeccpA9rlIYNOetdETrJG134SrmAPkJI9Fl3Whvl+5I7F580GynOobqUbwXJt0GYGBSARl+e1QQ3UCTncpnbZcLQdvACmSsxzhoOKfxSbdBwXyV4n6sRLH7ovY9fYt4LqFMvMRcux/EmTuWBhL/VInuOVKAY8JpGq3pvGBp/RgRrOpaMzyMM5nwVejatUgHvMKDmrocyVmogZ68r0PIYpoYbsaAiXvYaW7Z8hknNONbtyi2SRKzyHnwZQZ8wNvHm7TRgG5vK10zdNb5Sr632DQtE0+MOjfiOzm95xHwpQvQE8CMxp4wiDjeyKUhilplmqG2hbYyB2MsQ4b/17Q++W1UAnZa9sBSTybmigAOnLrUL15JR3XFW9+XCZOe9uxedyfZbPN56AkAUR0/F5hWX3KXYFd6DK5jrEfWRa/RBgYs/OBJo9m7oXkJaE/A9r2ociRcoPX2AM0X842JuHSZZ7dBS+KMvB9U8kFwtU/yIvt9q06juKviwI8aqOWDx73zhMKK3r4oBMq8+CP04TpUNwpbgIqnEfNUr4f24zCoCgnBYadXTYYKBu/M2a2eoF30oN3TQrxkAG0HH9U5/Hi6KJa+n8aHkvMEqrtzDUtfHDeIT7lr/2Id+G2EZL7l+OsyY+WiwXq5sL30Y8UaanIbwdp4weNSaUBjlruQLjGaQ0KssrrI3OC7fPv1jbId/+YGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01Rvx44Rux8WHrSWu4B2Ac26",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "latte",
+       "size": "large"
+      },
+      {
+       "drink": "oat cookie",
+       "size": "one"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Chris"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1814,
+   "output_tokens": 228,
+   "output_tokens_details": {
+    "thinking_tokens": 97
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

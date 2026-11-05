@@ -1,0 +1,8 @@
+layout check: {'chat_overflow_px': 0, 'frame_height_px': 387}
+recorder: 218 frames, 0 skipped []
+bridge log: 31 entries in page, 31 on disk
+teardown result: {}
+console lines: 1
+   [warning] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+video: /path/to/mcp-demo/data/m08/host_run.mp4 from 218 frames over 10.8 s (20.1 captures per second)
+screens: ['01_host_connected.png', '02_board_loading.png', '03_board_loaded.png', '03b_board_card.png', '04_consent.png', '05_marked_done.png', '05b_board_card_done.png', '06_model_context.png', '07_after_teardown.png', 'check_deny.png']

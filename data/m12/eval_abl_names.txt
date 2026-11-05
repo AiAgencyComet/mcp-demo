@@ -1,0 +1,20 @@
+release abl_names (main set)  model claude-haiku-5-5  36 requests x 3 reps = 108 runs  tools offered 9  avg input 1720 tok
+  tool choice (all)         92.6%   per rep [91.7, 91.7, 94.4]
+  tool choice (Fernhill)    91.1%
+  call has right effect     66.7%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 87/13  status 100/100  refund 78/78  other 100/100
+  no tool call 1   stopped by max_tokens 3   cost $0.0283   avg 1394 ms
+    wrong x4: fernhill__po_refund -> fernhill__po_get
+    wrong x3: fernhill__po_create -> fernhill__mn_list
+    wrong x1: fernhill__po_create -> None
+    call fail x3: order-01: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-02: is_error: Error executing tool place_order: 'Cold Brew' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-03: is_error: Error executing tool place_order: 'Espresso' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-10: is_error: Error executing tool place_order: 'Espresso' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-06: is_error: Error executing tool place_order: 'Flat White' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-07: is_error: Error executing tool place_order: 'Cold Brew' is not on the menu. Call get_menu to see the menu.
+    call fail x2: order-08: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x1: order-04: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+GATE PASS (baseline v1)
+exit code: 0

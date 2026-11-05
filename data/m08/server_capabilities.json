@@ -1,0 +1,15 @@
+{
+  "prompts": {
+    "listChanged": true
+  },
+  "resources": {
+    "subscribe": true,
+    "listChanged": true
+  },
+  "tools": {
+    "listChanged": true
+  },
+  "extensions": {
+    "io.modelcontextprotocol/ui": {}
+  }
+}

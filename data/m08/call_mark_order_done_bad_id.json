@@ -1,0 +1,16 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "fernhill-board",
+      "version": ""
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "Error executing tool mark_order_done: No order A-9999. Order IDs look like A-1043."
+    }
+  ],
+  "isError": true,
+  "resultType": "complete"
+}

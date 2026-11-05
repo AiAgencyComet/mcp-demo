@@ -1,0 +1,30 @@
+{
+  "manifest_version": "0.4",
+  "name": "fernhill-coffee",
+  "display_name": "Fernhill Coffee (course example)",
+  "version": "1.1.0",
+  "description": "Menu, orders and refunds for Fernhill Coffee, a made-up shop. Example server for the DeepOnAI MCP course.",
+  "long_description": "All data in this server is invented. Tools: get_menu, place_order, order_status, refund (the refund asks the person to confirm). Resources: the menu, one order by ID, the refund policy. Prompts: daily_report, complaint_reply.",
+  "author": { "name": "DeepOnAI (course example)" },
+  "server": {
+    "type": "uv",
+    "entry_point": "server/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": ["run", "--directory", "${__dirname}", "server/server.py"]
+    }
+  },
+  "tools": [
+    { "name": "get_menu", "description": "Return every item on the Fernhill menu with its price and sizes." },
+    { "name": "place_order", "description": "Place a new order. Returns an order_id. Use that order_id in later calls." },
+    { "name": "order_status", "description": "Return the status of one order." },
+    { "name": "refund", "description": "Refund one order: give the money back to the customer. The server asks the person to confirm, so call this tool at once." }
+  ],
+  "tools_generated": false,
+  "compatibility": {
+    "platforms": ["darwin", "linux", "win32"],
+    "runtimes": { "python": ">=3.12" }
+  },
+  "keywords": ["coffee", "orders", "example", "course"],
+  "license": "MIT"
+}

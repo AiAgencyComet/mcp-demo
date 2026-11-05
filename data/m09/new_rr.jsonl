@@ -1,0 +1,23 @@
+{"event": "INIT ok"}
+{"call": 1, "ok": true, "ms": 32.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 2, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24397)"}
+{"call": 3, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 4, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 5, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24397)"}
+{"call": 6, "ok": true, "ms": 7.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 7, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 8, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24397)"}
+{"event": "KILLED copy 0 after call 8"}
+{"call": 9, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 10, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 11, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 12, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 13, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 14, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 15, "ok": true, "ms": 5.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 16, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 17, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 18, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24398)"}
+{"call": 19, "ok": true, "ms": 6.0, "msg": "4.50 (answered by server pid 24399)"}
+{"call": 20, "ok": true, "ms": 4.0, "msg": "4.50 (answered by server pid 24398)"}
+{"summary": {"spec": "new", "lb": "rr", "calls": 20, "ok": 20, "failed": 0, "killed_copy": 0, "kill_after": 8}}

@@ -1,0 +1,65 @@
+{
+ "case_id": "order-10",
+ "rep": 1,
+ "request": "Add a single espresso for pickup, name Kim.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "785705c9c9b622d7",
+ "ms": 1739,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQStQcKEAgTGAI4AUIIdGhpbmtpbmcSDHZj3tCU9nw4NrGhLBoMksdf3ea4s9bJGvSOIjBtFP4NPqr4gtyEsEY7o+TTw8IsWEuFKYvP+rm7bOCCDqOBMVwqfn6jIhUl2jcqg3gq0gZzoHef2MzYQIPwij6LvB/zfm9v7J9+ofKOVK20OK9vfqa+KG6pg/9Hz7lxLcoCmwDl/1ydJ4MVLc6LvbspKpsHnNLa7PyJ3ljoxUXgbczRQ8SV/HpU38YNZdlUYo0wgG1vsb/cu5VZp5fc7K5EyRiGf4xyW0HVdkNa66wbD+wjjLsWjbJ/teX8HOV3rN1+BEKgSkZeTsoYkbOzztDej/fjh1okZhm/7tdRaGGCSmyMaRlUoFPBfG5JJbp5K+gmeDVRGKEpgJ3E1FHQaJoaLAquXy4+Z6w6duqe9NQulXWu8xOQ6m4sIBRaODjKXXqZNeZ4XF6Bwm9hwo8UEzA+KP4I4I8qPy01AIVoczPE013Z8t70tYROlcJofHCyWwRoGEEWTg/Z8Wm5LxvUTigDD8HVdYtFysUmkqYEc6NkPOYj1iHwzO1GjpAVMHxDcTYZPtBBbdfgZS+NPXYnvzMFoknR2jO4uwOlkc+Mhiw2RoMTfWBfwCw73uaJetPrOKJ5V65QyHLXDsbYG6l+GY0kz/x2FBxlb31mpZEHL1Uw3qsUmti+B9qdcaWsg7Kj23aCG+apDyqmqyYPpZd1EzpSHQIRAb7Z/yLxUrel+qkrb6eDx9MB6UODnlWNvNe8Hj21UMWQnGFzdVjS2g3QpAiGbGlBnvRW8sfwEUtxCq9whkGdDdAvtA4KapashvfLe6XYt7gkvfC7CM02dNAbe7jE9Flf/atmYv4BxpkPKdJ28oA9A/vEu2Ipl+88vUoR5yb67U8hb4mimEkU7GwlcV1pwbgcSIBIcUivKSN0HlEJLQZGN2/TcEhJQZp3M4BGHHoFaXarMnx0ZuNqIc0UCGeAspQvTz6VtRnqONYVYx8jcgQcQEQU8e9bLJo9HUWVDAnIISAw2TtqyViA/DslazEXJKLz5deTiLpCq+X3j/wPOfMZ9itW62e8PEwADK3mT1JINehQL/epUdrhDhj32zExfEBB6JGubvG9EtiiCl3CqzxmCWxZE/Up6rszRGBhCP9xgd2NF+jl5oxs7ZuSGrhHhJ0IKi6pQSjcq8Teq+/+by4c5vxtk1k0ES+YsFup33/LUYtV0PATxeYs0XY47TSq7XtmLd/kNTL/cvLnbDstU9v8MOKcGAE=",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01BRaaDu5wAXj9XQftpEz1Fo",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "items": [
+      {
+       "drink": "espresso",
+       "size": "single"
+      }
+     ],
+     "handoff": {
+      "kind": "pickup",
+      "name": "Kim"
+     }
+    },
+    "name": "fernhill__place_order",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1806,
+   "output_tokens": 225,
+   "output_tokens_details": {
+    "thinking_tokens": 113
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

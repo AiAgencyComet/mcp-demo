@@ -1,0 +1,2 @@
+host    http://127.0.0.1:8820/   -> MCP server http://127.0.0.1:8810/mcp
+sandbox http://localhost:8821/sandbox.html

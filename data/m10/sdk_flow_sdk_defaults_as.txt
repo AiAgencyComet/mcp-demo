@@ -1,0 +1,49 @@
+MCP masterclass · module 10 · SDK client OAuth flow (mcp 2.3.0 OAuthClientProvider) AS flags=['--sdk-defaults']
+server http://127.0.0.1:8310/mcp; secrets cut to 8 characters
+  sdk  > POST http://127.0.0.1:8310/mcp
+             method=server/discover name=None
+  sdk  < 401   WWW-Authenticate: Bearer resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", scope="menu:read"
+  sdk  > GET  http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp
+  sdk  < 200
+  sdk  > GET  http://127.0.0.1:9310/.well-known/oauth-authorization-server
+  sdk  < 200
+  sdk  > POST http://127.0.0.1:9310/register
+             {"client_name": "Fernhill SDK demo", "application_type": "native", "scope": "menu:read", "grant_types": ["authorization_code", "refresh_token"], "token_endpoint_auth_method": "none", "redirect_uris": ["http://127.0.0.1:9399/callback"]}
+  sdk  < 201
+  browser > GET /authorize  scope='menu:read' resource='http://127.0.0.1:8310/mcp' code_challenge_method=S256
+  browser < 302  Location: http://127.0.0.1:9399/callback?code=ALPqcBXB…&state=78gZXA7k…
+  sdk  > POST http://127.0.0.1:9310/token
+             {"grant_type": "authorization_code", "code": "ALPqcBXB…", "code_verifier": "9u3RiBoS…", "resource": "http://127.0.0.1:8310/mcp"}
+  sdk  < 200
+  sdk  > POST http://127.0.0.1:8310/mcp   [Authorization: Bearer eyJhbGci…]
+             method=server/discover name=None
+  sdk  < 200
+
+--- client connected (mode auto: server/discover probe) ---
+
+--- list_tools ---
+  sdk  > POST http://127.0.0.1:8310/mcp   [Authorization: Bearer eyJhbGci…]
+             method=tools/list name=None
+  sdk  < 200
+  result: ["get_menu", "place_order", "order_status", "refund"]
+
+--- call_tool get_menu ---
+  sdk  > POST http://127.0.0.1:8310/mcp   [Authorization: Bearer eyJhbGci…]
+             method=tools/call name=get_menu
+  sdk  < 200
+  result: {"isError": false, "structured_content": ["espresso $3.00", "latte $4.50", "flat white $4.20", "cold brew $5.00", "oat cookie $2.50"]}
+
+--- call_tool refund A-1042 ---
+  sdk  > POST http://127.0.0.1:8310/mcp   [Authorization: Bearer eyJhbGci…]
+             method=tools/call name=refund
+  sdk  < 403   WWW-Authenticate: Bearer error="insufficient_scope", scope="refunds:write", resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", error_description="The tool refund needs the scope refunds:write"
+  browser > GET /authorize  scope='menu:read refunds:write' resource='http://127.0.0.1:8310/mcp' code_challenge_method=S256
+  browser < 302  Location: http://127.0.0.1:9399/callback?error=invalid_scope&error_description=Client+was+not+registered+with+scope+refunds:write&state=-uvPVG3S…
+  browser   authorization error from AS: invalid_scope: Client was not registered with scope refunds:write
+  EXCEPTION (connect/flow): OAuthFlowError: No authorization code received
+
+final stored token: scope='menu:read' refresh_token=None claims={"iss": "http://127.0.0.1:9310", "sub": "barista-ana", "aud": "http://127.0.0.1:8310/mcp", "scope": "menu:read"}
+stored client registration: {"application_type": "native", "issuer_binding": "http://127.0.0.1:9310", "registered_scope": "menu:read"}
+
+scopes the SDK asked for at /authorize, in order: ['menu:read', 'menu:read refunds:write']
+HTTP requests made by the SDK: 9; browser legs: 2

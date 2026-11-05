@@ -1,0 +1,24 @@
+1793857981.343 copy B pid 83616: start, store=shared
+INFO:     Started server process [83616]
+INFO:     Waiting for application startup.
+StreamableHTTP session manager started
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8182 (Press CTRL+C to quit)
+1793857985.042 copy B pid 83616: created task 81547ab4-47cb-4428-a9bb-b694d6f37dad for export_sales_report({'days': 20})
+1793858005.114 copy B pid 83616: task 81547ab4-47cb-4428-a9bb-b694d6f37dad completed
+1793858005.256 copy B pid 83616: created task 13aa44b2-cab5-4dbd-b65c-de635b21ae07 for export_sales_report({'days': 60})
+Tool 'export_sales_report' failed: 'Error executing tool export_sales_report: cancelled'
+1793858014.291 copy B pid 83616: task 13aa44b2-cab5-4dbd-b65c-de635b21ae07 stopped (cancel seen after: Day 9 of 60: reading 2026-10-27 (13% done))
+1793858044.564 copy B pid 83616: tasks/update 9c388149-0437-45dd-90c3-ccf1007c15cb: accepted [], ignored ['not-a-key']
+1793858044.572 copy B pid 83616: tasks/update 9c388149-0437-45dd-90c3-ccf1007c15cb: accepted ['unpriced-2026-10-12'], ignored []
+1793858055.817 copy B pid 83616: created task 59b7b098-f472-4381-acc0-f51a3e4830dc for export_sales_report({'days': 400})
+Tool 'export_sales_report' failed: 'Error executing tool export_sales_report: days must be 1 to 90, not 400.'
+1793858055.817 copy B pid 83616: task 59b7b098-f472-4381-acc0-f51a3e4830dc completed
+1793858055.882 copy B pid 83616: created task 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a for export_sales_report({'days': 6})
+1793858061.903 copy B pid 83616: task 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a completed
+1793858061.932 copy B pid 83616: tasks/cancel 0fa212fa-bbcc-4d6a-96d1-fc8164249f9a: nothing to do (status is completed)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+StreamableHTTP session manager shutting down
+INFO:     Application shutdown complete.
+INFO:     Finished server process [83616]

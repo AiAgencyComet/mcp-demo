@@ -1,0 +1,32 @@
+seq   t_ms  hop           from -> to        kind          method                                   detail
+  1     7.4  host-server      host -> server   request       server/discover                          MCP-Protocol-Version: 2026-07-28 Mcp-Method: server/discover
+  2    11.7  host-server    server -> host     response      server/discover                          HTTP 200, server 2.33 ms
+  3    12.1  host-server      host -> server   request       tools/list                               MCP-Protocol-Version: 2026-07-28 Mcp-Method: tools/list
+  4    15.5  host-server    server -> host     response      tools/list                               HTTP 200, server 0.97 ms
+  5    15.7  host-server      host -> server   request       resources/list                           MCP-Protocol-Version: 2026-07-28 Mcp-Method: resources/list
+  6    19.3  host-server    server -> host     response      resources/list                           HTTP 200, server 2.53 ms
+  7    19.7  host-server      host -> server   request       resources/read                           MCP-Protocol-Version: 2026-07-28 Mcp-Method: resources/read Mcp-Name: ui://fernhill/order-board
+  8    22.2  host-server    server -> host     response      resources/read                           HTTP 200, server 1.56 ms
+  9  2125.0  host-gate        host -> host     consent       tools/call                               auto-allow (show_order_board asked by model: auto-allow (readOnlyHint: true))
+ 10  2126.2  host-server      host -> server   request       tools/call                               MCP-Protocol-Version: 2026-07-28 Mcp-Method: tools/call Mcp-Name: show_order_board
+ 11  2133.8  host-server    server -> host     response      tools/call                               HTTP 200, server 2.01 ms
+ 12  2137.7  sandbox-host  sandbox -> host     notification  ui/notifications/sandbox-proxy-ready     
+ 13  2138.0  sandbox-host     host -> sandbox  notification  ui/notifications/sandbox-resource-ready  
+ 14  2139.7  view-host        view -> host     request       ui/initialize                            
+ 15  2139.9  view-host        host -> view     response      ui/initialize                            
+ 16  2140.5  view-host        view -> host     notification  ui/notifications/initialized             
+ 17  2140.5  view-host        host -> view     notification  ui/notifications/tool-input              
+ 18  2152.7  view-host        view -> host     notification  ui/notifications/size-changed            
+ 19  3942.1  view-host        host -> view     notification  ui/notifications/tool-result             
+ 20  3952.3  view-host        view -> host     notification  ui/notifications/size-changed            
+ 21  5966.4  view-host        view -> host     request       tools/call                               
+ 22  5966.7  host-gate        host -> person   consent       tools/call                               ask (mark_order_done asked by view: ask the person (readOnlyHint: false))
+ 23  7167.4  host-gate      person -> host     consent       tools/call                               allow (the person chose Allow)
+ 24  7167.8  host-server      host -> server   request       tools/call                               MCP-Protocol-Version: 2026-07-28 Mcp-Method: tools/call Mcp-Name: mark_order_done
+ 25  7184.4  host-server    server -> host     response      tools/call                               HTTP 200, server 2.17 ms
+ 26  7184.7  view-host        host -> view     response      tools/call                               
+ 27  7185.2  view-host        view -> host     request       ui/update-model-context                  
+ 28  7185.5  view-host        host -> view     response      ui/update-model-context                  
+ 29  7200.0  view-host        view -> host     notification  ui/notifications/size-changed            
+ 30  9777.9  view-host        host -> view     request       ui/resource-teardown                     
+ 31  9778.7  view-host        view -> host     response      ui/resource-teardown                     

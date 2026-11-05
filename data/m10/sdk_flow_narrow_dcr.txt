@@ -1,0 +1,16 @@
+MCP masterclass · module 10 · SDK client OAuth flow (mcp 2.3.0 OAuthClientProvider) AS flags=['--narrow-dcr-scopes']
+server http://127.0.0.1:8310/mcp; secrets cut to 8 characters
+  sdk  > POST http://127.0.0.1:8310/mcp
+             method=server/discover name=None
+  sdk  < 401   WWW-Authenticate: Bearer resource_metadata="http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp", scope="menu:read"
+  sdk  > GET  http://127.0.0.1:8310/.well-known/oauth-protected-resource/mcp
+  sdk  < 200
+  sdk  > GET  http://127.0.0.1:9310/.well-known/oauth-authorization-server
+  sdk  < 200
+  sdk  > POST http://127.0.0.1:9310/register
+             {"client_name": "Fernhill SDK demo", "application_type": "native", "scope": "menu:read offline_access", "grant_types": ["authorization_code", "refresh_token"], "token_endpoint_auth_method": "none", "redirect_uris": ["http://127.0.0.1:9399/callback"]}
+  sdk  < 400
+  EXCEPTION (connect/flow): OAuthRegistrationError: Registration failed: 400 {"error":"invalid_client_metadata","error_description":"Requested scopes are not valid: offline_access"}
+
+scopes the SDK asked for at /authorize, in order: []
+HTTP requests made by the SDK: 4; browser legs: 0

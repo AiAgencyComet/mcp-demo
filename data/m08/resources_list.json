@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "fernhill-board",
+      "version": ""
+    }
+  },
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "resources": [
+    {
+      "name": "order_board",
+      "title": "Fernhill order board",
+      "uri": "ui://fernhill/order-board",
+      "description": "Interactive board of today's orders, with a 'Mark done' button per order.",
+      "mimeType": "text/html;profile=mcp-app",
+      "_meta": {
+        "ui": {
+          "prefersBorder": true
+        }
+      }
+    }
+  ],
+  "resultType": "complete"
+}

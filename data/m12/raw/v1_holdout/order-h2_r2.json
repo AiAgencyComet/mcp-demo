@@ -1,0 +1,44 @@
+{
+ "case_id": "order-h2",
+ "rep": 2,
+ "request": "Ring up an Oat Cookie and a Small Latte for Dana, pickup.",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "7be637b82c3cfe20",
+ "ms": 3423,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "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",
+    "thinking": "",
+    "type": "thinking"
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1728,
+   "output_tokens": 600,
+   "output_tokens_details": {
+    "thinking_tokens": 600
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

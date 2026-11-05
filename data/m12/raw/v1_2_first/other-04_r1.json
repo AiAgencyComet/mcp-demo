@@ -1,0 +1,56 @@
+{
+ "case_id": "other-04",
+ "rep": 1,
+ "request": "Who's working on Saturday?",
+ "model": "claude-haiku-5-5",
+ "system": "You are the assistant of the manager of Fernhill Coffee. Do the request by calling exactly one tool. Do not ask questions.",
+ "tools_sha": "2b6d32be3f37c329",
+ "ms": 1501,
+ "response": {
+  "id": "msg_<redacted>",
+  "container": null,
+  "content": [
+   {
+    "signature": "CAQSuAYKEAgTGAI4AUIIdGhpbmtpbmcSDN9kWGBnH5uqXu0P0BoM0OXsJoFH9NMOkpFNIjD/eKoHv79ozdYmcqR/eDel7QtxtSbgTHeBbixXHygod9M8ZAY3JNCYsE31visKSBAq1QWAqZGbHPu9wNZlzpTaOZDw5JdT8TnqMaFNwL/h/6I43UjCyuGtrwbehVfbqo/8TiMKhDLYymHwQXtWqVEWkHzXS8B0brfdJ1DVKX2suIdgJrVpMxjC4Skl/iUozT04pB694o9xyJ39ukKUqWKXcfVBgtJ3OpwbEzdKCZSzNh8OkMWIcvQY+DlNwfyBPlBsCGwZ8ZJkUHOKxiZV1VNoeAribx9D6z1PZY7cfsdobpj5HCY5trztjF2ZhmWoB45DBqV8HxjOneuImiO3fbefGLhDfhJ5NGmNjLOcGFLQScyeuKd8EANTNACx/e0pvPNLtRMdNi3Pe0p4D53tGgNsB1jd67z9fNuqebeO4dqQ1SmW0tlqerktdChC62Gc7ozX5KnihI4+Pe8eGTRjVmoRWZqqMFBxv5/ydqMhfHVkY7zZNgfWkGpAnVbrvT5n4Fe+R9ojw/511h/jPgcoYmHAOPUrP56QyNvxmWT4Crm/5BhM5dCOiTKbUIQMazxt+U5Co3vvYY2XVgNq28XN0a/d8UTuRrhI9w1wQDPgA9E9MU0f96RCfPuf1X+WX5Zz/gwy++6vR1ZfjLEzelju2Iz5G6L4X/IpuYia7C2Tj+626nP0zeShieDa1iVn86TDvNrJNvwQ5UsYD66DxQUVhJp8Zak7id/2lQ0FfK4MoREr1Gxjnv/pJRLXHzET6BYeBGZvOmfMKoTfnU46DKP/OxNptB7sASASk/WaiSphVgfYmHKrHvYE79ocDS/Tk4XFx7ime2Q5Mh4mNoK/416b0rhBcYRh7kHsUMs5dP4sb4VJgd7mH8o4lfV3hjVoAEvAS0Lvyn7x5Nt/Eh5bL5hCUyG0lk1vxihqk20T4FZNoukD4lBPReUQDtMmPkhMB+M+ck/wQonXn+xvCMmrai3nkk0Ibor+EfcuCpJa5/t/L3CXXWHUZ0lwuOB0U7ecophhWYnsGmr7hzmo4RgB",
+    "thinking": "",
+    "type": "thinking"
+   },
+   {
+    "id": "toolu_01L8XgvyVb6zMPCQDvVKxMte",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "day": "Saturday"
+    },
+    "name": "staff__list_shifts",
+    "type": "tool_use",
+    "toolset_name": null
+   }
+  ],
+  "diagnostics": null,
+  "model": "claude-haiku-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1825,
+   "output_tokens": 135,
+   "output_tokens_details": {
+    "thinking_tokens": 79
+   },
+   "server_tool_use": null,
+   "service_tier": "standard",
+   "speed": "standard"
+  }
+ }
+}

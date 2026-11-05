@@ -1,0 +1,16 @@
+release v1 (holdout set)  model claude-haiku-5-5  12 requests x 3 reps = 36 runs  tools offered 9  avg input 1719 tok
+  tool choice (all)         77.8%   per rep [83.3, 75.0, 75.0]
+  tool choice (Fernhill)    73.3%
+  call has right effect     50.0%
+  other servers kept       100.0%
+  by group (choice/call)  menu 100/100  order 58/0  status 100/100  refund 50/50  other 100/100
+  no tool call 2   stopped by max_tokens 2   cost $0.0103   avg 1626 ms
+    wrong x3: fernhill__place_order -> fernhill__get_menu
+    wrong x3: fernhill__refund -> fernhill__order_status
+    wrong x2: fernhill__place_order -> None
+    call fail x3: order-h1: is_error: Error executing tool place_order: 'Flat White' is not on the menu. Call get_menu to see the menu.
+    call fail x3: order-h3: is_error: Error executing tool place_order: 'Latte' is not on the menu. Call get_menu to see the menu.
+    call fail x1: order-h4: is_error: Error executing tool place_order: 'Espresso' is not on the menu. Call get_menu to see the menu.
+GATE FAIL (baseline v1)
+  - choice 77.8% < 80.0%
+exit code: 1
